@@ -1,0 +1,33 @@
+<{{ tag }}{{ attributes.defaults({
+    'class': block('button', tbd_component_template)|trim ~ ' ' ~ extraClasses,
+    'type': tag == 'button' ? type : false,
+    'target': target,
+}) }}
+{% if tooltip %}
+    data-tooltip-target="{{ uuid }}"
+    data-tooltip-placement="bottom"
+{% endif %}
+>
+{% if label is defined and label is not empty and icon is empty %}
+    {{ label|raw }}
+{% elseif icon is not null and label is defined %}
+    {{ ux_icon(icon, {'class': this.iconSizeClasses}) }}
+    {{ label|raw }}
+{% elseif icon is not null and label is not defined %}
+    {{ ux_icon(icon, {'class': this.iconSizeClasses}) }}
+{% else %}
+    {% block content %}{% endblock content %}
+{% endif %}
+
+{% if indicator %}
+    <twig:TBD:Indicator label="{{ indicator }}"/>
+{% endif %}
+
+{% if spinner %}
+    <twig:TBD:Spinner size="{{ iconSize }}"/>
+{% endif %}
+</{{ tag }}>
+
+{% if tooltip %}
+    <twig:TBD:Tooltip uuid="{{ uuid }}" label="{{ tooltip }}"/>
+{% endif %}

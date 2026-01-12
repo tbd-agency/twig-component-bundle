@@ -1,0 +1,14 @@
+{% block button -%}
+    group group-[[busy]]:pointer-events-none select-none relative inline-flex items-center justify-center gap-2 text-nowrap focus:ring-4 font-medium rounded-lg focus:outline-none focus:z-10 text-sm cursor-pointer
+{%- endblock button %}
+
+{% block tooltip -%}
+    absolute z-[70] invisible inline-block px-3 py-2 text-sm normal-case font-medium text-blue-100 dark:text-blue-950 transition-opacity duration-300 bg-blue-950 rounded-lg shadow-sm opacity-0 tooltip dark:bg-blue-100
+{%- endblock tooltip %}
+
+{% block indicator -%}
+    absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-400 group-focus:bg-orange-300 rounded-full -top-2 -end-2
+{%- endblock indicator %}
+
+{% block spinner -%}
+{%- endblock spinner %}

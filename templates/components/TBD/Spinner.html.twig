@@ -1,0 +1,3 @@
+<div {{ attributes.defaults({'class': 'hidden group-[[busy]]:inline-block'}) }}>
+    {{ ux_icon('tbd:spinner-scale', {'class': 'animate-spin ' ~ block('spinner', tbd_component_template)|trim ~ ' ' ~ this.sizeClass}) }}
+</div>
