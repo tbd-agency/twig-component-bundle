@@ -25,15 +25,18 @@
     "symfony/flex": "^2",
     "symfony/options-resolver": "^8.0"
   },
-  "config": {
-    "allow-plugins": {
-      "symfony/flex": true
-    }
+  "require-dev": {
+    "phpstan/phpstan": "^2.1"
   },
   "scripts": {
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/flex": false
     }
   }
 }
