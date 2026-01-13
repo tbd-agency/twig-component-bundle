@@ -25,19 +25,26 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $definition->rootNode()
             ->children()
             ->stringNode('template')
+            ->defaultValue('@@TbdComponent/default.html.twig')
             ->end()
             ->arrayNode('button')
             ->addDefaultsIfNotSet()
             ->children()
             ->arrayNode('variants')
             ->useAttributeAsKey('name')
-            ->scalarPrototype()
-            ->end()
+            ->scalarPrototype()->end()
+            ->defaultValue([
+                'primary' => 'text-white fill-white bg-orange-400 hover:bg-orange-500 focus:ring-orange-300',
+            ])
             ->end()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
-            ->scalarPrototype()
-            ->end()
+            ->scalarPrototype()->end()
+            ->defaultValue([
+                'sm' => 'px-2 py-1 text-xs',
+                'md' => 'px-3 py-2 text-sm',
+                'lg' => 'px-4 py-2 text-base',
+            ])
             ->end()
             ->end()
             ->end()
@@ -46,8 +53,12 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
-            ->scalarPrototype()
-            ->end()
+            ->scalarPrototype()->end()
+            ->defaultValue([
+                'sm' => 'w-3 h-3',
+                'md' => 'w-4 h-4',
+                'lg' => 'w-5 h-5',
+            ])
             ->end()
             ->end()
             ->end()
