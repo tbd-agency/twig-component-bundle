@@ -11,9 +11,9 @@ return static function (ContainerConfigurator $configurator): void {
         ->autoconfigure();
 
     $services
-        ->load('Tbd\\ComponentBundle\\', __DIR__ . '/../src/')
+        ->load('Tbd\\TwigComponentBundle\\', __DIR__ . '/../src/')
         ->exclude([
-            __DIR__ . '/../src/TbdComponentBundle.php',
+            __DIR__ . '/../src/TbdTwigComponentBundle.php',
         ]);
 
     # Write variables to the component constructor

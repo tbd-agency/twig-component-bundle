@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbd\ComponentBundle;
+namespace Tbd\TwigComponentBundle;
 
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 use function dirname;
 
-final class TbdComponentBundle extends AbstractBundle
+final class TbdTwigComponentBundle extends AbstractBundle
 {
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
@@ -56,13 +56,13 @@ final class TbdComponentBundle extends AbstractBundle
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
     {
-        $configs = $builder->getExtensionConfig('tbd_component');
+        $configs = $builder->getExtensionConfig('tbd_twig_component');
 
         # Tell twig what template to use for the components
-        $template = $configs[0]['template'] ?? '@@TbdComponent/default.html.twig';
+        $template = $configs[0]['template'] ?? '@@TbdTwigComponent/default.html.twig';
         $builder->prependExtensionConfig('twig', [
             'globals' => [
-                'tbd_component_template' => $template,
+                'tbd_twig_component_template' => $template,
             ],
         ]);
 

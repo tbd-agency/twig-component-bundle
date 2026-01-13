@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbd\ComponentBundle\Twig\Components\TBD;
+namespace Tbd\TwigComponentBundle\Twig\Components\TBD;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
