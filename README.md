@@ -48,8 +48,6 @@ Because this is a private GitHub repository, you must also add it under `reposit
 }
 ```
 
-Make sure your SSH key has access to the repository.
-
 ---
 
 ### 2. Install the bundle
@@ -62,14 +60,3 @@ composer require tbd/twig-component-bundle
 
 If Symfony Flex is configured correctly, the recipe will be applied automatically.
 
----
-
-### 3. Bundle registration
-The bundle is automatically registered by Symfony Flex. If you need to verify it manually, it should appear in `config/bundles.php` as:
-
-```php
-return [
-    // ...
-    Tbd\\TbdComponentBundle\\TbdComponentBundle::class => ['all' => true],
-];
-```
