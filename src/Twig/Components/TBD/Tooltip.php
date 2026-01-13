@@ -9,7 +9,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(
     name: 'TBD:Tooltip',
-    template: '@TbdComponent/components/TBD/Tooltip.html.twig')]
+    template: '@TbdTwigComponent/components/TBD/Tooltip.html.twig')]
 final class Tooltip
 {
     public string $identifier;

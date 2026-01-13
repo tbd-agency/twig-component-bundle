@@ -8,7 +8,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(
     name: 'TBD:Spinner',
-    template: '@TbdComponent/components/TBD/Spinner.html.twig')]
+    template: '@TbdTwigComponent/components/TBD/Spinner.html.twig')]
 final class Spinner
 {
     public string $size;

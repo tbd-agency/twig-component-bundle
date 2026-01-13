@@ -10,7 +10,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(
     name: 'TBD:Button',
-    template: '@TbdComponent/components/TBD/Button.html.twig')]
+    template: '@TbdTwigComponent/components/TBD/Button.html.twig')]
 final class Button
 {
     public ?string $icon = null;

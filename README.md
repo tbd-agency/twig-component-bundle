@@ -54,5 +54,5 @@ for (const key of tbdControllers.keys()) {
 ```yaml
     # Also recognize twig components from TbdComponentBundle
     Tbd\TbdComponentBundle\Twig\Component\:
-      template_directory: '@TbdComponent/components'
+      template_directory: '@TbdTwigComponent/components'
 ```

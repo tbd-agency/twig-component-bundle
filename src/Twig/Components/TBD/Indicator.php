@@ -8,7 +8,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(
     name: 'TBD:Indicator',
-    template: '@TbdComponent/components/TBD/Indicator.html.twig')]
+    template: '@TbdTwigComponent/components/TBD/Indicator.html.twig')]
 final class Indicator
 {
     public string $label;
