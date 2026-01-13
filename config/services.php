@@ -1,8 +1,8 @@
 <?php
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Tbd\TbdComponentBundle\Twig\Components\TBD\Button;
-use Tbd\TbdComponentBundle\Twig\Components\TBD\Spinner;
+use Tbd\ComponentBundle\Twig\Components\TBD\Button;
+use Tbd\ComponentBundle\Twig\Components\TBD\Spinner;
 
 return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()
@@ -11,7 +11,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->autoconfigure();
 
     $services
-        ->load('Tbd\\TbdComponentBundle\\', __DIR__ . '/../src/')
+        ->load('Tbd\\ComponentBundle\\', __DIR__ . '/../src/')
         ->exclude([
             __DIR__ . '/../src/TbdComponentBundle.php',
         ]);

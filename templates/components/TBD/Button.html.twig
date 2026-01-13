@@ -4,7 +4,7 @@
     'target': target,
 }) }}
 {% if tooltip %}
-    data-tooltip-target="{{ uuid }}"
+    data-tooltip-target="{{ identifier }}"
     data-tooltip-placement="bottom"
 {% endif %}
 >
@@ -29,5 +29,5 @@
 </{{ tag }}>
 
 {% if tooltip %}
-    <twig:TBD:Tooltip uuid="{{ uuid }}" label="{{ tooltip }}"/>
+    <twig:TBD:Tooltip identifier="{{ identifier }}" label="{{ tooltip }}"/>
 {% endif %}

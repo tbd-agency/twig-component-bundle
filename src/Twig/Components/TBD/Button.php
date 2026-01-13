@@ -1,9 +1,8 @@
 <?php
 
-namespace Tbd\TbdComponentBundle\Twig\Components\TBD;
+namespace Tbd\ComponentBundle\Twig\Components\TBD;
 
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
@@ -14,19 +13,19 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdComponent/components/TBD/Button.html.twig')]
 final class Button
 {
-    public ?string $indicator = null;
-    public bool $disabled = false;
-    public string $extraClasses = '';
-    public bool $fullWidth = false;
     public ?string $icon = null;
-    public string $label;
-    public string $size;
-    public bool $spinner = false;
-    public string $tag;
+    public ?string $indicator = null;
     public ?string $target = null;
     public ?string $tooltip = null;
+    public bool $disabled = false;
+    public bool $fullWidth = false;
+    public bool $spinner = false;
+    public string $extraClasses = '';
+    public string $identifier;
+    public string $label;
+    public string $size;
+    public string $tag;
     public string $type;
-    public UuidInterface $uuid;
     public string $variant;
     public string $iconSize;
 
@@ -78,7 +77,7 @@ final class Button
 
     public function mount(): void
     {
-        $this->uuid = Uuid::uuid4();
+        $this->identifier = Uuid::uuid4()->toString();
     }
 
     #[PostMount]

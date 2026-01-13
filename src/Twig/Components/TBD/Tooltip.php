@@ -1,6 +1,6 @@
 <?php
 
-namespace Tbd\TbdComponentBundle\Twig\Components\TBD;
+namespace Tbd\ComponentBundle\Twig\Components\TBD;
 
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,7 +12,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdComponent/components/TBD/Tooltip.html.twig')]
 final class Tooltip
 {
-    public UuidInterface $uuid;
+    public string $identifier;
     public string $label;
 
     #[PreMount]
@@ -21,7 +21,7 @@ final class Tooltip
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined();
 
-        $resolver->setRequired('uuid');
+        $resolver->setRequired('identifier');
         $resolver->setRequired('label');
 
         return $resolver->resolve($data) + $data;
