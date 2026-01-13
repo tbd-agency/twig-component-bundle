@@ -1,8 +1,8 @@
 <?php
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Tbd\ComponentBundle\Twig\Components\TBD\Button;
-use Tbd\ComponentBundle\Twig\Components\TBD\Spinner;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Button;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Spinner;
 
 return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()
