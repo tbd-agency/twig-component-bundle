@@ -25,7 +25,6 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $definition->rootNode()
             ->children()
             ->stringNode('template')
-            ->defaultValue('@@TbdComponent/default.html.twig')
             ->end()
             ->arrayNode('button')
             ->addDefaultsIfNotSet()
