@@ -1,58 +1,75 @@
-tbd/tbd-component-bundle
-This bundle provides a simple way to implement wide used components.
+tbd/twig-component-bundle
+A Symfony bundle containing a shared library of reusable Twig components.
 
 ## Installation
 
-### Install the bundle via Composer:
+This bundle is distributed as a **private Composer package** and uses **private Symfony Flex recipes**.
+Follow the steps below to install it correctly in your project.
 
-```bash
-composer require tbd/tbd-component-bundle
+---
+
+### 1. Configure Composer (required)
+
+#### 1.1 Enable the private Flex recipes repository
+
+Add the following configuration to your project’s `composer.json`:
+
+```json
+{
+  "extra": {
+    "symfony": {
+      "endpoint": [
+        "https://api.github.com/repos/tbd-agency/recipes/contents/index.json",
+        "flex://defaults"
+      ],
+      "allow-contrib": true,
+      "require": "7.4.*"
+    }
+  }
+}
 ```
 
-### Enable the bundle in your `config/bundles.php` file:
+This allows Symfony Flex to discover and apply our **internal recipes** automatically.
 
-> [!NOTE]
-> This step is not required if you are using Symfony Flex.
+---
+
+#### 1.2 Register the private VCS repository
+
+Because this is a private GitHub repository, you must also add it under `repositories` in `composer.json`:
+
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:tbd-agency/twig-component-bundle.git"
+    }
+  ]
+}
+```
+
+Make sure your SSH key has access to the repository.
+
+---
+
+### 2. Install the bundle
+
+Run the following command:
+
+```bash
+composer require tbd/twig-component-bundle
+```
+
+If Symfony Flex is configured correctly, the recipe will be applied automatically.
+
+---
+
+### 3. Bundle registration
+The bundle is automatically registered by Symfony Flex. If you need to verify it manually, it should appear in `config/bundles.php` as:
 
 ```php
 return [
     // ...
-   Tbd\TbdComponentBundle\TbdComponentBundle::class => ['all' => true],
+    Tbd\\TbdComponentBundle\\TbdComponentBundle::class => ['all' => true],
 ];
-```
-
-### Allow bootstrap to read symfony controllers in the bundle :
-
-### bootstrap.js
-
-```
-// Also load controllers from the tbd-component-bundle (inside vendor/)
-const tbdControllers = require.context(
-    '@symfony/stimulus-bridge/lazy-controller-loader!../vendor/tbd/tbd-component-bundle/assets/controllers',
-    true,
-    /_controller\.[jt]sx?$/
-);
-
-for (const key of tbdControllers.keys()) {
-    const mod = tbdControllers(key);
-
-    const name = key
-        .replace(/^\.\//, '')
-        .replace(/\.[jt]sx?$/, '')
-        .replace(/_controller$/, '')
-        .replace(/\//g, '--')
-        .replace(/_/g, '-');
-
-    app.register(name, mod.default);
-}
-```
-
-### Allow symfony to read the components in the bundle :
-
-### twig_component.yaml
-
-```yaml
-    # Also recognize twig components from TbdComponentBundle
-    Tbd\TbdComponentBundle\Twig\Component\:
-      template_directory: '@TbdTwigComponent/components'
 ```
