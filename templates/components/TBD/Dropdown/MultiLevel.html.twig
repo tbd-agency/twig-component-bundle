@@ -1,0 +1,16 @@
+<li{{ attributes }}>
+    {% set dropdownContent %}
+        {% block content %}{% endblock %}
+    {% endset %}
+    <twig:TBD:Dropdown
+            id="{{ uuid }}"
+            variant="{{ variant }}"
+            placement="{{ placement }}"
+            icon="{{ icon ?? null }}"
+            label="{{ label ?? null }}"
+            down="{{ down ?? null }}">
+        <twig:TBD:Dropdown:UnorderedList>
+            {{ dropdownContent }}
+        </twig:TBD:Dropdown:UnorderedList>
+    </twig:TBD:Dropdown>
+</li>

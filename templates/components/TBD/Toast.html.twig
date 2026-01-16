@@ -1,0 +1,25 @@
+<div {{ attributes.defaults({
+    'id': 'toast',
+    'role': 'alert',
+    'class': block('toast', tbd_twig_component_template)|trim ~ ' ' ~ this.colorClasses(),
+}) }}
+        {% if autoClose %}
+            data-controller="closeable"
+            data-closeable-auto-close-value="{{ timeUntilClose }}"
+        {% endif %}
+>
+    <div class="inline-flex items-center justify-center {{ this.colorClasses() }}">
+        {{ ux_icon(('tbd:' ~ this.icon()), {'class': this.iconSizeClasses}) }}
+    </div>
+    <div class="text-sm font-normal">
+        {% if message %}
+            {{ message|raw }}
+        {% else %}
+            {% block content %}{% endblock %}
+        {% endif %}
+    </div>
+    <twig:TBD:Button
+            data-action="closeable#close"
+            type="button" variant="hollow-{{ this.type }}" size="sm" class="ms-auto"
+            label="{{ ux_icon('tbd:x', {'class': this.iconSizeClasses}) }}"/>
+</div>

@@ -1,0 +1,9 @@
+<div {{ attributes.defaults({
+    'class': block('avatar', tbd_twig_component_template)|trim ~ ' ' ~  this.sizeClasses ~ ' ' ~ this.roundedClasses,
+}) }}>
+    {% if seed is defined and seed is not empty %}
+        <img src="https://api.dicebear.com/9.x/initials/svg?seed={{ seed }}" alt="{{ seed }}">
+    {% else %}
+        {% block content %}{% endblock %}
+    {% endif %}
+</div>

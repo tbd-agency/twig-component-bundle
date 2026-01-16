@@ -1,0 +1,29 @@
+<div data-controller="dropdown"
+     data-dropdown-target-value="{{ id }}-dropdown"
+     data-dropdown-trigger-value="{{ id }}-dropdown-trigger"
+     data-dropdown-placement-value="{{ placement }}"
+     class="{{ block('dropdown', tbd_twig_component_template)|trim }}">
+    <button{{ attributes.defaults({
+        'id': id ~  '-dropdown-trigger',
+        'type': 'button',
+        'class': block('dropdown_button', tbd_twig_component_template)|trim ~ ' ' ~ this.variantClasses,
+        'data-dropdown-target': 'button',
+        'data-action': 'dropdown#toggle',
+    }) }}>
+        {% block buttonContent %}
+            {% if icon is defined and icon %}
+                {{ ux_icon(icon, {class: block('dropdown_button_icon', tbd_twig_component_template)|trim ~ (label is defined ? ' mr-2')}) }}
+            {% endif %}
+            {% if label is defined %}
+                {{ label }}
+            {% endif %}
+            {% if down is defined %}
+                {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down', tbd_twig_component_template)|trim ~ (label is defined ? ' ml-2')}) }}
+            {% endif %}
+        {% endblock %}
+    </button>
+    <div id="{{ id }}-dropdown" data-dropdown-target="content"
+         class="{{ block('dropdown_content', tbd_twig_component_template)|trim }}">
+        {% block content %}{% endblock %}
+    </div>
+</div>

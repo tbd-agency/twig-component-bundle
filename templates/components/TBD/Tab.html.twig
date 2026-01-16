@@ -1,0 +1,17 @@
+<div{{ attributes.defaults({class:block('tab', tbd_twig_component_template)|trim}) }}>
+    {% set label %}
+        {{ label }}
+        {%- if amount -%}
+            <span class="{{ block('tab_amount', tbd_twig_component_template)|trim }}">
+                {{ amount }}
+            </span>
+        {%- endif -%}
+    {% endset %}
+    <twig:TBD:Button
+            class="{{ block('tab_button', tbd_twig_component_template)|trim }}" tag="a"
+            variant="{{ isActive ? 'tab-active' : 'tab' }}"
+            href="{{ href }}"
+            data-turbo="false">
+        {{ label }}
+    </twig:TBD:Button>
+</div>

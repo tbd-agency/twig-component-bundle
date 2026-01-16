@@ -1,0 +1,51 @@
+<twig:Card>
+    <div{{ attributes.defaults({
+        'data-controller': 'dashboard',
+        'data-dashboard-route-value': route,
+        'class': block('chart', tbd_twig_component_template)|trim,
+    }) }}>
+        {% if label is defined and label is not empty %}
+            <twig:TBD:Text>{{ label }}</twig:TBD:Text>
+        {% endif %}
+
+        {# Loading states #}
+        {% if type == 'number' %}
+            <twig:TBD:Text class="{{ block('chart_number_label', tbd_twig_component_template)|trim }}">&nbsp;
+            </twig:TBD:Text>
+        {% endif %}
+        {% if type == 'doughnut' %}
+
+            <div class="{{ block('chart_doughnut', tbd_twig_component_template)|trim }}">
+                <twig:TBD:Spinner size="lg"/>
+            </div>
+        {% endif %}
+        {% if type == 'bar' %}
+            <div class="{{ block('chart_bar', tbd_twig_component_template)|trim }}">
+                <twig:TBD:Spinner size="lg"/>
+            </div>
+        {% endif %}
+        {% if type == 'table' %}
+            <table class="w-full text-primary-90 text-lg">
+                {% if horizontalHeaders is defined %}
+                    <tr class="font-medium">
+                        {% for i, header in horizontalHeaders %}
+                            <td style="width: {{ headerWidths[i] }}%;">{{ header }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+                {% for header in verticalHeaders %}
+                    <tr>
+                        <td class="font-medium whitespace-nowrap">{{ header }}</td>
+                        {% if horizontalHeaders is defined %}
+                            {% for i in 2..horizontalHeaders|length %}
+                                <td>&nbsp;</td>
+                            {% endfor %}
+                        {% elseif verticalHeaders is defined %}
+                            <td style="width: {{ verticalHeaderWidth }}%;">&nbsp;</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</twig:Card>

@@ -12,3 +12,222 @@
 
 {% block spinner -%}
 {%- endblock spinner %}
+
+{% block avatar -%}
+    overflow-hidden
+{%- endblock avatar %}
+
+{% block alert -%}
+    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_2px_10px_1px_rgba(166,200,255,0.25)]
+{%- endblock alert %}
+
+{% block badge -%}
+    font-medium rounded-full
+{%- endblock badge %}
+
+{% block card -%}
+    bg-white relative rounded border print:border-gray-300
+{%- endblock card %}
+
+{% block card_shadow -%}
+    print:shadow-none shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)]
+{%- endblock card_shadow %}
+
+{% block chart -%}
+    text-blue-900 dark:text-blue-100
+{%- endblock chart %}
+
+{% block chart_bar -%}
+    aspect-[1.75] flex justify-center items-center
+{%- endblock chart_bar %}
+
+{% block chart_doughnut -%}
+    aspect-[1.75] flex justify-center items-center
+{%- endblock chart_doughnut %}
+
+{% block chart_number_label -%}
+    font-medium !text-lg
+{%- endblock chart_number_label %}
+
+{% block checkbox -%}
+    rounded w-4 h-4 text-primary-60 border-0 bg-gray-200 ring-0 focus:ring-0 ring-offset-0 focus:ring-offset-0 cursor-pointer
+{%- endblock checkbox %}
+
+{% block detail_label -%}
+    text-xs
+{%- endblock detail_label %}
+
+{% block detail_value -%}
+    font-bold
+{%- endblock detail_value %}
+
+{% block detail_check -%}
+    w-4 h-4 text-green-700
+{%- endblock detail_check %}
+
+{% block detail_x -%}
+    w-4 h-4 text-red-500
+{%- endblock detail_x %}
+
+{% block detail_not_set -%}
+    font-bold text-gray-400
+{%- endblock detail_not_set %}
+
+{% block detail_list_label -%}
+    text-xs
+{%- endblock detail_list_label %}
+
+{% block detail_list_ul -%}
+    list-disc list-inside font-bold
+{%- endblock detail_list_ul %}
+
+{% block detail_list_li -%}
+{%- endblock detail_list_li %}
+
+{% block detail_list_not_set -%}
+    font-bold text-gray-400
+{%- endblock detail_list_not_set %}
+
+{% block dropdown -%}
+    contents
+{%- endblock dropdown %}
+
+{% block dropdown_button -%}
+    font-semibold cursor-pointer whitespace-nowrap
+{%- endblock dropdown_button %}
+
+{% block dropdown_button_icon -%}
+    w-4 h-4 text-primary-60 transition duration-100 group-hover:text-gray-900
+{%- endblock dropdown_button_icon %}
+
+{% block dropdown_button_down -%}
+    w-3 h-3 text-gray-400 transition duration-100 group-hover:text-gray-900
+{%- endblock dropdown_button_down %}
+
+{% block dropdown_content -%}
+    hidden z-10 min-w-28 bg-white border border-gray-300 divide-y divide-gray-100
+{%- endblock dropdown_content %}
+
+{% block dropdown_unordered_list -%}
+    text-dark
+{%- endblock dropdown_unordered_list %}
+
+{% block dropdown_item -%}
+    block py-2 px-3 whitespace-nowrap hover:bg-gray-100 cursor-pointer
+{%- endblock dropdown_item %}
+
+{% block link -%}
+    text-sm text-primary-60 hover:text-primary-90 focus:text-primary-60 focus:outline-none inline-flex items-center
+{%- endblock link %}
+
+{% block section -%}
+    md:max-w-(--breakpoint-xl) md:mx-auto p-4
+{%- endblock section %}
+
+{% block section_indent -%}
+    md:w-9/12 md:mx-auto
+{%- endblock section_indent %}
+
+{% block section_wrapper -%}
+    bg-white
+{%- endblock section_wrapper %}
+
+{% block section_wrapper_border -%}
+    border-x border-b border-gray-200
+{%- endblock section_wrapper_border %}
+
+{% block sub_section -%}
+    p-4 sm:p-6 lg:p-8 bg-gray-100
+{%- endblock sub_section %}
+
+{% block tab -%}
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-light-blue text-white
+{%- endblock tab %}
+
+{% block tab_amount -%}
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-light-blue text-white
+{%- endblock tab_amount %}
+
+{% block tab_button -%}
+    w-full md:w-auto
+{%- endblock tab_button %}
+
+{% block table_wrapper -%}
+    overflow-x-auto border border-gray-200 dark:border-gray-600 rounded-lg bg-white
+{%- endblock table_wrapper %}
+
+{% block table -%}
+    border-separate border-spacing-0 outline-none w-full text-sm text-left text-blue-950 bg-white dark:bg-blue-950 dark:text-blue-100 rounded-lg
+{%- endblock table %}
+
+{% block table_body -%}
+{%- endblock table_body %}
+
+{% block table_head -%}
+    border-b border-b-gray-200
+{%- endblock table_head %}
+
+{#
+The table cell class is built dynamically:
+- always includes the `table_cell` block
+- if the tag is a <th>, the `table_head_cell` block is appended
+#}
+{% block table_cell -%}
+    px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap
+{%- endblock table_cell %}
+
+{% block table_head_cell -%}
+    font-medium
+{%- endblock table_head_cell %}
+
+{#
+The table sticky cell class is built dynamically:
+- always includes the `table_sticky_cell` block
+- if the tag is a <th>, the `table_head_sticky_cell` block is appended
+#}
+{% block table_sticky_cell -%}
+    bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky
+{%- endblock table_sticky_cell %}
+
+{% block table_head_sticky_cell -%}
+    font-medium bg-white
+{%- endblock table_head_sticky_cell %}
+
+{% block table_row -%}
+{%- endblock table_row %}
+
+{% block text -%}
+    text-blue-950 text-sm
+{%- endblock text %}
+
+{% block title -%}
+    flex flex-row flex-wrap gap-3 items-center mb-4
+{%- endblock title %}
+
+{% block title_label -%}
+    text-4xl font-semibold text-blue-950 w-full sm:w-auto
+{%- endblock title_label %}
+
+{% block title_content -%}
+    print:hidden flex flex-col sm:flex-row gap-3 w-full sm:w-auto grow justify-end sm:items-center
+{%- endblock title_content %}
+
+{% block sub_title -%}
+    font-semibold text-blue-950 flex items-center
+{%- endblock sub_title %}
+
+{% block sub_title_wrapper -%}
+    flex flex-row justify-between items-center mb-4
+{%- endblock sub_title_wrapper %}
+
+{% block sub_title_tooltip_icon -%}
+    w-4 h-4 cursor-pointer ms-2 text-blue-950
+{%- endblock sub_title_tooltip_icon %}
+
+{% block sub_title_content -%}
+    print:hidden flex flex-col sm:flex-row gap-3 w-full sm:w-auto grow justify-end sm:items-center
+{%- endblock sub_title_content %}
+
+{% block toast -%}
+    flex gap-3 items-center min-w-80 max-w-md p-4 mb-4 border rounded opacity-100 transition-opacity
+{%- endblock toast %}

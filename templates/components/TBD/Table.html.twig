@@ -1,0 +1,5 @@
+<div class="{{ block('table_wrapper', tbd_twig_component_template)|trim }}{{ hasSearch ? ' rounded-t-none' }}{{ hasTabs ? ' rounded-tl-none' }}{{ isSticky ? ' relative overflow-auto max-h-[70vh] overscroll-contain' }}">
+    <table{{ attributes.defaults({'class': block('table', tbd_twig_component_template)|trim ~ (hasSearch ? ' rounded-t-none') ~ (hasTabs ? ' rounded-tl-none')}) }}>
+        {% block content %}{% endblock %}
+    </table>
+</div>

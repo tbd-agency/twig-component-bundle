@@ -17,9 +17,9 @@ final class Button
     public ?string $indicator = null;
     public ?string $target = null;
     public ?string $tooltip = null;
-    public bool $disabled = false;
-    public bool $fullWidth = false;
-    public bool $spinner = false;
+    public bool $disabled;
+    public bool $fullWidth;
+    public bool $spinner;
     public string $extraClasses = '';
     public string $identifier;
     public string $label;
@@ -64,6 +64,9 @@ final class Button
             'iconSize' => 'md',
             'type' => 'submit',
             'tag' => 'button',
+            'disabled' => false,
+            'fullWidth' => false,
+            'spinner' => false,
         ]);
 
         $resolver->setAllowedValues('variant', array_keys($this->variants));
@@ -71,6 +74,9 @@ final class Button
         $resolver->setAllowedValues('iconSize', array_keys($this->iconSizes));
         $resolver->setAllowedValues('type', ['submit', 'reset', 'button']);
         $resolver->setAllowedValues('tag', ['button', 'a']);
+        $resolver->setAllowedValues('disabled', [true, false]);
+        $resolver->setAllowedValues('fullWidth', [true, false]);
+        $resolver->setAllowedValues('spinner', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

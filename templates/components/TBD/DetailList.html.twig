@@ -1,0 +1,16 @@
+<div{{ attributes }}>
+    <div class="{{ block('detail_list_label', tbd_twig_component_template)|trim }}">{{ label }}</div>
+    {% if value is defined and value is not empty %}
+        <ul class="{{ block('detail_list_ul', tbd_twig_component_template)|trim }}">
+            {% for item in value %}
+                <li class="{{ block('detail_list_li', tbd_twig_component_template)|trim }}">{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% elseif block('content') is defined %}
+        {{ block('content') }}
+    {% else %}
+        <div class="{{ block('detail_list_not_set', tbd_twig_component_template)|trim }}">
+            {{ 'label.not-set'|trans({'default': 'Not set'}, 'admin interface') }}
+        </div>
+    {% endif %}
+</div>

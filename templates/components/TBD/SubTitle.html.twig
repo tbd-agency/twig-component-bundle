@@ -1,0 +1,14 @@
+<{{ wrapper }} {{ attributes.defaults({ class: block('sub_title_wrapper', tbd_twig_component_template)|trim}) }}>
+<{{ tag }} class="{{ block('sub_title',tbd_twig_component_template)|trim ~ ' ' ~ this.textSizeClass }}">
+{{ label|raw }}
+        {% if tooltip %}
+            {{ ux_icon('tbd:circle-info', {'class': block('sub_title_tooltip_icon', tbd_twig_component_template)|trim, 'data-tooltip-target': ('tooltip-' ~ tooltipId)}) }}
+        {% endif %}
+</{{ tag }}>
+<div class="{{ block('sub_title_content', tbd_twig_component_template)|trim }}">
+    {% block content %}{% endblock %}
+</div>
+{% if tooltip %}
+    <twig:TBD:Tooltip identifier="tooltip-{{ tooltipId }}" label="{{ tooltip }}"/>
+{% endif %}
+</{{ wrapper }}>

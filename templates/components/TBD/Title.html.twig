@@ -1,0 +1,7 @@
+<div {{ attributes.defaults({ class: block('title', tbd_twig_component_template)|trim }) }}>
+    <h1 class="{{ block('title_label', tbd_twig_component_template)|trim }}
+    ">{{ label }}</h1>
+    <div class="{{ block('title_content', tbd_twig_component_template)|trim }}">
+        {% block content %}{% endblock %}
+    </div>
+</div>
