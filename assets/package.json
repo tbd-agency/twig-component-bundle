@@ -1,0 +1,12 @@
+{
+  "name": "@tbd/twig-component-bundle",
+  "description": "Live Component: bring server-side re-rendering & model binding to any element.",
+  "license": "MIT",
+  "version": "2.31.0",
+  "type": "module",
+  "symfony": {
+    "importmap": {
+      "tailwindcss": "^3.4.3"
+    }
+  }
+}
