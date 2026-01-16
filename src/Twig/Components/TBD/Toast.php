@@ -52,6 +52,7 @@ final class Toast
         return match ($this->type) {
             'error' => 'circle-xmark',
             'success' => 'circle-check',
+            default => '',
         };
     }
 
@@ -60,6 +61,7 @@ final class Toast
         return match ($this->type) {
             'error' => '!border-red-400 !bg-red-50 text-red-600',
             'success' => '!border-green-500 !bg-green-50 text-green-700',
+            default => '',
         };
     }
 }
