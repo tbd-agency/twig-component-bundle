@@ -11,7 +11,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Toast.html.twig')]
 final class Toast
 {
-    public ?string $type = null;
+    public string $type;
     public ?string $message = null;
     public bool $autoClose;
     public int $timeUntilClose = 10000;
