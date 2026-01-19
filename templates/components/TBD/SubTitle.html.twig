@@ -1,11 +1,11 @@
-<{{ wrapper }} {{ attributes.defaults({ class: block('sub_title_wrapper', tbd_twig_component_template)|trim}) }}>
-<{{ tag }} class="{{ block('sub_title',tbd_twig_component_template)|trim ~ ' ' ~ this.textSizeClass }}">
+<{{ wrapper }} {{ attributes.defaults({ class: block('sub_title_wrapper_classes', tbd_twig_component_template)|trim}) }}>
+<{{ tag }} class="{{ block('sub_title_classes',tbd_twig_component_template)|trim ~ ' ' ~ this.textSizeClass }}">
 {{ label|raw }}
         {% if tooltip %}
-            {{ ux_icon('tbd:circle-info', {'class': block('sub_title_tooltip_icon', tbd_twig_component_template)|trim, 'data-tooltip-target': ('tooltip-' ~ tooltipId)}) }}
+            {{ ux_icon('tbd:circle-info', {'class': block('sub_title_tooltip_icon_classes', tbd_twig_component_template)|trim, 'data-tooltip-target': ('tooltip-' ~ tooltipId)}) }}
         {% endif %}
 </{{ tag }}>
-<div class="{{ block('sub_title_content', tbd_twig_component_template)|trim }}">
+<div class="{{ block('sub_title_content_classes', tbd_twig_component_template)|trim }}">
     {% block content %}{% endblock %}
 </div>
 {% if tooltip %}

@@ -1,5 +1,5 @@
 <{{ tag }}{{ attributes.defaults({
-    'class': block('button', tbd_twig_component_template)|trim ~ ' ' ~ extraClasses,
+    'class': block('button_classes', tbd_twig_component_template)|trim ~ ' ' ~ extraClasses,
     'type': tag == 'button' ? type : false,
     'target': target,
 }) }}

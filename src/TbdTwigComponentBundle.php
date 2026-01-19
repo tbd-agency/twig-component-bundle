@@ -62,6 +62,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('sub_title.font_sizes', array_replace(self::DEFAULT_SUB_TITLE_FONT_SIZES, $config['sub_title']['font_sizes'] ?? []));
 
         $builder->setParameter('table.sticky_cell.positions', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions'] ?? []));
+
+        $builder->setParameter('nav.badge_type', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['nav']['badge_type'] ?? []));
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -205,6 +207,16 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+            ->arrayNode('nav')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('badge_type')
+            ->useAttributeAsKey('name')
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_DROPDOWN_BADGE_TYPE)
+            ->end()
+            ->end()
+            ->end()
             ->end();
     }
 
@@ -212,6 +224,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'primary' => 'text-white fill-white bg-orange-400 hover:bg-orange-500 focus:ring-orange-300',
         'tab' => '!rounded-none !px-0 text-blue-950 hover:text-blue-800 pb-2 border-b-2 border-transparent',
         'tab-active' => '!rounded-none !px-0 text-blue-950 hover:text-blue-800 pb-2 border-b-2 border-blue-950 hover:border-blue-800',
+        'hollow' => 'text-blue-950 hover:bg-blue-950 border border-transparent hover:border-blue-950',
         'hollow-error' => 'text-red-500 text-bold border-transparent hover:text-red-600',
         'hollow-success' => 'text-green-700 text-bold border-transparent hover:text-green-800',
     ];
@@ -309,5 +322,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'bottom' => 'bottom-0 border-t border-t-gray-200 z-10',
         'left' => 'left-0 border-r border-r-gray-200 z-10',
         'top-right' => 'top-0 border-b border-b-gray-200 right-[-1px] border-l border-l-gray-200 z-20',
+    ];
+
+    private const array DEFAULT_DROPDOWN_BADGE_TYPE = [
+        'errors' => 'inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-800 text-xs rounded-full',
     ];
 }

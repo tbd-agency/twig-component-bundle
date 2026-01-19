@@ -1,19 +1,19 @@
 <div{{ attributes }}>
-    <div class="{{ block('detail_label', tbd_twig_component_template)|trim }}">{{ label }}</div>
+    <div class="{{ block('detail_label_classes', tbd_twig_component_template)|trim }}">{{ label }}</div>
     {% if value is defined and is_bool(value) %}
         {% if value %}
-            {{ ux_icon('tbd:check', {'class': block('detail_check', tbd_twig_component_template)|trim}) }}
+            {{ ux_icon('tbd:check', {'class': block('detail_check_classes', tbd_twig_component_template)|trim}) }}
         {% else %}
-            {{ ux_icon('tbd:x', {'class': block('detail_x', tbd_twig_component_template)|trim}) }}
+            {{ ux_icon('tbd:x', {'class': block('detail_x_classes', tbd_twig_component_template)|trim}) }}
         {% endif %}
     {% elseif value is defined and value is not empty %}
-        <div class="{{ block('detail_value', tbd_twig_component_template)|trim }}">
+        <div class="{{ block('detail_value_classes', tbd_twig_component_template)|trim }}">
             {{ value|nl2br|raw }}
         </div>
     {% elseif block('content') is defined %}
         {{ block('content') }}
     {% else %}
-        <div class="{{ block('detail_not_set', tbd_twig_component_template)|trim }}">
+        <div class="{{ block('detail_not_set_classes', tbd_twig_component_template)|trim }}">
             {{ 'label.not-set'|trans({'default': 'Not set'}, 'admin interface') }}
         </div>
     {% endif %}

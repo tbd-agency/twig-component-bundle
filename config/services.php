@@ -8,6 +8,8 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Button;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Card;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Dropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Link;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Dropdown as NavDropdown;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Item;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Section;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Spinner;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\SubTitle;
@@ -85,6 +87,17 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(Toast::class)
         ->args([
             '$iconSizes' => '%icon.sizes%',
+        ])
+        ->set(NavDropdown::class)
+        ->args([
+            '$badgeTypes' => '%nav.badge_type%'
+        ])
+        ->set(Item::class)
+        ->args([
+            '$badgeTypes' => '%nav.badge_type%'
+        ])
+        ->set(NavDropdown\Item::class)
+        ->args([
+            '$badgeTypes' => '%nav.badge_type%'
         ]);
-
 };

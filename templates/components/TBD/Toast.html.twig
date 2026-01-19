@@ -1,7 +1,7 @@
 <div {{ attributes.defaults({
     'id': 'toast',
     'role': 'alert',
-    'class': block('toast', tbd_twig_component_template)|trim ~ ' ' ~ this.colorClasses(),
+    'class': block('toast_classes', tbd_twig_component_template)|trim ~ ' ' ~ this.colorClasses(),
 }) }}
         {% if autoClose %}
             data-controller="closeable"

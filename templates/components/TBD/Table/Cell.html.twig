@@ -1,5 +1,5 @@
 <{{ tag }}{{ attributes.defaults({
-    'class': block('table_cell', tbd_twig_component_template)|trim  ~ ' ' ~ (tag == 'th' ? block('table_head_cell', tbd_twig_component_template)|trim),
+    'class': block('table_cell_classes', tbd_twig_component_template)|trim  ~ ' ' ~ (tag == 'th' ? block('table_head_cell_classes', tbd_twig_component_template)|trim),
 }) }}>
 {% if value is defined and value is not null %}
     {{ value|raw }}

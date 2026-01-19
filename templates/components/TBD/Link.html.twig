@@ -1,6 +1,6 @@
 <a {{ attributes.defaults({
     href: href,
-    class:  block('link', tbd_twig_component_template)|trim ,
+    class:  block('link_classes', tbd_twig_component_template)|trim ,
 }) }}>
     {% if prependIcon is defined and prependIcon %}
         {{ ux_icon(prependIcon, {class: this.iconSizeClasses ~ ' transition duration-100'}) }}

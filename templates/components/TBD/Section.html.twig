@@ -1,7 +1,7 @@
-<div{{ attributes.defaults({'class': block('section', tbd_twig_component_template)|trim}) }}>
+<div{{ attributes.defaults({'class': block('section_classes', tbd_twig_component_template)|trim}) }}>
     {% set content %}
         {% if indented %}
-            <div class="{{ block('section_indent', tbd_twig_component_template)|trim }}">
+            <div class="{{ block('section_indent_classes', tbd_twig_component_template)|trim }}">
                 {{ block('content') }}
             </div>
         {% else %}
@@ -9,7 +9,7 @@
         {% endif %}
     {% endset %}
     {% if wrapper %}
-        <div class="{{ this.paddingClasses ~ ' ' ~ block('section_wrapper', tbd_twig_component_template)|trim ~ ' ' ~ (border ? block('section_wrapper_border', tbd_twig_component_template)|trim : '') }}">
+        <div class="{{ this.paddingClasses ~ ' ' ~ block('section_wrapper_classes', tbd_twig_component_template)|trim ~ ' ' ~ (border ? block('section_wrapper_border_classes', tbd_twig_component_template)|trim : '') }}">
             {{ content|raw }}
         </div>
     {% else %}

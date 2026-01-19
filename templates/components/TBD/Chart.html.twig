@@ -2,7 +2,7 @@
     <div{{ attributes.defaults({
         'data-controller': 'dashboard',
         'data-dashboard-route-value': route,
-        'class': block('chart', tbd_twig_component_template)|trim,
+        'class': block('chart_classes', tbd_twig_component_template)|trim,
     }) }}>
         {% if label is defined and label is not empty %}
             <twig:TBD:Text>{{ label }}</twig:TBD:Text>
@@ -10,17 +10,17 @@
 
         {# Loading states #}
         {% if type == 'number' %}
-            <twig:TBD:Text class="{{ block('chart_number_label', tbd_twig_component_template)|trim }}">&nbsp;
+            <twig:TBD:Text class="{{ block('chart_number_label_classes', tbd_twig_component_template)|trim }}">&nbsp;
             </twig:TBD:Text>
         {% endif %}
         {% if type == 'doughnut' %}
 
-            <div class="{{ block('chart_doughnut', tbd_twig_component_template)|trim }}">
+            <div class="{{ block('chart_doughnut_classes', tbd_twig_component_template)|trim }}">
                 <twig:TBD:Spinner size="lg"/>
             </div>
         {% endif %}
         {% if type == 'bar' %}
-            <div class="{{ block('chart_bar', tbd_twig_component_template)|trim }}">
+            <div class="{{ block('chart_bar_classes', tbd_twig_component_template)|trim }}">
                 <twig:TBD:Spinner size="lg"/>
             </div>
         {% endif %}

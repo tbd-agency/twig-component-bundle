@@ -1,0 +1,22 @@
+{% set content %}
+    <{{ tag }}
+    {{ attributes.defaults({
+        'aria-current': app.request.pathInfo == path ? 'page' : null,
+        'class': block('nav_dropdown_item_classes', tbd_twig_component_template)|trim,
+    }) }}
+    {% if tag == 'a' %} href="{{ path }}"{% endif %}
+    >
+    <div class="flex items-center">
+        {% if icon %}
+            {{ ux_icon(icon, {class: 'w-4 h-4 text-primary-60 transition ease-in-out mr-3'}) }}
+        {% endif %}
+        <span>{{ label }}</span>
+    </div>
+    {% if badge is defined and badge %}
+        <span class="{{ this.getBadgeClasses }}">{{ badge }}</span>
+    {% endif %}
+    </{{ tag }}>
+{% endset %}
+<li>
+    {{ content|raw }}
+</li>

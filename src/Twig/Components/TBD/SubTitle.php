@@ -31,6 +31,7 @@ final class SubTitle
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined();
 
+        $resolver->setRequired('label');
         $resolver->setDefaults([
             'tag' => 'h2',
             'wrapper' => 'div'

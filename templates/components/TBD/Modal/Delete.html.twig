@@ -1,0 +1,42 @@
+<div id="modal-delete" tabindex="-1"
+     class="fixed top-0 left-0 right-0 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full z-[60]">
+    <div class="relative w-full max-w-md max-h-full">
+        <div class="{{ block('modal_wrapper_classes', tbd_twig_component_template)|trim }}">
+            <div class="{{ block('modal_header_classes', tbd_twig_component_template)|trim }}">
+                <h3 class="{{ block('modal_header_title_classes', tbd_twig_component_template)|trim }}">
+                    {% if title %}
+                        {{ title }}
+                    {% else %}
+                        {{ 'label.delete-item'|trans({'default': 'Delete item'}) }}
+                    {% endif %}
+                </h3>
+                <twig:Button
+                        class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
+                        data-modal-hide="modal-delete"
+                        type="button" variant="hollow" size="sm"
+                        label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
+            </div>
+            <form {{ attributes.defaults({ method: 'POST'}) }}>
+                <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">
+                    <input type="hidden" name="_token">
+                    <p class="{{ block('modal_content_message_classes', tbd_twig_component_template)|trim }}">
+                        {% if message %}
+                            {{ message }}
+                        {% else %}
+                            {{ 'message.delete-item'|trans({'default': 'Are you sure you want to delete this item?'}) }}
+                        {% endif %}
+                    </p>
+                    <div class="{{ block('modal_content_buttons_classes', tbd_twig_component_template)|trim }}">
+                        <twig:Button
+                                data-modal-hide="modal-delete"
+                                label="{{ 'label.delete'|trans({'default': 'Delete'}) }}"/>
+                        <twig:Button
+                                data-modal-hide="modal-delete"
+                                type="button" variant="hollow"
+                                label="{{ 'label.cancel'|trans({'default': 'Cancel'}) }}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
