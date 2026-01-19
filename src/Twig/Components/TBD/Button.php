@@ -56,27 +56,27 @@ final class Button
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'variant' => 'primary',
-            'size' => 'md',
-            'iconSize' => 'md',
-            'type' => 'submit',
-            'tag' => 'button',
-            'disabled' => false,
-            'fullWidth' => false,
-            'spinner' => false,
-        ]);
-
-        $resolver->setAllowedValues('variant', array_keys($this->variants));
-        $resolver->setAllowedValues('size', array_keys($this->sizes));
-        $resolver->setAllowedValues('iconSize', array_keys($this->iconSizes));
-        $resolver->setAllowedValues('type', ['submit', 'reset', 'button']);
-        $resolver->setAllowedValues('tag', ['button', 'a']);
-        $resolver->setAllowedValues('disabled', [true, false]);
-        $resolver->setAllowedValues('fullWidth', [true, false]);
-        $resolver->setAllowedValues('spinner', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'variant' => 'primary',
+                'size' => 'md',
+                'iconSize' => 'md',
+                'type' => 'submit',
+                'tag' => 'button',
+                'disabled' => false,
+                'fullWidth' => false,
+                'spinner' => false,
+            ])
+            ->setAllowedValues('variant', array_keys($this->variants))
+            ->setAllowedValues('size', array_keys($this->sizes))
+            ->setAllowedValues('iconSize', array_keys($this->iconSizes))
+            ->setAllowedValues('type', ['submit', 'reset', 'button'])
+            ->setAllowedValues('tag', ['button', 'a'])
+            ->setAllowedValues('disabled', [true, false])
+            ->setAllowedValues('fullWidth', [true, false])
+            ->setAllowedValues('spinner', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

@@ -19,13 +19,11 @@ final class Item
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
-
-        $resolver->setRequired('label');
-        $resolver->setDefaults([
-            'turbo' => true,
-        ]);
-        $resolver->setAllowedValues('turbo', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setRequired('label')
+            ->setDefaults(['turbo' => true])
+            ->setAllowedValues('turbo', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

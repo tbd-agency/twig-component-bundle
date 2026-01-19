@@ -27,17 +27,17 @@ final class Toast
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'type' => 'success',
-            'iconSize' => 'md',
-            'autoClose' => true,
-        ]);
-
-        $resolver->setAllowedValues('type', ['success', 'error']);
-        $resolver->setAllowedValues('iconSize', array_keys($this->iconSizes));
-        $resolver->setAllowedValues('autoClose', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'type' => 'success',
+                'iconSize' => 'md',
+                'autoClose' => true,
+            ])
+            ->setAllowedValues('type', ['success', 'error'])
+            ->setAllowedValues('iconSize', array_keys($this->iconSizes))
+            ->setAllowedValues('autoClose', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

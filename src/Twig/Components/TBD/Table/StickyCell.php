@@ -23,15 +23,14 @@ final class StickyCell
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
-
-        $resolver->setDefaults([
-            'tag' => 'th',
-            'position' => 'right',
-        ]);
-
-        $resolver->setAllowedValues('tag', ['th', 'td']);
-        $resolver->setAllowedValues('position', array_keys($this->positions));
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'tag' => 'th',
+                'position' => 'right',
+            ])
+            ->setAllowedValues('tag', ['th', 'td'])
+            ->setAllowedValues('position', array_keys($this->positions));
 
         return $resolver->resolve($data) + $data;
     }

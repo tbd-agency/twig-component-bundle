@@ -19,17 +19,17 @@ final class Table
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'hasSearch' => false,
-            'hasTabs' => false,
-            'isSticky' => false,
-        ]);
-
-        $resolver->setAllowedValues('hasSearch', [true, false]);
-        $resolver->setAllowedValues('hasTabs', [true, false]);
-        $resolver->setAllowedValues('isSticky', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'hasSearch' => false,
+                'hasTabs' => false,
+                'isSticky' => false,
+            ])
+            ->setAllowedValues('hasSearch', [true, false])
+            ->setAllowedValues('hasTabs', [true, false])
+            ->setAllowedValues('isSticky', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

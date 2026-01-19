@@ -58,5 +58,87 @@ Run the following command:
 composer require tbd/twig-component-bundle
 ```
 
-If Symfony Flex is configured correctly, the recipe will be applied automatically.
+---
+
+## Post-installation requirements
+
+For this bundle to work correctly, **three things must be in place** after installation.
+
+When Symfony Flex is configured properly, the recipe will normally handle the first two steps automatically.  
+The third step must always be done manually.
+
+### 1. Twig Component configuration (handled by Flex recipe)
+
+The Flex recipe should create the following configuration file automatically:
+
+`tbd_twig_component.yaml`
+
+```yaml
+tbd_twig_component:
+  twig_component:
+    defaults:
+      Tbd\TwigComponentBundle\Twig\Components\TBD\: 'components/tbd/'
+```
+
+This registers the bundle’s Twig components under the `components/tbd/` namespace.
+
+---
+
+### 2. Stimulus controller registration (handled by Flex recipe)
+
+The Flex recipe should also update your `bootstrap.js` file to register the Stimulus controllers provided by this bundle.
+
+Make sure the following code is present in `bootstrap.js`:
+
+```js
+// tbd/twig-component-bundle: register controllers (inside vendor/)
+const tbdControllers = require.context(
+    '@symfony/stimulus-bridge/lazy-controller-loader!../vendor/tbd/twig-component-bundle/assets/controllers',
+    true,
+    /_controller\.[jt]sx?$/
+);
+
+for (const key of tbdControllers.keys()) {
+    const mod = tbdControllers(key);
+
+    const name = key
+        .replace(/^\.\//, '')
+        .replace(/\.[jt]sx?$/, '')
+        .replace(/_controller$/, '')
+        .replace(/\//g, '--')
+        .replace(/_/g, '-');
+
+    app.register(name, mod.default);
+}
+```
+
+This makes the bundle’s Stimulus controllers available to your application.
+
+---
+
+### 3. Tailwind CSS & Hotwire Turbo configuration (manual step)
+
+This bundle is built to work with **Tailwind CSS** for styling and **Hotwire Turbo (Turbo Frames)** for frontend interactions.
+Both dependencies must be installed in your project for the components to render and behave correctly.
+
+Make sure the following frontend dependencies are available in your application:
+- **Tailwind CSS**
+- **Hotwire Turbo**
+
+If Tailwind CSS is not installed yet, install and initialize it first by following the official Tailwind CSS documentation.
+
+Symfony Flex recipes cannot safely modify `tailwind.config.js`, which means this step must always be done manually.
+
+Once Tailwind CSS is installed, add the following paths to the `content` array of your `tailwind.config.js` file:
+
+```js
+content: [
+    './vendor/tbd/twig-component-bundle/templates/**/*.html.twig',
+    './vendor/tbd/twig-component-bundle/src/**/*.php',
+]
+```
+
+This ensures Tailwind can detect and generate styles for the bundled Twig components.
+
+
 

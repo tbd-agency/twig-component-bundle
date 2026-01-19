@@ -26,15 +26,15 @@ final class Avatar
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'borderRadius' => 'full',
-            'size' => 'md',
-        ]);
-
-        $resolver->setAllowedValues('borderRadius', array_keys($this->borderRadii));
-        $resolver->setAllowedValues('size', array_keys($this->sizes));
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'borderRadius' => 'full',
+                'size' => 'md',
+            ])
+            ->setAllowedValues('borderRadius', array_keys($this->borderRadii))
+            ->setAllowedValues('size', array_keys($this->sizes));
 
         return $resolver->resolve($data) + $data;
     }

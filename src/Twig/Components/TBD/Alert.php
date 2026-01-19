@@ -23,13 +23,11 @@ final class Alert
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'type' => 'default',
-        ]);
-
-        $resolver->setAllowedValues('type', array_keys($this->types));
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults(['type' => 'default'])
+            ->setAllowedValues('type', array_keys($this->types));
 
         return $resolver->resolve($data) + $data;
     }

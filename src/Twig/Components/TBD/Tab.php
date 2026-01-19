@@ -20,13 +20,11 @@ final class Tab
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'isActive' => false,
-        ]);
-
-        $resolver->setAllowedValues('isActive', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults(['isActive' => false])
+            ->setAllowedValues('isActive', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

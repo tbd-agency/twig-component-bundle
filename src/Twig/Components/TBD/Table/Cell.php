@@ -18,13 +18,11 @@ final class Cell
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'tag' => 'th',
-        ]);
-
-        $resolver->setAllowedValues('tag', ['th', 'td']);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults(['tag' => 'th'])
+            ->setAllowedValues('tag', ['th', 'td']);
 
         return $resolver->resolve($data) + $data;
     }

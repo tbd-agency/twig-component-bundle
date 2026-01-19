@@ -17,11 +17,10 @@ final class Text
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'tag' => 'p',
-        ]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults(['tag' => 'p']);
 
         return $resolver->resolve($data) + $data;
     }

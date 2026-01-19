@@ -19,10 +19,11 @@ final class Tooltip
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setRequired('identifier');
-        $resolver->setRequired('label');
+        $resolver
+            ->setIgnoreUndefined()
+            ->setRequired('identifier')
+            ->setRequired('label');
 
         return $resolver->resolve($data) + $data;
     }

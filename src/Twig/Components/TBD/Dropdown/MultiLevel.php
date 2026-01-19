@@ -31,15 +31,15 @@ final class MultiLevel
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
-
-        $resolver->setRequired('label');
-        $resolver->setDefaults([
-            'variant' => 'multi-level',
-            'placement' => 'left-start',
-        ]);
-        $resolver->setAllowedValues('variant', array_keys($this->variants));
-        $resolver->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start']);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setRequired('label')
+            ->setDefaults([
+                'variant' => 'multi-level',
+                'placement' => 'left-start',
+            ])
+            ->setAllowedValues('variant', array_keys($this->variants))
+            ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start']);
 
         return $resolver->resolve($data) + $data;
     }

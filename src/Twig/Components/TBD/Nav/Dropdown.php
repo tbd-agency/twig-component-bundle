@@ -38,13 +38,13 @@ final class Dropdown
             $resolver->setDefault('id', Uuid::uuid4()->toString());
         }
 
-        $resolver->setRequired('label');
-
-        $resolver->setDefaults([
-            'isHidden' => true,
-            'badgeType' => 'errors',
-        ]);
-        $resolver->setAllowedValues('isHidden', [true, false]);
+        $resolver
+            ->setRequired('label')
+            ->setDefaults([
+                'isHidden' => true,
+                'badgeType' => 'errors',
+            ])
+            ->setAllowedValues('isHidden', [true, false]);
 
         if (!empty($data['badge'])) {
             $resolver

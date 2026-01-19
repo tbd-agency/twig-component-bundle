@@ -17,8 +17,10 @@ final class Title
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
-        $resolver->setRequired('label');
+
+        $resolver
+            ->setIgnoreUndefined()
+            ->setRequired('label');
 
         return $resolver->resolve($data) + $data;
     }

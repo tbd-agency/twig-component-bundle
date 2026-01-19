@@ -27,15 +27,18 @@ final class Dropdown
     #[PreMount]
     public function preMount(array $data): array
     {
-        return new OptionsResolver()
-                ->setIgnoreUndefined()
-                ->setRequired(['id'])
-                ->setDefault('down', false)
-                ->setDefault('variant', 'primary')
-                ->setDefault('placement', 'bottom-end')
-                ->setAllowedValues('variant', array_keys($this->variants))
-                ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
-                ->resolve($data) + $data;
+        $resolver = new OptionsResolver();
+
+        $resolver
+            ->setIgnoreUndefined()
+            ->setRequired(['id'])
+            ->setDefault('down', false)
+            ->setDefault('variant', 'primary')
+            ->setDefault('placement', 'bottom-end')
+            ->setAllowedValues('variant', array_keys($this->variants))
+            ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start']);
+
+        return $resolver->resolve($data) + $data;
     }
 
     public function getVariantClasses(): ?string

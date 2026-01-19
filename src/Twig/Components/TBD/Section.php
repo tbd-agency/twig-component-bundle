@@ -27,19 +27,19 @@ final class Section
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'padding' => 'large',
-            'wrapper' => true,
-            'indented' => false,
-            'border' => false,
-        ]);
-
-        $resolver->setAllowedValues('padding', array_keys($this->paddings));
-        $resolver->setAllowedValues('wrapper', [true, false]);
-        $resolver->setAllowedValues('indented', [true, false]);
-        $resolver->setAllowedValues('border', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'padding' => 'large',
+                'wrapper' => true,
+                'indented' => false,
+                'border' => false,
+            ])
+            ->setAllowedValues('padding', array_keys($this->paddings))
+            ->setAllowedValues('wrapper', [true, false])
+            ->setAllowedValues('indented', [true, false])
+            ->setAllowedValues('border', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

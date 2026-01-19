@@ -26,10 +26,11 @@ final class Spinner
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults(['size' => 'md']);
-        $resolver->setAllowedValues('size', array_keys($this->sizes));
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults(['size' => 'md'])
+            ->setAllowedValues('size', array_keys($this->sizes));
 
         return $resolver->resolve($data) + $data;
     }

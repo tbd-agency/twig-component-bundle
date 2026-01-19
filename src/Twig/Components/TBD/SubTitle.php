@@ -29,16 +29,16 @@ final class SubTitle
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setRequired('label');
-        $resolver->setDefaults([
-            'tag' => 'h2',
-            'wrapper' => 'div'
-        ]);
-
-        $resolver->setAllowedValues('tag', array_keys($this->fontSizes));
-        $resolver->setAllowedValues('wrapper', ['div', 'span', 'a']);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setRequired('label')
+            ->setDefaults([
+                'tag' => 'h2',
+                'wrapper' => 'div'
+            ])
+            ->setAllowedValues('tag', array_keys($this->fontSizes))
+            ->setAllowedValues('wrapper', ['div', 'span', 'a']);
 
         return $resolver->resolve($data) + $data;
     }

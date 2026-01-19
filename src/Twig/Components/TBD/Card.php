@@ -29,15 +29,15 @@ final class Card
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'padding' => 'default',
-            'shadow' => false,
-        ]);
-
-        $resolver->setAllowedValues('padding', array_keys($this->paddings));
-        $resolver->setAllowedValues('shadow', [true, false]);
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'padding' => 'default',
+                'shadow' => false,
+            ])
+            ->setAllowedValues('padding', array_keys($this->paddings))
+            ->setAllowedValues('shadow', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

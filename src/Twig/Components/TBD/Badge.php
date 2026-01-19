@@ -28,15 +28,15 @@ final class Badge
     public function preMount(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setIgnoreUndefined();
 
-        $resolver->setDefaults([
-            'variant' => 'light-blue',
-            'size' => 'md',
-        ]);
-
-        $resolver->setAllowedValues('variant', array_keys($this->variants));
-        $resolver->setAllowedValues('size', array_keys($this->sizes));
+        $resolver
+            ->setIgnoreUndefined()
+            ->setDefaults([
+                'variant' => 'light-blue',
+                'size' => 'md',
+            ])
+            ->setAllowedValues('variant', array_keys($this->variants))
+            ->setAllowedValues('size', array_keys($this->sizes));
 
         return $resolver->resolve($data) + $data;
     }
