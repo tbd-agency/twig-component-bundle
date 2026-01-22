@@ -8,7 +8,9 @@
     >
     <div class="flex items-center">
         {% if icon %}
-            {{ ux_icon(icon, {class: 'w-4 h-4 text-primary-60 transition ease-in-out mr-3'}) }}
+            {{ ux_icon(icon, {class: block('nav_dropdown_item_icon_classes', tbd_twig_component_template)|trim }) }}
+        {% else %}
+            <span class="{{ block('nav_dropdown_item_no_icon_classes', tbd_twig_component_template)|trim }}"></span>
         {% endif %}
         <span>{{ label }}</span>
     </div>
