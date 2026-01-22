@@ -1,3 +1,10 @@
-<tr{{ attributes.defaults({class: block('table_row_classes',tbd_twig_component_template)|trim}) }}>
+<tr{{ attributes.defaults({class: block('table_row_classes',tbd_twig_component_template)|trim}) }}
+        {% if path is not empty and (permission is empty or is_granted(permission)) %}
+            data-controller="url"
+            data-action="click->url#navigate"
+            data-url-black-list-selectors-value="a,svg,path,input,select,option"
+            data-url-location-value="{{ path }}"
+        {% endif %}
+>
     {% block content %}{% endblock %}
 </tr>

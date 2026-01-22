@@ -9,4 +9,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
     template: '@TbdTwigComponent/components/TBD/Table/Row.html.twig')]
 final class Row
 {
+    public ?string $path = null;
+    public ?string $permission = null;
 }
