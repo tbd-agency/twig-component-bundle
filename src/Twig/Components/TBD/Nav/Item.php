@@ -33,7 +33,7 @@ final class Item
             ->setDefaults(['tag' => 'a'])
             ->setAllowedValues('tag', ['a', 'span', 'div']);
 
-        if ($data['tag'] === 'a') {
+        if (!empty($data['tag']) && $data['tag'] === 'a') {
             $resolver->setRequired('path');
         }
 
