@@ -10,7 +10,7 @@
                         {{ 'label.delete-item'|trans({'default': 'Delete item'}) }}
                     {% endif %}
                 </h3>
-                <twig:Button
+                <twig:TBD:Button
                         class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
                         data-modal-hide="modal-delete"
                         type="button" variant="hollow" size="sm"
@@ -27,10 +27,10 @@
                         {% endif %}
                     </p>
                     <div class="{{ block('modal_content_buttons_classes', tbd_twig_component_template)|trim }}">
-                        <twig:Button
+                        <twig:TBD:Button
                                 data-modal-hide="modal-delete"
                                 label="{{ 'label.delete'|trans({'default': 'Delete'}) }}"/>
-                        <twig:Button
+                        <twig:TBD:Button
                                 data-modal-hide="modal-delete"
                                 type="button" variant="hollow"
                                 label="{{ 'label.cancel'|trans({'default': 'Cancel'}) }}"/>
