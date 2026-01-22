@@ -5,7 +5,13 @@
     {% if prependIcon is defined and prependIcon %}
         {{ ux_icon(prependIcon, {class: this.iconSizeClasses ~ ' transition duration-100'}) }}
     {% endif %}
-    <span class="link flex items-center {{ this.marginClasses }}">{{- label|raw -}}</span>
+    <span class="link flex items-center {{ this.marginClasses }}">
+        {% if label is defined %}
+            {{- label|raw -}}
+        {% else %}
+            {% block content %}{% endblock content %}
+        {% endif %}
+    </span>
     {% if appendIcon is defined and appendIcon %}
         {{ ux_icon(appendIcon, {class: this.iconSizeClasses ~ ' transition duration-100'}) }}
     {% endif %}

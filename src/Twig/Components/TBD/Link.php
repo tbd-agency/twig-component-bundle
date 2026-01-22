@@ -12,7 +12,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Link.html.twig')]
 final class Link
 {
-    public string $label;
+    public ?string $label = null;
     public string $href = '#';
     public ?string $prependIcon = null;
     public ?string $appendIcon = null;
