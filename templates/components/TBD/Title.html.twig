@@ -1,6 +1,6 @@
 <div {{ attributes.defaults({ class: block('title_classes', tbd_twig_component_template)|trim }) }}>
     <h1 class="{{ block('title_label_classes', tbd_twig_component_template)|trim }}
-    ">{{ label }}</h1>
+    ">{{ message }}</h1>
     <div class="{{ block('title_content_classes', tbd_twig_component_template)|trim }}">
         {% block content %}{% endblock %}
     </div>
