@@ -25,9 +25,9 @@
             </div>
         {% endif %}
         {% if type == 'table' %}
-            <table class="w-full text-primary-90 text-lg">
+            <table class="{{ block('chart_table_classes', tbd_twig_component_template)|trim }}">
                 {% if horizontalHeaders is defined %}
-                    <tr class="font-medium">
+                    <tr class="{{ block('chart_table_horizontal_row_classes', tbd_twig_component_template)|trim }}">
                         {% for i, header in horizontalHeaders %}
                             <td style="width: {{ headerWidths[i] }}%;">{{ header }}</td>
                         {% endfor %}
@@ -35,7 +35,7 @@
                 {% endif %}
                 {% for header in verticalHeaders %}
                     <tr>
-                        <td class="font-medium whitespace-nowrap">{{ header }}</td>
+                        <td class="{{ block('chart_table_vertical_row_classes', tbd_twig_component_template)|trim }}">{{ header }}</td>
                         {% if horizontalHeaders is defined %}
                             {% for i in 2..horizontalHeaders|length %}
                                 <td>&nbsp;</td>
