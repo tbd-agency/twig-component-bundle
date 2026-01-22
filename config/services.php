@@ -61,6 +61,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(Dropdown::class)
         ->args([
             '$variants' => '%dropdown.variants%',
+            '$sizes' => '%dropdown.sizes%',
         ])
         ->set(Dropdown\MultiLevel::class)
         ->args([

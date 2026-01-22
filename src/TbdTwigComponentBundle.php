@@ -53,6 +53,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('card.paddings', array_replace(self::DEFAULT_CARD_PADDINGS, $config['card']['paddings'] ?? []));
 
         $builder->setParameter('dropdown.variants', array_replace(self::DEFAULT_DROPDOWN_VARIANTS, $config['dropdown']['variants'] ?? []));
+        $builder->setParameter('dropdown.sizes', array_replace(self::DEFAULT_DROPDOWN_SIZES, $config['dropdown']['sizes'] ?? []));
 
         $builder->setParameter('link.prependIconMargins', array_replace(self::DEFAULT_LINK_PREPEND_ICON_MARGINS, $config['link']['prepend_icon_margins'] ?? []));
         $builder->setParameter('link.appendIconMargins', array_replace(self::DEFAULT_LINK_APPEND_ICON_MARGINS, $config['link']['append_icon_margins'] ?? []));
@@ -155,6 +156,11 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_DROPDOWN_VARIANTS)
             ->end()
+            ->arrayNode('sizes')
+            ->useAttributeAsKey('name')
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_DROPDOWN_SIZES)
+            ->end()
             ->end()
             ->end()
             ->arrayNode('link')
@@ -233,6 +239,12 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'sm' => 'px-2 py-1 text-xs',
         'md' => 'px-3 py-2 text-sm',
         'lg' => 'px-4 py-2 text-base',
+    ];
+
+    private const array DEFAULT_DROPDOWN_SIZES = [
+        'sm' => 'px-2 py-1',
+        'md' => 'px-3 py-2',
+        'lg' => 'px-4 py-2',
     ];
 
     private const array DEFAULT_ICON_SIZES = [

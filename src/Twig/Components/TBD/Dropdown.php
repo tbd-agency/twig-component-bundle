@@ -15,11 +15,13 @@ final class Dropdown
     public ?bool $down;
     public ?string $icon;
     public ?string $label;
+    public ?string $size;
     public ?string $variant;
     public ?string $placement;
 
     public function __construct(
         private readonly array $variants,
+        private readonly array $sizes,
     )
     {
     }
@@ -34,8 +36,10 @@ final class Dropdown
             ->setRequired(['id'])
             ->setDefault('down', false)
             ->setDefault('variant', 'primary')
+            ->setDefault('size', 'md')
             ->setDefault('placement', 'bottom-end')
             ->setAllowedValues('variant', array_keys($this->variants))
+            ->setAllowedValues('size', array_keys($this->sizes))
             ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start']);
 
         return $resolver->resolve($data) + $data;
@@ -44,5 +48,10 @@ final class Dropdown
     public function getVariantClasses(): ?string
     {
         return $this->variants[$this->variant];
+    }
+
+    public function getSizeClasses(): ?string
+    {
+        return $this->sizes[$this->size];
     }
 }

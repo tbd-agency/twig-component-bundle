@@ -6,7 +6,7 @@
     <button{{ attributes.defaults({
         'id': id ~  '-dropdown-trigger',
         'type': 'button',
-        'class': block('dropdown_button_classes', tbd_twig_component_template)|trim ~ ' ' ~ this.variantClasses,
+        'class': block('dropdown_button_classes', tbd_twig_component_template)|trim ~ ' ' ~ this.variantClasses ~ ' ' ~ this.sizeClasses,
         'data-dropdown-target': 'button',
         'data-action': 'dropdown#toggle',
     }) }}>
