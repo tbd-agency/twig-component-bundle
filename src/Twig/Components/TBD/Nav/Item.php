@@ -29,15 +29,21 @@ final class Item
     {
         $resolver = new OptionsResolver()->setIgnoreUndefined();
 
+        $resolver
+            ->setDefaults(['tag' => 'a'])
+            ->setAllowedValues('tag', ['a', 'span', 'div']);
+
+        if ($data['tag'] === 'a') {
+            $resolver->setRequired('path');
+        }
+
         if (!empty($data['badge'])) {
             $resolver
                 ->setDefaults([
                     'badgeType' => 'errors',
-                    'tag' => 'a',
                 ])
                 ->setRequired('badgeType')
-                ->setAllowedValues('badgeType', array_keys($this->badgeTypes))
-                ->setAllowedValues('tag', ['a', 'span', 'div']);
+                ->setAllowedValues('badgeType', array_keys($this->badgeTypes));
         }
 
         return $resolver->resolve($data) + $data;
