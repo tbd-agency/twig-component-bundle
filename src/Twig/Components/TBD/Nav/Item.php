@@ -39,9 +39,7 @@ final class Item
 
         if (!empty($data['badge'])) {
             $resolver
-                ->setDefaults([
-                    'badgeType' => 'errors',
-                ])
+                ->setDefaults(['badgeType' => 'errors'])
                 ->setRequired('badgeType')
                 ->setAllowedValues('badgeType', array_keys($this->badgeTypes));
         }
