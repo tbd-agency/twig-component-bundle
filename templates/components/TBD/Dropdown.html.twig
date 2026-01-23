@@ -1,27 +1,31 @@
 <div data-controller="dropdown"
      data-dropdown-target-value="{{ id }}-dropdown"
      data-dropdown-trigger-value="{{ id }}-dropdown-trigger"
-     data-dropdown-placement-value="{{ placement }}"
+     data-dropdown-placement-value="{{ dropdownPlacement }}"
      class="{{ block('dropdown_classes', tbd_twig_component_template)|trim }}">
-    <button{{ attributes.defaults({
-        'id': id ~  '-dropdown-trigger',
-        'type': 'button',
-        'class': block('dropdown_button_classes', tbd_twig_component_template)|trim ~ ' ' ~ this.variantClasses ~ ' ' ~ this.sizeClasses,
-        'data-dropdown-target': 'button',
-        'data-action': 'dropdown#toggle',
-    }) }}>
-        {% block buttonContent %}
-            {% if icon is defined and icon %}
-                {{ ux_icon(icon, {class: block('dropdown_button_icon_classes', tbd_twig_component_template)|trim ~ (label is defined ? ' mr-2')}) }}
-            {% endif %}
-            {% if label is defined %}
-                {{ label }}
-            {% endif %}
-            {% if down is defined %}
-                {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down_classes', tbd_twig_component_template)|trim ~ (label is defined ? ' ml-2')}) }}
-            {% endif %}
-        {% endblock %}
-    </button>
+    <twig:TBD:Button id="{{ id }}-dropdown-trigger"
+                     variant="{{ buttonVariant }}"
+                     size="{{ buttonSize }}"
+                     type="button"
+                     class="{{ block('dropdown_button_classes', tbd_twig_component_template)|trim ~ ' ' ~ buttonClasses }}"
+                     data-dropdown-target="button"
+                     data-action="dropdown#toggle"
+                     tooltip="{{ buttonTooltip }}">
+        {% if buttonIcon is defined and buttonIcon %}
+            {{ ux_icon(buttonIcon, {class: block('dropdown_button_icon_classes', tbd_twig_component_template)|trim ~ (label is defined ? ' mr-2')}) }}
+        {% endif %}
+        {% if buttonText is defined and buttonText is not empty %}
+            {{ buttonText }}
+        {% endif %}
+        {% if down is defined and down %}
+            {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down_classes', tbd_twig_component_template)|trim ~ (label is defined ? ' ml-2')}) }}
+        {% endif %}
+        {% if buttonBadge %}
+            <div class="{{ block('dropdown_button_icon_classes', tbd_twig_component_template)|trim }}">
+                {{ buttonBadge }}
+            </div>
+        {% endif %}
+    </twig:TBD:Button>
     <div id="{{ id }}-dropdown" data-dropdown-target="content"
          class="{{ block('dropdown_content_classes', tbd_twig_component_template)|trim }}">
         {% block content %}{% endblock %}
