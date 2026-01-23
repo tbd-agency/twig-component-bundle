@@ -1,10 +1,10 @@
 <div data-controller="dropdown"
-     data-dropdown-target-value="{{ id }}-dropdown"
-     data-dropdown-trigger-value="{{ id }}-dropdown-trigger"
+     data-dropdown-target-value="{{ uuid }}-dropdown"
+     data-dropdown-trigger-value="{{ uuid }}-dropdown-trigger"
      data-dropdown-placement-value="{{ dropdownPlacement }}"
      class="{{ block('dropdown_classes', tbd_twig_component_template)|trim }}">
     {% block buttonContent %}
-        <twig:TBD:Button id="{{ id }}-dropdown-trigger"
+        <twig:TBD:Button id="{{ uuid }}-dropdown-trigger"
                          variant="{{ buttonVariant }}"
                          size="{{ buttonSize }}"
                          type="button"
@@ -28,7 +28,7 @@
             {% endif %}
         </twig:TBD:Button>
     {% endblock %}
-    <div id="{{ id }}-dropdown" data-dropdown-target="content"
+    <div id="{{ uuid }}-dropdown" data-dropdown-target="content"
          class="{{ block('dropdown_content_classes', tbd_twig_component_template)|trim }}">
         {% block content %}{% endblock %}
     </div>

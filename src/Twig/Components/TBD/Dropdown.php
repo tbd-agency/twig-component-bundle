@@ -2,6 +2,8 @@
 
 namespace Tbd\TwigComponentBundle\Twig\Components\TBD;
 
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
@@ -11,7 +13,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Dropdown.html.twig')]
 final class Dropdown
 {
-    public string $id;
+    public UuidInterface $uuid;
     public bool $down;
     public string $buttonVariant;
     public string $buttonSize;
@@ -46,4 +48,8 @@ final class Dropdown
         return $resolver->resolve($data) + $data;
     }
 
+    public function mount(): void
+    {
+        $this->uuid = Uuid::uuid4();
+    }
 }
