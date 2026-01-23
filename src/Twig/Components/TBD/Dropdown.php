@@ -40,7 +40,7 @@ final class Dropdown
                 'buttonSize' => 'md',
                 'down' => false,
                 'dropdownTrigger' => 'click',
-                'dropdownPlacement' => 'bottom-start',
+                'dropdownPlacement' => 'bottom-end',
             ])
             ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
             ->setAllowedValues('down', [true, false]);
