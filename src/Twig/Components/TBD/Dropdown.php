@@ -40,7 +40,7 @@ final class Dropdown
                 'dropdownTrigger' => 'click',
                 'dropdownPlacement' => 'bottom-start',
             ])
-            ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start'])
+            ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
             ->setAllowedValues('down', [true, false]);
 
         return $resolver->resolve($data) + $data;

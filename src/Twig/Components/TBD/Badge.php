@@ -32,7 +32,7 @@ final class Badge
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'variant' => 'light-blue',
+                'variant' => 'light_blue',
                 'size' => 'md',
             ])
             ->setAllowedValues('variant', array_keys($this->variants))
