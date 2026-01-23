@@ -9,7 +9,7 @@
                          size="{{ buttonSize }}"
                          type="button"
                          class="{{ block('dropdown_button_classes', tbd_twig_component_template)|trim ~ ' ' ~ buttonClasses }}"
-                         data-dropdown-target="button"
+                         data-dropdown-target="{{ popper ? 'button' }}"
                          data-action="dropdown#toggle"
                          tooltip="{{ buttonTooltip }}">
             {% if buttonIcon is defined and buttonIcon %}
@@ -28,7 +28,7 @@
             {% endif %}
         </twig:TBD:Button>
     {% endblock %}
-    <div id="{{ uuid }}-dropdown" data-dropdown-target="content"
+    <div id="{{ uuid }}-dropdown" data-dropdown-target="{{ popper ? 'content' }}"
          class="{{ block('dropdown_content_classes', tbd_twig_component_template)|trim }}">
         {% block content %}{% endblock %}
     </div>

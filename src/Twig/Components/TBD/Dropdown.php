@@ -15,6 +15,7 @@ final class Dropdown
 {
     public UuidInterface $uuid;
     public bool $down;
+    public bool $popper;
     public string $buttonVariant;
     public string $buttonSize;
     public ?string $buttonIcon = null;
@@ -39,11 +40,13 @@ final class Dropdown
                 'buttonVariant' => 'hollow',
                 'buttonSize' => 'md',
                 'down' => false,
+                'popper' => true,
                 'dropdownTrigger' => 'click',
                 'dropdownPlacement' => 'bottom-end',
             ])
             ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
-            ->setAllowedValues('down', [true, false]);
+            ->setAllowedValues('down', [true, false])
+            ->setAllowedValues('popper', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }
