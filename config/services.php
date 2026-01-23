@@ -58,15 +58,6 @@ return static function (ContainerConfigurator $configurator): void {
         ->args([
             '$paddings' => '%card.paddings%',
         ])
-        ->set(Dropdown::class)
-        ->args([
-            '$variants' => '%dropdown.variants%',
-            '$sizes' => '%dropdown.sizes%',
-        ])
-        ->set(Dropdown\MultiLevel::class)
-        ->args([
-            '$variants' => '%dropdown.variants%',
-        ])
         ->set(Link::class)
         ->args([
             '$iconSizes' => '%icon.sizes%',

@@ -52,9 +52,6 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
         $builder->setParameter('card.paddings', array_replace(self::DEFAULT_CARD_PADDINGS, $config['card']['paddings'] ?? []));
 
-        $builder->setParameter('dropdown.variants', array_replace(self::DEFAULT_DROPDOWN_VARIANTS, $config['dropdown']['variants'] ?? []));
-        $builder->setParameter('dropdown.sizes', array_replace(self::DEFAULT_DROPDOWN_SIZES, $config['dropdown']['sizes'] ?? []));
-
         $builder->setParameter('link.prependIconMargins', array_replace(self::DEFAULT_LINK_PREPEND_ICON_MARGINS, $config['link']['prepend_icon_margins'] ?? []));
         $builder->setParameter('link.appendIconMargins', array_replace(self::DEFAULT_LINK_APPEND_ICON_MARGINS, $config['link']['append_icon_margins'] ?? []));
 
@@ -148,21 +145,6 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
-            ->arrayNode('dropdown')
-            ->addDefaultsIfNotSet()
-            ->children()
-            ->arrayNode('variants')
-            ->useAttributeAsKey('name')
-            ->scalarPrototype()->end()
-            ->defaultValue(self::DEFAULT_DROPDOWN_VARIANTS)
-            ->end()
-            ->arrayNode('sizes')
-            ->useAttributeAsKey('name')
-            ->scalarPrototype()->end()
-            ->defaultValue(self::DEFAULT_DROPDOWN_SIZES)
-            ->end()
-            ->end()
-            ->end()
             ->arrayNode('link')
             ->addDefaultsIfNotSet()
             ->children()
@@ -230,18 +212,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'primary' => 'text-white fill-white bg-orange-400 hover:bg-orange-500 focus:ring-orange-300',
         'tab' => '!rounded-none !px-0 text-blue-950 hover:text-blue-800 pb-2 border-b-2 border-transparent',
         'tab-active' => '!rounded-none !px-0 text-blue-950 hover:text-blue-800 pb-2 border-b-2 border-blue-950 hover:border-blue-800',
-        'hollow' => 'text-blue-950 hover:bg-blue-950 border border-transparent hover:border-blue-950',
+        'hollow' => 'text-blue-950 fill-blue-950 dark:text-white dark:fill-white hover:bg-white dark:hover:bg-blue-950 border border-gray-200 dark:border-gray-600 hover:text-orange-400 hover:fill-orange-400 dark:hover:text-orange-400 dark:hover:fill-orange-400 focus:text-white focus:fill-white dark:focus:text-white dark:focus:fill-white focus:border-orange-400 dark:focus:border-orange-400 focus:bg-orange-400 dark:focus:bg-orange-400 focus:ring-orange-300 dark:focus:ring-orange-300',
         'hollow-error' => 'text-red-500 text-bold border-transparent hover:text-red-600',
         'hollow-success' => 'text-green-700 text-bold border-transparent hover:text-green-800',
+        'multi-level' => 'w-full !text-base !font-normal rounded-none hover:bg-gray-100',
     ];
 
     private const array DEFAULT_BUTTON_SIZES = [
-        'sm' => 'px-2 py-1 text-xs',
-        'md' => 'px-3 py-2 text-sm',
-        'lg' => 'px-4 py-2 text-base',
-    ];
-
-    private const array DEFAULT_DROPDOWN_SIZES = [
         'sm' => 'px-2 py-1',
         'md' => 'px-3 py-2',
         'lg' => 'px-4 py-2',
@@ -291,13 +268,6 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'large' => ' p-8',
         'default' => ' p-4',
         'no-bottom' => ' px-4 pt-4',
-    ];
-
-    private const array DEFAULT_DROPDOWN_VARIANTS = [
-        'primary' => 'flex items-center px-4 py-2 text-white bg-sky-500 hover:bg-light-blue border border-sky-500 hover:border-light-blue [&>svg]:fill-white',
-        'hollow' => 'flex items-center px-4 py-2 text-white border border-transparent hover:bg-white hover:border-white hover:text-slate-800 [&>svg]:fill-sky-500',
-        'white' => 'flex items-center px-4 py-2 text-sky-500 bg-white border border-sky-500 hover:bg-sky-500 hover:text-white [&>svg]:fill-sky-500 [&>svg]:hover:fill-white',
-        'multi-level' => 'flex justify-between items-center w-full px-3 py-2 text-slate-800 bg-white hover:bg-gray-100 [&>svg]:fill-sky-500 font-thin',
     ];
 
     private const array DEFAULT_LINK_PREPEND_ICON_MARGINS = [

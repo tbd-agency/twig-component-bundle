@@ -17,15 +17,10 @@ final class MultiLevel
     public UuidInterface $uuid;
     public string $placement;
     public ?string $icon;
-    public ?string $label;
+    public ?string $buttonText;
     public ?string $variant;
     public ?bool $down;
 
-    public function __construct(
-        private readonly array $variants,
-    )
-    {
-    }
 
     #[PreMount]
     public function preMount(array $data): array
@@ -33,13 +28,14 @@ final class MultiLevel
         $resolver = new OptionsResolver();
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired('label')
+            ->setRequired('buttonText')
             ->setDefaults([
                 'variant' => 'multi-level',
                 'placement' => 'left-start',
+                'down' => true
             ])
-            ->setAllowedValues('variant', array_keys($this->variants))
-            ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start']);
+            ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
+            ->setAllowedValues('down', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }

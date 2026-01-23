@@ -12,19 +12,17 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Dropdown
 {
     public string $id;
-    public ?bool $down;
-    public ?string $icon;
-    public ?string $label;
-    public ?string $size;
-    public ?string $variant;
-    public ?string $placement;
-
-    public function __construct(
-        private readonly array $variants,
-        private readonly array $sizes,
-    )
-    {
-    }
+    public bool $down;
+    public string $buttonVariant;
+    public string $buttonSize;
+    public ?string $buttonIcon = null;
+    public string $buttonText = '';
+    public string $buttonTooltip = '';
+    public string $buttonBadge = '';
+    public string $buttonClasses = '';
+    public string $dropdownClasses = '';
+    public string $dropdownTrigger;
+    public string $dropdownPlacement;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -33,25 +31,19 @@ final class Dropdown
 
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired(['id'])
-            ->setDefault('down', false)
-            ->setDefault('variant', 'primary')
-            ->setDefault('size', 'md')
-            ->setDefault('placement', 'bottom-end')
-            ->setAllowedValues('variant', array_keys($this->variants))
-            ->setAllowedValues('size', array_keys($this->sizes))
-            ->setAllowedValues('placement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start']);
+            ->setRequired('id')
+            ->setDefaults([
+                'id' => 'dropdown',
+                'buttonVariant' => 'hollow',
+                'buttonSize' => 'md',
+                'down' => false,
+                'dropdownTrigger' => 'click',
+                'dropdownPlacement' => 'bottom-start',
+            ])
+            ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start'])
+            ->setAllowedValues('down', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }
 
-    public function getVariantClasses(): ?string
-    {
-        return $this->variants[$this->variant];
-    }
-
-    public function getSizeClasses(): ?string
-    {
-        return $this->sizes[$this->size];
-    }
 }
