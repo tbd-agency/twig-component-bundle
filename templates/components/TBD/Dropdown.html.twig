@@ -15,13 +15,13 @@
                          data-action="dropdown#toggle"
                          tooltip="{{ buttonTooltip }}">
             {% if buttonIcon is defined and buttonIcon %}
-                {{ ux_icon(buttonIcon, {class: block('dropdown_button_icon_classes', tbd_twig_component_template)|trim ~ (label is defined ? ' mr-2')}) }}
+                {{ ux_icon(buttonIcon, {class: block('dropdown_button_icon_classes', tbd_twig_component_template)|trim ~ (buttonText is defined and buttonText is not empty  ? ' mr-2')}) }}
             {% endif %}
             {% if buttonText is defined and buttonText is not empty %}
                 {{ buttonText }}
             {% endif %}
             {% if down is defined and down %}
-                {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down_classes', tbd_twig_component_template)|trim ~ (label is defined ? ' ml-2')}) }}
+                {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down_classes', tbd_twig_component_template)|trim ~ (buttonText is defined and buttonText is not empty  ? ' ml-2')}) }}
             {% endif %}
             {% if buttonBadge %}
                 <div class="{{ block('dropdown_button_icon_classes', tbd_twig_component_template)|trim }}">

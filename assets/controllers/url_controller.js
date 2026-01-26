@@ -5,7 +5,7 @@ import {visit} from '@hotwired/turbo'
 export default class extends Controller {
     static values = {
         location: String,
-        blackListSelectors: String
+        blackListSelectors: {type: String, default: 'a,svg,path,input,form,button,.actions,.inline-edit,.link'}
     }
 
     navigate(event) {
