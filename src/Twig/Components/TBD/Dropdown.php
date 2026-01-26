@@ -13,7 +13,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Dropdown.html.twig')]
 final class Dropdown
 {
-    public UuidInterface $uuid;
+    public string $uuid;
     public bool $down;
     public bool $popper;
     public string $buttonVariant;
@@ -51,8 +51,8 @@ final class Dropdown
         return $resolver->resolve($data) + $data;
     }
 
-    public function mount(): void
+    public function mount(?string $uuid = null): void
     {
-        $this->uuid = Uuid::uuid4();
+        $this->uuid = $uuid ?: Uuid::uuid4()->toString();
     }
 }
