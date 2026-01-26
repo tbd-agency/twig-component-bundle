@@ -1,8 +1,10 @@
-<div data-controller="dropdown"
-     data-dropdown-target-value="{{ uuid }}-dropdown"
-     data-dropdown-trigger-value="{{ uuid }}-dropdown-trigger"
-     data-dropdown-placement-value="{{ dropdownPlacement }}"
-     class="{{ block('dropdown_classes', tbd_twig_component_template)|trim }}">
+<div{{ attributes.defaults({
+    'data-controller': 'dropdown',
+    'data-dropdown-target-value': uuid ~ '-dropdown',
+    'data-dropdown-trigger-value': uuid ~ '-dropdown-trigger',
+    'data-dropdown-placement-value': dropdownPlacement,
+    'class': block('dropdown_classes', tbd_twig_component_template)|trim,
+}) }}>
     {% block buttonContent %}
         <twig:TBD:Button id="{{ uuid }}-dropdown-trigger"
                          variant="{{ buttonVariant }}"
