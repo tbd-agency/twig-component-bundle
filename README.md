@@ -116,26 +116,43 @@ This makes the bundle’s Stimulus controllers available to your application.
 
 ---
 
-### 3. Tailwind CSS & Hotwire Turbo configuration (manual step)
+### 3. Tailwind CSS, Flowbite & Hotwire Turbo configuration (manual step)
 
-This bundle is built to work with **Tailwind CSS** for styling and **Hotwire Turbo (Turbo Frames)** for frontend interactions.
-Both dependencies must be installed in your project for the components to render and behave correctly.
+This bundle is built to work with **Tailwind CSS** for styling, **Flowbite** for prebuilt UI components, and **Hotwire Turbo (Turbo Frames)** for frontend interactions.
+All dependencies must be installed and configured correctly for the components to render and behave as expected.
+
+Symfony Flex recipes cannot safely modify frontend build configuration, which means this step must always be done manually.
 
 Make sure the following frontend dependencies are available in your application:
 - **Tailwind CSS**
 - **Hotwire Turbo**
+- **Flowbite**
+
+---
 
 If Tailwind CSS is not installed yet, install and initialize it first by following the official Tailwind CSS documentation.
 
-Symfony Flex recipes cannot safely modify `tailwind.config.js`, which means this step must always be done manually.
+Symfony Flex recipes cannot safely modify frontend build configuration files, which means the following steps must always be done manually.
 
-Once Tailwind CSS is installed, add the following paths to the `content` array of your `tailwind.config.js` file:
+---
+##### Tailwind v3 configuration (`tailwind.config.js`)
+
+When using Tailwind CSS v3, ensure the bundle paths are included in the `content` array of your `tailwind.config.js` file:
 
 ```js
 content: [
     './vendor/tbd/twig-component-bundle/templates/**/*.html.twig',
     './vendor/tbd/twig-component-bundle/src/**/*.php',
 ]
+```
+##### Tailwind v4 configuration (`app.css`)
+
+When using Tailwind CSS v4, no tailwind.config.js file is required.
+
+Instead, add the bundle paths as sources in your main CSS entry file (for example assets/styles/app.css):
+```css
+@source '../../vendor/tbd/twig-component-bundle/templates/**/*.html.twig';
+@source '../../vendor/tbd/twig-component-bundle/src/**/*.php';
 ```
 
 This ensures Tailwind can detect and generate styles for the bundled Twig components.
