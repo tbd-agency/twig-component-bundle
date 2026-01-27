@@ -121,14 +121,10 @@ This makes the bundle’s Stimulus controllers available to your application.
 This bundle is built to work with **Tailwind CSS** for styling, **Flowbite** for prebuilt UI components, and **Hotwire Turbo (Turbo Frames)** for frontend interactions.
 All dependencies must be installed and configured correctly for the components to render and behave as expected.
 
-Symfony Flex recipes cannot safely modify frontend build configuration, which means this step must always be done manually.
-
 Make sure the following frontend dependencies are available in your application:
 - **Tailwind CSS**
 - **Hotwire Turbo**
 - **Flowbite**
-
----
 
 If Tailwind CSS is not installed yet, install and initialize it first by following the official Tailwind CSS documentation.
 
