@@ -89,10 +89,24 @@ final class Button
     #[PostMount]
     public function postMount(): void
     {
-        $this->extraClasses = $this->fullWidth ? 'w-full' : '';
-        $this->extraClasses .= $this->spinner ? ' group-[[busy]]:opacity-50' : '';
-        $this->extraClasses .= $this->disabled ? ' opacity-50' : '';
-        $this->extraClasses .= ' ' . $this->getVariantClasses();
-        $this->extraClasses .= ' ' . $this->getSizeClasses();
+        $classes = [];
+
+        if ($this->extraClasses) {
+            $classes[] = $this->extraClasses;
+        }
+        if ($this->fullWidth) {
+            $classes[] = 'w-full';
+        }
+        if ($this->spinner) {
+            $classes[] = 'group-[[busy]]:opacity-50';
+        }
+        if ($this->disabled) {
+            $classes[] = 'opacity-50';
+        }
+
+        $classes[] = $this->getVariantClasses();
+        $classes[] = $this->getSizeClasses();
+
+        $this->extraClasses = implode(' ', array_filter($classes));
     }
 }

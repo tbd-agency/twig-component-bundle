@@ -1,0 +1,13 @@
+{{ form_start(searchForm, {'method': 'GET'}) }}
+<twig:TBD:Card class="mb-4 p-0!">
+    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {% for row in searchForm.children %}
+            {{ form_row(row, {'row_attr': {'class': 'w-full mb-0'}}) }}
+        {% endfor %}
+    </div>
+    <div class="flex items-center gap-4 px-4 pb-4">
+        <twig:TBD:Button label="{{ 'button.search'|trans({'default': 'Search'}) }}"/>
+        <twig:TBD:Button label="{{ 'button.reset'|trans({'default': 'Reset'}) }}" variant="hollow" type="reset" data-controller="reset-search" data-action="reset-search#reset"/>
+    </div>
+</twig:TBD:Card>
+{{ form_end(searchForm) }}

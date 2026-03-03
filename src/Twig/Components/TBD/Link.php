@@ -77,6 +77,6 @@ final class Link
             $classes[] = $this->appendIconMargins[$this->iconSize];
         }
 
-        return implode(' ', $classes);
+        return implode(' ', array_filter($classes));
     }
 }

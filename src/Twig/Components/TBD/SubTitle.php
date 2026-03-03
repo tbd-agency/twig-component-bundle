@@ -21,8 +21,7 @@ final class SubTitle
 
     public function __construct(
         private readonly array $fontSizes,
-    )
-    {
+    ){
     }
 
     #[PreMount]

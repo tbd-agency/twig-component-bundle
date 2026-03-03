@@ -11,7 +11,6 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Section.html.twig')]
 final class Section
 {
-
     public bool $wrapper;
     public bool $indented;
     public bool $border;
@@ -19,8 +18,7 @@ final class Section
 
     public function __construct(
         private readonly array $paddings,
-    )
-    {
+    ){
     }
 
     #[PreMount]

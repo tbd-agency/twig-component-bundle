@@ -54,7 +54,15 @@ final class Badge
     #[PostMount]
     function postMount(): void
     {
-        $this->extraClasses .= ' ' . $this->getSizeClasses();
-        $this->extraClasses .= ' ' . $this->getVariantClasses();
+        $classes = [];
+
+        if ($this->extraClasses) {
+            $classes[] = $this->extraClasses;
+        }
+
+        $classes[] = $this->getSizeClasses();
+        $classes[] = $this->getVariantClasses();
+
+        $this->extraClasses = implode(' ', array_filter($classes));
     }
 }
