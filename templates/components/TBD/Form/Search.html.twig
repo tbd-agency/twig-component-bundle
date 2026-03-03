@@ -1,13 +1,13 @@
 {{ form_start(searchForm, {'method': 'GET'}) }}
-<twig:TBD:Card class="mb-4 p-0!">
-    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<twig:TBD:Card class="{{ block('form_search_card_classes', tbd_twig_component_template)|trim }}">
+    <div class="{{ block('form_search_form_wrapper_classes', tbd_twig_component_template)|trim }}">
         {% for row in searchForm.children %}
-            {{ form_row(row, {'row_attr': {'class': 'w-full mb-0'}}) }}
+            {{ form_row(row, {'row_attr': {'class': block('form_search_form_row_classes', tbd_twig_component_template)|trim }}) }}
         {% endfor %}
     </div>
-    <div class="flex items-center gap-4 px-4 pb-4">
-        <twig:TBD:Button label="{{ 'button.search'|trans({'default': 'Search'}) }}"/>
-        <twig:TBD:Button label="{{ 'button.reset'|trans({'default': 'Reset'}) }}" variant="hollow" type="reset" data-controller="reset-search" data-action="reset-search#reset"/>
+    <div class="{{ block('form_search_button_wrapper_classes', tbd_twig_component_template)|trim }}">
+        <twig:TBD:Button label="{{ 'button.search'|trans({'default': 'Search'}) }}" extraClasses="{{ block('form_search_button_search_classes', tbd_twig_component_template)|trim }}"/>
+        <twig:TBD:Button label="{{ 'button.reset'|trans({'default': 'Reset'}) }}" extraClasses="{{ block('form_search_button_reset_classes', tbd_twig_component_template)|trim }}" variant="hollow" type="reset" data-controller="reset-search" data-action="reset-search#reset"/>
     </div>
 </twig:TBD:Card>
 {{ form_end(searchForm) }}
