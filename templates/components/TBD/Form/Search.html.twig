@@ -1,4 +1,4 @@
-{{ form_start(searchForm, {'method': 'GET'}) }}
+{{ form_start(searchForm, {'method': 'GET', 'attr': {'class': 'search-form'}}) }}
 <twig:TBD:Card class="{{ block('form_search_card_classes', tbd_twig_component_template)|trim }}">
     <div class="{{ block('form_search_form_wrapper_classes', tbd_twig_component_template)|trim }}">
         {% for row in searchForm.children %}
