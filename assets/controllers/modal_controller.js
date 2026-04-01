@@ -3,7 +3,8 @@ import {Controller} from '@hotwired/stimulus'
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static values = {
-        target: String,
+        target: {type : String, default: 'form-modal'},
+        frame: {type : String, default: 'form-frame'},
         src: String,
         title: String,
         size: {type: String, default: 'md'},
@@ -32,7 +33,7 @@ export default class extends Controller {
             title.innerHTML = this.titleValue
 
             let src = this.srcValue
-            let frame = document.getElementById('form-frame')
+            let frame = document.getElementById(this.frameValue)
             frame.setAttribute('src', src)
             frame.loaded.then(function () {
                 modal.updateOnShow(function () {
