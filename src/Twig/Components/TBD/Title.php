@@ -12,6 +12,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Title
 {
     public string $label;
+    public string $fontSize;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -20,7 +21,9 @@ final class Title
 
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired('label');
+            ->setRequired('label')
+            ->setAllowedTypes('fontSize', ['text-4xl', 'text-3xl', 'text-2xl', 'text-xl', 'text-lg', 'text-base', 'text-sm'])
+            ->setDefaults(['fontSize' => 'text-4xl']);
 
         return $resolver->resolve($data) + $data;
     }
