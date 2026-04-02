@@ -31,6 +31,8 @@ final class Logo
             ->setIgnoreUndefined()
             ->setDefaults(['size' => 'md'])
             ->setDefaults(['path' => '#'])
+            ->setRequired('image')
+            ->setRequired('alt')
             ->setAllowedValues('size', array_keys($this->sizes));
 
         return $resolver->resolve($data) + $data;
