@@ -6,8 +6,8 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Avatar;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Badge;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Button;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Card;
-use Tbd\TwigComponentBundle\Twig\Components\TBD\Dropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Link;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Logo;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Dropdown as NavDropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Item;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Navbar;
@@ -97,5 +97,9 @@ return static function (ContainerConfigurator $configurator): void {
         ->args([
             '$variants' => '%button.variants%',
             '$sizes' => '%button.sizes%',
+        ])
+        ->set(Logo::class)
+        ->args([
+            '$sizes' => '%logo.sizes%',
         ]);
 };

@@ -62,6 +62,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('table.sticky_cell.positions', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions'] ?? []));
 
         $builder->setParameter('nav.badge_type', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['nav']['badge_type'] ?? []));
+
+        $builder->setParameter('logo.sizes', array_replace(self::DEFAULT_LOGO_SIZES, $config['logo']['sizes'] ?? []));
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -220,6 +222,14 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+            ->arrayNode('logo')
+            ->useAttributeAsKey('sizes')
+            ->normalizeKeys(false)
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_LOGO_SIZES)
+            ->end()
+            ->end()
+            ->end()
             ->end();
     }
 
@@ -324,5 +334,11 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
     private const array DEFAULT_DROPDOWN_BADGE_TYPE = [
         'errors' => 'inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-800 text-xs rounded-full',
+    ];
+
+    private const array DEFAULT_LOGO_SIZES = [
+        'sm' => 'w-6 h-6',
+        'md' => 'w-10 h-10',
+        'lg' => 'w-20 h-20',
     ];
 }
