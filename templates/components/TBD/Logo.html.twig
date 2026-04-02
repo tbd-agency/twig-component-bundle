@@ -1,6 +1,8 @@
 {% set imageSize = this.sizeClasses %}
 
-<div{{ attributes }}>
+<div{{ attributes.defaults({
+    'class': 'flex items-center'
+}) }}>
     <twig:TBD:Link href="{{ path }}" class="{{ block('logo_link_classes', tbd_twig_component_template)|trim }}">
         <img src="{{ image }}" alt="{{ alt }}"
              class="{{ block('logo_image_classes', tbd_twig_component_template)|trim ~ ' ' ~ imageSize }}">
