@@ -340,8 +340,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
     ];
 
     private const array DEFAULT_LOGO_SIZES = [
-        'sm' => 'w-6 h-6',
-        'md' => 'w-10 h-10',
-        'lg' => 'w-20 h-20',
+        'sm' => 'h-6 w-auto',
+        'md' => 'h-10 w-auto',
+        'lg' => 'h-20 w-auto',
     ];
 }

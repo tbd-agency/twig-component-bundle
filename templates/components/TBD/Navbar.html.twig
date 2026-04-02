@@ -71,7 +71,7 @@
                         class="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
                         data-dropdown-toggle="dropdown-user"
                         data-dropdown-placement="bottom-end">
-                    <twig:TBD:Avatar seed="{{ app.user.firstname }}"/>
+                    <twig:TBD:Avatar seed="{{ seed ?? app.user.firstName}}"/>
                 </twig:TBD:Button>
                 <div class="{{ block('navbar_dropdown_wrapper_classes', tbd_twig_component_template)|trim }}"
                      id="dropdown-user">

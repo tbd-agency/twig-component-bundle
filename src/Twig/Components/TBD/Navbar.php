@@ -14,6 +14,7 @@ final class Navbar
     public string $buttonVariants;
     public string $buttonSizes;
     public string $darkModeTooltip;
+    public ?string $seed = null;
     public bool $darkMode;
 
     public function __construct(
