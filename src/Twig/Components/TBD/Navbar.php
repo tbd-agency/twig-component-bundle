@@ -40,8 +40,8 @@ final class Navbar
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'variant' => 'white',
-                'size' => 'md',
+                'buttonVariants' => 'white',
+                'buttonSizes' => 'md',
                 'darkMode' => true,
                 'darkModeTooltip' => 'Toggle dark mode',
             ])
