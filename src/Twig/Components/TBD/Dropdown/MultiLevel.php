@@ -30,7 +30,7 @@ final class MultiLevel
             ->setIgnoreUndefined()
             ->setRequired('buttonText')
             ->setDefaults([
-                'variant' => 'multi_level',
+                'variant' => 'multi-level',
                 'placement' => 'left-start',
                 'down' => true
             ])

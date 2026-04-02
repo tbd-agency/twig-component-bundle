@@ -75,11 +75,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('variants')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BUTTON_VARIANTS)
             ->end()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BUTTON_SIZES)
             ->end()
@@ -90,6 +92,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_ICON_SIZES)
             ->end()
@@ -100,11 +103,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_AVATAR_SIZES)
             ->end()
             ->arrayNode('border_radii')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_AVATAR_BORDER_RADII)
             ->end()
@@ -115,6 +120,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('types')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_ALERT_TYPES)
             ->end()
@@ -125,11 +131,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('variants')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BADGE_VARIANTS)
             ->end()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BADGE_SIZES)
             ->end()
@@ -140,6 +148,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('paddings')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_CARD_PADDINGS)
             ->end()
@@ -150,11 +159,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('prepend_icon_margins')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_LINK_PREPEND_ICON_MARGINS)
             ->end()
             ->arrayNode('append_icon_margins')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_LINK_APPEND_ICON_MARGINS)
             ->end()
@@ -165,6 +176,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('paddings')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_SECTION_PADDINGS)
             ->end()
@@ -175,6 +187,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('font_sizes')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_SUB_TITLE_FONT_SIZES)
             ->end()
@@ -188,6 +201,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('positions')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS)
             ->end()
@@ -200,6 +214,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->arrayNode('badge_type')
             ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_DROPDOWN_BADGE_TYPE)
             ->end()
@@ -215,7 +230,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'hollow' => 'text-blue-950 fill-blue-950 dark:text-white dark:fill-white hover:bg-white dark:hover:bg-blue-950 border border-gray-200 dark:border-gray-600 hover:text-orange-400 hover:fill-orange-400 dark:hover:text-orange-400 dark:hover:fill-orange-400 focus:text-white focus:fill-white dark:focus:text-white dark:focus:fill-white focus:border-orange-400 dark:focus:border-orange-400 focus:bg-orange-400 dark:focus:bg-orange-400 focus:ring-orange-300 dark:focus:ring-orange-300',
         'hollow-error' => 'text-red-500 text-bold border-transparent hover:text-red-600',
         'hollow-success' => 'text-green-700 text-bold border-transparent hover:text-green-800',
-        'multi_level' => 'w-full !text-base !font-normal rounded-none hover:bg-gray-100',
+        'multi-level' => 'w-full !text-base !font-normal rounded-none hover:bg-gray-100',
     ];
 
     private const array DEFAULT_BUTTON_SIZES = [
@@ -249,7 +264,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
     ];
 
     private const array DEFAULT_BADGE_VARIANTS = [
-        'light_blue' => 'text-white bg-light-blue',
+        'primary' => 'text-white bg-light-blue',
         'gray' => 'text-blue-950 bg-gray-200',
         'green' => 'text-white bg-green-500',
         'red' => 'text-white bg-red-500',
@@ -267,7 +282,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'none' => '',
         'large' => ' p-8',
         'default' => ' p-4',
-        'no_bottom' => ' px-4 pt-4',
+        'no-bottom' => ' px-4 pt-4',
     ];
 
     private const array DEFAULT_LINK_PREPEND_ICON_MARGINS = [
@@ -285,9 +300,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
     private const array DEFAULT_SECTION_PADDINGS = [
         'none' => '',
         'small' => ' p-2 sm:p-3 lg:p-4',
-        'small_y' => ' py-2 sm:py-3 lg:py-4',
+        'small-y' => ' py-2 sm:py-3 lg:py-4',
         'large' => ' p-4 sm:p-6 lg:p-8',
-        'large_y' => ' py-4 sm:py-6 lg:py-8',
+        'large-y' => ' py-4 sm:py-6 lg:py-8',
     ];
 
     private const array DEFAULT_SUB_TITLE_FONT_SIZES = [
@@ -303,7 +318,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'right' => 'right-[-1px] border-l border-l-gray-200 z-10',
         'bottom' => 'bottom-0 border-t border-t-gray-200 z-10',
         'left' => 'left-0 border-r border-r-gray-200 z-10',
-        'top_right' => 'top-0 border-b border-b-gray-200 right-[-1px] border-l border-l-gray-200 z-20',
+        'top-right' => 'top-0 border-b border-b-gray-200 right-[-1px] border-l border-l-gray-200 z-20',
     ];
 
     private const array DEFAULT_DROPDOWN_BADGE_TYPE = [
