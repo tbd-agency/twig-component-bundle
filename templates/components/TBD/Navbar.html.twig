@@ -61,7 +61,7 @@
                 </div>
             {% endif %}
 
-            {% block language %} {% endblock %}
+            {% block language %}{% endblock %}
 
             {# User menu #}
             {% if app.user and block('userDropdown') is defined %}
@@ -75,7 +75,7 @@
                 </twig:TBD:Button>
                 <div class="{{ block('navbar_dropdown_wrapper_classes', tbd_twig_component_template)|trim }}"
                      id="dropdown-user">
-                    {% block userDropdown %} {% endblock %}
+                    {% block userDropdown %}{% endblock %}
                 </div>
             {% endif %}
         </div>

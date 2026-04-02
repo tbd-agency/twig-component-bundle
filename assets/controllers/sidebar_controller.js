@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import {Controller} from '@hotwired/stimulus'
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
@@ -10,6 +10,9 @@ export default class extends Controller {
         'expandIcon',
         'collapseHide',
     ]
+    static values = {
+        hoverState: {type: Boolean, default: true},
+    }
 
     connect() {
         this.isTemporarilyExpanded = false
@@ -29,7 +32,7 @@ export default class extends Controller {
     }
 
     onMouseEnter() {
-        if (this.toggleButtonTarget.getAttribute('aria-expanded') === 'false') {
+        if (this.hoverStateValue && this.toggleButtonTarget.getAttribute('aria-expanded') === 'false') {
             this.isTemporarilyExpanded = true
             sessionStorage.setItem('sidebarHoverState', 'true')
             this.expand(false)
@@ -64,7 +67,7 @@ export default class extends Controller {
         this.sidebarTarget.classList.remove('w-64')
         this.sidebarTarget.classList.add('w-16')
         this.mainContentTarget.classList.remove('lg:ms-64')
-        this.mainContentTarget.classList.add('lg:ml-16')
+        this.mainContentTarget.classList.add('lg:ms-16')
         this.toggleButtonTarget.setAttribute('aria-expanded', 'false')
 
         if (save) {
@@ -95,7 +98,7 @@ export default class extends Controller {
 
         this.sidebarTarget.classList.remove('w-16')
         this.sidebarTarget.classList.add('w-64')
-        this.mainContentTarget.classList.remove('lg:ml-16')
+        this.mainContentTarget.classList.remove('lg:ms-16')
         this.mainContentTarget.classList.add('lg:ms-64')
         this.toggleButtonTarget.setAttribute('aria-expanded', 'true')
 

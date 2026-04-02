@@ -7,17 +7,21 @@
             {% if icon %}
                 {{ ux_icon(icon, {'class': block('nav_dropdown_button_icon_classes', tbd_twig_component_template)|trim }) }}
             {% endif %}
-            <span class="{{ block('nav_dropdown_button_label_classes', tbd_twig_component_template)|trim }}" data-sidebar-target="collapseHide">{{ label }}</span>
+            <span class="{{ block('nav_dropdown_button_label_classes', tbd_twig_component_template)|trim }}"
+                  data-sidebar-target="collapseHide">{{ label }}</span>
         </span>
-        <span class="flex items-center gap-3" data-sidebar-target="collapseHide">
+        <span class="{{ block('nav_dropdown_down_icon_wrapper_classes', tbd_twig_component_template)|trim}) }}"
+              data-sidebar-target="collapseHide">
             {{ ux_icon('tbd:angle-down', {class: block('nav_dropdown_down_icon_classes', tbd_twig_component_template)|trim}) }}
             {% if badge is defined and badge %}
                 <span class="{{ this.getBadgeClasses }}">{{ badge }}</span>
             {% endif %}
         </span>
     </button>
-    <ul id="{{ id }}" data-sidebar-target="collapseHide"
-        class="{% if this.isHidden %}hidden {% endif %} {{ block('nav_dropdown_content_classes', tbd_twig_component_template)|trim }}">
-        {% block content %}{% endblock %}
-    </ul>
+    <div data-sidebar-target="collapseHide">
+        <ul id="{{ id }}" data-sidebar-target="collapseHide"
+            class="{% if this.isHidden %}hidden {% endif %} {{ block('nav_dropdown_content_classes', tbd_twig_component_template)|trim }}">
+            {% block content %}{% endblock %}
+        </ul>
+    </div>
 </div>
