@@ -11,7 +11,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Title.html.twig')]
 final class Title
 {
-    public string $message;
+    public string $label;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -20,7 +20,7 @@ final class Title
 
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired('message');
+            ->setRequired('label');
 
         return $resolver->resolve($data) + $data;
     }
