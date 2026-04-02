@@ -22,8 +22,8 @@ final class Title
         $resolver
             ->setIgnoreUndefined()
             ->setRequired('label')
-            ->setAllowedTypes('fontSize', ['text-4xl', 'text-3xl', 'text-2xl', 'text-xl', 'text-lg', 'text-base', 'text-sm'])
-            ->setDefaults(['fontSize' => 'text-4xl']);
+            ->setDefaults(['fontSize' => 'text-4xl'])
+            ->setAllowedValues('fontSize', ['text-4xl', 'text-3xl', 'text-2xl', 'text-xl', 'text-lg', 'text-base', 'text-sm']);
 
         return $resolver->resolve($data) + $data;
     }
