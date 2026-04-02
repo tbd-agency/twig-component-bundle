@@ -234,6 +234,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
     ];
 
     private const array DEFAULT_BUTTON_SIZES = [
+        'none' => 'p-0!',
         'sm' => 'px-2 py-1',
         'md' => 'px-3 py-2',
         'lg' => 'px-4 py-2',

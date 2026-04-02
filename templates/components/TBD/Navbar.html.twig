@@ -66,8 +66,7 @@
             {# User menu #}
             {% if app.user and block('userDropdown') is defined %}
                 <twig:TBD:Button
-                        size="{{ buttonSizes }}"
-                        variant="{{ buttonVariants }}"
+                        size="none"
                         type="button"
                         class="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
                         data-dropdown-toggle="dropdown-user"
