@@ -1,0 +1,84 @@
+<nav{{ attributes.defaults({
+    'class': block('navbar_classes', tbd_twig_component_template)|trim,
+}) }}>
+    <div class="{{ block('navbar_wrapper_classes', tbd_twig_component_template)|trim }}">
+        {# Sidebar toggle #}
+        <div class="flex items-center justify-start">
+            <twig:TBD:Button
+                    size="{{ buttonSizes }}"
+                    variant="{{ buttonVariants }}"
+                    type="button"
+                    data-action="sidebar#toggle"
+                    data-sidebar-target="toggleButton"
+                    class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} hidden! lg:inline!">
+                {{ ux_icon('bars-staggered', {
+                    'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                    'data-sidebar-target': 'collapseIcon',
+                }) }}
+
+                {{ ux_icon('bars', {
+                    'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                    'data-sidebar-target': 'expandIcon',
+                }) }}
+            </twig:TBD:Button>
+
+            <twig:TBD:Button
+                    size="{{ buttonSizes }}"
+                    variant="{{ buttonVariants }}"
+                    type="button"
+                    data-drawer-target="sidebar"
+                    data-drawer-toggle="sidebar"
+                    class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} inline! lg:hidden!">
+                {{ ux_icon('bars', {class: block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim }) }}
+            </twig:TBD:Button>
+            {% block logo %} {% endblock %}
+        </div>
+
+        {% block content %}{% endblock %}
+
+        <div class="flex items-center lg:order-2 space-x-3">
+            {# Darkmode #}
+            {% if darkMode %}
+                <div class="flex items-center">
+                    <twig:TBD:Button
+                            size="{{ buttonSizes }}"
+                            variant="{{ buttonVariants }}"
+                            type="button"
+                            data-controller="theme"
+                            class="group"
+                            data-action="theme#toggleDarkMode"
+                            tooltip="{{ darkModeTooltip }}"
+                    >
+                        {{ ux_icon('moon', {
+                            'data-theme-target':'darkIcon',
+                            'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                        }) }}
+                        {{ ux_icon('sun-bright', {
+                            'data-theme-target':'lightIcon',
+                            'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                        }) }}
+                    </twig:TBD:Button>
+                </div>
+            {% endif %}
+
+            {% block language %} {% endblock %}
+
+            {# User menu #}
+            {% if app.user and block('userDropdown') is defined %}
+                <twig:TBD:Button
+                        size="{{ buttonSizes }}"
+                        variant="{{ buttonVariants }}"
+                        type="button"
+                        class="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
+                        data-dropdown-toggle="dropdown-user"
+                        data-dropdown-placement="bottom-end">
+                    <twig:TBD:Avatar seed="{{ app.user.firstname }}"/>
+                </twig:TBD:Button>
+                <div class="{{ block('navbar_dropdown_wrapper_classes', tbd_twig_component_template)|trim }}"
+                     id="dropdown-user">
+                    {% block userDropdown %} {% endblock %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

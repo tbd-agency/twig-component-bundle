@@ -9,9 +9,9 @@
     {% if icon %}
         {{ ux_icon(icon, {class: block('nav_item_icon_classes', tbd_twig_component_template)|trim}) }}
     {% endif %}
-    <span>{{ label }}</span>
+    <span data-sidebar-target="collapseHide">{{ label }}</span>
 </div>
 {% if badge is defined and badge %}
-    <span class="{{ this.getBadgeClasses }}">{{ badge }}</span>
+    <span class="{{ this.getBadgeClasses }}" data-sidebar-target="collapseHide">{{ badge }}</span>
 {% endif %}
 </{{ tag }}>

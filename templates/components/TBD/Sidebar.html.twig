@@ -1,0 +1,10 @@
+<aside{{ attributes.defaults({
+    'id': 'sidebar',
+    'class': block('sidebar_aside_classes', tbd_twig_component_template)|trim,
+    'data-sidebar-target': 'sidebar',
+    'data-action': 'mouseenter->sidebar#onMouseEnter mouseleave->sidebar#onMouseLeave',
+}) }}>
+    <div class="{{ block('sidebar_wrapper_classes', tbd_twig_component_template)|trim }}">
+        {% block content %}{% endblock %}
+    </div>
+</aside>

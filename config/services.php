@@ -10,6 +10,7 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Dropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Link;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Dropdown as NavDropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Item;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Navbar;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Section;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Spinner;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\SubTitle;
@@ -91,5 +92,10 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(NavDropdown\Item::class)
         ->args([
             '$badgeTypes' => '%nav.badge_type%'
+        ])
+        ->set(Navbar::class)
+        ->args([
+            '$variants' => '%button.variants%',
+            '$sizes' => '%button.sizes%',
         ]);
 };
