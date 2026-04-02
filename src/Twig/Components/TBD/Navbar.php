@@ -13,7 +13,7 @@ final class Navbar
 {
     public string $buttonVariants;
     public string $buttonSizes;
-    public string $darkModeToolTip;
+    public string $darkModeTooltip;
     public bool $darkMode;
 
     public function __construct(
