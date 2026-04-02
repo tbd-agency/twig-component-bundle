@@ -19,8 +19,7 @@
         </span>
     </button>
     <div data-sidebar-target="collapseHide">
-        <ul id="{{ id }}" data-sidebar-target="collapseHide"
-            class="{% if this.isHidden %}hidden {% endif %} {{ block('nav_dropdown_content_classes', tbd_twig_component_template)|trim }}">
+        <ul id="{{ id }}" class="{% if this.isHidden %}hidden {% endif %}pt-2 space-y-2">
             {% block content %}{% endblock %}
         </ul>
     </div>
