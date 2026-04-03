@@ -139,6 +139,7 @@ When using Tailwind CSS v3, ensure the bundle paths are included in the `content
 content: [
     './vendor/tbd/twig-component-bundle/templates/**/*.html.twig',
     './vendor/tbd/twig-component-bundle/src/**/*.php',
+    './vendor/tbd/twig-component-bundle/assets/**/*.js',
 ]
 ```
 ##### Tailwind v4 configuration (`app.css`)
@@ -149,6 +150,7 @@ Instead, add the bundle paths as sources in your main CSS entry file (for exampl
 ```css
 @source '../../vendor/tbd/twig-component-bundle/templates/**/*.html.twig';
 @source '../../vendor/tbd/twig-component-bundle/src/**/*.php';
+@source '../../vendor/tbd/twig-component-bundle/assets/**/*.js';
 ```
 
 This ensures Tailwind can detect and generate styles for the bundled Twig components.

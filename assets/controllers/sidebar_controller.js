@@ -13,12 +13,11 @@ export default class extends Controller {
         'collapseHide',
     ]
     static values = {
-        hoverState: {type: Boolean, default: true},
+        hoverState: {type: Boolean, default: false},
     }
 
     connect() {
         this.isTemporarilyExpanded = false
-
         this.initializeSidebarState()
     }
 
