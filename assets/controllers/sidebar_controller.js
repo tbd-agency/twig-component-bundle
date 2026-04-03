@@ -4,6 +4,8 @@ import {Controller} from '@hotwired/stimulus'
 export default class extends Controller {
     static targets = [
         'toggleButton',
+        'dropdownButton',
+        'dropdownContent',
         'sidebar',
         'mainContent',
         'collapseIcon',
@@ -18,6 +20,33 @@ export default class extends Controller {
         this.isTemporarilyExpanded = false
 
         this.initializeSidebarState()
+    }
+
+    dropdownToggle(event) {
+        const sidebarState = localStorage.getItem('sidebarExpanded')
+
+        if (sidebarState === 'false') {
+            this.expand()
+            this.openClickedDropdown(event)
+        } else {
+            const dropdown = event.currentTarget
+            const targetId = dropdown.getAttribute('aria-controls')
+            const dropdownContent = document.getElementById(targetId)
+            dropdownContent.classList.toggle('hidden')
+            dropdown.setAttribute('aria-expanded', !dropdownContent.classList.contains('hidden'))
+        }
+    }
+
+    openClickedDropdown(event) {
+        const button = event.currentTarget
+        button.setAttribute('aria-expanded', 'true')
+
+        const targetId = button.getAttribute('aria-controls')
+        if (!targetId) return
+
+        const dropdown = document.getElementById(targetId)
+        if (!dropdown) return
+        dropdown.classList.remove('hidden')
     }
 
     toggle() {
@@ -62,6 +91,14 @@ export default class extends Controller {
             setTimeout(() => {
                 element.classList.remove('opacity-0')
             }, 75)
+        })
+
+        this.dropdownButtonTargets.forEach((element) => {
+            element.setAttribute('aria-expanded', 'false')
+        })
+
+        this.dropdownContentTargets.forEach((element) => {
+            element.classList.add('hidden')
         })
 
         this.sidebarTarget.classList.remove('w-64')

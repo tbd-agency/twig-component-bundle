@@ -1,6 +1,7 @@
 <div{{ attributes }}>
     <button type="button" aria-controls="{{ id }}"
-            data-collapse-toggle="{{ id }}"
+            data-action="click->sidebar#dropdownToggle"
+            data-sidebar-target="dropdownButton"
             aria-expanded="{{ this.isHidden ? 'false' : 'true' }}"
             class="{{ block('nav_dropdown_button_classes', tbd_twig_component_template)|trim }}">
         <span class="flex items-center">
@@ -19,7 +20,7 @@
         </span>
     </button>
     <div data-sidebar-target="collapseHide">
-        <ul id="{{ id }}" class="{% if this.isHidden %}hidden {% endif %}pt-2 space-y-2">
+        <ul id="{{ id }}" class="{% if this.isHidden %}hidden {% endif %}pt-2 space-y-2" data-sidebar-target="dropdownContent">
             {% block content %}{% endblock %}
         </ul>
     </div>
