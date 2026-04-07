@@ -1,9 +1,9 @@
 {% block button_classes -%}
-    group-[[busy]]:pointer-events-none select-none relative inline-flex items-center gap-2 whitespace-nowrap focus:outline-none focus:z-10 text-sm cursor-pointer
+    group-[[busy]]:pointer-events-none select-none relative inline-flex items-center gap-2 whitespace-nowrap focus:outline-none focus:z-10 text-sm cursor-pointer dark:text-gray-100
 {%- endblock button_classes %}
 
 {% block tooltip_classes -%}
-    absolute z-[70] invisible inline-block px-3 py-2 text-sm normal-case font-medium text-blue-100 dark:text-primary transition-opacity duration-300 bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-blue-100
+    absolute z-[70] invisible inline-block px-3 py-2 text-sm normal-case font-medium text-blue-100 dark:text-gray-100 transition-opacity duration-300 bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700
 {%- endblock tooltip_classes %}
 
 {% block indicator_classes -%}
@@ -18,23 +18,23 @@
 {%- endblock avatar_classes %}
 
 {% block alert_classes -%}
-    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_2px_10px_1px_rgba(166,200,255,0.25)]
+    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_2px_10px_1px_rgba(166,200,255,0.25)] dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
 {%- endblock alert_classes %}
 
 {% block badge_classes -%}
-    font-medium rounded-full
+    font-medium rounded-full dark:text-gray-100
 {%- endblock badge_classes %}
 
 {% block card_classes -%}
-    bg-white relative rounded border border-gray-200 print:border-gray-300
+    bg-white relative rounded border border-gray-200 print:border-gray-300 dark:bg-gray-800 dark:border-gray-700
 {%- endblock card_classes %}
 
 {% block card_shadow_classes -%}
-    print:shadow-none shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)]
+    print:shadow-none shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)] dark:shadow-[2px_2px_10px_1px_rgba(0,0,0,0.4)]
 {%- endblock card_shadow_classes %}
 
 {% block chart_classes -%}
-    text-blue-900 dark:text-blue-100
+    text-blue-900 dark:text-gray-100
 {%- endblock chart_classes %}
 
 {% block chart_bar_classes -%}
@@ -46,73 +46,73 @@
 {%- endblock chart_doughnut_classes %}
 
 {% block chart_table_classes -%}
-    w-full text-primary text-lg
+    w-full text-primary text-lg dark:text-gray-100
 {%- endblock chart_table_classes %}
 
 {% block chart_table_horizontal_row_classes -%}
-    font-medium
+    font-medium dark:text-gray-100
 {%- endblock chart_table_horizontal_row_classes %}
 
 {% block chart_table_vertical_row_classes -%}
-    font-medium whitespace-nowrap
+    font-medium whitespace-nowrap dark:text-gray-100
 {%- endblock chart_table_vertical_row_classes %}
 
 {% block chart_number_label_classes -%}
-    font-medium !text-lg
+    font-medium !text-lg dark:text-gray-100
 {%- endblock chart_number_label_classes %}
 
 {% block checkbox_classes -%}
-    rounded w-4 h-4 text-primary border-0 bg-gray-200 ring-0 focus:ring-0 ring-offset-0 focus:ring-offset-0 cursor-pointer
+    rounded w-4 h-4 text-primary border-0 bg-gray-200 ring-0 focus:ring-0 ring-offset-0 focus:ring-offset-0 cursor-pointer dark:bg-gray-600 dark:checked:bg-primary
 {%- endblock checkbox_classes %}
 
 {% block detail_label_classes -%}
-    text-xs
+    text-xs dark:text-gray-400
 {%- endblock detail_label_classes %}
 
 {% block detail_value_classes -%}
-    font-bold
+    font-bold dark:text-gray-100
 {%- endblock detail_value_classes %}
 
 {% block detail_check_classes -%}
-    w-4 h-4 text-green-700
+    w-4 h-4 text-green-700 dark:text-green-400
 {%- endblock detail_check_classes %}
 
 {% block detail_x_classes -%}
-    w-4 h-4 text-red-500
+    w-4 h-4 text-red-500 dark:text-red-400
 {%- endblock detail_x_classes %}
 
 {% block detail_not_set_classes -%}
-    font-bold text-gray-400
+    font-bold text-gray-400 dark:text-gray-500
 {%- endblock detail_not_set_classes %}
 
 {% block detail_list_label_classes -%}
-    text-xs
+    text-xs dark:text-gray-400
 {%- endblock detail_list_label_classes %}
 
 {% block detail_list_ul_classes -%}
-    list-disc list-inside font-bold
+    list-disc list-inside font-bold dark:text-gray-100
 {%- endblock detail_list_ul_classes %}
 
 {% block detail_list_li_classes -%}
 {%- endblock detail_list_li_classes %}
 
 {% block detail_list_not_set_classes -%}
-    font-bold text-gray-400
+    font-bold text-gray-400 dark:text-gray-500
 {%- endblock detail_list_not_set_classes %}
 
 {% block dropdown_classes -%}
 {%- endblock dropdown_classes %}
 
 {% block dropdown_button_classes -%}
-    cursor-pointer whitespace-nowrap flex justify-between
+    cursor-pointer whitespace-nowrap flex justify-between dark:text-gray-100
 {%- endblock dropdown_button_classes %}
 
 {% block dropdown_button_icon_classes -%}
-    w-4 h-4 text-blue-400-60 transition duration-100
+    w-4 h-4 text-blue-400-60 transition duration-100 dark:text-gray-400
 {%- endblock dropdown_button_icon_classes %}
 
 {% block dropdown_button_down_classes -%}
-    w-4 h-4 text-primary transition duration-100
+    w-4 h-4 text-primary transition duration-100 dark:text-gray-300
 {%- endblock dropdown_button_down_classes %}
 
 {% block dropdown_button_badge_classes -%}
@@ -120,19 +120,19 @@
 {%- endblock dropdown_button_badge_classes %}
 
 {% block dropdown_content_classes -%}
-    hidden z-10 min-w-[7rem] bg-white border border-gray-200
+    hidden z-10 min-w-[7rem] bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700
 {%- endblock dropdown_content_classes %}
 
 {% block dropdown_unordered_list_classes -%}
-    text-dark divide-y divide-gray-200 text-sm font-medium
+    text-dark divide-y divide-gray-200 text-sm font-medium dark:text-gray-100 dark:divide-gray-700
 {%- endblock dropdown_unordered_list_classes %}
 
 {% block dropdown_item_classes -%}
-    block py-2 px-3 whitespace-nowrap hover:bg-gray-100 cursor-pointer
+    block py-2 px-3 whitespace-nowrap hover:bg-gray-100 cursor-pointer dark:text-gray-100 dark:hover:bg-gray-700
 {%- endblock dropdown_item_classes %}
 
 {% block link_classes -%}
-    text-sm text-primary hover:text-blue-800 focus:text-primary focus:outline-none inline-flex items-center
+    text-sm text-primary hover:text-blue-800 focus:text-primary focus:outline-none inline-flex items-center dark:text-gray-300 dark:hover:text-gray-100
 {%- endblock link_classes %}
 
 {% block section_classes -%}
@@ -144,23 +144,23 @@
 {%- endblock section_indent_classes %}
 
 {% block section_wrapper_classes -%}
-    bg-white
+    bg-white dark:bg-gray-900
 {%- endblock section_wrapper_classes %}
 
 {% block section_wrapper_border_classes -%}
-    border-x border-b border-gray-200
+    border-x border-b border-gray-200 dark:border-gray-700
 {%- endblock section_wrapper_border_classes %}
 
 {% block sub_section_classes -%}
-    p-4 sm:p-6 lg:p-8 bg-gray-100
+    p-4 sm:p-6 lg:p-8 bg-gray-100 dark:bg-gray-700
 {%- endblock sub_section_classes %}
 
 {% block tab_classes -%}
-    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
 {%- endblock tab_classes %}
 
 {% block tab_amount_classes -%}
-    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
 {%- endblock tab_amount_classes %}
 
 {% block tab_button_classes -%}
@@ -168,18 +168,18 @@
 {%- endblock tab_button_classes %}
 
 {% block table_wrapper_classes -%}
-    overflow-x-auto border border-gray-200 dark:border-gray-600 rounded-lg bg-white
+    overflow-x-auto border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800
 {%- endblock table_wrapper_classes %}
 
 {% block table_classes -%}
-    border-separate border-spacing-0 outline-none w-full text-sm text-left text-primary bg-white dark:bg-primary dark:text-blue-100 rounded-lg
+    border-separate border-spacing-0 outline-none w-full text-sm text-left text-primary bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg
 {%- endblock table_classes %}
 
 {% block table_body_classes -%}
 {%- endblock table_body_classes %}
 
 {% block table_head_classes -%}
-    border-b border-b-gray-200
+    border-b border-b-gray-200 dark:border-b-gray-600
 {%- endblock table_head_classes %}
 
 {#
@@ -188,11 +188,11 @@ The table cell class is built dynamically:
 - if the tag is a <th>, the `table_head_cell_classes` block is appended
 #}
 {% block table_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap
+    px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap dark:border-b-gray-700
 {%- endblock table_cell_classes %}
 
 {% block table_head_cell_classes -%}
-    font-medium
+    font-medium dark:text-gray-300
 {%- endblock table_head_cell_classes %}
 
 {#
@@ -201,18 +201,18 @@ The table sticky cell class is built dynamically:
 - if the tag is a <th>, the `table_head_sticky_cell_classes` block is appended
 #}
 {% block table_sticky_cell_classes -%}
-    bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky
+    bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
 {%- endblock table_sticky_cell_classes %}
 
 {% block table_head_sticky_cell_classes -%}
-    font-medium bg-white
+    font-medium bg-white dark:bg-gray-800 dark:text-gray-300
 {%- endblock table_head_sticky_cell_classes %}
 
 {% block table_row_classes -%}
 {%- endblock table_row_classes %}
 
 {% block text_classes -%}
-    text-primary text-sm
+    text-primary text-sm dark:text-gray-100
 {%- endblock text_classes %}
 
 {% block title_classes -%}
@@ -220,7 +220,7 @@ The table sticky cell class is built dynamically:
 {%- endblock title_classes %}
 
 {% block title_label_classes -%}
-    font-semibold text-primary w-full sm:w-auto
+    font-semibold text-primary w-full sm:w-auto dark:text-gray-100
 {%- endblock title_label_classes %}
 
 {% block title_content_classes -%}
@@ -228,7 +228,7 @@ The table sticky cell class is built dynamically:
 {%- endblock title_content_classes %}
 
 {% block sub_title_classes -%}
-    font-semibold text-primary flex items-center
+    font-semibold text-primary flex items-center dark:text-gray-100
 {%- endblock sub_title_classes %}
 
 {% block sub_title_wrapper_classes -%}
@@ -236,7 +236,7 @@ The table sticky cell class is built dynamically:
 {%- endblock sub_title_wrapper_classes %}
 
 {% block sub_title_tooltip_icon_classes -%}
-    w-4 h-4 cursor-pointer ms-2 text-primary
+    w-4 h-4 cursor-pointer ms-2 text-primary dark:text-gray-400
 {%- endblock sub_title_tooltip_icon_classes %}
 
 {% block sub_title_content_classes -%}
@@ -244,7 +244,7 @@ The table sticky cell class is built dynamically:
 {%- endblock sub_title_content_classes %}
 
 {% block toast_classes -%}
-    flex gap-4 items-center min-w-[20rem] max-w-md p-4 mb-4 border rounded opacity-100 transition-opacity
+    flex gap-4 items-center min-w-[20rem] max-w-md p-4 mb-4 border rounded opacity-100 transition-opacity dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
 {%- endblock toast_classes %}
 
 {% block frame_form_classes -%}
@@ -252,15 +252,15 @@ The table sticky cell class is built dynamically:
 {%- endblock frame_form_classes %}
 
 {% block modal_wrapper_classes -%}
-    relative rounded border bg-white
+    relative rounded border bg-white dark:bg-gray-800 dark:border-gray-700
 {%- endblock modal_wrapper_classes %}
 
 {% block modal_header_classes -%}
-    flex items-center justify-between p-4 border-b rounded-t
+    flex items-center justify-between p-4 border-b rounded-t dark:border-gray-700
 {%- endblock modal_header_classes %}
 
 {% block modal_header_title_classes -%}
-    text-xl font-medium text-primary
+    text-xl font-medium text-primary dark:text-gray-100
 {%- endblock modal_header_title_classes %}
 
 {% block modal_header_button_classes -%}
@@ -271,7 +271,7 @@ The table sticky cell class is built dynamically:
 {%- endblock modal_content_classes %}
 
 {% block modal_content_message_classes -%}
-    text-base text-primary mb-4
+    text-base text-primary mb-4 dark:text-gray-100
 {%- endblock modal_content_message_classes %}
 
 {% block modal_content_buttons_classes -%}
@@ -279,19 +279,19 @@ The table sticky cell class is built dynamically:
 {%- endblock modal_content_buttons_classes %}
 
 {% block nav_dropdown_button_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-blue-100 dark:hover:text-white dark:hover:bg-blue-900 [&>svg]:fill-blue-400
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 [&>svg]:fill-gray-400
 {%- endblock nav_dropdown_button_classes %}
 
 {% block nav_dropdown_button_icon_classes -%}
-    w-4 h-4 text-primary transition ease-in-out me-3
+    w-4 h-4 text-primary transition ease-in-out me-3 dark:text-gray-400
 {%- endblock nav_dropdown_button_icon_classes %}
 
 {% block nav_dropdown_button_label_classes -%}
-    flex-1 grow text-left whitespace-nowrap
+    flex-1 grow text-left whitespace-nowrap dark:text-gray-100
 {%- endblock nav_dropdown_button_label_classes %}
 
 {% block nav_dropdown_down_icon_classes -%}
-    w-4 h-4 text-base transition ease-in-out aria-expanded:rotate-180
+    w-4 h-4 text-base transition ease-in-out aria-expanded:rotate-180 dark:text-gray-400
 {%- endblock nav_dropdown_down_icon_classes %}
 
 {% block nav_dropdown_down_icon_wrapper_classes -%}
@@ -302,23 +302,23 @@ The table sticky cell class is built dynamically:
 {%- endblock nav_dropdown_content_classes %}
 
 {% block nav_item_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-blue-100
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700
 {%- endblock nav_item_classes %}
 
 {% block nav_item_icon_classes -%}
-    w-4 h-4 text-gray-400 transition ease-in-out mr-3
+    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
 {%- endblock nav_item_icon_classes %}
 
 {% block nav_dropdown_item_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-blue-900 [&>svg]:fill-blue-400 text-sm
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 [&>svg]:fill-gray-400 text-sm
 {%- endblock nav_dropdown_item_classes %}
 
 {% block nav_sub_nav_item_classes -%}
-    block text-primary py-2 md:p-0 hover:text-blue-700
+    block text-primary py-2 md:p-0 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100
 {%- endblock nav_sub_nav_item_classes %}
 
 {% block nav_dropdown_item_icon_classes -%}
-    w-4 h-4 text-primary transition ease-in-out mr-3
+    w-4 h-4 text-primary transition ease-in-out mr-3 dark:text-gray-400
 {%- endblock nav_dropdown_item_icon_classes %}
 
 {% block nav_dropdown_item_no_icon_classes -%}
@@ -364,11 +364,11 @@ The table sticky cell class is built dynamically:
 {%- endblock navbar_wrapper_classes %}
 
 {% block navbar_sidebar_button_classes -%}
-    group me-2 cursor-pointer rounded-sm p-1.5
+    group me-2 cursor-pointer rounded-sm p-1.5 dark:hover:bg-gray-700
 {%- endblock navbar_sidebar_button_classes %}
 
 {% block navbar_sidebar_button_icon_classes -%}
-    h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark
+    h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-gray-100
 {%- endblock navbar_sidebar_button_icon_classes %}
 
 {% block navbar_dropdown_button_classes -%}
