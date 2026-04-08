@@ -279,7 +279,7 @@ The table sticky cell class is built dynamically:
 {%- endblock modal_content_buttons_classes %}
 
 {% block nav_dropdown_button_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 [&>svg]:fill-gray-400
+    group w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700
 {%- endblock nav_dropdown_button_classes %}
 
 {% block nav_dropdown_button_icon_classes -%}
@@ -291,7 +291,7 @@ The table sticky cell class is built dynamically:
 {%- endblock nav_dropdown_button_label_classes %}
 
 {% block nav_dropdown_down_icon_classes -%}
-    w-4 h-4 text-base transition ease-in-out aria-expanded:rotate-180 dark:text-gray-400
+    w-4 h-4 text-base transition-transform ease-in-out rotate-0 group-aria-expanded:-rotate-180
 {%- endblock nav_dropdown_down_icon_classes %}
 
 {% block nav_dropdown_down_icon_wrapper_classes -%}
@@ -310,7 +310,7 @@ The table sticky cell class is built dynamically:
 {%- endblock nav_item_icon_classes %}
 
 {% block nav_dropdown_item_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 [&>svg]:fill-gray-400 text-sm
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 [&>svg]:fill-gray-400 text-sm aria-[current=page]:bg-gray-100 dark:aria-[current=page]:bg-gray-900
 {%- endblock nav_dropdown_item_classes %}
 
 {% block nav_sub_nav_item_classes -%}
