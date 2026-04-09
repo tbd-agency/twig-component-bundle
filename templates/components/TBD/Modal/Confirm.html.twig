@@ -7,7 +7,7 @@
                     {% if title %}
                         {{ title }}
                     {% else %}
-                        {{ 'label.confirm'|trans({'default': 'Confirm'}) }}
+                        {{ 'sub-title.confirm'|trans({'default': 'Confirm'}, 'tbd-component') }}
                     {% endif %}
                 </h3>
                 <twig:TBD:Button
@@ -24,7 +24,7 @@
                     {% if message %}
                         {{ message }}
                     {% else %}
-                        {{ 'message.confirm'|trans({'default': 'Are you sure you wish to continue?'}) }}
+                        {{ 'label.confirm'|trans({'default': 'Are you sure you wish to continue?'}, 'tbd-component') }}
                     {% endif %}
                 </p>
                 <div class="{{ block('modal_content_buttons_classes', tbd_twig_component_template)|trim }}">
@@ -34,13 +34,13 @@
                             data-action="modal#close"
                             data-turbo-prefetch="false"
                             tag="a" class="confirm"
-                            label="{{ 'label.confirm'|trans({'default': 'Confirm'}) }}"/>
+                            label="{{ 'button.confirm'|trans({'default': 'Confirm'}, 'tbd-component') }}"/>
                     <twig:TBD:Button
                             data-controller="modal"
                             data-modal-target-value="{{ id }}"
                             data-action="modal#close"
                             type="button" variant="hollow"
-                            label="{{ 'label.cancel'|trans({'default': 'Cancel'}) }}"/>
+                            label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
                 </div>
             </div>
         </div>

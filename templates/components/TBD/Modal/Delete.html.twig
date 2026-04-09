@@ -7,7 +7,7 @@
                     {% if title %}
                         {{ title }}
                     {% else %}
-                        {{ 'label.delete-item'|trans({'default': 'Delete item'}) }}
+                        {{ 'sub-title.delete-item'|trans({'default': 'Delete item'}, 'tbd-component') }}
                     {% endif %}
                 </h3>
                 <twig:TBD:Button
@@ -23,17 +23,17 @@
                         {% if message %}
                             {{ message }}
                         {% else %}
-                            {{ 'message.delete-item'|trans({'default': 'Are you sure you want to delete this item?'}) }}
+                            {{ 'label.delete-item'|trans({'default': 'Are you sure you want to delete this item?'}, 'tbd-component') }}
                         {% endif %}
                     </p>
                     <div class="{{ block('modal_content_buttons_classes', tbd_twig_component_template)|trim }}">
                         <twig:TBD:Button
                                 data-modal-hide="modal-delete"
-                                label="{{ 'label.delete'|trans({'default': 'Delete'}) }}"/>
+                                label="{{ 'button.delete'|trans({'default': 'Delete'}, 'tbd-component') }}"/>
                         <twig:TBD:Button
                                 data-modal-hide="modal-delete"
                                 type="button" variant="hollow"
-                                label="{{ 'label.cancel'|trans({'default': 'Cancel'}) }}"/>
+                                label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
                     </div>
                 </div>
             </form>

@@ -14,7 +14,7 @@
         {{ block('content') }}
     {% else %}
         <div class="{{ block('detail_not_set_classes', tbd_twig_component_template)|trim }}">
-            {{ 'label.not-set'|trans({'default': 'Not set'}, 'admin interface') }}
+            {{ 'label.not-set'|trans({'default': 'Not set'}, 'tbd-component') }}
         </div>
     {% endif %}
 </div>
