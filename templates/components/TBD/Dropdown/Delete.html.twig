@@ -1,10 +1,10 @@
 <li>
     <a{{ attributes.defaults({'class':  block('dropdown_delete_classes', tbd_twig_component_template)|trim}) }}
-            data-modal-target="modal-delete"
-            data-modal-toggle="modal-delete"
-            data-controller="delete" data-action="click->app#dropdownClose click->delete#modal"
+            data-controller="modal delete"
+            data-modal-target-value="modal-delete"
             data-delete-action-value="{{ action }}"
             data-delete-csrf-token-value="{{ csrf_token(id) }}"
+            data-action="click->modal#setSrc click->app#dropdownClose click->delete#modal"
     >
         {% if label is defined and label is not empty %}
             {{ label }}
