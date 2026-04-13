@@ -2,7 +2,7 @@
     <a{{ attributes.defaults({'class':  block('dropdown_delete_classes', tbd_twig_component_template)|trim}) }}
             data-modal-target="modal-delete"
             data-modal-toggle="modal-delete"
-            data-controller="delete" data-action="click->delete#modal"
+            data-controller="delete" data-action="click->app#dropdownClose click->delete#modal"
             data-delete-action-value="{{ action }}"
             data-delete-csrf-token-value="{{ csrf_token(id) }}"
     >
