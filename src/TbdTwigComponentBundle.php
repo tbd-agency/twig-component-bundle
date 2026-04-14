@@ -64,6 +64,15 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('nav.badge_type', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['nav']['badge_type'] ?? []));
 
         $builder->setParameter('logo.sizes', array_replace(self::DEFAULT_LOGO_SIZES, $config['logo']['sizes'] ?? []));
+
+        $builder->setParameter('modal.close.buttonVariant', $config['modal']['close']['button_variant']);
+        $builder->setParameter('modal.close.buttonSize', $config['modal']['close']['button_size']);
+
+        $builder->setParameter('modal.confirm.buttonVariant', $config['modal']['confirm']['button_variant']);
+        $builder->setParameter('modal.confirm.buttonSize', $config['modal']['confirm']['button_size']);
+
+        $builder->setParameter('modal.cancel.buttonVariant', $config['modal']['cancel']['button_variant']);
+        $builder->setParameter('modal.cancel.buttonSize', $config['modal']['cancel']['button_size']);
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -230,6 +239,44 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_LOGO_SIZES)
+            ->end()
+            ->end()
+            ->end()
+            ->arrayNode('modal')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('close')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('button_variant')
+            ->defaultValue('hollow')
+            ->end()
+            ->scalarNode('button_size')
+            ->defaultValue('sm')
+            ->end()
+            ->end()
+            ->end()
+            ->arrayNode('confirm')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('button_variant')
+            ->defaultValue('primary')
+            ->end()
+            ->scalarNode('button_size')
+            ->defaultValue('md')
+            ->end()
+            ->end()
+            ->end()
+            ->arrayNode('cancel')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('button_variant')
+            ->defaultValue('hollow')
+            ->end()
+            ->scalarNode('button_size')
+            ->defaultValue('md')
+            ->end()
+            ->end()
             ->end()
             ->end()
             ->end()

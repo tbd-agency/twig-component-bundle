@@ -10,8 +10,8 @@
                         data-controller="modal"
                         data-modal-target-value="{{ modalId }}"
                         data-action="modal#close"
-                        variant="hollow"
-                        size="sm"
+                        variant="{{ closeButtonVariant }}"
+                        size="{{ closeButtonSize }}"
                         label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
             </div>
             <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">
