@@ -7,7 +7,6 @@
             <twig:TBD:Button
                     size="{{ buttonSizes }}"
                     variant="{{ buttonVariants }}"
-                    type="button"
                     data-action="sidebar#toggle"
                     data-sidebar-target="toggleButton"
                     class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} hidden! lg:inline!">
@@ -25,7 +24,6 @@
             <twig:TBD:Button
                     size="{{ buttonSizes }}"
                     variant="{{ buttonVariants }}"
-                    type="button"
                     data-drawer-target="sidebar"
                     data-drawer-toggle="sidebar"
                     class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} inline! lg:hidden!">
@@ -43,7 +41,6 @@
                     <twig:TBD:Button
                             size="{{ buttonSizes }}"
                             variant="{{ buttonVariants }}"
-                            type="button"
                             data-controller="theme"
                             class="group"
                             data-action="theme#toggleDarkMode"
@@ -67,7 +64,6 @@
             {% if app.user and block('userDropdown') is defined %}
                 <twig:TBD:Button
                         size="none"
-                        type="button"
                         class="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
                         data-dropdown-toggle="dropdown-user"
                         data-dropdown-placement="bottom-end">

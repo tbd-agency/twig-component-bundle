@@ -14,7 +14,7 @@
                         class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
                         data-controller="modal"
                         data-action="click->modal#close"
-                        type="button" variant="hollow" size="sm"
+                        variant="hollow" size="sm"
                         label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
             </div>
             <form {{ attributes.defaults({ method: 'POST'}) }}>
@@ -31,11 +31,12 @@
                         <twig:TBD:Button
                                 data-controller="modal"
                                 data-action="click->modal#close"
+                                type="submit"
                                 label="{{ 'button.delete'|trans({'default': 'Delete'}, 'tbd-component') }}"/>
                         <twig:TBD:Button
                                 data-controller="modal"
                                 data-action="click->modal#close"
-                                type="button" variant="hollow"
+                                variant="hollow"
                                 label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
                     </div>
                 </div>

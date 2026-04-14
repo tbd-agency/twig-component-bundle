@@ -6,7 +6,7 @@
         {% endfor %}
     </div>
     <div class="{{ block('form_search_button_wrapper_classes', tbd_twig_component_template)|trim }}">
-        <twig:TBD:Button label="{{ 'button.search'|trans({'default': 'Search'}, 'tbd-component') }}" extraClasses="{{ block('form_search_button_search_classes', tbd_twig_component_template)|trim }}"/>
+        <twig:TBD:Button label="{{ 'button.search'|trans({'default': 'Search'}, 'tbd-component') }}" extraClasses="{{ block('form_search_button_search_classes', tbd_twig_component_template)|trim }}" type="submit"/>
         <twig:TBD:Button label="{{ 'button.reset'|trans({'default': 'Reset'}, 'tbd-component') }}" extraClasses="{{ block('form_search_button_reset_classes', tbd_twig_component_template)|trim }}" variant="hollow" type="reset" data-controller="reset-search" data-action="reset-search#reset"/>
     </div>
 </twig:TBD:Card>

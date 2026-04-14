@@ -15,7 +15,7 @@
                         data-controller="modal"
                         data-modal-target-value="{{ id }}"
                         data-action="modal#close"
-                        type="button" variant="hollow" size="sm"
+                        variant="hollow" size="sm"
                         label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
             </div>
             <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">
@@ -39,7 +39,7 @@
                             data-controller="modal"
                             data-modal-target-value="{{ id }}"
                             data-action="modal#close"
-                            type="button" variant="hollow"
+                            variant="hollow"
                             label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
                 </div>
             </div>
