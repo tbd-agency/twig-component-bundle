@@ -182,30 +182,20 @@
     border-b border-b-gray-200 dark:border-b-gray-600
 {%- endblock table_head_classes %}
 
-{#
-The table cell class is built dynamically:
-- always includes the `table_cell_classes` block
-- if the tag is a <th>, the `table_head_cell_classes` block is appended
-#}
 {% block table_cell_classes -%}
     px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap dark:border-b-gray-700
 {%- endblock table_cell_classes %}
 
 {% block table_head_cell_classes -%}
-    font-medium dark:text-gray-300
+    px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap dark:border-b-gray-700 font-medium dark:text-gray-300
 {%- endblock table_head_cell_classes %}
 
-{#
-The table sticky cell class is built dynamically:
-- always includes the `table_sticky_cell_classes` block
-- if the tag is a <th>, the `table_head_sticky_cell_classes` block is appended
-#}
 {% block table_sticky_cell_classes -%}
     bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
 {%- endblock table_sticky_cell_classes %}
 
 {% block table_head_sticky_cell_classes -%}
-    font-medium bg-white dark:bg-gray-800 dark:text-gray-300
+    bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700 font-medium bg-white dark:bg-gray-800 dark:text-gray-300
 {%- endblock table_head_sticky_cell_classes %}
 
 {% block table_row_classes -%}

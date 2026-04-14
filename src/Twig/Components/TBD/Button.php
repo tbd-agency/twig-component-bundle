@@ -63,7 +63,7 @@ final class Button
                 'variant' => 'primary',
                 'size' => 'md',
                 'iconSize' => 'md',
-                'type' => 'submit',
+                'type' => 'button',
                 'tag' => 'button',
                 'disabled' => false,
                 'fullWidth' => false,

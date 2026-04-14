@@ -1,5 +1,13 @@
-<div class="{{ block('table_wrapper_classes', tbd_twig_component_template)|trim }}{{ hasSearch ? ' rounded-t-none' }}{{ hasTabs ? ' rounded-tl-none' }}{{ isSticky ? ' relative overflow-auto max-h-[70vh] overscroll-contain' }}">
+{% set table %}
     <table{{ attributes.defaults({'class': block('table_classes', tbd_twig_component_template)|trim ~ (hasSearch ? ' rounded-t-none') ~ (hasTabs ? ' rounded-tl-none')}) }}>
         {% block content %}{% endblock %}
     </table>
-</div>
+{% endset %}
+
+{% if includeWrapper %}
+    <twig:TBD:Table:Wrapper hasSearch="{{ hasSearch }}" hasTabs="{{ hasTabs }}" isSticky="{{ isSticky }}">
+        {{ table }}
+    </twig:TBD:Table:Wrapper>
+{% else %}
+    {{ table }}
+{% endif %}

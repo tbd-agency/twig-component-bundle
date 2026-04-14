@@ -14,6 +14,7 @@ final class Table
     public bool $hasSearch;
     public bool $hasTabs;
     public bool $isSticky;
+    public bool $includeWrapper;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -26,10 +27,12 @@ final class Table
                 'hasSearch' => false,
                 'hasTabs' => false,
                 'isSticky' => false,
+                'includeWrapper' => true,
             ])
             ->setAllowedValues('hasSearch', [true, false])
             ->setAllowedValues('hasTabs', [true, false])
-            ->setAllowedValues('isSticky', [true, false]);
+            ->setAllowedValues('isSticky', [true, false])
+            ->setAllowedValues('includeWrapper', [true, false]);
 
         return $resolver->resolve($data) + $data;
     }
