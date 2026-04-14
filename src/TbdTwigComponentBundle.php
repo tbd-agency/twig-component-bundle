@@ -252,7 +252,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->defaultValue('hollow')
             ->end()
             ->scalarNode('button_size')
-            ->defaultValue('sm')
+            ->defaultValue('md')
             ->end()
             ->end()
             ->end()
