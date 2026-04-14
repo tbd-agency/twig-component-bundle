@@ -1,5 +1,6 @@
-<tr{{ attributes.defaults({class: block('table_row_classes',tbd_twig_component_template)|trim}) }}
-        {% if path is not empty and (permission is empty or is_granted(permission)) %}
+{% set isGranted = path is not empty and (permission is empty or is_granted(permission)) %}
+<tr{{ attributes.defaults({class: block('table_row_classes', tbd_twig_component_template)|trim ~ (isGranted ? ' cursor-pointer')}) }}
+        {% if isGranted %}
             data-controller="url"
             data-action="click->url#navigate"
             data-url-black-list-selectors-value="a,svg,path,input,select,option"
