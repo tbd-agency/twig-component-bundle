@@ -13,6 +13,7 @@
                 <twig:TBD:Button
                         class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
                         data-controller="modal"
+                        data-modal-target-value="modal-delete"
                         data-action="click->modal#close"
                         variant="{{ closeButtonVariant }}" size="{{ closeButtonSize }}"
                         label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
@@ -37,6 +38,7 @@
                         <twig:TBD:Button
                                 data-controller="modal"
                                 data-action="click->modal#close"
+                                data-modal-target-value="modal-delete"
                                 variant="{{ cancelButtonVariant }}" size="{{ cancelButtonSize }}"
                                 label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
                     </div>
