@@ -18,6 +18,7 @@ final class Section
 
     public function __construct(
         private readonly array $paddings,
+        private readonly string $defaultPadding,
     ){
     }
 
@@ -29,7 +30,7 @@ final class Section
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'padding' => 'large',
+                'padding' => $this->defaultPadding,
                 'wrapper' => true,
                 'indented' => false,
                 'border' => false,

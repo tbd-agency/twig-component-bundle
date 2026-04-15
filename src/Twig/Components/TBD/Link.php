@@ -22,6 +22,7 @@ final class Link
         private readonly array $iconSizes,
         private readonly array $prependIconMargins,
         private readonly array $appendIconMargins,
+        private readonly string $defaultIconSize,
     )
     {
     }
@@ -33,10 +34,10 @@ final class Link
         $resolver->setIgnoreUndefined();
 
         $resolver->setDefaults([
-            'iconSize' => 'md',
+            'iconSize' => $this->defaultIconSize,
         ]);
 
-        $iconSize = $data['iconSize'] ?? 'md';
+        $iconSize = $data['iconSize'] ?? $this->defaultIconSize;
 
         $missingIn = [];
 

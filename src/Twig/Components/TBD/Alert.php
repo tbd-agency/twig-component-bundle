@@ -15,6 +15,7 @@ final class Alert
 
     public function __construct(
         private readonly array $types,
+        private readonly string $defaultType,
     )
     {
     }
@@ -26,7 +27,7 @@ final class Alert
 
         $resolver
             ->setIgnoreUndefined()
-            ->setDefaults(['type' => 'default'])
+            ->setDefaults(['type' => $this->defaultType])
             ->setAllowedValues('type', array_keys($this->types));
 
         return $resolver->resolve($data) + $data;

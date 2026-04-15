@@ -20,6 +20,7 @@ final class Item
 
     public function __construct(
         private readonly array $badgeTypes,
+        private readonly string $defaultBadgeType,
     )
     {
     }
@@ -39,7 +40,7 @@ final class Item
 
         if (!empty($data['badge'])) {
             $resolver
-                ->setDefaults(['badgeType' => 'errors'])
+                ->setDefaults(['badgeType' => $this->defaultBadgeType])
                 ->setRequired('badgeType')
                 ->setAllowedValues('badgeType', array_keys($this->badgeTypes));
         }

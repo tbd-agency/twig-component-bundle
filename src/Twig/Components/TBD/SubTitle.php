@@ -21,6 +21,7 @@ final class SubTitle
 
     public function __construct(
         private readonly array $fontSizes,
+        private readonly string $defaultTag,
     ){
     }
 
@@ -33,7 +34,7 @@ final class SubTitle
             ->setIgnoreUndefined()
             ->setRequired('label')
             ->setDefaults([
-                'tag' => 'h2',
+                'tag' => $this->defaultTag,
                 'wrapper' => 'div'
             ])
             ->setAllowedValues('tag', array_keys($this->fontSizes))

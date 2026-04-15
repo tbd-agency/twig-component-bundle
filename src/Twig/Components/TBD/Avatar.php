@@ -18,6 +18,8 @@ final class Avatar
     public function __construct(
         private readonly array $sizes,
         private readonly array $borderRadii,
+        private readonly string $defaultSize,
+        private readonly string $defaultBorderRadius,
     )
     {
     }
@@ -30,8 +32,8 @@ final class Avatar
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'borderRadius' => 'full',
-                'size' => 'md',
+                'borderRadius' => $this->defaultBorderRadius,
+                'size' => $this->defaultSize,
             ])
             ->setAllowedValues('borderRadius', array_keys($this->borderRadii))
             ->setAllowedValues('size', array_keys($this->sizes));

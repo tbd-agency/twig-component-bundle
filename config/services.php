@@ -45,58 +45,73 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(Spinner::class)
         ->args([
             '$sizes' => '%icon.sizes%',
+            '$defaultSize' => '%icon.size.default%',
         ])
         ->set(Avatar::class)
         ->args([
             '$sizes' => '%avatar.sizes%',
             '$borderRadii' => '%avatar.borderRadii%',
+            '$defaultSize' => '%avatar.size.default%',
+            '$defaultBorderRadius' => '%avatar.borderRadius.default%',
         ])
         ->set(Alert::class)
         ->args([
             '$types' => '%alert.types%',
+            '$defaultType' => '%alert.type.default%',
         ])
         ->set(Badge::class)
         ->args([
             '$variants' => '%badge.variants%',
             '$sizes' => '%badge.sizes%',
+            '$defaultVariant' => '%badge.variant.default%',
+            '$defaultSize' => '%badge.size.default%',
         ])
         ->set(Card::class)
         ->args([
             '$paddings' => '%card.paddings%',
+            '$defaultPadding' => '%card.padding.default%',
         ])
         ->set(Link::class)
         ->args([
             '$iconSizes' => '%icon.sizes%',
             '$prependIconMargins' => '%link.prependIconMargins%',
             '$appendIconMargins' => '%link.appendIconMargins%',
+            '$defaultIconSize' => '%icon.size.default%',
         ])
         ->set(Section::class)
         ->args([
             '$paddings' => '%section.paddings%',
+            '$defaultPadding' => '%section.padding.default%',
         ])
         ->set(SubTitle::class)
         ->args([
             '$fontSizes' => '%sub_title.font_sizes%',
+            '$defaultTag' => '%sub_title.font_size.default%',
         ])
         ->set(StickyCell::class)
         ->args([
             '$positions' => '%table.sticky_cell.positions%',
+            '$defaultPosition' => '%table.sticky_cell.position.default%',
         ])
         ->set(Toast::class)
         ->args([
             '$iconSizes' => '%icon.sizes%',
+            '$defaultIconSize' => '%icon.size.default%',
         ])
         ->set(NavDropdown::class)
         ->args([
-            '$badgeTypes' => '%nav.badge_type%'
+            '$badgeTypes' => '%nav.badge_type%',
+            '$defaultBadgeType' => '%nav.badge_type.default%',
         ])
         ->set(Item::class)
         ->args([
-            '$badgeTypes' => '%nav.badge_type%'
+            '$badgeTypes' => '%nav.badge_type%',
+            '$defaultBadgeType' => '%nav.badge_type.default%',
         ])
         ->set(NavDropdown\Item::class)
         ->args([
-            '$badgeTypes' => '%nav.badge_type%'
+            '$badgeTypes' => '%nav.badge_type%',
+            '$defaultBadgeType' => '%nav.badge_type.default%',
         ])
         ->set(Navbar::class)
         ->args([
@@ -106,6 +121,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(Logo::class)
         ->args([
             '$sizes' => '%logo.sizes%',
+            '$defaultSize' => '%logo.size.default%',
         ])
         ->set(Form::class)
         ->args([

@@ -25,6 +25,7 @@ final class Dropdown
     public function __construct(
         public readonly RequestStack $requestStack,
         public readonly array        $badgeTypes,
+        private readonly string      $defaultBadgeType,
     )
     {
     }
@@ -42,7 +43,7 @@ final class Dropdown
             ->setRequired('label')
             ->setDefaults([
                 'isHidden' => true,
-                'badgeType' => 'errors',
+                'badgeType' => $this->defaultBadgeType,
             ])
             ->setAllowedValues('isHidden', [true, false]);
 

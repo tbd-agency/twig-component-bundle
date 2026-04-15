@@ -15,7 +15,10 @@ final class StickyCell
     public string $tag;
     public string $position;
 
-    public function __construct(private readonly array $positions)
+    public function __construct(
+        private readonly array $positions,
+        private readonly string $defaultPosition,
+    )
     {
     }
 
@@ -27,7 +30,7 @@ final class StickyCell
             ->setIgnoreUndefined()
             ->setDefaults([
                 'tag' => 'th',
-                'position' => 'right',
+                'position' => $this->defaultPosition,
             ])
             ->setAllowedValues('tag', ['th', 'td'])
             ->setAllowedValues('position', array_keys($this->positions));

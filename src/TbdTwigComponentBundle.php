@@ -38,34 +38,48 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $container->import(__DIR__ . '/../config/services.php');
 
         $builder->setParameter('button.variants', array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants'] ?? []));
-        $builder->setParameter('button.variant.default',$config['button']['default_variant']);
         $builder->setParameter('button.sizes', array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes'] ?? []));
-        $builder->setParameter('button.size.default',$config['button']['default_size']);
+        $builder->setParameter('button.variant.default', $config['button']['default_variant']);
+        $builder->setParameter('button.size.default', $config['button']['default_size']);
 
         $builder->setParameter('icon.sizes', array_replace(self::DEFAULT_ICON_SIZES, $config['icon']['sizes']));
+        $builder->setParameter('icon.size.default', $config['icon']['default_size']);
 
         $builder->setParameter('avatar.sizes', array_replace(self::DEFAULT_AVATAR_SIZES, $config['avatar']['sizes'] ?? []));
         $builder->setParameter('avatar.borderRadii', array_replace(self::DEFAULT_AVATAR_BORDER_RADII, $config['avatar']['border_radii'] ?? []));
+        $builder->setParameter('avatar.size.default', $config['avatar']['default_size']);
+        $builder->setParameter('avatar.borderRadius.default', $config['avatar']['default_border_radius']);
 
         $builder->setParameter('alert.types', array_replace(self::DEFAULT_ALERT_TYPES, $config['alert']['types'] ?? []));
+        $builder->setParameter('alert.type.default', $config['alert']['default_type']);
 
         $builder->setParameter('badge.variants', array_replace(self::DEFAULT_BADGE_VARIANTS, $config['badge']['variants'] ?? []));
         $builder->setParameter('badge.sizes', array_replace(self::DEFAULT_BADGE_SIZES, $config['badge']['sizes'] ?? []));
+        $builder->setParameter('badge.variant.default', $config['badge']['default_variant']);
+        $builder->setParameter('badge.size.default', $config['badge']['default_size']);
 
         $builder->setParameter('card.paddings', array_replace(self::DEFAULT_CARD_PADDINGS, $config['card']['paddings'] ?? []));
+        $builder->setParameter('card.padding.default', $config['card']['default_padding']);
 
         $builder->setParameter('link.prependIconMargins', array_replace(self::DEFAULT_LINK_PREPEND_ICON_MARGINS, $config['link']['prepend_icon_margins'] ?? []));
         $builder->setParameter('link.appendIconMargins', array_replace(self::DEFAULT_LINK_APPEND_ICON_MARGINS, $config['link']['append_icon_margins'] ?? []));
+        $builder->setParameter('link.prependIconMargin.default', $config['link']['default_prepend_icon_margin']);
+        $builder->setParameter('link.appendIconMargin.default', $config['link']['default_append_icon_margin']);
 
         $builder->setParameter('section.paddings', array_replace(self::DEFAULT_SECTION_PADDINGS, $config['section']['paddings'] ?? []));
+        $builder->setParameter('section.padding.default', $config['section']['default_padding']);
 
         $builder->setParameter('sub_title.font_sizes', array_replace(self::DEFAULT_SUB_TITLE_FONT_SIZES, $config['sub_title']['font_sizes'] ?? []));
+        $builder->setParameter('sub_title.font_size.default', $config['sub_title']['default_font_size']);
 
         $builder->setParameter('table.sticky_cell.positions', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions'] ?? []));
+        $builder->setParameter('table.sticky_cell.position.default', $config['table']['sticky_cell']['default_position']);
 
         $builder->setParameter('nav.badge_type', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['nav']['badge_type'] ?? []));
+        $builder->setParameter('nav.badge_type.default', $config['nav']['default_badge_type']);
 
         $builder->setParameter('logo.sizes', array_replace(self::DEFAULT_LOGO_SIZES, $config['logo']['sizes'] ?? []));
+        $builder->setParameter('logo.size.default', $config['logo']['default_size']);
 
         $builder->setParameter('modal.close.buttonVariant', $config['modal']['close']['button_variant']);
         $builder->setParameter('modal.close.buttonSize', $config['modal']['close']['button_size']);
@@ -79,7 +93,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
     public function configure(DefinitionConfigurator $definition): void
     {
-        $definition->rootNode()
+        $root = $definition->rootNode();
+
+        $root
             ->children()
             ->stringNode('template')
             ->end()
@@ -106,25 +122,6 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->defaultValue('md')
             ->end()
             ->end()
-            ->validate()
-            ->always(function ($button) {
-                if (!array_key_exists($button['default_variant'], $button['variants'])) {
-                    throw new \InvalidArgumentException(sprintf(
-                        '"default_variant" "%s" must be a key in "variants". Available: %s.',
-                        $button['default_variant'],
-                        implode(', ', array_keys($button['variants']))
-                    ));
-                }
-                if (!array_key_exists($button['default_size'], $button['sizes'])) {
-                    throw new \InvalidArgumentException(sprintf(
-                        '"default_size" "%s" must be a key in "sizes". Available: %s.',
-                        $button['default_size'],
-                        implode(', ', array_keys($button['sizes']))
-                    ));
-                }
-                return $button;
-            })
-            ->end()
             ->end()
 
             ->arrayNode('icon')
@@ -135,6 +132,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_ICON_SIZES)
+            ->end()
+            ->scalarNode('default_size')
+            ->defaultValue('md')
             ->end()
             ->end()
             ->end()
@@ -154,6 +154,12 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_AVATAR_BORDER_RADII)
             ->end()
+            ->scalarNode('default_size')
+            ->defaultValue('md')
+            ->end()
+            ->scalarNode('default_border_radius')
+            ->defaultValue('full')
+            ->end()
             ->end()
             ->end()
 
@@ -165,6 +171,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_ALERT_TYPES)
+            ->end()
+            ->scalarNode('default_type')
+            ->defaultValue('default')
             ->end()
             ->end()
             ->end()
@@ -184,6 +193,12 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BADGE_SIZES)
             ->end()
+            ->scalarNode('default_variant')
+            ->defaultValue('primary')
+            ->end()
+            ->scalarNode('default_size')
+            ->defaultValue('md')
+            ->end()
             ->end()
             ->end()
 
@@ -195,6 +210,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_CARD_PADDINGS)
+            ->end()
+            ->scalarNode('default_padding')
+            ->defaultValue('default')
             ->end()
             ->end()
             ->end()
@@ -214,6 +232,12 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_LINK_APPEND_ICON_MARGINS)
             ->end()
+            ->scalarNode('default_prepend_icon_margin')
+            ->defaultValue('md')
+            ->end()
+            ->scalarNode('default_append_icon_margin')
+            ->defaultValue('md')
+            ->end()
             ->end()
             ->end()
 
@@ -226,6 +250,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_SECTION_PADDINGS)
             ->end()
+            ->scalarNode('default_padding')
+            ->defaultValue('large')
+            ->end()
             ->end()
             ->end()
 
@@ -237,6 +264,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_SUB_TITLE_FONT_SIZES)
+            ->end()
+            ->scalarNode('default_font_size')
+            ->defaultValue('h2')
             ->end()
             ->end()
             ->end()
@@ -253,6 +283,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS)
             ->end()
+            ->scalarNode('default_position')
+            ->defaultValue('right')
+            ->end()
             ->end()
             ->end()
             ->end()
@@ -267,6 +300,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_DROPDOWN_BADGE_TYPE)
             ->end()
+            ->scalarNode('default_badge_type')
+            ->defaultValue('errors')
+            ->end()
             ->end()
             ->end()
 
@@ -278,6 +314,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_LOGO_SIZES)
+            ->end()
+            ->scalarNode('default_size')
+            ->defaultValue('md')
             ->end()
             ->end()
             ->end()
@@ -321,6 +360,85 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end();
+
+        $root
+            ->validate()
+            ->always(function ($config) {
+                # button
+                self::assertDefaultInKeys('button', 'default_variant', 'variants', $config['button']);
+                self::assertDefaultInKeys('button', 'default_size', 'sizes', $config['button']);
+
+                # icon
+                self::assertDefaultInKeys('icon', 'default_size', 'sizes', $config['icon']);
+
+                # avatar
+                self::assertDefaultInKeys('avatar', 'default_size', 'sizes', $config['avatar']);
+                self::assertDefaultInKeys('avatar', 'default_border_radius', 'border_radii', $config['avatar']);
+
+                # alert
+                self::assertDefaultInKeys('alert', 'default_type', 'types', $config['alert']);
+
+                # badge
+                self::assertDefaultInKeys('badge', 'default_variant', 'variants', $config['badge']);
+                self::assertDefaultInKeys('badge', 'default_size', 'sizes', $config['badge']);
+
+                # card
+                self::assertDefaultInKeys('card', 'default_padding', 'paddings', $config['card']);
+
+                # link
+                self::assertDefaultInKeys('link', 'default_prepend_icon_margin', 'prepend_icon_margins', $config['link']);
+                self::assertDefaultInKeys('link', 'default_append_icon_margin', 'append_icon_margins', $config['link']);
+
+                # section
+                self::assertDefaultInKeys('section', 'default_padding', 'paddings', $config['section']);
+
+                # sub_title
+                self::assertDefaultInKeys('sub_title', 'default_font_size', 'font_sizes', $config['sub_title']);
+
+                # table.sticky_cell
+                self::assertDefaultInKeys('table.sticky_cell', 'default_position', 'positions', $config['table']['sticky_cell']);
+
+                # nav
+                self::assertDefaultInKeys('nav', 'default_badge_type', 'badge_type', $config['nav']);
+
+                # logo
+                self::assertDefaultInKeys('logo', 'default_size', 'sizes', $config['logo']);
+
+                # Check modal button variants and sizes
+                $buttonVariants = array_keys($config['button']['variants']);
+                $buttonSizes = array_keys($config['button']['sizes']);
+                foreach (['close', 'confirm', 'cancel'] as $action) {
+                    if (!in_array($config['modal'][$action]['button_variant'], $buttonVariants)) {
+                        throw new \InvalidArgumentException(sprintf(
+                            'modal.%s.button_variant "%s" must be one of the button variants. Available: %s.',
+                            $action, $config['modal'][$action]['button_variant'], implode(', ', $buttonVariants)
+                        ));
+                    }
+                    if (!in_array($config['modal'][$action]['button_size'], $buttonSizes)) {
+                        throw new \InvalidArgumentException(sprintf(
+                            'modal.%s.button_size "%s" must be one of the button sizes. Available: %s.',
+                            $action, $config['modal'][$action]['button_size'], implode(', ', $buttonSizes)
+                        ));
+                    }
+                }
+
+                return $config;
+            })
+            ->end();
+    }
+
+    private static function assertDefaultInKeys(string $section, string $defaultKey, string $arrayKey, array $config): void
+    {
+        if (!array_key_exists($config[$defaultKey], $config[$arrayKey])) {
+            throw new \InvalidArgumentException(sprintf(
+                '%s."%s" "%s" must be a key in "%s". Available: %s.',
+                $section,
+                $defaultKey,
+                $config[$defaultKey],
+                $arrayKey,
+                implode(', ', array_keys($config[$arrayKey]))
+            ));
+        }
     }
 
     private const array DEFAULT_BUTTON_VARIANTS = [

@@ -20,6 +20,8 @@ final class Badge
     public function __construct(
         private readonly array $variants,
         private readonly array $sizes,
+        private readonly string $defaultVariant,
+        private readonly string $defaultSize,
     )
     {
     }
@@ -32,8 +34,8 @@ final class Badge
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'variant' => 'primary',
-                'size' => 'md',
+                'variant' => $this->defaultVariant,
+                'size' => $this->defaultSize,
             ])
             ->setAllowedValues('variant', array_keys($this->variants))
             ->setAllowedValues('size', array_keys($this->sizes));

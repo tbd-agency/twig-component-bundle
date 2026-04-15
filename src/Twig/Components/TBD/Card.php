@@ -16,6 +16,7 @@ final class Card
 
     public function __construct(
         private readonly array $paddings,
+        private readonly string $defaultPadding,
     )
     {
     }
@@ -33,7 +34,7 @@ final class Card
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'padding' => 'default',
+                'padding' => $this->defaultPadding,
                 'shadow' => false,
             ])
             ->setAllowedValues('padding', array_keys($this->paddings))

@@ -13,7 +13,10 @@ final class Spinner
 {
     public string $size;
 
-    public function __construct(private readonly array $sizes)
+    public function __construct(
+        private readonly array $sizes,
+        private readonly string $defaultSize,
+    )
     {
     }
 
@@ -29,7 +32,7 @@ final class Spinner
 
         $resolver
             ->setIgnoreUndefined()
-            ->setDefaults(['size' => 'md'])
+            ->setDefaults(['size' => $this->defaultSize])
             ->setAllowedValues('size', array_keys($this->sizes));
 
         return $resolver->resolve($data) + $data;

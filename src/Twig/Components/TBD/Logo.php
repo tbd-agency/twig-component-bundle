@@ -18,6 +18,7 @@ final class Logo
 
     public function __construct(
         private readonly array $sizes,
+        private readonly string $defaultSize,
     )
     {
     }
@@ -29,7 +30,7 @@ final class Logo
 
         $resolver
             ->setIgnoreUndefined()
-            ->setDefaults(['size' => 'md'])
+            ->setDefaults(['size' => $this->defaultSize])
             ->setDefaults(['path' => '#'])
             ->setRequired('image')
             ->setRequired('alt')

@@ -19,6 +19,7 @@ final class Toast
 
     public function __construct(
         private readonly array $iconSizes,
+        private readonly string $defaultIconSize,
     )
     {
     }
@@ -32,7 +33,7 @@ final class Toast
             ->setIgnoreUndefined()
             ->setDefaults([
                 'type' => 'success',
-                'iconSize' => 'md',
+                'iconSize' => $this->defaultIconSize,
                 'autoClose' => true,
             ])
             ->setAllowedValues('type', ['success', 'error'])
