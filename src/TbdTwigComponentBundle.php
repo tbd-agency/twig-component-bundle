@@ -365,59 +365,75 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->validate()
             ->always(function ($config) {
                 # button
-                self::assertDefaultInKeys('button', 'default_variant', 'variants', $config['button']);
-                self::assertDefaultInKeys('button', 'default_size', 'sizes', $config['button']);
+                self::assertDefaultInKeys('button', 'default_variant', 'variants', $config['button']['default_variant'],
+                    array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants']));
+                self::assertDefaultInKeys('button', 'default_size', 'sizes', $config['button']['default_size'],
+                    array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes']));
 
                 # icon
-                self::assertDefaultInKeys('icon', 'default_size', 'sizes', $config['icon']);
+                self::assertDefaultInKeys('icon', 'default_size', 'sizes', $config['icon']['default_size'],
+                    array_replace(self::DEFAULT_ICON_SIZES, $config['icon']['sizes']));
 
                 # avatar
-                self::assertDefaultInKeys('avatar', 'default_size', 'sizes', $config['avatar']);
-                self::assertDefaultInKeys('avatar', 'default_border_radius', 'border_radii', $config['avatar']);
+                self::assertDefaultInKeys('avatar', 'default_size', 'sizes', $config['avatar']['default_size'],
+                    array_replace(self::DEFAULT_AVATAR_SIZES, $config['avatar']['sizes']));
+                self::assertDefaultInKeys('avatar', 'default_border_radius', 'border_radii', $config['avatar']['default_border_radius'],
+                    array_replace(self::DEFAULT_AVATAR_BORDER_RADII, $config['avatar']['border_radii']));
 
                 # alert
-                self::assertDefaultInKeys('alert', 'default_type', 'types', $config['alert']);
+                self::assertDefaultInKeys('alert', 'default_type', 'types', $config['alert']['default_type'],
+                    array_replace(self::DEFAULT_ALERT_TYPES, $config['alert']['types']));
 
                 # badge
-                self::assertDefaultInKeys('badge', 'default_variant', 'variants', $config['badge']);
-                self::assertDefaultInKeys('badge', 'default_size', 'sizes', $config['badge']);
+                self::assertDefaultInKeys('badge', 'default_variant', 'variants', $config['badge']['default_variant'],
+                    array_replace(self::DEFAULT_BADGE_VARIANTS, $config['badge']['variants']));
+                self::assertDefaultInKeys('badge', 'default_size', 'sizes', $config['badge']['default_size'],
+                    array_replace(self::DEFAULT_BADGE_SIZES, $config['badge']['sizes']));
 
                 # card
-                self::assertDefaultInKeys('card', 'default_padding', 'paddings', $config['card']);
+                self::assertDefaultInKeys('card', 'default_padding', 'paddings', $config['card']['default_padding'],
+                    array_replace(self::DEFAULT_CARD_PADDINGS, $config['card']['paddings']));
 
                 # link
-                self::assertDefaultInKeys('link', 'default_prepend_icon_margin', 'prepend_icon_margins', $config['link']);
-                self::assertDefaultInKeys('link', 'default_append_icon_margin', 'append_icon_margins', $config['link']);
+                self::assertDefaultInKeys('link', 'default_prepend_icon_margin', 'prepend_icon_margins', $config['link']['default_prepend_icon_margin'],
+                    array_replace(self::DEFAULT_LINK_PREPEND_ICON_MARGINS, $config['link']['prepend_icon_margins']));
+                self::assertDefaultInKeys('link', 'default_append_icon_margin', 'append_icon_margins', $config['link']['default_append_icon_margin'],
+                    array_replace(self::DEFAULT_LINK_APPEND_ICON_MARGINS, $config['link']['append_icon_margins']));
 
                 # section
-                self::assertDefaultInKeys('section', 'default_padding', 'paddings', $config['section']);
+                self::assertDefaultInKeys('section', 'default_padding', 'paddings', $config['section']['default_padding'],
+                    array_replace(self::DEFAULT_SECTION_PADDINGS, $config['section']['paddings']));
 
                 # sub_title
-                self::assertDefaultInKeys('sub_title', 'default_font_size', 'font_sizes', $config['sub_title']);
+                self::assertDefaultInKeys('sub_title', 'default_font_size', 'font_sizes', $config['sub_title']['default_font_size'],
+                    array_replace(self::DEFAULT_SUB_TITLE_FONT_SIZES, $config['sub_title']['font_sizes']));
 
                 # table.sticky_cell
-                self::assertDefaultInKeys('table.sticky_cell', 'default_position', 'positions', $config['table']['sticky_cell']);
+                self::assertDefaultInKeys('table.sticky_cell', 'default_position', 'positions', $config['table']['sticky_cell']['default_position'],
+                    array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions']));
 
                 # nav
-                self::assertDefaultInKeys('nav', 'default_badge_type', 'badge_type', $config['nav']);
+                self::assertDefaultInKeys('nav', 'default_badge_type', 'badge_type', $config['nav']['default_badge_type'],
+                    array_replace(self::DEFAULT_DROPDOWN_BADGE_TYPE, $config['nav']['badge_type']));
 
                 # logo
-                self::assertDefaultInKeys('logo', 'default_size', 'sizes', $config['logo']);
+                self::assertDefaultInKeys('logo', 'default_size', 'sizes', $config['logo']['default_size'],
+                    array_replace(self::DEFAULT_LOGO_SIZES, $config['logo']['sizes']));
 
-                # Check modal button variants and sizes
-                $buttonVariants = array_keys($config['button']['variants']);
-                $buttonSizes = array_keys($config['button']['sizes']);
+                # modal: cross-reference against merged button variants/sizes
+                $buttonVariants = array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants']);
+                $buttonSizes = array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes']);
                 foreach (['close', 'confirm', 'cancel'] as $action) {
-                    if (!in_array($config['modal'][$action]['button_variant'], $buttonVariants)) {
+                    if (!array_key_exists($config['modal'][$action]['button_variant'], $buttonVariants)) {
                         throw new \InvalidArgumentException(sprintf(
                             'modal.%s.button_variant "%s" must be one of the button variants. Available: %s.',
-                            $action, $config['modal'][$action]['button_variant'], implode(', ', $buttonVariants)
+                            $action, $config['modal'][$action]['button_variant'], implode(', ', array_keys($buttonVariants))
                         ));
                     }
-                    if (!in_array($config['modal'][$action]['button_size'], $buttonSizes)) {
+                    if (!array_key_exists($config['modal'][$action]['button_size'], $buttonSizes)) {
                         throw new \InvalidArgumentException(sprintf(
                             'modal.%s.button_size "%s" must be one of the button sizes. Available: %s.',
-                            $action, $config['modal'][$action]['button_size'], implode(', ', $buttonSizes)
+                            $action, $config['modal'][$action]['button_size'], implode(', ', array_keys($buttonSizes))
                         ));
                     }
                 }
@@ -427,16 +443,16 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end();
     }
 
-    private static function assertDefaultInKeys(string $section, string $defaultKey, string $arrayKey, array $config): void
+    private static function assertDefaultInKeys(string $section, string $defaultKey, string $arrayKey, string $defaultValue, array $mergedKeys): void
     {
-        if (!array_key_exists($config[$defaultKey], $config[$arrayKey])) {
+        if (!array_key_exists($defaultValue, $mergedKeys)) {
             throw new \InvalidArgumentException(sprintf(
                 '%s."%s" "%s" must be a key in "%s". Available: %s.',
                 $section,
                 $defaultKey,
-                $config[$defaultKey],
+                $defaultValue,
                 $arrayKey,
-                implode(', ', array_keys($config[$arrayKey]))
+                implode(', ', array_keys($mergedKeys))
             ));
         }
     }
