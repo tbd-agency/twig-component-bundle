@@ -33,8 +33,9 @@ final class Button
         private readonly array $variants,
         private readonly array $sizes,
         private readonly array $iconSizes,
-    )
-    {
+        private readonly string $defaultVariant,
+        private readonly string $defaultSize,
+    ) {
     }
 
     public function getVariantClasses(): string
@@ -60,8 +61,8 @@ final class Button
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'variant' => 'primary',
-                'size' => 'md',
+                'variant' => $this->defaultVariant,
+                'size' => $this->defaultSize,
                 'iconSize' => 'md',
                 'type' => 'button',
                 'tag' => 'button',

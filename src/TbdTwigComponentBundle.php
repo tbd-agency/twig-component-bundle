@@ -38,7 +38,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $container->import(__DIR__ . '/../config/services.php');
 
         $builder->setParameter('button.variants', array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants'] ?? []));
+        $builder->setParameter('button.variant.default',$config['button']['default_variant']);
         $builder->setParameter('button.sizes', array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes'] ?? []));
+        $builder->setParameter('button.size.default',$config['button']['default_size']);
 
         $builder->setParameter('icon.sizes', array_replace(self::DEFAULT_ICON_SIZES, $config['icon']['sizes']));
 
@@ -81,6 +83,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->children()
             ->stringNode('template')
             ->end()
+
             ->arrayNode('button')
             ->addDefaultsIfNotSet()
             ->children()
@@ -90,14 +93,40 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BUTTON_VARIANTS)
             ->end()
+            ->scalarNode('default_variant')
+            ->defaultValue('primary')
+            ->end()
             ->arrayNode('sizes')
             ->useAttributeAsKey('name')
             ->normalizeKeys(false)
             ->scalarPrototype()->end()
             ->defaultValue(self::DEFAULT_BUTTON_SIZES)
             ->end()
+            ->scalarNode('default_size')
+            ->defaultValue('md')
             ->end()
             ->end()
+            ->validate()
+            ->always(function ($button) {
+                if (!array_key_exists($button['default_variant'], $button['variants'])) {
+                    throw new \InvalidArgumentException(sprintf(
+                        '"default_variant" "%s" must be a key in "variants". Available: %s.',
+                        $button['default_variant'],
+                        implode(', ', array_keys($button['variants']))
+                    ));
+                }
+                if (!array_key_exists($button['default_size'], $button['sizes'])) {
+                    throw new \InvalidArgumentException(sprintf(
+                        '"default_size" "%s" must be a key in "sizes". Available: %s.',
+                        $button['default_size'],
+                        implode(', ', array_keys($button['sizes']))
+                    ));
+                }
+                return $button;
+            })
+            ->end()
+            ->end()
+
             ->arrayNode('icon')
             ->addDefaultsIfNotSet()
             ->children()
@@ -109,6 +138,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('avatar')
             ->addDefaultsIfNotSet()
             ->children()
@@ -126,6 +156,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('alert')
             ->addDefaultsIfNotSet()
             ->children()
@@ -137,6 +168,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('badge')
             ->addDefaultsIfNotSet()
             ->children()
@@ -154,6 +186,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('card')
             ->addDefaultsIfNotSet()
             ->children()
@@ -165,6 +198,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('link')
             ->addDefaultsIfNotSet()
             ->children()
@@ -182,6 +216,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('section')
             ->addDefaultsIfNotSet()
             ->children()
@@ -193,6 +228,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('sub_title')
             ->addDefaultsIfNotSet()
             ->children()
@@ -204,6 +240,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('table')
             ->addDefaultsIfNotSet()
             ->children()
@@ -220,6 +257,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('nav')
             ->addDefaultsIfNotSet()
             ->children()
@@ -231,6 +269,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('logo')
             ->addDefaultsIfNotSet()
             ->children()
@@ -242,6 +281,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
             ->arrayNode('modal')
             ->addDefaultsIfNotSet()
             ->children()
