@@ -17,6 +17,7 @@ export default class extends Controller {
             let token = form.querySelector("input[name='_token']")
             form.setAttribute('action', action)
             token.value = csrfToken
+            new Modal(modal).show()
         }
     }
 }

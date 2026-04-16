@@ -3,7 +3,7 @@
         {% if isGranted %}
             data-controller="url"
             data-action="click->url#navigate"
-            data-url-black-list-selectors-value="a,svg,path,input,select,option"
+            data-url-black-list-selectors-value="a,svg,path,input,select,option,li,button"
             data-url-location-value="{{ path }}"
         {% endif %}
 >
