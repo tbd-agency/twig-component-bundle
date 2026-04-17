@@ -7,8 +7,7 @@
                     class="{{ block('modal_header_title_classes', tbd_twig_component_template)|trim }}">{{ title }}</h3>
                 <twig:TBD:Button
                         class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
-                        data-controller="modal"
-                        data-modal-target-value="{{ modalId }}"
+                        data-modal-target="{{ modalId }}"
                         data-action="modal#close"
                         variant="{{ closeButtonVariant }}"
                         size="{{ closeButtonSize }}"

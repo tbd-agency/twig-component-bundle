@@ -4,12 +4,12 @@ import {visit} from '@hotwired/turbo'
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static values = {
-        location: String,
-        blackListSelectors: {type: String, default: 'a,svg,path,input,form,button,.actions,.inline-edit,.link'}
+        blackListSelectors: {type: String, default: 'a,svg,path,input,form,button,select,option,li,.actions,.inline-edit,.link'}
     }
 
     navigate(event) {
-        let location = this.locationValue
+        const trigger = event?.currentTarget
+        const location = trigger?.dataset?.urlLocation
         let selectors = this.blackListSelectorsValue.split(',')
         if (location) {
             let hasSelection = window.getSelection().toString()
@@ -26,7 +26,7 @@ export default class extends Controller {
                     // Open location _blank if command or ctrl keys are pressed
                     window.open(location, '_blank');
                 } else {
-                    this.element.disabled = true
+                    trigger.disabled = true
                     visit(location)
                 }
             }

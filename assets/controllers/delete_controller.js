@@ -8,16 +8,19 @@ export default class extends Controller {
     }
 
     modal(event) {
-        let action = this.actionValue
-        let csrfToken = this.csrfTokenValue
-        let modal = document.getElementById('modal-delete')
+        const trigger = event?.currentTarget
+        let action = trigger?.dataset?.deleteAction ?? this.actionValue
+        let csrfToken = trigger?.dataset?.deleteCsrfToken ?? this.csrfTokenValue
+        let modalTarget = document.getElementById('modal-delete')
 
-        if (csrfToken && modal) {
-            let form = modal.querySelector('form')
+        if (csrfToken && modalTarget) {
+            let form = modalTarget.querySelector('form')
             let token = form.querySelector("input[name='_token']")
             form.setAttribute('action', action)
             token.value = csrfToken
-            new Modal(modal).show()
+            let modal = modalTarget.modalInstance ?? new Modal(modalTarget)
+            modalTarget.modalInstance = modal
+            modal.show()
         }
     }
 }

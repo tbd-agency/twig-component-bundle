@@ -2,39 +2,37 @@ import {Controller} from '@hotwired/stimulus'
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-    static values = {
-        target: {type : String, default: 'form-modal'},
-        frame: {type : String, default: 'form-frame'},
-        src: String,
-        title: String,
-        size: {type: String, default: 'md'},
-    }
+    setSrc(event) {
+        const trigger = event?.currentTarget
+        const targetValue = trigger?.dataset?.modalTarget
+        const sizeValue = trigger?.dataset?.modalSize
+        const titleValue = trigger?.dataset?.modalTitle
+        const srcValue = trigger?.dataset?.modalSrc
+        const frameValue = trigger?.dataset?.modalFrame ?? 'form-frame'
 
-    setSrc() {
-        let targetValue = this.targetValue
         let target = document.getElementById(targetValue)
-        let modal = new Modal(target, {closable: false})
+        let modal = target.modalInstance ?? new Modal(target, {closable: false})
+        target.modalInstance = modal
 
         if (modal) {
             let wrapper = document.getElementById('modal-wrapper')
             wrapper.classList.remove('max-w-sm', 'max-w-md', 'max-w-lg', 'max-w-xl', 'max-w-2xl', 'max-w-3xl')
-            if (this.sizeValue === 'sm') wrapper.classList.add('max-w-sm')
-            if (this.sizeValue === 'md') wrapper.classList.add('max-w-md')
-            if (this.sizeValue === 'lg') wrapper.classList.add('max-w-lg')
-            if (this.sizeValue === 'xl') wrapper.classList.add('max-w-xl')
-            if (this.sizeValue === '2xl') wrapper.classList.add('max-w-2xl')
-            if (this.sizeValue === '3xl') wrapper.classList.add('max-w-3xl')
-            if (this.sizeValue === '4xl') wrapper.classList.add('max-w-4xl')
-            if (this.sizeValue === '5xl') wrapper.classList.add('max-w-5xl')
-            if (this.sizeValue === '6xl') wrapper.classList.add('max-w-6xl')
-            if (this.sizeValue === '7xl') wrapper.classList.add('max-w-7xl')
+            if (sizeValue === 'sm') wrapper.classList.add('max-w-sm')
+            if (sizeValue === 'md') wrapper.classList.add('max-w-md')
+            if (sizeValue === 'lg') wrapper.classList.add('max-w-lg')
+            if (sizeValue === 'xl') wrapper.classList.add('max-w-xl')
+            if (sizeValue === '2xl') wrapper.classList.add('max-w-2xl')
+            if (sizeValue === '3xl') wrapper.classList.add('max-w-3xl')
+            if (sizeValue === '4xl') wrapper.classList.add('max-w-4xl')
+            if (sizeValue === '5xl') wrapper.classList.add('max-w-5xl')
+            if (sizeValue === '6xl') wrapper.classList.add('max-w-6xl')
+            if (sizeValue === '7xl') wrapper.classList.add('max-w-7xl')
 
             let title = document.getElementById('modal-title')
-            title.innerHTML = this.titleValue
+            title.innerHTML = titleValue
 
-            let src = this.srcValue
-            let frame = document.getElementById(this.frameValue)
-            frame.setAttribute('src', src)
+            let frame = document.getElementById(frameValue)
+            frame.setAttribute('src', srcValue)
             frame.loaded.then(function () {
                 modal.updateOnShow(function () {
                     let autofocus = frame.querySelector('[autofocus]:not([readonly])')
@@ -63,8 +61,10 @@ export default class extends Controller {
     }
 
     close(event) {
-        let target = document.getElementById(this.targetValue)
-        let modal = new Modal(target)
+        const trigger = event?.currentTarget
+        const targetValue = trigger?.dataset?.modalTarget
+        const target = document.getElementById(targetValue)
+        const modal = target?.modalInstance
         if (modal) {
             modal.hide()
         }

@@ -26,11 +26,11 @@
 {%- endblock badge_classes %}
 
 {% block card_classes -%}
-    bg-white relative rounded border border-gray-200 print:border-gray-300 dark:bg-gray-800 dark:border-gray-700
+    bg-white relative rounded border border-gray-200 dark:bg-gray-800 dark:border-gray-700
 {%- endblock card_classes %}
 
 {% block card_shadow_classes -%}
-    print:shadow-none shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)] dark:shadow-[2px_2px_10px_1px_rgba(0,0,0,0.4)]
+   shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)] dark:shadow-[2px_2px_10px_1px_rgba(0,0,0,0.4)]
 {%- endblock card_shadow_classes %}
 
 {% block chart_classes -%}
@@ -183,19 +183,19 @@
 {%- endblock table_head_classes %}
 
 {% block table_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap dark:border-b-gray-700
+    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700
 {%- endblock table_cell_classes %}
 
 {% block table_head_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 print:border-b-gray-300 whitespace-nowrap dark:border-b-gray-700 font-medium dark:text-gray-300
+    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700 font-medium dark:text-gray-300
 {%- endblock table_head_cell_classes %}
 
 {% block table_sticky_cell_classes -%}
-    bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
+    bg-white actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
 {%- endblock table_sticky_cell_classes %}
 
 {% block table_head_sticky_cell_classes -%}
-    bg-white print:hidden actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700 font-medium bg-white dark:bg-gray-800 dark:text-gray-300
+    bg-white actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700 font-medium bg-white dark:bg-gray-800 dark:text-gray-300
 {%- endblock table_head_sticky_cell_classes %}
 
 {% block table_row_classes -%}
@@ -214,7 +214,7 @@
 {%- endblock title_label_classes %}
 
 {% block title_content_classes -%}
-    print:hidden flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
+    flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
 {%- endblock title_content_classes %}
 
 {% block sub_title_classes -%}
@@ -230,7 +230,7 @@
 {%- endblock sub_title_tooltip_icon_classes %}
 
 {% block sub_title_content_classes -%}
-    print:hidden flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
+    flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
 {%- endblock sub_title_content_classes %}
 
 {% block toast_classes -%}
@@ -378,4 +378,8 @@
 {% block dropdown_delete_classes -%}
     font-medium block py-2 px-4 cursor-pointer whitespace-nowrap
 {%- endblock dropdown_delete_classes %}
+
+{% block body_classes -%}
+    min-h-screen
+{%- endblock body_classes %}
 
