@@ -1,15 +1,9 @@
-{% set controllers = ['app'] %}
 {% set attr = {
     'class': block('body_classes', tbd_twig_component_template)|trim,
-    'data-controller': controllers|join(' '),
+    'data-controller': controllers,
 } %}
-
-{% if delete %}{% set controllers = controllers|merge(['delete']) %}{% endif %}
-{% if modal %}{% set controllers = controllers|merge(['modal']) %}{% endif %}
-{% if url %}{% set controllers = controllers|merge(['url']) %}{% endif %}
 {% if sidebar %}
-    {% set controllers = controllers|merge(['sidebar']) %}
-    {% set attr = attr|merge({'data-sidebar-hover-state-value': sidebarHoverState ? 'true' : 'false'}) %}
+    {% set attr = attr|merge({'data-sidebar-hover-state-value': sidebarHoverState}) %}
 {% endif %}
 
 <body{{ attributes.defaults(attr) }}>
