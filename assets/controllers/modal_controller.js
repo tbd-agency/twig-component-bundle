@@ -11,7 +11,7 @@ export default class extends Controller {
         const frameValue = trigger?.dataset?.modalFrame ?? 'form-frame'
 
         let target = document.getElementById(targetValue)
-        let modal = target.modalInstance ?? new Modal(target, {closable: false})
+        let modal = target.modalInstance ?? new Modal(target)
         target.modalInstance = modal
 
         if (modal) {
