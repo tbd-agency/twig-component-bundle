@@ -1,0 +1,5 @@
+<html{{ attributes }}
+        lang="{{ (lang is defined and lang is not empty) ? lang : app.locale }}"
+        {% if app.request.cookies.get('color_theme') == 'dark' %} class="dark"{% endif %}>
+{% block content %}{% endblock %}
+</html>
