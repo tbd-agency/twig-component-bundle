@@ -1,4 +1,5 @@
 import {Controller} from '@hotwired/stimulus'
+import Cookie from 'js-cookie'
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
@@ -22,7 +23,7 @@ export default class extends Controller {
     }
 
     dropdownToggle(event) {
-        const sidebarState = localStorage.getItem('sidebarExpanded')
+        const sidebarState = Cookie.get('sidebar')
 
         if (sidebarState === 'false') {
             this.expand()
@@ -113,7 +114,7 @@ export default class extends Controller {
             if (this.hasExpandIconTarget) {
                 this.expandIconTarget.classList.remove('hidden')
             }
-            localStorage.setItem('sidebarExpanded', 'false')
+            Cookie.set('sidebar', 'false', {expires: 365})
         }
     }
 
@@ -145,12 +146,12 @@ export default class extends Controller {
             if (this.hasExpandIconTarget) {
                 this.expandIconTarget.classList.add('hidden')
             }
-            localStorage.setItem('sidebarExpanded', 'true')
+            Cookie.set('sidebar', 'true', {expires: 365})
         }
     }
 
     initializeSidebarState() {
-        const sidebarState = localStorage.getItem('sidebarExpanded')
+        const sidebarState = Cookie.get('sidebar')
         const hoverState = sessionStorage.getItem('sidebarHoverState')
 
         if (hoverState === 'true' && sidebarState === 'false') {

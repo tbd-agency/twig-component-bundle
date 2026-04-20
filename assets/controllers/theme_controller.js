@@ -16,14 +16,14 @@ export default class extends Controller {
     toggleDarkMode() {
         let currentTheme
 
-        if (Cookie.get('color-theme') === 'dark') {
+        if (Cookie.get('color_theme') === 'dark') {
             document.documentElement.classList.remove('dark')
-            Cookie.set('color-theme', 'light', {expires: 365})
+            Cookie.set('color_theme', 'light', {expires: 365})
             this.toggleButtons()
             currentTheme = 'light'
         } else {
             document.documentElement.classList.add('dark')
-            Cookie.set('color-theme', 'dark', {expires: 365})
+            Cookie.set('color_theme', 'dark', {expires: 365})
             this.toggleButtons()
             currentTheme = 'dark'
         }
