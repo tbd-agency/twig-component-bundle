@@ -1,25 +1,26 @@
+{% set sidebarExpanded = app.request.cookies.get('sidebar') %}
 <div{{ attributes }}>
     <button type="button" aria-controls="{{ id }}"
             data-action="click->sidebar#dropdownToggle"
             data-sidebar-target="dropdownButton"
             aria-expanded="{{ this.isHidden ? 'false' : 'true' }}"
             class="{{ block('nav_dropdown_button_classes', tbd_twig_component_template)|trim }}">
-        <span class="flex items-center">
+        <div class="flex items-center">
             {% if icon %}
                 {{ ux_icon(icon, {'class': block('nav_dropdown_button_icon_classes', tbd_twig_component_template)|trim }) }}
             {% endif %}
-            <span class="{{ block('nav_dropdown_button_label_classes', tbd_twig_component_template)|trim }}"
+            <span class="{{ block('nav_dropdown_button_label_classes', tbd_twig_component_template)|trim ~ (sidebarExpanded == 'false' ? ' hidden' : '')}}"
                   data-sidebar-target="collapseHide">{{ label }}</span>
-        </span>
-        <span class="{{ block('nav_dropdown_down_icon_wrapper_classes', tbd_twig_component_template)|trim }}"
-              data-sidebar-target="collapseHide">
-            {{ ux_icon('tbd:angle-down', {class: block('nav_dropdown_down_icon_classes', tbd_twig_component_template)|trim}) }}
+        </div>
+        <div class="{{ block('nav_dropdown_down_icon_wrapper_classes', tbd_twig_component_template)|trim ~ (sidebarExpanded == 'false' ? ' hidden' : '')}}"
+             data-sidebar-target="collapseHide">
+            {{ ux_icon('tbd:angle-down', {class: block('nav_dropdown_down_icon_classes', tbd_twig_component_template)|trim  }) }}
             {% if badge is defined and badge %}
                 <span class="{{ this.getBadgeClasses }}">{{ badge }}</span>
             {% endif %}
-        </span>
+        </div>
     </button>
-    <div data-sidebar-target="collapseHide">
+    <div data-sidebar-target="collapseHide" class="{{ sidebarExpanded == 'false' ? ' hidden' : '' }}">
         <ul id="{{ id }}" class="{% if this.isHidden %}hidden {% endif %}pt-2 space-y-2" data-sidebar-target="dropdownContent">
             {% block content %}{% endblock %}
         </ul>

@@ -1,6 +1,8 @@
+{% set sidebarExpanded = app.request.cookies.get('sidebar') %}
+{% set sidebarWidth = sidebarExpanded == 'false' ? 'w-16' : 'w-64' %} }}
 <aside{{ attributes.defaults({
     'id': 'sidebar',
-    'class': block('sidebar_aside_classes', tbd_twig_component_template)|trim,
+    'class': block('sidebar_aside_classes', tbd_twig_component_template)|trim ~ ' ' ~ sidebarWidth,
     'data-sidebar-target': 'sidebar',
     'data-action': 'mouseenter->sidebar#onMouseEnter mouseleave->sidebar#onMouseLeave',
 }) }}>
