@@ -1,0 +1,6 @@
+<div class="{{ block('partial_number_classes', tbd_twig_component_template)|trim }}"
+     data-action="click->url#navigate"
+     data-url-location="{{ route }}">
+    <twig:TBD:Text>{{ label }}</twig:TBD:Text>
+    <twig:TBD:Text class="{{ block('partial_number_value_classes', tbd_twig_component_template)|trim }}">{{ items }}</twig:TBD:Text>
+</div>

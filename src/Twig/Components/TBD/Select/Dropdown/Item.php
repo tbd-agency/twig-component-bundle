@@ -28,7 +28,6 @@ final class Item
         if ($this->modalId && $this->modalSrc && $this->modalTitle) {
             $this->modal = true;
             $this->attributes = [
-                'data-controller' => 'modal',
                 'data-action' => 'click->modal#setSrc modal:setSrc@document->select-items#handle',
                 'data-modal-target-value' => $this->modalId,
                 'data-modal-src-value' => $this->modalSrc,

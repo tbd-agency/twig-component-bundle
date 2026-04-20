@@ -253,6 +253,58 @@
     flex items-center text-sm gap-x-3 p-4 mb-4 bg-white relative rounded border hidden dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
 {%- endblock select_classes %}
 
+{% block partial_link_classes -%}
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
+{%- endblock partial_link_classes %}
+
+{% block partial_link_inner_classes -%}
+    flex items-center
+{%- endblock partial_link_inner_classes %}
+
+{% block partial_link_icon_classes -%}
+    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
+{%- endblock partial_link_icon_classes %}
+
+{% block partial_link_chevron_classes -%}
+    w-4 h-4 text-base transition-transform ease-in-out rotate-0 group-aria-expanded:-rotate-180
+{%- endblock partial_link_chevron_classes %}
+
+{% block partial_chart_doughnut_canvas_classes -%}
+    w-full flex justify-center h-68.75
+{%- endblock partial_chart_doughnut_canvas_classes %}
+
+{% block partial_chart_canvas_wrapper_classes -%}
+    w-full max-w-full overflow-x-auto
+{%- endblock partial_chart_canvas_wrapper_classes %}
+
+{% block partial_chart_canvas_inner_classes -%}
+    h-87.5
+{%- endblock partial_chart_canvas_inner_classes %}
+
+{% block partial_chart_legend_list_classes -%}
+    mx-auto px-4 pt-4 flex justify-center flex-wrap gap-2 text-sm dark:text-gray-300
+{%- endblock partial_chart_legend_list_classes %}
+
+{% block partial_chart_legend_item_classes -%}
+    flex items-center cursor-pointer gap-2
+{%- endblock partial_chart_legend_item_classes %}
+
+{% block partial_chart_legend_color_classes -%}
+    inline-block w-2.5 h-2.5 rounded-full
+{%- endblock partial_chart_legend_color_classes %}
+
+{% block partial_chart_legend_text_classes -%}
+    m-0 p-0 dark:text-white
+{%- endblock partial_chart_legend_text_classes %}
+
+{% block partial_number_classes -%}
+    hover:cursor-pointer
+{%- endblock partial_number_classes %}
+
+{% block partial_number_value_classes -%}
+    font-medium text-xl! dark:text-gray-100
+{%- endblock partial_number_value_classes %}
+
 {% block frame_source_classes -%}
     source-frame
 {%- endblock frame_source_classes %}

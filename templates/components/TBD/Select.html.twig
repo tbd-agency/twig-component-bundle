@@ -42,7 +42,7 @@
     <twig:TBD:Dropdown
             label="{{ (labelSelected is defined and labelSelected is not empty) ? labelSelected : 'label.selected'|trans({'default': 'Selected'}) }}"
             variant="{{ buttonVariant }}"
-            down="true"
+            :down="true"
             placement="{{ dropdownPlacement }}"
             id="select"
             class="text-sm"

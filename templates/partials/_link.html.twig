@@ -1,0 +1,8 @@
+<a href="{{ route }}" target="{{ target }}"
+   class="{{ block('partial_link_classes', tbd_twig_component_template)|trim }}">
+    <div class="{{ block('partial_link_inner_classes', tbd_twig_component_template)|trim }}">
+        {{ ux_icon(icon, {'class': block('partial_link_icon_classes', tbd_twig_component_template)|trim}) }}
+        <span title="{{ label }}">{{ label|u.truncate(30, '...', false) }}</span>
+    </div>
+    {{ ux_icon('tbd:chevron-right', {'class': block('partial_link_chevron_classes', tbd_twig_component_template)|trim}) }}
+</a>

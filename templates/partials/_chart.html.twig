@@ -1,0 +1,23 @@
+<twig:TBD:Text class="mb-2">{{ title }}</twig:TBD:Text>
+<div data-controller="chart"
+     data-chart-settings-value="{{ (chart.createView)|json_encode }}"
+     data-chart-routes-value="{{ routes|json_encode }}">
+    {% if chart.type == 'doughnut' %}
+        <div class="{{ block('partial_chart_doughnut_canvas_classes', tbd_twig_component_template)|trim }}">
+            <canvas data-chart-target="canvas">{{ location is defined and location ? location }}</canvas>
+        </div>
+    {% else %}
+        <div class="{{ block('partial_chart_canvas_wrapper_classes', tbd_twig_component_template)|trim }}">
+            <div class="{{ block('partial_chart_canvas_inner_classes', tbd_twig_component_template)|trim }}"{% if width is defined %} style="width: {{ width }}px;"{% endif %}>
+                <canvas data-chart-target="canvas"></canvas>
+            </div>
+        </div>
+    {% endif %}
+    <ul class="{{ block('partial_chart_legend_list_classes', tbd_twig_component_template)|trim }}" data-chart-target="legendList"></ul>
+    <template data-chart-target="legendItemTemplate">
+        <li class="{{ block('partial_chart_legend_item_classes', tbd_twig_component_template)|trim }}">
+            <span data-legend-color class="{{ block('partial_chart_legend_color_classes', tbd_twig_component_template)|trim }}"></span>
+            <p data-legend-text class="{{ block('partial_chart_legend_text_classes', tbd_twig_component_template)|trim }}"></p>
+        </li>
+    </template>
+</div>
