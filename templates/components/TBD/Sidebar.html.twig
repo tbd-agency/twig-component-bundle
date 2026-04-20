@@ -1,5 +1,5 @@
 {% set sidebarExpanded = app.request.cookies.get('sidebar') %}
-{% set sidebarWidth = sidebarExpanded == 'false' ? 'w-16' : 'w-64' %} }}
+{% set sidebarWidth = sidebarExpanded == 'false' ? 'w-16' : 'w-64' %}
 <aside{{ attributes.defaults({
     'id': 'sidebar',
     'class': block('sidebar_aside_classes', tbd_twig_component_template)|trim ~ ' ' ~ sidebarWidth,
