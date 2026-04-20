@@ -24,7 +24,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFunction('IsBool', [$this, 'isBool']),
-            new TwigFunction('SidebarExpanded', [$this, 'isSidebarExpanded']),
+            new TwigFunction('sidebarExpanded', [$this, 'isSidebarExpanded']),
         ];
     }
 
