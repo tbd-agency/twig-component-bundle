@@ -14,6 +14,7 @@ final class Body
     public bool $sidebar = true;
     public bool $modal = true;
     public bool $url = true;
+    public bool $theme = true;
     public bool $sidebarHoverState = false;
 
     #[ExposeInTemplate]
@@ -31,6 +32,9 @@ final class Body
         }
         if ($this->url) {
             $controllers[] = 'url';
+        }
+        if ($this->theme) {
+            $controllers[] = 'theme';
         }
 
         return implode(' ', $controllers);

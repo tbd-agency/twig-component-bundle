@@ -6,14 +6,16 @@ export default class extends Controller {
     static targets = ['darkIcon', 'lightIcon']
 
     connect() {
-        if (Cookie.get('color-theme') === 'dark') {
+        if (Cookie.get('color_theme') === 'dark') {
+            this.darkIconTarget.classList.add('hidden')
             this.lightIconTarget.classList.remove('hidden')
         } else {
             this.darkIconTarget.classList.remove('hidden')
+            this.lightIconTarget.classList.add('hidden')
         }
     }
 
-    toggleDarkMode() {
+    toggleDarkMode(event) {
         let currentTheme
 
         if (Cookie.get('color_theme') === 'dark') {
@@ -34,7 +36,7 @@ export default class extends Controller {
             },
         }))
 
-        this.element.blur()
+        event.currentTarget.blur()
     }
 
     toggleButtons() {

@@ -11,12 +11,12 @@
                     data-sidebar-target="toggleButton"
                     class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} hidden! lg:inline!">
                 {{ ux_icon('bars-staggered', {
-                    'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                    'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ (sidebarExpanded() ? '' : ' hidden'),
                     'data-sidebar-target': 'collapseIcon',
                 }) }}
 
                 {{ ux_icon('bars', {
-                    'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                    'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ (sidebarExpanded() ? ' hidden' : ''),
                     'data-sidebar-target': 'expandIcon',
                 }) }}
             </twig:TBD:Button>
@@ -37,22 +37,22 @@
         <div class="flex items-center lg:order-2 space-x-3">
             {# Darkmode #}
             {% if darkMode %}
+                {% set darkModeCookieActive = app.request.cookies.get('color_theme') == 'dark' %}
                 <div class="flex items-center">
                     <twig:TBD:Button
                             size="{{ buttonSizes }}"
                             variant="{{ buttonVariants }}"
-                            data-controller="theme"
                             class="group"
                             data-action="theme#toggleDarkMode"
                             tooltip="{{ darkModeTooltip }}"
                     >
                         {{ ux_icon('moon', {
                             'data-theme-target':'darkIcon',
-                            'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                            'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ (darkModeCookieActive ? ' hidden' : ''),
                         }) }}
                         {{ ux_icon('sun-bright', {
                             'data-theme-target':'lightIcon',
-                            'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ ' hidden',
+                            'class': block('navbar_sidebar_button_icon_classes', tbd_twig_component_template)|trim ~ (darkModeCookieActive ? '' : ' hidden'),
                         }) }}
                     </twig:TBD:Button>
                 </div>
