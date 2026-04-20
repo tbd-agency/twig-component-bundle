@@ -5,12 +5,12 @@ namespace Tbd\TwigComponentBundle\Twig\Components\TBD\Modal;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent(
-    name: 'TBD:Modal:Form',
-    template: '@TbdTwigComponent/components/TBD/Modal/Form.html.twig')]
-final class Form
+    name: 'TBD:Modal:Source',
+    template: '@TbdTwigComponent/components/TBD/Modal/Source.html.twig')]
+final class Source
 {
-    public string $modalId = 'form-modal';
-    public string $frameId = 'form-frame';
+    public string $modalId = 'source-modal';
+    public string $frameId = 'source-frame';
     public ?string $title = null;
     public ?string $src = null;
     public string $closeButtonVariant;

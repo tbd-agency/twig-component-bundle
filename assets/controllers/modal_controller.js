@@ -8,7 +8,7 @@ export default class extends Controller {
         const sizeValue = trigger?.dataset?.modalSize
         const titleValue = trigger?.dataset?.modalTitle
         const srcValue = trigger?.dataset?.modalSrc
-        const frameValue = trigger?.dataset?.modalFrame ?? 'form-frame'
+        const frameValue = trigger?.dataset?.modalFrame ?? 'source-frame'
 
         let target = document.getElementById(targetValue)
         let modal = target.modalInstance ?? new Modal(target)

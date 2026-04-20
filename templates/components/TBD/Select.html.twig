@@ -1,0 +1,54 @@
+<div {{ attributes.defaults({
+    'role': 'alert',
+    'data-select-items-target': 'alert',
+    'class': block('select_classes', tbd_twig_component_template)|trim,
+}) }}>
+    <p class="{{ block('select_text_classes', tbd_twig_component_template)|trim }}">
+        <span data-select-items-target="amount">0</span>
+        {% if total is defined and total %}
+            <span data-select-items-target="total" class="hidden">{{ total }}</span>
+        {% endif %}
+        <span>
+            {% if labelItemsSelected is defined and labelItemsSelected is not empty %}
+                {{ labelItemsSelected }}&comma;
+            {% else %}
+                {{ 'label.items-selected'|trans({'default': 'item(s) selected'}) }}&comma;
+            {% endif %}
+        </span>
+        {% if total is defined and total %}
+            <span data-select-items-target="selectAll"
+                  class="{{ block('select_action_classes', tbd_twig_component_template)|trim }}"
+                  data-action="click->select-items#selectAll">
+                {% if labelSelectAll is defined and labelSelectAll is not empty %}
+                    {{ labelSelectAll }}
+                {% else %}
+                    {{ 'label.select-all'|trans({'default': 'select all?'}) }}
+                {% endif %}
+            </span>
+            <span data-select-items-target="removeAll"
+                  class="{{ block('select_action_classes', tbd_twig_component_template)|trim }} hidden"
+                  data-action="click->select-items#removeAll">
+                 {% if labelRemoveSelection is defined and labelRemoveSelection is not empty %}
+                     {{ labelRemoveSelection }}
+                 {% else %}
+                     {{ 'label.remove-selection'|trans({'default': 'remove selection?'}) }}
+                 {% endif %}
+            </span>
+        {% endif %}
+    </p>
+    {% set dropdownContent %}
+        {% block content %}{% endblock %}
+    {% endset %}
+    <twig:TBD:Dropdown
+            label="{{ labelSelected ? labelSelected : 'label.selected'|trans({'default': 'Selected'}) }}"
+            variant="{{ buttonVariant }}"
+            down="true"
+            placement="bottom-start"
+            id="select"
+            class="text-sm"
+            popper="{{ false }}">
+        <twig:TBD:Dropdown:UnorderedList>
+            {{ dropdownContent|raw }}
+        </twig:TBD:Dropdown:UnorderedList>
+    </twig:TBD:Dropdown>
+</div>

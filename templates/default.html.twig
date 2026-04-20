@@ -237,9 +237,25 @@
     flex gap-4 items-center min-w-[20rem] max-w-md p-4 mb-4 border rounded opacity-100 transition-opacity dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
 {%- endblock toast_classes %}
 
-{% block frame_form_classes -%}
-    form-frame
-{%- endblock frame_form_classes %}
+{% block select_dropdown_item_classes -%}
+    block py-2 px-4 cursor-pointer hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700
+{%- endblock select_dropdown_item_classes %}
+
+{% block select_text_classes -%}
+    text-primary select-none flex gap-1 dark:text-gray-100
+{%- endblock select_text_classes %}
+
+{% block select_action_classes -%}
+    hover:cursor-pointer text-primary hover:text-primary/70 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100
+{%- endblock select_action_classes %}
+
+{% block select_classes -%}
+    flex items-center text-sm gap-x-3 p-4 mb-4 bg-white relative rounded border hidden dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+{%- endblock select_classes %}
+
+{% block frame_source_classes -%}
+    source-frame
+{%- endblock frame_source_classes %}
 
 {% block modal_wrapper_classes -%}
     relative rounded border bg-white dark:bg-gray-800 dark:border-gray-700

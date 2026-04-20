@@ -10,11 +10,12 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Link;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Logo;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Modal\Confirm;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Modal\Delete;
-use Tbd\TwigComponentBundle\Twig\Components\TBD\Modal\Form;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Modal\Source;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Dropdown as NavDropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Nav\Item;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Navbar;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Section;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Select;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Spinner;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\SubTitle;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Table\StickyCell;
@@ -123,7 +124,7 @@ return static function (ContainerConfigurator $configurator): void {
             '$sizes' => '%logo.sizes%',
             '$defaultSize' => '%logo.size.default%',
         ])
-        ->set(Form::class)
+        ->set(Source::class)
         ->args([
             '$closeButtonVariant' => '%modal.close.buttonVariant%',
             '$closeButtonSize' => '%modal.close.buttonSize%',
@@ -145,5 +146,10 @@ return static function (ContainerConfigurator $configurator): void {
             '$confirmButtonSize' => '%modal.confirm.buttonSize%',
             '$cancelButtonVariant' => '%modal.cancel.buttonVariant%',
             '$cancelButtonSize' => '%modal.cancel.buttonSize%',
-        ]);
+        ])
+        ->set(Select::class)
+        ->args([
+            '$variants' => '%button.variants%',
+        ])
+    ;
 };

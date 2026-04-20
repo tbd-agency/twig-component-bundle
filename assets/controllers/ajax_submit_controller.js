@@ -3,7 +3,7 @@ import {Controller} from '@hotwired/stimulus'
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static values = {
-        frameSelector: {type: String, default: '.form-frame'},
+        frameSelector: {type: String, default: '.source-frame'},
         redirectPath: {type: String, default: ''},
     }
 
