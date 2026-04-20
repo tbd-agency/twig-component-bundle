@@ -13,6 +13,7 @@ final class Select
 {
     public ?int $total;
     public ?string $buttonVariant;
+    public ?string $dropdownPlacement;
     public ?string $labelSelected;
     public ?string $labelItemsSelected;
     public ?string $labelSelectAll;
@@ -29,7 +30,11 @@ final class Select
 
         $resolver
             ->setIgnoreUndefined()
-            ->setDefaults(['buttonVariant' => 'primary'])
+            ->setDefaults([
+                'buttonVariant' => 'primary',
+                'dropdownPlacement' => 'bottom-start',
+            ])
+            ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-start', 'bottom-end', 'right-start', 'left-start'])
             ->setAllowedValues('buttonVariant', array_keys($this->variants));
 
         return $resolver->resolve($data) + $data;

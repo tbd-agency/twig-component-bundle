@@ -40,10 +40,10 @@
         {% block content %}{% endblock %}
     {% endset %}
     <twig:TBD:Dropdown
-            label="{{ labelSelected ? labelSelected : 'label.selected'|trans({'default': 'Selected'}) }}"
+            label="{{ (labelSelected is defined and labelSelected is not empty) ? labelSelected : 'label.selected'|trans({'default': 'Selected'}) }}"
             variant="{{ buttonVariant }}"
             down="true"
-            placement="bottom-start"
+            placement="{{ dropdownPlacement }}"
             id="select"
             class="text-sm"
             popper="{{ false }}">
