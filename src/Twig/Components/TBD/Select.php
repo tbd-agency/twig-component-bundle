@@ -12,11 +12,11 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Select
 {
     public ?int $total;
-    public string $buttonVariant;
-    public string $labelSelected;
-    public string $labelItemsSelected;
-    public string $labelSelectAll;
-    public string $labelRemoveSelection;
+    public ?string $buttonVariant;
+    public ?string $labelSelected;
+    public ?string $labelItemsSelected;
+    public ?string $labelSelectAll;
+    public ?string $labelRemoveSelection;
 
     public function __construct(private readonly array $variants)
     {
