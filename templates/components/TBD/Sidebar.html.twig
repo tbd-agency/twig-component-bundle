@@ -1,4 +1,4 @@
-{% set sidebarWidth = sidebar_expanded() ? 'w-64' : 'w-16' %}
+{% set sidebarWidth = SidebarExpanded() ? 'w-64' : 'w-16' %}
 <aside{{ attributes.defaults({
     'id': 'sidebar',
     'class': block('sidebar_aside_classes', tbd_twig_component_template)|trim ~ ' ' ~ sidebarWidth,
