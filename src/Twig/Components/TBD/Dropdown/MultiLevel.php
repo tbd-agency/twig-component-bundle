@@ -21,7 +21,6 @@ final class MultiLevel
     public ?string $variant;
     public ?bool $down;
 
-
     #[PreMount]
     public function preMount(array $data): array
     {

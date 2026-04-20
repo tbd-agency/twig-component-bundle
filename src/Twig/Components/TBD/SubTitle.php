@@ -18,7 +18,6 @@ final class SubTitle
     public ?string $tooltip = null;
     public ?string $tooltipId = null;
 
-
     public function __construct(
         private readonly array $fontSizes,
         private readonly string $defaultTag,
