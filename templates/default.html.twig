@@ -269,9 +269,9 @@
     w-4 h-4 text-base transition-transform ease-in-out rotate-0 group-aria-expanded:-rotate-180
 {%- endblock partial_link_chevron_classes %}
 
-{% block partial_chart_doughnut_canvas_classes -%}
+{% block partial_chart_doughnut_pie_canvas_classes -%}
     w-full flex justify-center h-68.75
-{%- endblock partial_chart_doughnut_canvas_classes %}
+{%- endblock partial_chart_doughnut_pie_canvas_classes %}
 
 {% block partial_chart_canvas_wrapper_classes -%}
     w-full max-w-full overflow-x-auto
@@ -286,7 +286,7 @@
 {%- endblock partial_chart_legend_list_classes %}
 
 {% block partial_chart_legend_item_classes -%}
-    flex items-center cursor-pointer gap-2
+    flex items-center cursor-pointer gap-2 select-none
 {%- endblock partial_chart_legend_item_classes %}
 
 {% block partial_chart_legend_color_classes -%}

@@ -2,8 +2,8 @@
 <div data-controller="chart"
      data-chart-settings-value="{{ (chart.createView)|json_encode }}"
      data-chart-routes-value="{{ routes|json_encode }}">
-    {% if chart.type == 'doughnut' %}
-        <div class="{{ block('partial_chart_doughnut_canvas_classes', tbd_twig_component_template)|trim }}">
+    {% if chart.type in ['doughnut', 'pie'] %}
+        <div class="{{ block('partial_chart_doughnut_pie_canvas_classes', tbd_twig_component_template)|trim }}">
             <canvas data-chart-target="canvas">{{ location is defined and location ? location }}</canvas>
         </div>
     {% else %}
