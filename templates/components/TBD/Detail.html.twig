@@ -1,6 +1,6 @@
 <div{{ attributes }}>
     <div class="{{ block('detail_label_classes', tbd_twig_component_template)|trim }}">{{ label }}</div>
-    {% if value is defined and is_bool(value) %}
+    {% if value is defined and IsBool(value) %}
         {% if value %}
             {{ ux_icon('tbd:check', {'class': block('detail_check_classes', tbd_twig_component_template)|trim}) }}
         {% else %}

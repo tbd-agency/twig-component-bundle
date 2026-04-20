@@ -1,4 +1,3 @@
-{% set sidebarExpanded = app.request.cookies.get('sidebar') %}
 <div{{ attributes }}>
     <button type="button" aria-controls="{{ id }}"
             data-action="click->sidebar#dropdownToggle"
@@ -13,10 +12,10 @@
             {% if icon %}
                 {{ ux_icon(icon, {'class': block('nav_dropdown_button_icon_classes', tbd_twig_component_template)|trim }) }}
             {% endif %}
-            <span class="{{ block('nav_dropdown_button_label_classes', tbd_twig_component_template)|trim ~ (sidebarExpanded == 'false' ? ' hidden' : '')}}"
+            <span class="{{ block('nav_dropdown_button_label_classes', tbd_twig_component_template)|trim ~ (SidebarExpanded() ? '' : ' hidden')}}"
                   data-sidebar-target="collapseHide">{{ label }}</span>
         </div>
-        <div class="{{ block('nav_dropdown_down_icon_wrapper_classes', tbd_twig_component_template)|trim ~ (sidebarExpanded == 'false' ? ' hidden' : '')}}"
+        <div class="{{ block('nav_dropdown_down_icon_wrapper_classes', tbd_twig_component_template)|trim ~ (SidebarExpanded() ? '' : ' hidden')}}"
              data-sidebar-target="collapseHide">
             {{ ux_icon('tbd:angle-down', {class: block('nav_dropdown_down_icon_classes', tbd_twig_component_template)|trim  }) }}
             {% if badge is defined and badge %}
@@ -24,7 +23,7 @@
             {% endif %}
         </div>
     </button>
-    <div data-sidebar-target="collapseHide" class="{{ sidebarExpanded == 'false' ? ' hidden' : '' }}">
+    <div data-sidebar-target="collapseHide" class="{{ SidebarExpanded() ? '' : 'hidden' }}">
         <ul id="{{ id }}" class="{% if this.isHidden %}hidden {% endif %}pt-2 space-y-2" data-sidebar-target="dropdownContent">
             {% block content %}{% endblock %}
         </ul>

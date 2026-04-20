@@ -1,4 +1,3 @@
-{% set sidebarExpanded = app.request.cookies.get('sidebar') %}
 <{{ tag }}
     {{ attributes.defaults({
         'aria-current': app.request.pathInfo == path ? 'page' : null,
@@ -14,10 +13,10 @@
     {% if icon %}
         {{ ux_icon(icon, {class: block('nav_item_icon_classes', tbd_twig_component_template)|trim}) }}
     {% endif %}
-    <span data-sidebar-target="collapseHide" class="{{ sidebarExpanded == 'false' ? 'hidden' : '' }}">{{ label }}</span>
+    <span data-sidebar-target="collapseHide" class="{{ SidebarExpanded() ? '' : 'hidden' }}">{{ label }}</span>
 </div>
 {% if badge is defined and badge %}
-    <span class="{{ this.getBadgeClasses ~ (sidebarExpanded == 'false' ? ' hidden' : '') }}"
+    <span class="{{ this.getBadgeClasses ~ (SidebarExpanded() ? '' : ' hidden') }}"
           data-sidebar-target="collapseHide">{{ badge }}</span>
 {% endif %}
 </{{ tag }}>

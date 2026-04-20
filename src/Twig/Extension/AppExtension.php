@@ -2,34 +2,41 @@
 
 namespace Tbd\TwigComponentBundle\Twig\Extension;
 
+use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class AppExtension extends AbstractExtension
 {
+    public function __construct(private readonly RequestStack $requestStack)
+    {
+    }
+
     public function getFilters(): array
     {
         return [
-            new TwigFilter('strip_scripts', [$this, 'stripScripts'], ['is_safe' => ['html']]),
-            new TwigFilter('is_bool', [$this, 'isBool']),
+            new TwigFilter('IsBool', [$this, 'isBool']),
         ];
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('is_bool', [$this, 'isBool']),
+            new TwigFunction('IsBool', [$this, 'isBool']),
+            new TwigFunction('SidebarExpanded', [$this, 'isSidebarExpanded']),
         ];
-    }
-
-    public function stripScripts($html): array|string|null
-    {
-        return preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
     }
 
     public function isBool($value): bool
     {
-        return is_bool($value);
+        return $this->IsBool($value);
+    }
+
+    public function isSidebarExpanded(): bool
+    {
+        $cookie = $this->requestStack->getCurrentRequest()?->cookies->get('sidebar');
+
+        return $cookie !== 'false';
     }
 }
