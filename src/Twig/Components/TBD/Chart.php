@@ -27,7 +27,7 @@ final class Chart
         $resolver = (new OptionsResolver())
             ->setIgnoreUndefined()
             ->setRequired(['type', 'route'])
-            ->setAllowedValues('type', ['number', 'doughnut', 'bar', 'table'])
+            ->setAllowedValues('type', ['number', 'doughnut', 'bar', 'table', 'line', 'pie'])
             ->setAllowedTypes('type', 'string')
             ->setAllowedTypes('route', 'string');
 

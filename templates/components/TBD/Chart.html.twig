@@ -13,13 +13,13 @@
             <twig:TBD:Text class="{{ block('chart_number_label_classes', tbd_twig_component_template)|trim }}">&nbsp;
             </twig:TBD:Text>
         {% endif %}
-        {% if type == 'doughnut' %}
-            <div class="{{ block('chart_doughnut_classes', tbd_twig_component_template)|trim }}">
+        {% if type in ['doughnut', 'pie'] %}
+            <div class="{{ block('chart_doughnut_pie_classes', tbd_twig_component_template)|trim }}">
                 <twig:TBD:Spinner size="lg"/>
             </div>
         {% endif %}
-        {% if type == 'bar' %}
-            <div class="{{ block('chart_bar_classes', tbd_twig_component_template)|trim }}">
+        {% if type in ['bar', 'line'] %}
+            <div class="{{ block('chart_bar_line_classes', tbd_twig_component_template)|trim }}">
                 <twig:TBD:Spinner size="lg"/>
             </div>
         {% endif %}
