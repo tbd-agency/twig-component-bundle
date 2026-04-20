@@ -21,6 +21,9 @@ final class Dropdown
     public ?array $paths = [];
     public ?string $icon = null;
     public ?string $badgeType = null;
+    public string $identifier;
+    public ?string $tooltip = null;
+    public ?string $tooltipPlacement = null;
 
     public function __construct(
         public readonly RequestStack $requestStack,
@@ -53,6 +56,13 @@ final class Dropdown
                 ->setAllowedValues('badgeType', array_keys($this->badgeTypes));
         }
 
+        if (!empty($data['tooltip'])) {
+            $resolver
+                ->setRequired('tooltipPlacement')
+                ->setDefault('tooltipPlacement', 'right')
+                ->setAllowedValues('tooltipPlacement', ['top', 'bottom', 'left', 'right']);
+        }
+
         return $resolver->resolve($data) + $data;
     }
 
@@ -66,6 +76,11 @@ final class Dropdown
                 break;
             }
         }
+    }
+
+    public function mount(): void
+    {
+        $this->identifier = Uuid::uuid4()->toString();
     }
 
     public function getBadgeClasses(): string

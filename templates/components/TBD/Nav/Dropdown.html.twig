@@ -4,7 +4,11 @@
             data-action="click->sidebar#dropdownToggle"
             data-sidebar-target="dropdownButton"
             aria-expanded="{{ this.isHidden ? 'false' : 'true' }}"
-            class="{{ block('nav_dropdown_button_classes', tbd_twig_component_template)|trim }}">
+            class="{{ block('nav_dropdown_button_classes', tbd_twig_component_template)|trim }}"
+            {% if tooltip is defined and tooltip %}
+                data-tooltip-target="{{ identifier }}"
+                data-tooltip-placement="{{ tooltipPlacement }}"
+            {% endif %}>
         <div class="flex items-center">
             {% if icon %}
                 {{ ux_icon(icon, {'class': block('nav_dropdown_button_icon_classes', tbd_twig_component_template)|trim }) }}
@@ -26,3 +30,9 @@
         </ul>
     </div>
 </div>
+
+{% if tooltip is defined and tooltip %}
+    <div data-sidebar-target="collapseShow">
+        <twig:TBD:Tooltip identifier="{{ identifier }}" label="{{ tooltip }}"/>
+    </div>
+{% endif %}

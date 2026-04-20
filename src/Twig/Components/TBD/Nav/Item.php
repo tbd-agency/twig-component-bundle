@@ -2,6 +2,7 @@
 
 namespace Tbd\TwigComponentBundle\Twig\Components\TBD\Nav;
 
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
@@ -17,9 +18,12 @@ final class Item
     public ?string $path = null;
     public ?string $icon = null;
     public ?string $badgeType = null;
+    public string $identifier;
+    public ?string $tooltip = null;
+    public ?string $tooltipPlacement = null;
 
     public function __construct(
-        private readonly array $badgeTypes,
+        private readonly array  $badgeTypes,
         private readonly string $defaultBadgeType,
     )
     {
@@ -45,7 +49,19 @@ final class Item
                 ->setAllowedValues('badgeType', array_keys($this->badgeTypes));
         }
 
+        if (!empty($data['tooltip'])) {
+            $resolver
+                ->setRequired('tooltipPlacement')
+                ->setDefault('tooltipPlacement', 'right')
+                ->setAllowedValues('tooltipPlacement', ['top', 'bottom', 'left', 'right']);
+        }
+
         return $resolver->resolve($data) + $data;
+    }
+
+    public function mount(): void
+    {
+        $this->identifier = Uuid::uuid4()->toString();
     }
 
     public function getBadgeClasses(): string

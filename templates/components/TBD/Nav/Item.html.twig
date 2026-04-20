@@ -5,6 +5,10 @@
         'class': block('nav_item_classes',tbd_twig_component_template)|trim,
     }) }}
     {% if tag == 'a' %} href="{{ path }}"{% endif %}
+  {% if tooltip is defined and tooltip %}
+      data-tooltip-target="{{ identifier }}"
+      data-tooltip-placement="{{ tooltipPlacement }}"
+  {% endif %}
 >
 <div class="flex items-center">
     {% if icon %}
@@ -13,6 +17,13 @@
     <span data-sidebar-target="collapseHide" class="{{ sidebarExpanded == 'false' ? 'hidden' : '' }}">{{ label }}</span>
 </div>
 {% if badge is defined and badge %}
-    <span class="{{ this.getBadgeClasses ~ (sidebarExpanded == 'false' ? ' hidden' : '') }}" data-sidebar-target="collapseHide">{{ badge }}</span>
+    <span class="{{ this.getBadgeClasses ~ (sidebarExpanded == 'false' ? ' hidden' : '') }}"
+          data-sidebar-target="collapseHide">{{ badge }}</span>
 {% endif %}
 </{{ tag }}>
+
+{% if tooltip is defined and tooltip %}
+    <div data-sidebar-target="collapseShow">
+        <twig:TBD:Tooltip identifier="{{ identifier }}" label="{{ tooltip }}"/>
+    </div>
+{% endif %}

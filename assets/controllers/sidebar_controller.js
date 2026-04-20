@@ -12,6 +12,7 @@ export default class extends Controller {
         'collapseIcon',
         'expandIcon',
         'collapseHide',
+        'collapseShow',
     ]
     static values = {
         hoverState: {type: Boolean, default: false},
@@ -79,6 +80,10 @@ export default class extends Controller {
     }
 
     collapse(save = true, initial = false) {
+        this.collapseShowTargets.forEach((element) => {
+            element.classList.remove('hidden')
+        })
+
         this.collapseHideTargets.forEach((element) => {
             element.classList.add('hidden')
             element.classList.add('opacity-0')
@@ -119,6 +124,10 @@ export default class extends Controller {
     }
 
     expand(save = true, initial = false) {
+        this.collapseShowTargets.forEach((element) => {
+            element.classList.add('hidden')
+        })
+
         this.collapseHideTargets.forEach((element) => {
             element.classList.remove('hidden')
             element.classList.add('opacity-0')
