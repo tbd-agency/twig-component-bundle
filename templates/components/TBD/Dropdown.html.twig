@@ -34,8 +34,8 @@
             {% endif %}
         </twig:TBD:Button>
     {% endblock %}
-    <div id="{{ uuid }}-dropdown" data-dropdown-target="{{ popper ? 'content' }}"
+    <div id="{{ uuid }}-dropdown"{% if popper %} data-dropdown-target="content"{% endif %}
          class="{{ block('dropdown_content_classes', tbd_twig_component_template)|trim ~ ' ' ~ dropdownContentClasses|trim }}">
-        {% block dropdownContent %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
 </div>

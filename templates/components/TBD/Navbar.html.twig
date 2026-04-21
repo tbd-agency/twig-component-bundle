@@ -71,7 +71,7 @@
                         buttonSize="none"
                         buttonClasses="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
                         buttonAvatar="{{ seed ?? app.user.firstName }}">
-                    {% block dropdownContent %}{{ userDropdown|raw }}{% endblock %}
+                    {{ userDropdown|raw }}
                 </twig:TBD:Dropdown>
             {% endif %}
         </div>
