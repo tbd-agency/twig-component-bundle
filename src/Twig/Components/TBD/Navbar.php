@@ -11,8 +11,8 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
     template: '@TbdTwigComponent/components/TBD/Navbar.html.twig')]
 final class Navbar
 {
-    public string $buttonVariants;
-    public string $buttonSizes;
+    public string $buttonVariant;
+    public string $buttonSize;
     public string $darkModeTooltip;
     public ?string $seed = null;
     public bool $darkMode;
@@ -26,11 +26,11 @@ final class Navbar
 
     public function getVariantClasses(): string
     {
-        return $this->variants[$this->buttonVariants];
+        return $this->variants[$this->buttonVariant];
     }
     public function getSizeClasses(): string
     {
-        return $this->sizes[$this->buttonSizes];
+        return $this->sizes[$this->buttonSize];
     }
 
     #[PreMount]
@@ -41,13 +41,13 @@ final class Navbar
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'buttonVariants' => 'white',
-                'buttonSizes' => 'md',
+                'buttonVariant' => 'white',
+                'buttonSize' => 'md',
                 'darkMode' => true,
                 'darkModeTooltip' => 'Toggle dark mode',
             ])
-            ->setAllowedValues('buttonVariants', array_keys($this->variants))
-            ->setAllowedValues('buttonSizes', array_keys($this->sizes));
+            ->setAllowedValues('buttonVariant', array_keys($this->variants))
+            ->setAllowedValues('buttonSize', array_keys($this->sizes));
 
         return $resolver->resolve($data) + $data;
     }

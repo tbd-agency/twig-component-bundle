@@ -3,10 +3,10 @@
 }) }}>
     <div class="{{ block('navbar_wrapper_classes', tbd_twig_component_template)|trim }}">
         {# Sidebar toggle #}
-        <div class="flex items-center justify-start">
+        <div class="{{ block('navbar_wrapper_start_classes', tbd_twig_component_template)|trim }}">
             <twig:TBD:Button
-                    size="{{ buttonSizes }}"
-                    variant="{{ buttonVariants }}"
+                    size="{{ buttonSize }}"
+                    variant="{{ buttonVariant }}"
                     data-action="sidebar#toggle"
                     data-sidebar-target="toggleButton"
                     class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} hidden! lg:inline!">
@@ -22,8 +22,8 @@
             </twig:TBD:Button>
 
             <twig:TBD:Button
-                    size="{{ buttonSizes }}"
-                    variant="{{ buttonVariants }}"
+                    size="{{ buttonSize }}"
+                    variant="{{ buttonVariant }}"
                     data-drawer-target="sidebar"
                     data-drawer-toggle="sidebar"
                     class="{{ block('navbar_sidebar_button_classes', tbd_twig_component_template)|trim }} inline! lg:hidden!">
@@ -34,14 +34,14 @@
 
         {% block content %}{% endblock %}
 
-        <div class="flex items-center lg:order-2 space-x-3">
+        <div class="{{ block('navbar_wrapper_end_classes', tbd_twig_component_template)|trim }}">
             {# Darkmode #}
             {% if darkMode %}
                 {% set darkModeCookieActive = app.request.cookies.get('color_theme') == 'dark' %}
                 <div class="flex items-center">
                     <twig:TBD:Button
-                            size="{{ buttonSizes }}"
-                            variant="{{ buttonVariants }}"
+                            size="{{ buttonSize }}"
+                            variant="{{ buttonVariant }}"
                             class="group"
                             data-action="theme#toggleDarkMode"
                             tooltip="{{ darkModeTooltip }}"
@@ -69,11 +69,11 @@
                         data-dropdown-placement="bottom-end">
                     <twig:TBD:Avatar seed="{{ seed ?? app.user.firstName}}"/>
                 </twig:TBD:Button>
-                <div class="{{ block('navbar_dropdown_wrapper_classes', tbd_twig_component_template)|trim }}"
-                     id="dropdown-user">
-                    {% block userDropdown %}{% endblock %}
-                </div>
             {% endif %}
+        </div>
+        <div class="{{ block('navbar_dropdown_wrapper_classes', tbd_twig_component_template)|trim }}"
+             id="dropdown-user">
+            {% block userDropdown %}{% endblock %}
         </div>
     </div>
 </nav>

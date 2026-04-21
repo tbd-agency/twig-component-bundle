@@ -1,29 +1,22 @@
-{% block button_classes -%}
-    group-[[busy]]:pointer-events-none select-none relative inline-flex items-center gap-2 whitespace-nowrap focus:outline-none focus:z-10 text-sm cursor-pointer dark:text-gray-100
-{%- endblock button_classes %}
-
-{% block tooltip_classes -%}
-    absolute z-[70] invisible inline-block px-3 py-2 text-sm normal-case font-medium text-blue-100 dark:text-gray-100 transition-opacity duration-300 bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700
-{%- endblock tooltip_classes %}
-
-{% block indicator_classes -%}
-    absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-400 group-focus:bg-orange-300 rounded-full -top-2 -end-2
-{%- endblock indicator_classes %}
-
-{% block spinner_classes -%}
-{%- endblock spinner_classes %}
+{% block alert_classes -%}
+    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_2px_10px_1px_rgba(166,200,255,0.25)] dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+{%- endblock alert_classes %}
 
 {% block avatar_classes -%}
     overflow-hidden
 {%- endblock avatar_classes %}
 
-{% block alert_classes -%}
-    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_2px_10px_1px_rgba(166,200,255,0.25)] dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
-{%- endblock alert_classes %}
-
 {% block badge_classes -%}
     font-medium rounded-full dark:text-gray-100
 {%- endblock badge_classes %}
+
+{% block body_classes -%}
+    min-h-screen
+{%- endblock body_classes %}
+
+{% block button_classes -%}
+    group-[[busy]]:pointer-events-none select-none relative inline-flex items-center gap-2 whitespace-nowrap focus:outline-none focus:z-10 text-sm cursor-pointer dark:text-gray-100
+{%- endblock button_classes %}
 
 {% block card_classes -%}
     bg-white relative rounded border border-gray-200 dark:bg-gray-800 dark:border-gray-700
@@ -33,17 +26,21 @@
    shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)] dark:shadow-[2px_2px_10px_1px_rgba(0,0,0,0.4)]
 {%- endblock card_shadow_classes %}
 
-{% block chart_classes -%}
-    text-blue-900 dark:text-gray-100
-{%- endblock chart_classes %}
-
 {% block chart_bar_line_classes -%}
     aspect-[1.75] flex justify-center items-center
 {%- endblock chart_bar_line_classes %}
 
+{% block chart_classes -%}
+    text-blue-900 dark:text-gray-100
+{%- endblock chart_classes %}
+
 {% block chart_doughnut_pie_classes -%}
     aspect-[1.75] flex justify-center items-center
 {%- endblock chart_doughnut_pie_classes %}
+
+{% block chart_number_label_classes -%}
+    font-medium !text-lg dark:text-gray-100
+{%- endblock chart_number_label_classes %}
 
 {% block chart_table_classes -%}
     w-full text-primary text-lg dark:text-gray-100
@@ -57,41 +54,21 @@
     font-medium whitespace-nowrap dark:text-gray-100
 {%- endblock chart_table_vertical_row_classes %}
 
-{% block chart_number_label_classes -%}
-    font-medium !text-lg dark:text-gray-100
-{%- endblock chart_number_label_classes %}
-
 {% block checkbox_classes -%}
     rounded w-4 h-4 text-primary border-0 bg-gray-200 ring-0 focus:ring-0 ring-offset-0 focus:ring-offset-0 cursor-pointer dark:bg-gray-600 dark:checked:bg-primary
 {%- endblock checkbox_classes %}
-
-{% block detail_label_classes -%}
-    text-xs dark:text-gray-400
-{%- endblock detail_label_classes %}
-
-{% block detail_value_classes -%}
-    font-bold dark:text-gray-100
-{%- endblock detail_value_classes %}
 
 {% block detail_check_classes -%}
     w-4 h-4 text-green-700 dark:text-green-400
 {%- endblock detail_check_classes %}
 
-{% block detail_x_classes -%}
-    w-4 h-4 text-red-500 dark:text-red-400
-{%- endblock detail_x_classes %}
-
-{% block detail_not_set_classes -%}
-    font-bold text-gray-400 dark:text-gray-500
-{%- endblock detail_not_set_classes %}
+{% block detail_label_classes -%}
+    text-xs dark:text-gray-400
+{%- endblock detail_label_classes %}
 
 {% block detail_list_label_classes -%}
     text-xs dark:text-gray-400
 {%- endblock detail_list_label_classes %}
-
-{% block detail_list_ul_classes -%}
-    list-disc list-inside font-bold dark:text-gray-100
-{%- endblock detail_list_ul_classes %}
 
 {% block detail_list_li_classes -%}
 {%- endblock detail_list_li_classes %}
@@ -100,229 +77,100 @@
     font-bold text-gray-400 dark:text-gray-500
 {%- endblock detail_list_not_set_classes %}
 
-{% block dropdown_classes -%}
-{%- endblock dropdown_classes %}
+{% block detail_list_ul_classes -%}
+    list-disc list-inside font-bold dark:text-gray-100
+{%- endblock detail_list_ul_classes %}
 
-{% block dropdown_button_classes -%}
-    cursor-pointer whitespace-nowrap flex justify-between dark:text-gray-100
-{%- endblock dropdown_button_classes %}
+{% block detail_not_set_classes -%}
+    font-bold text-gray-400 dark:text-gray-500
+{%- endblock detail_not_set_classes %}
 
-{% block dropdown_button_icon_classes -%}
-    w-4 h-4 text-blue-400-60 transition duration-100 dark:text-gray-400
-{%- endblock dropdown_button_icon_classes %}
+{% block detail_value_classes -%}
+    font-bold dark:text-gray-100
+{%- endblock detail_value_classes %}
 
-{% block dropdown_button_down_classes -%}
-    w-4 h-4 text-primary transition duration-100 dark:text-gray-300
-{%- endblock dropdown_button_down_classes %}
+{% block detail_x_classes -%}
+    w-4 h-4 text-red-500 dark:text-red-400
+{%- endblock detail_x_classes %}
 
 {% block dropdown_button_badge_classes -%}
     absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-400 group-focus:bg-orange-300 rounded-full -top-2 -end-2
 {%- endblock dropdown_button_badge_classes %}
 
+{% block dropdown_button_classes -%}
+    cursor-pointer whitespace-nowrap flex justify-between dark:text-gray-100
+{%- endblock dropdown_button_classes %}
+
+{% block dropdown_button_down_classes -%}
+    w-4 h-4 text-primary transition duration-100 dark:text-gray-300
+{%- endblock dropdown_button_down_classes %}
+
+{% block dropdown_button_icon_classes -%}
+    w-4 h-4 text-blue-400-60 transition duration-100 dark:text-gray-400
+{%- endblock dropdown_button_icon_classes %}
+
+{% block dropdown_classes -%}
+{%- endblock dropdown_classes %}
+
 {% block dropdown_content_classes -%}
     hidden z-10 min-w-[7rem] bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700
 {%- endblock dropdown_content_classes %}
 
-{% block dropdown_unordered_list_classes -%}
-    text-dark divide-y divide-gray-200 text-sm font-medium dark:text-gray-100 dark:divide-gray-700
-{%- endblock dropdown_unordered_list_classes %}
+{% block dropdown_delete_classes -%}
+    font-medium block py-2 px-4 cursor-pointer whitespace-nowrap
+{%- endblock dropdown_delete_classes %}
 
 {% block dropdown_item_classes -%}
     block py-2 px-3 whitespace-nowrap hover:bg-gray-100 cursor-pointer dark:text-gray-100 dark:hover:bg-gray-700
 {%- endblock dropdown_item_classes %}
 
-{% block link_classes -%}
-    text-sm text-primary hover:text-blue-800 focus:text-primary focus:outline-none inline-flex items-center dark:text-gray-300 dark:hover:text-gray-100
-{%- endblock link_classes %}
+{% block dropdown_unordered_list_classes -%}
+    text-dark divide-y divide-gray-200 text-sm font-medium dark:text-gray-100 dark:divide-gray-700
+{%- endblock dropdown_unordered_list_classes %}
 
-{% block section_classes -%}
-    md:max-w-[var(--breakpoint-xl)] md:mx-auto p-4
-{%- endblock section_classes %}
+{% block form_search_button_reset_classes -%}
+{%- endblock form_search_button_reset_classes %}
 
-{% block section_indent_classes -%}
-    md:w-9/12 md:mx-auto
-{%- endblock section_indent_classes %}
+{% block form_search_button_search_classes -%}
+{%- endblock form_search_button_search_classes %}
 
-{% block section_wrapper_classes -%}
-    bg-white dark:bg-gray-900
-{%- endblock section_wrapper_classes %}
+{% block form_search_button_wrapper_classes -%}
+    flex items-center gap-4 px-4 pb-4
+{%- endblock form_search_button_wrapper_classes %}
 
-{% block section_wrapper_border_classes -%}
-    border-x border-b border-gray-200 dark:border-gray-700
-{%- endblock section_wrapper_border_classes %}
+{% block form_search_card_classes -%}
+    mb-4 p-0!
+{%- endblock form_search_card_classes %}
 
-{% block sub_section_classes -%}
-    p-4 sm:p-6 lg:p-8 bg-gray-100 dark:bg-gray-700
-{%- endblock sub_section_classes %}
+{% block form_search_form_row_classes -%}
+    w-full mb-0
+{%- endblock form_search_form_row_classes %}
 
-{% block tab_classes -%}
-    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
-{%- endblock tab_classes %}
-
-{% block tab_amount_classes -%}
-    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
-{%- endblock tab_amount_classes %}
-
-{% block tab_button_classes -%}
-    w-full md:w-auto
-{%- endblock tab_button_classes %}
-
-{% block table_wrapper_classes -%}
-    overflow-x-auto border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800
-{%- endblock table_wrapper_classes %}
-
-{% block table_classes -%}
-    border-separate border-spacing-0 outline-none w-full text-sm text-left text-primary bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg
-{%- endblock table_classes %}
-
-{% block table_body_classes -%}
-{%- endblock table_body_classes %}
-
-{% block table_head_classes -%}
-    border-b border-b-gray-200 dark:border-b-gray-600
-{%- endblock table_head_classes %}
-
-{% block table_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700
-{%- endblock table_cell_classes %}
-
-{% block table_head_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700 font-medium dark:text-gray-300
-{%- endblock table_head_cell_classes %}
-
-{% block table_sticky_cell_classes -%}
-    bg-white actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
-{%- endblock table_sticky_cell_classes %}
-
-{% block table_head_sticky_cell_classes -%}
-    bg-white actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700 font-medium bg-white dark:bg-gray-800 dark:text-gray-300
-{%- endblock table_head_sticky_cell_classes %}
-
-{% block table_row_classes -%}
-{%- endblock table_row_classes %}
-
-{% block text_classes -%}
-    text-primary text-sm dark:text-gray-100
-{%- endblock text_classes %}
-
-{% block title_classes -%}
-    flex flex-row flex-wrap gap-4 items-center mb-4
-{%- endblock title_classes %}
-
-{% block title_label_classes -%}
-    font-semibold text-primary w-full sm:w-auto dark:text-gray-100
-{%- endblock title_label_classes %}
-
-{% block title_content_classes -%}
-    flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
-{%- endblock title_content_classes %}
-
-{% block sub_title_classes -%}
-    font-semibold text-primary flex items-center dark:text-gray-100
-{%- endblock sub_title_classes %}
-
-{% block sub_title_wrapper_classes -%}
-    flex flex-row justify-between items-center mb-4
-{%- endblock sub_title_wrapper_classes %}
-
-{% block sub_title_tooltip_icon_classes -%}
-    w-4 h-4 cursor-pointer ms-2 text-primary dark:text-gray-400
-{%- endblock sub_title_tooltip_icon_classes %}
-
-{% block sub_title_content_classes -%}
-    flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
-{%- endblock sub_title_content_classes %}
-
-{% block toast_classes -%}
-    flex gap-4 items-center min-w-[20rem] max-w-md p-4 mb-4 border rounded opacity-100 transition-opacity dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
-{%- endblock toast_classes %}
-
-{% block select_dropdown_item_classes -%}
-    block py-2 px-4 cursor-pointer hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700
-{%- endblock select_dropdown_item_classes %}
-
-{% block select_text_classes -%}
-    text-primary select-none flex gap-1 dark:text-gray-100
-{%- endblock select_text_classes %}
-
-{% block select_action_classes -%}
-    hover:cursor-pointer text-primary hover:text-primary/70 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100
-{%- endblock select_action_classes %}
-
-{% block select_classes -%}
-    flex items-center text-sm gap-x-3 p-4 mb-4 bg-white relative rounded border hidden dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
-{%- endblock select_classes %}
-
-{% block partial_link_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
-{%- endblock partial_link_classes %}
-
-{% block partial_link_inner_classes -%}
-    flex items-center
-{%- endblock partial_link_inner_classes %}
-
-{% block partial_link_icon_classes -%}
-    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
-{%- endblock partial_link_icon_classes %}
-
-{% block partial_link_chevron_classes -%}
-    w-4 h-4 text-base transition-transform ease-in-out rotate-0 group-aria-expanded:-rotate-180
-{%- endblock partial_link_chevron_classes %}
-
-{% block partial_chart_doughnut_pie_canvas_classes -%}
-    w-full flex justify-center h-68.75
-{%- endblock partial_chart_doughnut_pie_canvas_classes %}
-
-{% block partial_chart_canvas_wrapper_classes -%}
-    w-full max-w-full overflow-x-auto
-{%- endblock partial_chart_canvas_wrapper_classes %}
-
-{% block partial_chart_canvas_inner_classes -%}
-    h-87.5
-{%- endblock partial_chart_canvas_inner_classes %}
-
-{% block partial_chart_legend_list_classes -%}
-    mx-auto px-4 pt-4 flex justify-center flex-wrap gap-2 text-sm dark:text-gray-300
-{%- endblock partial_chart_legend_list_classes %}
-
-{% block partial_chart_legend_item_classes -%}
-    flex items-center cursor-pointer gap-2 select-none
-{%- endblock partial_chart_legend_item_classes %}
-
-{% block partial_chart_legend_color_classes -%}
-    inline-block w-2.5 h-2.5 rounded-full
-{%- endblock partial_chart_legend_color_classes %}
-
-{% block partial_chart_legend_text_classes -%}
-    m-0 p-0 dark:text-white
-{%- endblock partial_chart_legend_text_classes %}
-
-{% block partial_number_classes -%}
-    hover:cursor-pointer
-{%- endblock partial_number_classes %}
-
-{% block partial_number_value_classes -%}
-    font-medium text-xl! dark:text-gray-100
-{%- endblock partial_number_value_classes %}
+{% block form_search_form_wrapper_classes -%}
+    p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4
+{%- endblock form_search_form_wrapper_classes %}
 
 {% block frame_source_classes -%}
     source-frame
 {%- endblock frame_source_classes %}
 
-{% block modal_wrapper_classes -%}
-    relative rounded border bg-white dark:bg-gray-800 dark:border-gray-700
-{%- endblock modal_wrapper_classes %}
+{% block indicator_classes -%}
+    absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-orange-400 group-focus:bg-orange-300 rounded-full -top-2 -end-2
+{%- endblock indicator_classes %}
 
-{% block modal_header_classes -%}
-    flex items-center justify-between p-4 border-b rounded-t dark:border-gray-700
-{%- endblock modal_header_classes %}
+{% block link_classes -%}
+    text-sm text-primary hover:text-blue-800 focus:text-primary focus:outline-none inline-flex items-center dark:text-gray-300 dark:hover:text-gray-100
+{%- endblock link_classes %}
 
-{% block modal_header_title_classes -%}
-    text-xl font-medium text-primary dark:text-gray-100
-{%- endblock modal_header_title_classes %}
+{% block logo_image_classes -%}
+{%- endblock logo_image_classes %}
 
-{% block modal_header_button_classes -%}
-{%- endblock modal_header_button_classes %}
+{% block logo_link_classes -%}
+{%- endblock logo_link_classes %}
+
+{% block modal_content_buttons_classes -%}
+    flex gap-4
+{%- endblock modal_content_buttons_classes %}
 
 {% block modal_content_classes -%}
     p-4
@@ -332,9 +180,20 @@
     text-base text-primary mb-4 dark:text-gray-100
 {%- endblock modal_content_message_classes %}
 
-{% block modal_content_buttons_classes -%}
-    flex gap-4
-{%- endblock modal_content_buttons_classes %}
+{% block modal_header_button_classes -%}
+{%- endblock modal_header_button_classes %}
+
+{% block modal_header_classes -%}
+    flex items-center justify-between p-4 border-b rounded-t dark:border-gray-700
+{%- endblock modal_header_classes %}
+
+{% block modal_header_title_classes -%}
+    text-xl font-medium text-primary dark:text-gray-100
+{%- endblock modal_header_title_classes %}
+
+{% block modal_wrapper_classes -%}
+    relative rounded border bg-white dark:bg-gray-800 dark:border-gray-700
+{%- endblock modal_wrapper_classes %}
 
 {% block nav_dropdown_button_classes -%}
     group w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 leading-3
@@ -348,6 +207,9 @@
     flex-1 grow text-left whitespace-nowrap dark:text-gray-100
 {%- endblock nav_dropdown_button_label_classes %}
 
+{% block nav_dropdown_content_classes -%}
+{%- endblock nav_dropdown_content_classes %}
+
 {% block nav_dropdown_down_icon_classes -%}
     w-4 h-4 text-base transition-transform ease-in-out rotate-0 group-aria-expanded:-rotate-180
 {%- endblock nav_dropdown_down_icon_classes %}
@@ -356,24 +218,9 @@
     flex items-center gap-4
 {%- endblock nav_dropdown_down_icon_wrapper_classes %}
 
-{% block nav_dropdown_content_classes -%}
-{%- endblock nav_dropdown_content_classes %}
-
-{% block nav_item_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
-{%- endblock nav_item_classes %}
-
-{% block nav_item_icon_classes -%}
-    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
-{%- endblock nav_item_icon_classes %}
-
 {% block nav_dropdown_item_classes -%}
     w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 [&>svg]:fill-gray-400 text-sm aria-[current=page]:bg-gray-100 dark:aria-[current=page]:bg-gray-900
 {%- endblock nav_dropdown_item_classes %}
-
-{% block nav_sub_nav_item_classes -%}
-    block text-primary py-2 md:p-0 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100
-{%- endblock nav_sub_nav_item_classes %}
 
 {% block nav_dropdown_item_icon_classes -%}
     w-4 h-4 text-primary transition ease-in-out mr-3 dark:text-gray-400
@@ -383,51 +230,21 @@
     w-4 h-4 mr-3
 {%- endblock nav_dropdown_item_no_icon_classes %}
 
-{% block form_search_card_classes -%}
-    mb-4 p-0!
-{%- endblock form_search_card_classes %}
+{% block nav_item_classes -%}
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
+{%- endblock nav_item_classes %}
 
-{% block form_search_form_wrapper_classes -%}
-    p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4
-{%- endblock form_search_form_wrapper_classes %}
+{% block nav_item_icon_classes -%}
+    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
+{%- endblock nav_item_icon_classes %}
 
-{% block form_search_form_row_classes -%}
-    w-full mb-0
-{%- endblock form_search_form_row_classes %}
-
-{% block form_search_button_wrapper_classes -%}
-    flex items-center gap-4 px-4 pb-4
-{%- endblock form_search_button_wrapper_classes %}
-
-{% block form_search_button_search_classes -%}
-{%- endblock form_search_button_search_classes %}
-
-{% block form_search_button_reset_classes -%}
-{%- endblock form_search_button_reset_classes %}
-
-{% block sidebar_aside_classes -%}
-    fixed left-0 top-0 z-31 h-screen -translate-x-full transition-transform duration-300 lg:translate-x-0 pt-16 lg:transition-width h-full
-{%- endblock sidebar_aside_classes %}
-
-{% block sidebar_wrapper_classes -%}
-    h-full overflow-y-auto border-r border-gray-200 bg-white px-3 py-4 dark:border-gray-700 dark:bg-gray-800 space-y-2
-{%- endblock sidebar_wrapper_classes %}
+{% block nav_sub_nav_item_classes -%}
+    block text-primary py-2 md:p-0 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100
+{%- endblock nav_sub_nav_item_classes %}
 
 {% block navbar_classes -%}
     fixed z-40 flex h-16 w-full items-center border-b border-gray-200 bg-white px-4 dark:border-gray-700 dark:bg-gray-800
 {%- endblock navbar_classes %}
-
-{% block navbar_wrapper_classes -%}
-    flex w-full items-center justify-between
-{%- endblock navbar_wrapper_classes %}
-
-{% block navbar_sidebar_button_classes -%}
-    group me-2 cursor-pointer rounded-sm p-1.5 dark:hover:bg-gray-700
-{%- endblock navbar_sidebar_button_classes %}
-
-{% block navbar_sidebar_button_icon_classes -%}
-    h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-gray-100
-{%- endblock navbar_sidebar_button_icon_classes %}
 
 {% block navbar_dropdown_button_classes -%}
     flex text-sm bg-gray-800 rounded-full! focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600
@@ -437,16 +254,207 @@
     hidden w-60 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white shadow-sm dark:divide-gray-600 dark:bg-gray-700
 {%- endblock navbar_dropdown_wrapper_classes %}
 
-{% block logo_link_classes -%}
-{%- endblock logo_link_classes %}
+{% block navbar_sidebar_button_classes -%}
+    group me-2 cursor-pointer rounded-sm p-1.5 dark:hover:bg-gray-700
+{%- endblock navbar_sidebar_button_classes %}
 
-{% block logo_image_classes -%}
-{%- endblock logo_image_classes %}
+{% block navbar_sidebar_button_icon_classes -%}
+    h-5 w-5 text-gray-600 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-gray-100
+{%- endblock navbar_sidebar_button_icon_classes %}
 
-{% block dropdown_delete_classes -%}
-    font-medium block py-2 px-4 cursor-pointer whitespace-nowrap
-{%- endblock dropdown_delete_classes %}
+{% block navbar_wrapper_classes -%}
+    flex w-full items-center justify-between
+{%- endblock navbar_wrapper_classes %}
 
-{% block body_classes -%}
-    min-h-screen
-{%- endblock body_classes %}
+{% block navbar_wrapper_end_classes -%}
+    flex items-center lg:order-2 space-x-3
+{%- endblock navbar_wrapper_end_classes %}
+
+{% block navbar_wrapper_start_classes -%}
+    flex items-center justify-start
+{%- endblock navbar_wrapper_start_classes %}
+
+{% block partial_chart_canvas_inner_classes -%}
+    h-87.5
+{%- endblock partial_chart_canvas_inner_classes %}
+
+{% block partial_chart_canvas_wrapper_classes -%}
+    w-full max-w-full overflow-x-auto
+{%- endblock partial_chart_canvas_wrapper_classes %}
+
+{% block partial_chart_doughnut_pie_canvas_classes -%}
+    w-full flex justify-center h-68.75
+{%- endblock partial_chart_doughnut_pie_canvas_classes %}
+
+{% block partial_chart_legend_color_classes -%}
+    inline-block w-2.5 h-2.5 rounded-full
+{%- endblock partial_chart_legend_color_classes %}
+
+{% block partial_chart_legend_item_classes -%}
+    flex items-center cursor-pointer gap-2 select-none
+{%- endblock partial_chart_legend_item_classes %}
+
+{% block partial_chart_legend_list_classes -%}
+    mx-auto px-4 pt-4 flex justify-center flex-wrap gap-2 text-sm dark:text-gray-300
+{%- endblock partial_chart_legend_list_classes %}
+
+{% block partial_chart_legend_text_classes -%}
+    m-0 p-0 dark:text-white
+{%- endblock partial_chart_legend_text_classes %}
+
+{% block partial_link_chevron_classes -%}
+    w-4 h-4 text-base transition-transform ease-in-out rotate-0 group-aria-expanded:-rotate-180
+{%- endblock partial_link_chevron_classes %}
+
+{% block partial_link_classes -%}
+    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
+{%- endblock partial_link_classes %}
+
+{% block partial_link_icon_classes -%}
+    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
+{%- endblock partial_link_icon_classes %}
+
+{% block partial_link_inner_classes -%}
+    flex items-center
+{%- endblock partial_link_inner_classes %}
+
+{% block partial_number_classes -%}
+    hover:cursor-pointer
+{%- endblock partial_number_classes %}
+
+{% block partial_number_value_classes -%}
+    font-medium text-xl! dark:text-gray-100
+{%- endblock partial_number_value_classes %}
+
+{% block section_classes -%}
+    md:max-w-[var(--breakpoint-xl)] md:mx-auto p-4
+{%- endblock section_classes %}
+
+{% block section_indent_classes -%}
+    md:w-9/12 md:mx-auto
+{%- endblock section_indent_classes %}
+
+{% block section_wrapper_border_classes -%}
+    border-x border-b border-gray-200 dark:border-gray-700
+{%- endblock section_wrapper_border_classes %}
+
+{% block section_wrapper_classes -%}
+    bg-white dark:bg-gray-900
+{%- endblock section_wrapper_classes %}
+
+{% block select_action_classes -%}
+    hover:cursor-pointer text-primary hover:text-primary/70 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100
+{%- endblock select_action_classes %}
+
+{% block select_classes -%}
+    flex items-center text-sm gap-x-3 p-4 mb-4 bg-white relative rounded border hidden dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+{%- endblock select_classes %}
+
+{% block select_dropdown_item_classes -%}
+    block py-2 px-4 cursor-pointer hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700
+{%- endblock select_dropdown_item_classes %}
+
+{% block select_text_classes -%}
+    text-primary select-none flex gap-1 dark:text-gray-100
+{%- endblock select_text_classes %}
+
+{% block sidebar_aside_classes -%}
+    fixed left-0 top-0 z-31 h-screen -translate-x-full transition-transform duration-300 lg:translate-x-0 pt-16 lg:transition-width h-full
+{%- endblock sidebar_aside_classes %}
+
+{% block sidebar_wrapper_classes -%}
+    h-full overflow-y-auto border-r border-gray-200 bg-white px-3 py-4 dark:border-gray-700 dark:bg-gray-800 space-y-2
+{%- endblock sidebar_wrapper_classes %}
+
+{% block spinner_classes -%}
+{%- endblock spinner_classes %}
+
+{% block sub_section_classes -%}
+    p-4 sm:p-6 lg:p-8 bg-gray-100 dark:bg-gray-700
+{%- endblock sub_section_classes %}
+
+{% block sub_title_classes -%}
+    font-semibold text-primary flex items-center dark:text-gray-100
+{%- endblock sub_title_classes %}
+
+{% block sub_title_content_classes -%}
+    flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
+{%- endblock sub_title_content_classes %}
+
+{% block sub_title_tooltip_icon_classes -%}
+    w-4 h-4 cursor-pointer ms-2 text-primary dark:text-gray-400
+{%- endblock sub_title_tooltip_icon_classes %}
+
+{% block sub_title_wrapper_classes -%}
+    flex flex-row justify-between items-center mb-4
+{%- endblock sub_title_wrapper_classes %}
+
+{% block tab_amount_classes -%}
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
+{%- endblock tab_amount_classes %}
+
+{% block tab_button_classes -%}
+    w-full md:w-auto
+{%- endblock tab_button_classes %}
+
+{% block tab_classes -%}
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
+{%- endblock tab_classes %}
+
+{% block table_body_classes -%}
+{%- endblock table_body_classes %}
+
+{% block table_cell_classes -%}
+    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700
+{%- endblock table_cell_classes %}
+
+{% block table_classes -%}
+    border-separate border-spacing-0 outline-none w-full text-sm text-left text-primary bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg
+{%- endblock table_classes %}
+
+{% block table_head_cell_classes -%}
+    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700 font-medium dark:text-gray-300
+{%- endblock table_head_cell_classes %}
+
+{% block table_head_classes -%}
+    border-b border-b-gray-200 dark:border-b-gray-600
+{%- endblock table_head_classes %}
+
+{% block table_head_sticky_cell_classes -%}
+    bg-white actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700 font-medium bg-white dark:bg-gray-800 dark:text-gray-300
+{%- endblock table_head_sticky_cell_classes %}
+
+{% block table_row_classes -%}
+{%- endblock table_row_classes %}
+
+{% block table_sticky_cell_classes -%}
+    bg-white actions w-px px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
+{%- endblock table_sticky_cell_classes %}
+
+{% block table_wrapper_classes -%}
+    overflow-x-auto border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800
+{%- endblock table_wrapper_classes %}
+
+{% block text_classes -%}
+    text-primary text-sm dark:text-gray-100
+{%- endblock text_classes %}
+
+{% block title_classes -%}
+    flex flex-row flex-wrap gap-4 items-center mb-4
+{%- endblock title_classes %}
+
+{% block title_content_classes -%}
+    flex flex-col sm:flex-row gap-4 w-full sm:w-auto grow justify-end sm:items-center
+{%- endblock title_content_classes %}
+
+{% block title_label_classes -%}
+    font-semibold text-primary w-full sm:w-auto dark:text-gray-100
+{%- endblock title_label_classes %}
+
+{% block toast_classes -%}
+    flex gap-4 items-center min-w-[20rem] max-w-md p-4 mb-4 border rounded opacity-100 transition-opacity dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+{%- endblock toast_classes %}
+
+{% block tooltip_classes -%}
+    absolute z-[70] invisible inline-block px-3 py-2 text-sm normal-case font-medium text-blue-100 dark:text-gray-100 transition-opacity duration-300 bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700
+{%- endblock tooltip_classes %}
