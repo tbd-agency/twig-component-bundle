@@ -25,7 +25,7 @@ final class Dropdown
     public string $buttonAvatar = '';
     public string $buttonClasses = '';
     public string $dropdownClasses = '';
-    public string $dropdownContentClasses = '';
+    public ?string $dropdownContentClasses = '';
     public string $dropdownTrigger;
     public string $dropdownPlacement;
     public int $offsetSkidding;
