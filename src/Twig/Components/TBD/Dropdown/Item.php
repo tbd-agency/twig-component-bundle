@@ -12,7 +12,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Item
 {
     public bool $turbo;
-    public string $label;
+    public ?string $label = null;
     public ?string $path;
 
     #[PreMount]
@@ -21,7 +21,6 @@ final class Item
         $resolver = new OptionsResolver();
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired('label')
             ->setDefaults(['turbo' => true])
             ->setAllowedValues('turbo', [true, false]);
 

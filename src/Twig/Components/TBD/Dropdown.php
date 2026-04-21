@@ -22,10 +22,14 @@ final class Dropdown
     public string $buttonText = '';
     public string $buttonTooltip = '';
     public string $buttonBadge = '';
+    public string $buttonAvatar = '';
     public string $buttonClasses = '';
     public string $dropdownClasses = '';
+    public string $dropdownContentClasses = '';
     public string $dropdownTrigger;
     public string $dropdownPlacement;
+    public int $offsetSkidding;
+    public int $offsetDistance;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -43,10 +47,14 @@ final class Dropdown
                 'popper' => true,
                 'dropdownTrigger' => 'click',
                 'dropdownPlacement' => 'bottom-end',
+                'offsetSkidding' => 0,
+                'offsetDistance' => 10,
             ])
             ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
             ->setAllowedValues('down', [true, false])
-            ->setAllowedValues('popper', [true, false]);
+            ->setAllowedValues('popper', [true, false])
+            ->setAllowedTypes('offsetSkidding', 'int')
+            ->setAllowedTypes('offsetDistance', 'int');
 
         return $resolver->resolve($data) + $data;
     }

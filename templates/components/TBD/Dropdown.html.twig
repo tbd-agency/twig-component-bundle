@@ -3,6 +3,8 @@
     'data-dropdown-target-value': uuid ~ '-dropdown',
     'data-dropdown-trigger-value': uuid ~ '-dropdown-trigger',
     'data-dropdown-placement-value': dropdownPlacement,
+    'data-dropdown-offset-skidding-value': offsetSkidding,
+    'data-dropdown-offset-distance-value': offsetDistance,
     'class': block('dropdown_classes', tbd_twig_component_template)|trim,
 }) }}>
     {% block buttonContent %}
@@ -27,10 +29,13 @@
                     {{ buttonBadge }}
                 </div>
             {% endif %}
+            {% if buttonAvatar %}
+                <twig:TBD:Avatar seed="{{ buttonAvatar }}"/>
+            {% endif %}
         </twig:TBD:Button>
     {% endblock %}
     <div id="{{ uuid }}-dropdown" data-dropdown-target="{{ popper ? 'content' }}"
-         class="{{ block('dropdown_content_classes', tbd_twig_component_template)|trim }}">
-        {% block content %}{% endblock %}
+         class="{{ block('dropdown_content_classes', tbd_twig_component_template)|trim ~ ' ' ~ dropdownContentClasses|trim }}">
+        {% block dropdownContent %}{% endblock %}
     </div>
 </div>

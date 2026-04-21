@@ -8,6 +8,8 @@ export default class extends Controller {
         target: String,
         trigger: String,
         placement: String,
+        offsetSkidding: Number,
+        offsetDistance: Number,
     }
     static targets = ['button', 'content']
 
@@ -17,8 +19,8 @@ export default class extends Controller {
         let options = {
             placement: this.placementValue,
             triggerType: 'click',
-            offsetSkidding: 0,
-            offsetDistance: 10,
+            offsetSkidding: this.offsetSkiddingValue,
+            offsetDistance: this.offsetDistanceValue,
             delay: 300,
             ignoreClickOutsideClass: false,
         }

@@ -61,19 +61,19 @@
             {% block language %}{% endblock %}
 
             {# User menu #}
-            {% if app.user and block('userDropdown') is defined %}
-                <twig:TBD:Button
-                        size="none"
-                        class="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
-                        data-dropdown-toggle="dropdown-user"
-                        data-dropdown-placement="bottom-end">
-                    <twig:TBD:Avatar seed="{{ seed ?? app.user.firstName}}"/>
-                </twig:TBD:Button>
+            {% set userDropdown = block('userDropdown') %}
+            {% if app.user and userDropdown %}
+                <twig:TBD:Dropdown
+                        dropdownContentClasses="{{ userDropdownContentClasses }}"
+                        offsetSkidding="{{ userDropdownOffsetSkidding }}"
+                        offsetDistance="{{ userDropdownOffsetDistance }}"
+                        dropdownPlacement="bottom-end"
+                        buttonSize="none"
+                        buttonClasses="{{ block('navbar_dropdown_button_classes', tbd_twig_component_template)|trim }}"
+                        buttonAvatar="{{ seed ?? app.user.firstName }}">
+                    {% block dropdownContent %}{{ userDropdown|raw }}{% endblock %}
+                </twig:TBD:Dropdown>
             {% endif %}
-        </div>
-        <div class="{{ block('navbar_dropdown_wrapper_classes', tbd_twig_component_template)|trim }}"
-             id="dropdown-user">
-            {% block userDropdown %}{% endblock %}
         </div>
     </div>
 </nav>

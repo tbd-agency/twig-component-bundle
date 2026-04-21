@@ -16,6 +16,9 @@ final class Navbar
     public string $darkModeTooltip;
     public ?string $seed = null;
     public bool $darkMode;
+    public ?string $userDropdownContentClasses = null;
+    public int $userDropdownOffsetSkidding;
+    public int $userDropdownOffsetDistance;
 
     public function __construct(
         private readonly array $variants,
@@ -28,6 +31,7 @@ final class Navbar
     {
         return $this->variants[$this->buttonVariant];
     }
+
     public function getSizeClasses(): string
     {
         return $this->sizes[$this->buttonSize];
@@ -45,9 +49,13 @@ final class Navbar
                 'buttonSize' => 'md',
                 'darkMode' => true,
                 'darkModeTooltip' => 'Toggle dark mode',
+                'userDropdownOffsetSkidding' => 0,
+                'userDropdownOffsetDistance' => 10,
             ])
             ->setAllowedValues('buttonVariant', array_keys($this->variants))
-            ->setAllowedValues('buttonSize', array_keys($this->sizes));
+            ->setAllowedValues('buttonSize', array_keys($this->sizes))
+            ->setAllowedTypes('userDropdownOffsetSkidding', 'int')
+            ->setAllowedTypes('userDropdownOffsetDistance', 'int');
 
         return $resolver->resolve($data) + $data;
     }
