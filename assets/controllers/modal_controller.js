@@ -61,8 +61,12 @@ export default class extends Controller {
     }
 
     open(event) {
-        let target = document.getElementById(this.targetValue)
-        let modal = new Modal(target)
+        const trigger = event?.currentTarget
+        const targetValue = trigger?.dataset?.modalTarget
+        let target = document.getElementById(targetValue)
+        let modal = target.modalInstance ?? new Modal(target)
+        target.modalInstance = modal
+
         if (modal) {
             modal.show()
         }
@@ -73,6 +77,7 @@ export default class extends Controller {
         const targetValue = trigger?.dataset?.modalTarget
         const target = document.getElementById(targetValue)
         const modal = target?.modalInstance
+
         if (modal) {
             modal.hide()
         }
