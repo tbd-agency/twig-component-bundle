@@ -60,6 +60,14 @@ export default class extends Controller {
         document.removeEventListener('close:modal', this.close.bind(this))
     }
 
+    open(event) {
+        let target = document.getElementById(this.targetValue)
+        let modal = new Modal(target)
+        if (modal) {
+            modal.show()
+        }
+    }
+
     close(event) {
         const trigger = event?.currentTarget
         const targetValue = trigger?.dataset?.modalTarget
