@@ -25,6 +25,7 @@ class AppExtension extends AbstractExtension
         return [
             new TwigFunction('IsBool', [$this, 'isBool']),
             new TwigFunction('sidebarExpanded', [$this, 'isSidebarExpanded']),
+            new TwigFunction('sidebarHoverState', [$this, 'isSidebarHoverState']),
         ];
     }
 
@@ -36,6 +37,13 @@ class AppExtension extends AbstractExtension
     public function isSidebarExpanded(): bool
     {
         $cookie = $this->requestStack->getCurrentRequest()?->cookies->get('sidebar');
+
+        return $cookie !== 'false';
+    }
+
+    public function isSidebarHoverState(): bool
+    {
+        $cookie = $this->requestStack->getCurrentRequest()?->cookies->get('sidebar-hover-state');
 
         return $cookie !== 'false';
     }

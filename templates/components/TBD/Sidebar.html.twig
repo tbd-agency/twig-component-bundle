@@ -3,8 +3,11 @@
     'id': 'sidebar',
     'class': block('sidebar_aside_classes', tbd_twig_component_template)|trim ~ ' ' ~ sidebarWidth,
     'data-sidebar-target': 'sidebar',
-    'data-action': 'mouseenter->sidebar#onMouseEnter mouseleave->sidebar#onMouseLeave',
-}) }}>
+}) }}
+        {% if sidebarHoverState() %}
+            data-action="mouseenter->sidebar#onMouseEnter mouseleave->sidebar#onMouseLeave"
+        {% endif %}
+>
     <div class="{{ block('sidebar_wrapper_classes', tbd_twig_component_template)|trim }}">
         {% block content %}{% endblock %}
     </div>

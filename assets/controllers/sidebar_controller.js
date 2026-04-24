@@ -19,6 +19,7 @@ export default class extends Controller {
     }
 
     connect() {
+        Cookie.set('sidebar-hover-state', this.hoverStateValue, {expires: 365} )
         this.isTemporarilyExpanded = false
         this.initializeSidebarState()
     }
