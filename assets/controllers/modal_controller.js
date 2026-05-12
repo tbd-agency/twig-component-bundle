@@ -73,8 +73,7 @@ export default class extends Controller {
     }
 
     close(event) {
-        const trigger = event?.currentTarget
-        const targetValue = trigger?.dataset?.modalTarget
+        const targetValue = event?.detail?.target ?? event?.currentTarget?.dataset?.modalTarget
         const target = document.getElementById(targetValue)
         const modal = target?.modalInstance
 
