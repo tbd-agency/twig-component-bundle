@@ -15,8 +15,8 @@ export default class extends Controller {
         target.modalInstance = modal
 
         if (modal) {
-            let wrapper = document.getElementById('modal-wrapper')
-            wrapper.classList.remove('max-w-sm', 'max-w-md', 'max-w-lg', 'max-w-xl', 'max-w-2xl', 'max-w-3xl')
+            let wrapper = target.querySelector('#modal-wrapper')
+            wrapper.classList.remove('max-w-sm', 'max-w-md', 'max-w-lg', 'max-w-xl', 'max-w-2xl', 'max-w-3xl', 'max-w-4xl', 'max-w-5xl', 'max-w-6xl', 'max-w-7xl')
             if (sizeValue === 'sm') wrapper.classList.add('max-w-sm')
             if (sizeValue === 'md') wrapper.classList.add('max-w-md')
             if (sizeValue === 'lg') wrapper.classList.add('max-w-lg')
@@ -28,7 +28,7 @@ export default class extends Controller {
             if (sizeValue === '6xl') wrapper.classList.add('max-w-6xl')
             if (sizeValue === '7xl') wrapper.classList.add('max-w-7xl')
 
-            let title = document.getElementById('modal-title')
+            let title = target.querySelector('#modal-title')
             title.innerHTML = titleValue
 
             let frame = document.getElementById(frameValue)
@@ -37,6 +37,10 @@ export default class extends Controller {
                 modal.updateOnShow(function () {
                     let autofocus = frame.querySelector('[autofocus]:not([readonly])')
                     if (autofocus) autofocus.focus()
+
+                    if (modal._backdropEl) {
+                        target.parentNode.insertBefore(modal._backdropEl, target)
+                    }
                 })
 
                 modal.show()
