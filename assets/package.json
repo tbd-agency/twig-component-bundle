@@ -53,6 +53,24 @@
         "fetch": "lazy",
         "enabled": true
       },
+      "flatpickr": {
+        "main": "src/flatpickr_controller.js",
+        "name": "flatpickr",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "inline-edit": {
+        "main": "src/inline_edit_controller.js",
+        "name": "inline-edit",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "marker": {
+        "main": "src/marker_controller.js",
+        "name": "marker",
+        "fetch": "lazy",
+        "enabled": true
+      },
       "modal": {
         "main": "src/modal_controller.js",
         "name": "modal",
@@ -77,6 +95,12 @@
         "fetch": "lazy",
         "enabled": true
       },
+      "sortable": {
+        "main": "src/sortable_controller.js",
+        "name": "sortable",
+        "fetch": "eager",
+        "enabled": true
+      },
       "theme": {
         "main": "src/theme_controller.js",
         "name": "theme",
@@ -96,7 +120,10 @@
       "chart.js/auto": "^3.4.1 || ^4.0.0",
       "js-cookie": "^3.0.5",
       "flowbite": "^2.0.0 || ^3.0.0 || ^4.0.0",
-      "@popperjs/core": "^2.11.8"
+      "@popperjs/core": "^2.11.8",
+      "flatpickr": "^4.6.13",
+      "sortablejs": "^1.15.0",
+      "@symfony/ux-live-component": "^2.0.0"
     }
   },
   "dependencies": {
@@ -105,7 +132,10 @@
     "chart.js": "^3.4.1 || ^4.0.0",
     "js-cookie": "^3.0.5",
     "flowbite": "^2.0.0 || ^3.0.0 || ^4.0.0",
-    "@popperjs/core": "^2.11.8"
+    "@popperjs/core": "^2.11.8",
+    "flatpickr": "^4.6.13",
+    "sortablejs": "^1.15.0",
+    "@symfony/ux-live-component": "^2.0.0"
   },
   "peerDependencies": {
     "@hotwired/stimulus": "^3.2.2",
@@ -113,6 +143,9 @@
     "chart.js": "^3.4.1 || ^4.0.0",
     "js-cookie": "^3.0.5",
     "flowbite": "^2.0.0 || ^3.0.0 || ^4.0.0",
-    "@popperjs/core": "^2.11.8"
+    "@popperjs/core": "^2.11.8",
+    "flatpickr": "^4.6.13",
+    "sortablejs": "^1.15.0",
+    "@symfony/ux-live-component": "^2.0.0"
   }
 }
