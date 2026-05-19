@@ -6,72 +6,72 @@
   "symfony": {
     "controllers": {
       "ajax-submit": {
-        "main": "controllers/ajax_submit_controller.js",
+        "main": "src/ajax_submit_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "app": {
-        "main": "controllers/app_controller.js",
+        "main": "src/app_controller.js",
         "fetch": "eager",
         "enabled": true
       },
       "chart": {
-        "main": "controllers/chart_controller.js",
+        "main": "src/chart_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "closeable": {
-        "main": "controllers/closeable_controller.js",
+        "main": "src/closeable_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "confirm": {
-        "main": "controllers/confirm_controller.js",
+        "main": "src/confirm_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "dashboard": {
-        "main": "controllers/dashboard_controller.js",
+        "main": "src/dashboard_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "delete": {
-        "main": "controllers/delete_controller.js",
+        "main": "src/delete_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "dropdown": {
-        "main": "controllers/dropdown_controller.js",
+        "main": "src/dropdown_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "modal": {
-        "main": "controllers/modal_controller.js",
+        "main": "src/modal_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "reset-search": {
-        "main": "controllers/reset_search_controller.js",
+        "main": "src/reset_search_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "select-items": {
-        "main": "controllers/select_items_controller.js",
+        "main": "src/select_items_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "sidebar": {
-        "main": "controllers/sidebar_controller.js",
+        "main": "src/sidebar_controller.js",
         "fetch": "lazy",
         "enabled": true
       },
       "theme": {
-        "main": "controllers/theme_controller.js",
+        "main": "src/theme_controller.js",
         "fetch": "eager",
         "enabled": true
       },
       "url": {
-        "main": "controllers/url_controller.js",
+        "main": "src/url_controller.js",
         "fetch": "lazy",
         "enabled": true
       }
