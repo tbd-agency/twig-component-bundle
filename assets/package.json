@@ -1,0 +1,96 @@
+{
+  "name": "@tbd/twig-component-bundle",
+  "description": "Stimulus controllers shipped with the TBD Twig Component Bundle.",
+  "license": "MIT",
+  "version": "1.0.0",
+  "symfony": {
+    "controllers": {
+      "ajax-submit": {
+        "main": "./controllers/ajax_submit_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "app": {
+        "main": "./controllers/app_controller.js",
+        "fetch": "eager",
+        "enabled": true
+      },
+      "chart": {
+        "main": "./controllers/chart_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "closeable": {
+        "main": "./controllers/closeable_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "confirm": {
+        "main": "./controllers/confirm_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "dashboard": {
+        "main": "./controllers/dashboard_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "delete": {
+        "main": "./controllers/delete_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "dropdown": {
+        "main": "./controllers/dropdown_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "modal": {
+        "main": "./controllers/modal_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "reset-search": {
+        "main": "./controllers/reset_search_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "select-items": {
+        "main": "./controllers/select_items_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "sidebar": {
+        "main": "./controllers/sidebar_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      },
+      "theme": {
+        "main": "./controllers/theme_controller.js",
+        "fetch": "eager",
+        "enabled": true
+      },
+      "url": {
+        "main": "./controllers/url_controller.js",
+        "fetch": "lazy",
+        "enabled": true
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.2.2",
+      "@hotwired/turbo": "^8.0.0",
+      "chart.js/auto": "^4.0.0",
+      "js-cookie": "^3.0.5",
+      "flowbite": "^2.0.0",
+      "@popperjs/core": "^2.11.8"
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo": "^8.0.0",
+    "chart.js": "^3.4.1 || ^4.0",
+    "js-cookie": "^3.0.5",
+    "flowbite": "^2.0.0",
+    "@popperjs/core": "^2.11.8"
+  }
+}
