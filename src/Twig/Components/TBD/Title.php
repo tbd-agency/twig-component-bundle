@@ -14,6 +14,12 @@ final class Title
     public string $label;
     public string $fontSize;
 
+    public function __construct(
+        private readonly array $fontSizes,
+        private readonly string $defaultFontSize,
+    ) {
+    }
+
     #[PreMount]
     public function preMount(array $data): array
     {
@@ -22,9 +28,14 @@ final class Title
         $resolver
             ->setIgnoreUndefined()
             ->setRequired('label')
-            ->setDefaults(['fontSize' => 'text-4xl'])
-            ->setAllowedValues('fontSize', ['text-4xl', 'text-3xl', 'text-2xl', 'text-xl', 'text-lg', 'text-base', 'text-sm']);
+            ->setDefaults(['fontSize' => $this->defaultFontSize])
+            ->setAllowedValues('fontSize', array_keys($this->fontSizes));
 
         return $resolver->resolve($data) + $data;
+    }
+
+    public function getTextSizeClass(): string
+    {
+        return $this->fontSizes[$this->fontSize];
     }
 }

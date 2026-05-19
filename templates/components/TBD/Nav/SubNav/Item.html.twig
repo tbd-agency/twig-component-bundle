@@ -1,5 +1,5 @@
 <li{{ attributes }}>
-    {% if block('content') is defined %}
+    {% if block('content') is not empty %}
         {{ block('content') }}
     {% elseif (path is defined and path) and (label is defined and label) %}
         <a href="{{ path }}" class="{{ block('nav_sub_nav_item_classes', tbd_twig_component_template)|trim }}">

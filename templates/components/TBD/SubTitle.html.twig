@@ -5,7 +5,7 @@
             {{ ux_icon('tbd:circle-info', {'class': block('sub_title_tooltip_icon_classes', tbd_twig_component_template)|trim, 'data-tooltip-target': ('tooltip-' ~ tooltipId)}) }}
         {% endif %}
 </{{ tag }}>
-{% if block('content') is defined %}
+{% if block('content') is not empty %}
     <div class="{{ block('sub_title_content_classes', tbd_twig_component_template)|trim }}">
         {% block content %}{% endblock %}
     </div>

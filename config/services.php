@@ -19,6 +19,7 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Select;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Spinner;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\SubTitle;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Table\StickyCell;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Title;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Toast;
 
 return static function (ContainerConfigurator $configurator): void {
@@ -88,6 +89,11 @@ return static function (ContainerConfigurator $configurator): void {
         ->args([
             '$fontSizes' => '%sub_title.font_sizes%',
             '$defaultTag' => '%sub_title.font_size.default%',
+        ])
+        ->set(Title::class)
+        ->args([
+            '$fontSizes' => '%title.font_sizes%',
+            '$defaultFontSize' => '%title.font_size.default%',
         ])
         ->set(StickyCell::class)
         ->args([

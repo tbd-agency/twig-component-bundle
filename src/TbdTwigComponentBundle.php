@@ -72,6 +72,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('sub_title.font_sizes', array_replace(self::DEFAULT_SUB_TITLE_FONT_SIZES, $config['sub_title']['font_sizes'] ?? []));
         $builder->setParameter('sub_title.font_size.default', $config['sub_title']['default_font_size']);
 
+        $builder->setParameter('title.font_sizes', array_replace(self::DEFAULT_TITLE_FONT_SIZES, $config['title']['font_sizes'] ?? []));
+        $builder->setParameter('title.font_size.default', $config['title']['default_font_size']);
+
         $builder->setParameter('table.sticky_cell.positions', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions'] ?? []));
         $builder->setParameter('table.sticky_cell.position.default', $config['table']['sticky_cell']['default_position']);
 
@@ -271,6 +274,21 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
 
+            ->arrayNode('title')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('font_sizes')
+            ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_TITLE_FONT_SIZES)
+            ->end()
+            ->scalarNode('default_font_size')
+            ->defaultValue('4xl')
+            ->end()
+            ->end()
+            ->end()
+
             ->arrayNode('table')
             ->addDefaultsIfNotSet()
             ->children()
@@ -408,6 +426,10 @@ final class TbdTwigComponentBundle extends AbstractBundle
                 self::assertDefaultInKeys('sub_title', 'default_font_size', 'font_sizes', $config['sub_title']['default_font_size'],
                     array_replace(self::DEFAULT_SUB_TITLE_FONT_SIZES, $config['sub_title']['font_sizes']));
 
+                # title
+                self::assertDefaultInKeys('title', 'default_font_size', 'font_sizes', $config['title']['default_font_size'],
+                    array_replace(self::DEFAULT_TITLE_FONT_SIZES, $config['title']['font_sizes']));
+
                 # table.sticky_cell
                 self::assertDefaultInKeys('table.sticky_cell', 'default_position', 'positions', $config['table']['sticky_cell']['default_position'],
                     array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions']));
@@ -538,6 +560,15 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'small-y' => ' py-2 sm:py-3 lg:py-4',
         'large' => ' p-4 sm:p-6 lg:p-8',
         'large-y' => ' py-4 sm:py-6 lg:py-8',
+    ];
+
+    private const array DEFAULT_TITLE_FONT_SIZES = [
+        'xl' => 'text-base lg:text-xl',
+        '2xl' => 'text-lg lg:text-2xl',
+        '3xl' => 'text-xl lg:text-3xl',
+        '4xl' => 'text-2xl lg:text-4xl',
+        '5xl' => 'text-3xl lg:text-5xl',
+        '6xl' => 'text-4xl lg:text-6xl',
     ];
 
     private const array DEFAULT_SUB_TITLE_FONT_SIZES = [
