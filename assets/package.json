@@ -1,6 +1,7 @@
 {
   "name": "@tbd/twig-component-bundle",
   "description": "Stimulus controllers shipped with the TBD Twig Component Bundle.",
+  "keywords": ["symfony-ux"],
   "license": "MIT",
   "version": "1.0.0",
   "symfony": {
