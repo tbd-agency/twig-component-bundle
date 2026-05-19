@@ -13,7 +13,7 @@
       },
       "app": {
         "main": "src/app_controller.js",
-        "name": "ajax-submit",
+        "name": "app",
         "fetch": "eager",
         "enabled": true
       },
@@ -92,19 +92,27 @@
     },
     "importmap": {
       "@hotwired/stimulus": "^3.2.2",
-      "@hotwired/turbo": "^8.0.0",
-      "chart.js/auto": "^4.0.0",
+      "@hotwired/turbo": "^7.3.0 || ^8.0.0",
+      "chart.js/auto": "^3.4.1 || ^4.0.0",
       "js-cookie": "^3.0.5",
-      "flowbite": "^2.0.0",
+      "flowbite": "^2.0.0 || ^3.0.0 || ^4.0.0",
       "@popperjs/core": "^2.11.8"
     }
   },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo": "^7.3.0 || ^8.0.0",
+    "chart.js": "^3.4.1 || ^4.0.0",
+    "js-cookie": "^3.0.5",
+    "flowbite": "^2.0.0 || ^3.0.0 || ^4.0.0",
+    "@popperjs/core": "^2.11.8"
+  },
   "peerDependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo": "^8.0.0",
-    "chart.js": "^3.4.1 || ^4.0",
+    "@hotwired/turbo": "^7.3.0 || ^8.0.0",
+    "chart.js": "^3.4.1 || ^4.0.0",
     "js-cookie": "^3.0.5",
-    "flowbite": "^2.0.0",
+    "flowbite": "^2.0.0 || ^3.0.0 || ^4.0.0",
     "@popperjs/core": "^2.11.8"
   }
 }
