@@ -2,6 +2,7 @@
   "name": "tbd/twig-component-bundle",
   "description": "A Symfony bundle containing a shared library of reusable Twig components.",
   "type": "symfony-bundle",
+  "keywords": ["symfony-ux"],
   "license": "MIT",
   "autoload": {
     "psr-4": {
