@@ -15,8 +15,6 @@ export default class extends Controller {
         defaultDate: {type: String, default: null},
         rangeSeparator: {type: String, default: ' to '},
         firstDayOfWeek: {type: Number, default: 1},
-        rangeButtonClass: {type: String, default: 'w-full text-left px-3 py-2 text-sm hover:text-white hover:bg-primary dark:hover:bg-primary-dark'},
-        rangeSelectClass: {type: String, default: 'w-full border-t! border-gray-200 dark:border-gray-700 dark:bg-gray-900'},
     }
 
     get defaultPredefinedRanges() {
@@ -154,7 +152,7 @@ export default class extends Controller {
 
             return `
                  <div class="flatpickr-predefined-ranges">
-                    <select data-range-select class="${this.rangeSelectClassValue}">
+                    <select data-range-select>
                         <option>Select a range</option>
                         ${options}
                     </select>
@@ -165,8 +163,7 @@ export default class extends Controller {
         const items = ranges.map(({range, label}) => {
             const data = range.map(d => d instanceof Date ? d.toISOString() : d).join(',')
             return `
-                 <button type="button" data-range="${data}"
-                    class="${this.rangeButtonClassValue}">
+                 <button type="button" data-range="${data}">
                     ${label}
                 </button>
             `

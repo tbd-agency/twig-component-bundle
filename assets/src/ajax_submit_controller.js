@@ -23,7 +23,7 @@ export default class extends Controller {
                 if (this.hasRedirectPathValue) {
                     window.location = this.redirectPathValue
                 } else {
-                    window.location = window.location
+                    location.reload()
                 }
             } else {
                 let text = await response.text()
