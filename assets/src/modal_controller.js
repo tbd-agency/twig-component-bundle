@@ -4,11 +4,11 @@ import {Controller} from '@hotwired/stimulus'
 export default class extends Controller {
     setSrc(event) {
         const trigger = event?.currentTarget
-        const targetValue = trigger?.dataset?.modalTarget
-        const sizeValue = trigger?.dataset?.modalSize ?? 'md'
-        const titleValue = trigger?.dataset?.modalTitle
-        const srcValue = trigger?.dataset?.modalSrc
-        const frameValue = trigger?.dataset?.modalFrame ?? 'source-frame'
+        const targetValue = trigger?.dataset?.target
+        const sizeValue = trigger?.dataset?.size ?? 'md'
+        const titleValue = trigger?.dataset?.title
+        const srcValue = trigger?.dataset?.src
+        const frameValue = trigger?.dataset?.frame ?? 'source-frame'
 
         let target = document.getElementById(targetValue)
         let options = {
@@ -38,12 +38,12 @@ export default class extends Controller {
             frame.setAttribute('src', srcValue)
             frame.loaded.then(function () {
                 modal.updateOnShow(function () {
-                    let autofocus = frame.querySelector('[autofocus]:not([readonly])')
-                    if (autofocus) autofocus.focus()
-
                     if (modal._backdropEl) {
                         target.parentNode.insertBefore(modal._backdropEl, target)
                     }
+
+                    let autofocus = frame.querySelector('[autofocus]:not([readonly])')
+                    if (autofocus) autofocus.focus()
                 })
 
                 modal.show()
@@ -69,8 +69,8 @@ export default class extends Controller {
 
     open(event) {
         const trigger = event?.currentTarget
-        const targetValue = trigger?.dataset?.modalTarget
-        const actionValue = trigger?.dataset?.modalAction
+        const targetValue = trigger?.dataset?.target
+        const actionValue = trigger?.dataset?.formAction
         let target = document.getElementById(targetValue)
 
         if (target && actionValue) {
@@ -80,13 +80,16 @@ export default class extends Controller {
 
         let modal = FlowbiteInstances.getInstance('Modal', targetValue)
         if (modal && !document.body.contains(modal._targetEl)) {
+            FlowbiteInstances.removeInstance('Modal', targetValue)
+            modal = null
+        }
+
+        if (!modal) {
             let options = {
                 backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-[50]',
             }
 
-            FlowbiteInstances.removeInstance('Modal', targetValue)
             modal = new Modal(target, options)
-
             modal.updateOnShow(function () {
                 if (modal._backdropEl) {
                     target.parentNode.insertBefore(modal._backdropEl, target)
@@ -100,13 +103,16 @@ export default class extends Controller {
     }
 
     close(event) {
-        const targetValue = event?.detail?.target ?? event?.currentTarget?.dataset?.modalTarget
+        const targetValue = event?.detail?.target ?? event?.currentTarget?.dataset?.target
         let modal = FlowbiteInstances.getInstance('Modal', targetValue)
 
         if (modal && !document.body.contains(modal._targetEl)) {
-            const target = document.getElementById(targetValue)
             FlowbiteInstances.removeInstance('Modal', targetValue)
+            modal = null
+        }
 
+        if (!modal) {
+            const target = document.getElementById(targetValue)
             modal = new Modal(target)
         }
 

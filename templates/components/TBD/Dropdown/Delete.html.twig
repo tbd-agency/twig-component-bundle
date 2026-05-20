@@ -1,7 +1,7 @@
 <li>
     <a{{ attributes.defaults({'class':  block('dropdown_delete_classes', tbd_twig_component_template)|trim}) }}
-           data-modal-target="modal-delete"
-           data-modal-action="{{ action }}"
+           data-target="modal-delete"
+           data-form-action="{{ action }}"
            data-action="click->app#dropdownClose click->modal#open"
     >
         {% if label is defined and label is not empty %}
