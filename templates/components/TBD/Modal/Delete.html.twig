@@ -19,7 +19,7 @@
             </div>
             <form {{ attributes.defaults({ method: 'POST'}) }}>
                 <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">
-                    <input type="hidden" name="_token">
+                    <input type="hidden" name="_token" value="{{ csrf_token('submit') }}">
                     <p class="{{ block('modal_content_message_classes', tbd_twig_component_template)|trim }}">
                         {% if message %}
                             {{ message }}

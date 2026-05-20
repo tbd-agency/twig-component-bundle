@@ -4,7 +4,9 @@
             {% if modal %}
                 {{ label }}
             {% else %}
-                <form method="POST" target="{{ target }}" action="{{ action }}" data-turbo="false" data-confirm="{{ confirm }}">
+                <form method="POST" target="{{ target }}" action="{{ action }}" data-turbo="false"
+                      data-confirm="{{ confirm }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('submit') }}">
                     <label for="selectedItems" class="cursor-pointer">
                         {{ label }}
                         <input type="hidden" class="selectedItems" name="selectedItems">

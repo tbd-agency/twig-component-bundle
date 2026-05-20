@@ -22,8 +22,8 @@ export default class extends Controller {
             if (!hasSelection && !selectorFound) {
                 event.preventDefault()
 
-                if (event.metaKey || event.ctrlKey) {
-                    // Open location _blank if command or ctrl keys are pressed
+                if (location.startsWith('http') || event.metaKey || event.ctrlKey) {
+                    // Open location _blank if command or ctrl keys are pressed or if location is an external link
                     window.open(location, '_blank');
                 } else {
                     trigger.disabled = true
