@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b297e5ee4c0b5c516751ed303b01baec",
+    "content-hash": "125425293287f7dd79e9509ef98a1f6f",
     "packages": [
         {
             "name": "brick/math",
@@ -3702,6 +3702,66 @@
                 }
             ],
             "time": "2026-04-18T13:51:42+00:00"
+        },
+        {
+            "name": "tbd/stimulus-bundle",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:tbd-agency/stimulus-bundle.git",
+                "reference": "cbec33ab5c592962c0ed5f5aaf1918737dbb8078"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tbd-agency/stimulus-bundle/zipball/cbec33ab5c592962c0ed5f5aaf1918737dbb8078",
+                "reference": "cbec33ab5c592962c0ed5f5aaf1918737dbb8078",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-paginator-bundle": "^6.0",
+                "php": ">=8.4",
+                "ramsey/uuid-doctrine": "^1.5 || ^2.1",
+                "symfony/config": "^7.0 || ^8.0",
+                "symfony/flex": "^2",
+                "symfony/framework-bundle": "^7.0 || ^8.0",
+                "symfony/options-resolver": "^7.0 || ^8.0",
+                "symfony/stimulus-bundle": "^2.23",
+                "symfony/ux-icons": "^2.23 || ^3.0",
+                "symfony/ux-twig-component": "^2.23"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Tbd\\StimulusBundle\\": "src/"
+                }
+            },
+            "scripts": {
+                "auto-scripts": {
+                    "cache:clear": "symfony-cmd",
+                    "assets:install %PUBLIC_DIR%": "symfony-cmd"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TBD",
+                    "email": "info@tbd.be"
+                }
+            ],
+            "description": "A Symfony bundle containing a shared library of reusable stimulus controllers.",
+            "keywords": [
+                "symfony-ux"
+            ],
+            "support": {
+                "source": "https://github.com/tbd-agency/stimulus-bundle/tree/v1.0.9",
+                "issues": "https://github.com/tbd-agency/stimulus-bundle/issues"
+            },
+            "time": "2026-05-20T15:03:47+00:00"
         },
         {
             "name": "twig/twig",

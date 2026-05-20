@@ -15,6 +15,12 @@
       "email": "info@tbd.be"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:tbd-agency/stimulus-bundle.git"
+    }
+  ],
   "require": {
     "knplabs/knp-paginator-bundle": "^6.0",
     "php": ">=8.4",
@@ -25,7 +31,8 @@
     "symfony/options-resolver": "^7.0 || ^8.0",
     "symfony/stimulus-bundle": "^2.23",
     "symfony/ux-icons": "^2.23 || ^3.0",
-    "symfony/ux-twig-component": "^2.23"
+    "symfony/ux-twig-component": "^2.23",
+    "tbd/stimulus-bundle": "^1.0"
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1"
