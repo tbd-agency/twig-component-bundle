@@ -106,25 +106,39 @@ namespace.
 
 ---
 
-### 2. Stimulus controller registration (npm install required)
+### 2. Stimulus controller registration (Flex recipe + `npm install`)
 
 The Stimulus controllers used by the components live in the separate
 `tbd/stimulus-bundle` package. They are exposed to the Symfony UX
-Stimulus bridge under the `@tbd/stimulus-bundle` namespace and must end
-up in your application's `assets/controllers.json`.
+Stimulus bridge under the `@tbd/stimulus-bundle` namespace via your
+application's `assets/controllers.json`.
 
-The Flex recipe does **not** write to `controllers.json` directly. After
-`composer require`, the recipe only adds a `@tbd/stimulus-bundle`
-dependency line to your `package.json`. You then need to run:
+After `composer require`, the Flex recipe does two things automatically:
+
+1. It adds the `@tbd/stimulus-bundle` block (shown below) to
+   `assets/controllers.json`.
+2. It registers the npm package as a local dependency in your
+   `package.json`:
+
+   ```json
+   {
+     "dependencies": {
+       "@tbd/stimulus-bundle": "file:vendor/tbd/stimulus-bundle/assets"
+     }
+   }
+   ```
+
+This is **not enough on its own** — the controllers will not load until
+the npm package is actually installed. After `composer require`, always
+run:
 
 ```bash
 npm install
 ```
 
-This pulls in the `@tbd/stimulus-bundle` npm package, which in turn
-registers its controllers in `controllers.json`. After running it, the
-following block should be present (add or adjust it manually if it
-isn't):
+Only after `npm install` resolves the `file:vendor/tbd/stimulus-bundle/assets`
+dependency will the controllers below actually become available in your
+application:
 
 ```json
 {
