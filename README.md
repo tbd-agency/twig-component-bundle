@@ -140,49 +140,25 @@ Only after `npm install` resolves the `file:vendor/tbd/stimulus-bundle/assets`
 dependency will the controllers below actually become available in your
 application:
 
-```json
-{
-  "controllers": {
-    "@tbd/stimulus-bundle": {
-      "ajax-submit":   { "enabled": true,  "fetch": "lazy" },
-      "app":           { "enabled": true,  "fetch": "eager" },
-      "chart":         { "enabled": true,  "fetch": "lazy" },
-      "closeable": {
-        "enabled": true,
-        "fetch": "lazy",
-        "autoimport": {
-          "@tbd/stimulus-bundle/styles/closeable.css": true
-        }
-      },
-      "confirm":       { "enabled": true,  "fetch": "lazy" },
-      "dashboard":     { "enabled": true,  "fetch": "lazy" },
-      "dropdown":      { "enabled": true,  "fetch": "lazy" },
-      "flatpickr": {
-        "enabled": true,
-        "fetch": "lazy",
-        "autoimport": {
-          "@tbd/stimulus-bundle/styles/flatpickr.css": true
-        }
-      },
-      "inline-edit":   { "enabled": true,  "fetch": "lazy" },
-      "marker":        { "enabled": false, "fetch": "lazy" },
-      "modal":         { "enabled": true,  "fetch": "lazy" },
-      "reset-search":  { "enabled": true,  "fetch": "lazy" },
-      "select-items":  { "enabled": true,  "fetch": "lazy" },
-      "sidebar":       { "enabled": true,  "fetch": "lazy" },
-      "sortable":      { "enabled": true,  "fetch": "eager" },
-      "theme":         { "enabled": true,  "fetch": "eager" },
-      "url": {
-        "enabled": true,
-        "fetch": "lazy",
-        "autoimport": {
-          "@tbd/stimulus-bundle/styles/url.css": true
-        }
-      }
-    }
-  }
-}
-```
+| Controller       | Fetch  | Enabled | Autoimports CSS |
+|------------------|--------|---------|------------------|
+| `ajax-submit`    | lazy   | yes     |                  |
+| `app`            | eager  | yes     |                  |
+| `chart`          | lazy   | yes     |                  |
+| `closeable`      | lazy   | yes     | `closeable.css`  |
+| `confirm`        | lazy   | yes     |                  |
+| `dashboard`      | lazy   | yes     |                  |
+| `dropdown`       | lazy   | yes     |                  |
+| `flatpickr`      | lazy   | yes     | `flatpickr.css`  |
+| `inline-edit`    | lazy   | yes     |                  |
+| `marker`         | lazy   | yes     |                  |
+| `modal`          | lazy   | yes     |                  |
+| `reset-search`   | lazy   | yes     |                  |
+| `select-items`   | lazy   | yes     |                  |
+| `sidebar`        | lazy   | yes     |                  |
+| `sortable`       | eager  | yes     |                  |
+| `theme`          | eager  | yes     |                  |
+| `url`            | lazy   | yes     | `url.css`        |
 
 Notes:
 
