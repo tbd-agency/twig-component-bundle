@@ -4,8 +4,9 @@
     'target': target,
 }) }}
 {% if tooltip %}
-    data-tooltip-target="{{ identifier }}"
-    data-tooltip-placement="bottom"
+    data-controller="tooltip"
+    data-tooltip-target-value="{{ identifier }}"
+    data-tooltip-placement-value="bottom"
 {% endif %}
 >
 {% if label is defined and label is not empty and icon is empty %}

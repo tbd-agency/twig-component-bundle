@@ -5,8 +5,9 @@
     }) }}
     {% if tag == 'a' %} href="{{ path }}"{% endif %}
   {% if tooltip is defined and tooltip %}
-      data-tooltip-target="{{ identifier }}"
-      data-tooltip-placement="{{ tooltipPlacement }}"
+      data-controller="tooltip"
+      data-tooltip-target-value="{{ identifier }}"
+      data-tooltip-placement-value="{{ tooltipPlacement }}"
   {% endif %}
 >
 <div class="flex items-center">

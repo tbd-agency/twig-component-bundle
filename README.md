@@ -158,6 +158,7 @@ application:
 | `sidebar`        | lazy   | yes     |                  |
 | `sortable`       | eager  | yes     |                  |
 | `theme`          | eager  | yes     |                  |
+| `tooltip`        | lazy   | yes     |                  |
 | `url`            | lazy   | yes     | `url.css`        |
 
 Notes:

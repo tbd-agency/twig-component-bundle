@@ -5,8 +5,9 @@
             aria-expanded="{{ this.isHidden ? 'false' : 'true' }}"
             class="{{ block('nav_dropdown_button_classes', tbd_twig_component_template)|trim }}"
             {% if tooltip is defined and tooltip %}
-                data-tooltip-target="{{ identifier }}"
-                data-tooltip-placement="{{ tooltipPlacement }}"
+                data-controller="tooltip"
+                data-tooltip-target-value="{{ identifier }}"
+                data-tooltip-placement-value="{{ tooltipPlacement }}"
             {% endif %}>
         <div class="flex items-center">
             {% if icon %}
