@@ -2,13 +2,12 @@
     {{ attributes.defaults({
         'aria-current': app.request.pathInfo == path ? 'page' : null,
         'class': block('nav_item_classes',tbd_twig_component_template)|trim,
-    }) }}
+    }|merge(tooltip is defined and tooltip ? {
+        'data-controller': 'tooltip',
+        'data-tooltip-target-value': identifier,
+        'data-tooltip-placement-value': tooltipPlacement,
+    } : {})) }}
     {% if tag == 'a' %} href="{{ path }}"{% endif %}
-  {% if tooltip is defined and tooltip %}
-      data-controller="tooltip"
-      data-tooltip-target-value="{{ identifier }}"
-      data-tooltip-placement-value="{{ tooltipPlacement }}"
-  {% endif %}
 >
 <div class="flex items-center">
     {% if icon %}

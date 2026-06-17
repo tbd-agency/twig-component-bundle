@@ -2,13 +2,11 @@
     'class': block('button_classes', tbd_twig_component_template)|trim ~ ' ' ~ extraClasses,
     'type': tag == 'button' ? type : false,
     'target': target,
-}) }}
-{% if tooltip %}
-    data-controller="tooltip"
-    data-tooltip-target-value="{{ identifier }}"
-    data-tooltip-placement-value="bottom"
-{% endif %}
->
+}|merge(tooltip ? {
+    'data-controller': 'tooltip',
+    'data-tooltip-target-value': identifier,
+    'data-tooltip-placement-value': 'bottom',
+} : {})) }}>
 {% if label is defined and label is not empty and icon is empty %}
     {{ label|raw }}
 {% elseif icon is not null and label is defined %}
