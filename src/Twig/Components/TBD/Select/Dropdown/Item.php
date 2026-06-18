@@ -28,7 +28,7 @@ final class Item
         if ($this->modalId && $this->modalSrc && $this->modalTitle) {
             $this->modal = true;
             $this->attributes = [
-                'data-action' => 'click->modal#setSrc modal:setSrc@document->select-items#handle',
+                'data-action' => 'click->modal#setSrc click->app#dropdownClose modal:setSrc@document->select-items#handle',
                 'data-target' => $this->modalId,
                 'data-src' => $this->modalSrc,
                 'data-title' => $this->modalTitle,
@@ -36,7 +36,7 @@ final class Item
             ];
         } else {
             $this->attributes = [
-                'data-action' => 'click->select-items#handle',
+                'data-action' => 'click->select-items#handle click->app#dropdownClose',
             ];
         }
     }
