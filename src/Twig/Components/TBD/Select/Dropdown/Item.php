@@ -13,6 +13,7 @@ final class Item
     public string $action;
     public string $label;
     public string $target = '_self';
+    public bool $turbo = false;
     public array $attributes = [];
 
     public bool $modal = false;
