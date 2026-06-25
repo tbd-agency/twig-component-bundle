@@ -12,6 +12,19 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Indicator
 {
     public string $label;
+    public string $variant;
+
+    public function __construct(
+        private readonly array $variants,
+        private readonly string $defaultVariant,
+    )
+    {
+    }
+
+    public function getVariantClasses(): string
+    {
+        return $this->variants[$this->variant];
+    }
 
     #[PreMount]
     public function preMount(array $data): array
@@ -20,7 +33,10 @@ final class Indicator
 
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired('label');
+            ->setRequired('label')
+            ->setDefaults([
+                'variant' => $this->defaultVariant,
+            ]);
 
         return $resolver->resolve($data) + $data;
     }

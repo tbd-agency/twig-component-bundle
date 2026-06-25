@@ -6,6 +6,7 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Avatar;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Badge;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Button;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Card;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Indicator;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Link;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Logo;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Modal\Confirm;
@@ -156,6 +157,11 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(Select::class)
         ->args([
             '$variants' => '%button.variants%',
+        ])
+        ->set(Indicator::class)
+        ->args([
+            '$variants' => '%indicator.variants%',
+            '$defaultVariant' => '%indicator.variant.default%',
         ])
     ;
 };

@@ -92,6 +92,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
         $builder->setParameter('modal.cancel.buttonVariant', $config['modal']['cancel']['button_variant']);
         $builder->setParameter('modal.cancel.buttonSize', $config['modal']['cancel']['button_size']);
+
+        $builder->setParameter('indicator.variants', array_replace(self::DEFAULT_INDICATOR_VARIANTS, $config['indicator']['variants'] ?? []));
+        $builder->setParameter('indicator.variant.default', $config['indicator']['default_variant']);
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -339,6 +342,21 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
 
+            ->arrayNode('indicator')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('variants')
+            ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_INDICATOR_VARIANTS)
+            ->end()
+            ->scalarNode('default_variant')
+            ->defaultValue('primary')
+            ->end()
+            ->end()
+            ->end()
+
             ->arrayNode('modal')
             ->addDefaultsIfNotSet()
             ->children()
@@ -441,6 +459,10 @@ final class TbdTwigComponentBundle extends AbstractBundle
                 # logo
                 self::assertDefaultInKeys('logo', 'default_size', 'sizes', $config['logo']['default_size'],
                     array_replace(self::DEFAULT_LOGO_SIZES, $config['logo']['sizes']));
+
+                # indicator
+                self::assertDefaultInKeys('indicator', 'default_variant', 'variants', $config['indicator']['default_variant'],
+                    array_replace(self::DEFAULT_INDICATOR_VARIANTS, $config['indicator']['variants']));
 
                 # modal: cross-reference against merged button variants/sizes
                 $buttonVariants = array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants']);
@@ -591,6 +613,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'errors' => 'inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-800 text-xs rounded-full',
     ];
 
+    private const array DEFAULT_INDICATOR_VARIANTS = [
+        'primary' => 'text-white bg-orange-400 group-focus:bg-orange-300',
+    ];
     private const array DEFAULT_LOGO_SIZES = [
         'sm' => 'h-6 w-auto',
         'md' => 'h-10 w-auto',
