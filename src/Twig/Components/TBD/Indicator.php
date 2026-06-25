@@ -12,7 +12,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Indicator
 {
     public string $label;
-    public string $variant;
+    public ?string $variant;
 
     public function __construct(
         private readonly array $variants,
