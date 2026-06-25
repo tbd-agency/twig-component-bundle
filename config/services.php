@@ -44,6 +44,7 @@ return static function (ContainerConfigurator $configurator): void {
             '$sizes' => '%button.sizes%',
             '$defaultSize' => '%button.size.default%',
             '$iconSizes' => '%icon.sizes%',
+            '$defaultIndicatorVariant' => '%indicator.variant.default%',
         ])
         ->set(Spinner::class)
         ->args([

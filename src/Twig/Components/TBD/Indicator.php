@@ -33,7 +33,8 @@ final class Indicator
 
         $resolver
             ->setIgnoreUndefined()
-            ->setRequired('label')
+            ->setRequired(['label', 'variant'])
+            ->setAllowedValues('variant', array_keys($this->variants))
             ->setDefaults([
                 'variant' => $this->defaultVariant,
             ]);

@@ -36,6 +36,7 @@ final class Button
         private readonly array $iconSizes,
         private readonly string $defaultVariant,
         private readonly string $defaultSize,
+        private readonly string $defaultIndicatorVariant,
     ) {
     }
 
@@ -79,6 +80,10 @@ final class Button
             ->setAllowedValues('disabled', [true, false])
             ->setAllowedValues('fullWidth', [true, false])
             ->setAllowedValues('spinner', [true, false]);
+
+        if (!empty($data['indicator'])) {
+            $resolver->setDefaults(['indicatorVariant' => $this->defaultIndicatorVariant]);
+        }
 
         return $resolver->resolve($data) + $data;
     }
