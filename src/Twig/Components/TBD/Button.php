@@ -15,6 +15,7 @@ final class Button
 {
     public ?string $icon = null;
     public ?string $indicator = null;
+    public ?string $indicatorVariant = null;
     public ?string $target = null;
     public ?string $tooltip = null;
     public bool $disabled;
