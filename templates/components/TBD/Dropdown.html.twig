@@ -23,7 +23,7 @@
                 {{ buttonText }}
             {% endif %}
             {% if down is defined and down %}
-                {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down_classes', tbd_twig_component_template)|trim ~ (buttonText is defined and buttonText is not empty  ? ' ml-2')}) }}
+                {{ ux_icon('tbd:angle-down', {class: block('dropdown_button_down_classes', tbd_twig_component_template)|trim ~ (buttonText is defined and buttonText is not empty  ? ' ml-2'), 'data-dropdown-target': 'icon'}) }}
             {% endif %}
             {% if buttonBadge %}
                 <div class="{{ block('dropdown_button_badge_classes', tbd_twig_component_template)|trim }}">
