@@ -173,8 +173,16 @@
 {%- endblock modal_content_buttons_classes %}
 
 {% block modal_content_classes -%}
-    p-4
+    max-h-[50vh] overflow-y-scroll
 {%- endblock modal_content_classes %}
+
+{% block modal_content_body_classes -%}
+    px-4 pt-4
+{%- endblock modal_content_body_classes %}
+
+{% block modal_content_footer_classes -%}
+    sticky bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t dark:border-gray-700 p-4 flex gap-4
+{%- endblock modal_content_footer_classes %}
 
 {% block modal_content_message_classes -%}
     text-base text-primary mb-4 dark:text-gray-100
