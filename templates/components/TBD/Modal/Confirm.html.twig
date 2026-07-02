@@ -19,26 +19,30 @@
             </div>
             <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">
                 <input type="hidden" name="_token">
-                <p class="{{ block('modal_content_message_classes', tbd_twig_component_template)|trim }}">
-                    {% if message %}
-                        {{ message }}
-                    {% else %}
-                        {{ 'label.confirm'|trans({'default': 'Are you sure you wish to continue?'}, 'tbd-component') }}
-                    {% endif %}
-                </p>
-                <div class="{{ block('modal_content_buttons_classes', tbd_twig_component_template)|trim }}">
-                    <twig:TBD:Button
-                            data-target="{{ id }}"
-                            data-action="modal#close"
-                            tag="a" class="confirm"
-                            variant="{{ confirmButtonVariant }}" size="{{ confirmButtonSize }}"
-                            label="{{ 'button.confirm'|trans({'default': 'Confirm'}, 'tbd-component') }}"/>
-                    <twig:TBD:Button
-                            data-target="{{ id }}"
-                            data-action="modal#close"
-                            variant="{{ cancelButtonVariant }}" size="{{ cancelButtonSize }}"
-                            label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
-                </div>
+                <twig:TBD:Modal:Content:Body>
+                    <p class="{{ block('modal_content_message_classes', tbd_twig_component_template)|trim }}">
+                        {% if message %}
+                            {{ message }}
+                        {% else %}
+                            {{ 'label.confirm'|trans({'default': 'Are you sure you wish to continue?'}, 'tbd-component') }}
+                        {% endif %}
+                    </p>
+                </twig:TBD:Modal:Content:Body>
+                <twig:TBD:Modal:Content:Footer>
+                    <div class="{{ block('modal_content_buttons_classes', tbd_twig_component_template)|trim }}">
+                        <twig:TBD:Button
+                                data-target="{{ id }}"
+                                data-action="modal#close"
+                                tag="a" class="confirm"
+                                variant="{{ confirmButtonVariant }}" size="{{ confirmButtonSize }}"
+                                label="{{ 'button.confirm'|trans({'default': 'Confirm'}, 'tbd-component') }}"/>
+                        <twig:TBD:Button
+                                data-target="{{ id }}"
+                                data-action="modal#close"
+                                variant="{{ cancelButtonVariant }}" size="{{ cancelButtonSize }}"
+                                label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
+                    </div>
+                </twig:TBD:Modal:Content:Footer>
             </div>
         </div>
     </div>
