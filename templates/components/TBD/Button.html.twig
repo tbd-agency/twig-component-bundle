@@ -1,7 +1,7 @@
 <{{ tag }}{{ attributes.defaults({
     'class': block('button_classes', tbd_twig_component_template)|trim ~ ' ' ~ extraClasses,
     'type': tag == 'button' ? type : false,
-    'target': target,
+    'target': target ?: false,
 }|merge(tooltip ? {
     'data-controller': 'tooltip',
     'data-tooltip-target-value': identifier,
