@@ -13,6 +13,7 @@ final class Cell
 {
     public string $tag;
     public ?string $value = null;
+    public bool $action;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -21,8 +22,9 @@ final class Cell
 
         $resolver
             ->setIgnoreUndefined()
-            ->setDefaults(['tag' => 'th'])
-            ->setAllowedValues('tag', ['th', 'td']);
+            ->setDefaults(['tag' => 'th', 'action' => false])
+            ->setAllowedValues('tag', ['th', 'td'])
+            ->setAllowedTypes('action', 'bool');
 
         return $resolver->resolve($data) + $data;
     }
