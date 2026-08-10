@@ -1,5 +1,5 @@
 <{{ tag }}{{ attributes.defaults({
-    'class': 'actions ' ~ (tag == 'th' ? block('table_head_action_cell_classes', tbd_twig_component_template)|trim : block('table_action_cell_classes', tbd_twig_component_template)|trim),
+    'class': 'actions w-px' ~ (tag == 'th' ? block('table_head_action_cell_classes', tbd_twig_component_template)|trim : block('table_action_cell_classes', tbd_twig_component_template)|trim),
 }) }}>
 {% if value is defined and value is not null %}
     {{ value|raw }}
