@@ -12,6 +12,8 @@ final class Delete extends AbstractController
 {
     public ?string $title = null;
     public ?string $message = null;
+    public ?string $confirmButtonLabel = null;
+    public ?string $cancelButtonLabel = null;
     public string $closeButtonVariant;
     public string $closeButtonSize;
     public string $confirmButtonVariant;

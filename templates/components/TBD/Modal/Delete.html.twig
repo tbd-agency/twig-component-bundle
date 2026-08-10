@@ -36,12 +36,12 @@
                                     data-target="modal-delete"
                                     type="submit"
                                     variant="{{ confirmButtonVariant }}" size="{{ confirmButtonSize }}"
-                                    label="{{ 'button.delete'|trans({'default': 'Delete'}, 'tbd-component') }}"/>
+                                    label="{{ confirmButtonLabel ?? 'button.delete'|trans({'default': 'Delete'}, 'tbd-component') }}"/>
                             <twig:TBD:Button
                                     data-action="click->modal#close"
                                     data-target="modal-delete"
                                     variant="{{ cancelButtonVariant }}" size="{{ cancelButtonSize }}"
-                                    label="{{ 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
+                                    label="{{ cancelButtonLabel ?? 'button.cancel'|trans({'default': 'Cancel'}, 'tbd-component') }}"/>
                         </div>
                     </twig:TBD:Modal:Content:Footer>
                 </div>
