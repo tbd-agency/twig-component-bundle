@@ -14,6 +14,7 @@ final class StickyCell
     public ?string $value;
     public string $tag;
     public string $position;
+    public bool $actions;
 
     public function __construct(
         private readonly array $positions,
@@ -31,9 +32,11 @@ final class StickyCell
             ->setDefaults([
                 'tag' => 'th',
                 'position' => $this->defaultPosition,
+                'actions' => false,
             ])
             ->setAllowedValues('tag', ['th', 'td'])
-            ->setAllowedValues('position', array_keys($this->positions));
+            ->setAllowedValues('position', array_keys($this->positions))
+            ->setAllowedTypes('actions', 'bool');
 
         return $resolver->resolve($data) + $data;
     }
