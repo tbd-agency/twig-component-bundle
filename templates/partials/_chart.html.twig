@@ -1,7 +1,9 @@
 <twig:TBD:Text class="mb-2">{{ title }}</twig:TBD:Text>
 <div data-controller="chart"
      data-chart-settings-value="{{ (chart.createView)|json_encode }}"
-     data-chart-routes-value="{{ routes|json_encode }}">
+     data-chart-routes-value="{{ routes|json_encode }}"
+     {%- if lightColor is defined and lightColor is not empty %} data-chart-light-color-value="{{ lightColor }}"{% endif %}
+     {%- if darkColor is defined and darkColor is not empty %} data-chart-dark-color-value="{{ darkColor }}"{% endif %}>
     {% if chart.type in ['doughnut', 'pie'] %}
         <div class="{{ block('partial_chart_doughnut_pie_canvas_classes', tbd_twig_component_template)|trim }}">
             <canvas data-chart-target="canvas">{{ location is defined and location ? location }}</canvas>
