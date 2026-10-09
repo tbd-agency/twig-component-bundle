@@ -140,26 +140,27 @@ Only after `npm install` resolves the `file:vendor/tbd/stimulus-bundle/assets`
 dependency will the controllers below actually become available in your
 application:
 
-| Controller       | Fetch  | Enabled | Autoimports CSS |
-|------------------|--------|---------|------------------|
-| `ajax-submit`    | lazy   | yes     |                  |
-| `app`            | eager  | yes     |                  |
-| `chart`          | lazy   | yes     |                  |
-| `closeable`      | lazy   | yes     | `closeable.css`  |
-| `confirm`        | lazy   | yes     |                  |
-| `dashboard`      | lazy   | yes     |                  |
-| `dropdown`       | lazy   | yes     |                  |
-| `flatpickr`      | lazy   | yes     | `flatpickr.css`  |
-| `inline-edit`    | lazy   | yes     |                  |
-| `marker`         | lazy   | yes     |                  |
-| `modal`          | lazy   | yes     |                  |
-| `reset-search`   | lazy   | yes     |                  |
-| `select-items`   | lazy   | yes     |                  |
-| `sidebar`        | lazy   | yes     |                  |
-| `sortable`       | eager  | yes     |                  |
-| `theme`          | eager  | yes     |                  |
-| `tooltip`        | lazy   | yes     |                  |
-| `url`            | lazy   | yes     | `url.css`        |
+| Controller        | Fetch | Enabled | Autoimports CSS |
+|-------------------|-------|---------|-----------------|
+| `ajax-submit`     | lazy  | yes     |                 |
+| `app`             | eager | yes     |                 |
+| `chart`           | lazy  | yes     |                 |
+| `closeable`       | lazy  | yes     | `closeable.css` |
+| `confirm`         | lazy  | yes     |                 |
+| `dashboard`       | lazy  | yes     |                 |
+| `dropdown`        | lazy  | yes     |                 |
+| `flatpickr`       | lazy  | yes     | `flatpickr.css` |
+| `inline-edit`     | lazy  | yes     |                 |
+| `marker`          | lazy  | yes     |                 |
+| `modal`           | lazy  | yes     |                 |
+| `reset-search`    | lazy  | yes     |                 |
+| `resizable-table` | eager | yes     |                 |
+| `select-items`    | lazy  | yes     |                 |
+| `sidebar`         | lazy  | yes     |                 |
+| `sortable`        | eager | yes     |                 |
+| `theme`           | eager | yes     |                 |
+| `tooltip`         | lazy  | yes     |                 |
+| `url`             | lazy  | yes     | `url.css`       |
 
 Notes:
 

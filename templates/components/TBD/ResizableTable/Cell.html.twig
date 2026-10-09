@@ -1,0 +1,9 @@
+{% set cellAttributes = attributes.defaults({
+    'class': (block('resizable_table_cell_classes', tbd_twig_component_template)|trim ~ (width ? ' ' ~ block('resizable_table_resized_cell_classes', tbd_twig_component_template)|trim : ''))|trim,
+    'data-column': column,
+    'data-width': width ?: false,
+    'style': this.style,
+}) %}
+<twig:TBD:Table:Cell {{ ...cellAttributes }} :value="value">
+    {{ block(outerBlocks.content) }}
+</twig:TBD:Table:Cell>

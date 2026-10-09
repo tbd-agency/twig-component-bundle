@@ -1,0 +1,9 @@
+<div class="{{ (block('resizable_table_classes', tbd_twig_component_template)|trim ~ ' ' ~ wrapperClasses)|trim }}"
+     data-controller="resizable-table"
+     data-resizable-table-path-value="{{ path ?? path('table_resize') }}"
+     data-resizable-table-type-value="{{ type }}"
+     data-resizable-table-token-value="{{ token ?? csrf_token('submit') }}">
+    <twig:TBD:Table {{ ...attributes }} :includeWrapper="false" :hasSearch="hasSearch" :hasTabs="hasTabs">
+        {{ block(outerBlocks.content) }}
+    </twig:TBD:Table>
+</div>
