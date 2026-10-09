@@ -337,8 +337,12 @@
 {%- endblock resizable_table_classes %}
 
 {% block resizable_table_cell_classes -%}
-    border-l border-l-gray-200 dark:border-l-gray-700
+    border-l border-l-gray-200 dark:border-l-gray-700 first:border-l-0
 {%- endblock resizable_table_cell_classes %}
+
+{% block resizable_table_resizer_classes -%}
+    absolute top-0 z-10 w-2.5 cursor-col-resize
+{%- endblock resizable_table_resizer_classes %}
 
 {% block section_classes -%}
     md:max-w-[var(--breakpoint-xl)] md:mx-auto p-4
