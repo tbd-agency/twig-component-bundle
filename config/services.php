@@ -104,8 +104,12 @@ return static function (ContainerConfigurator $configurator): void {
         ])
         ->set(Toast::class)
         ->args([
+            '$types' => '%toast.types%',
+            '$defaultType' => '%toast.type.default%',
             '$iconSizes' => '%icon.sizes%',
             '$defaultIconSize' => '%icon.size.default%',
+            '$defaultAutoClose' => '%toast.auto_close.default%',
+            '$defaultTimeUntilClose' => '%toast.time_until_close.default%',
         ])
         ->set(NavDropdown::class)
         ->args([

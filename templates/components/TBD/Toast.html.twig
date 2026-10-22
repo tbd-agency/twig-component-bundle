@@ -9,7 +9,7 @@
         {% endif %}
 >
     <div class="inline-flex items-center justify-center {{ this.colorClasses() }}">
-        {{ ux_icon(('tbd:' ~ this.icon()), {'class': this.iconSizeClasses}) }}
+        {{ ux_icon(this.icon(), {'class': this.iconSizeClasses}) }}
     </div>
     <div class="text-sm font-normal">
         {% if message %}
@@ -20,6 +20,6 @@
     </div>
     <twig:TBD:Button
             data-action="closeable#close"
-            variant="hollow-{{ this.type }}" size="sm" class="ms-auto"
+            variant="{{ this.closeButtonVariant() }}" size="{{ this.closeButtonSize() }}" class="ms-auto"
             label="{{ ux_icon('tbd:x', {'class': this.iconSizeClasses}) }}"/>
 </div>

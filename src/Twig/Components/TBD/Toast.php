@@ -5,6 +5,7 @@ namespace Tbd\TwigComponentBundle\Twig\Components\TBD;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use function str_contains;
 
 #[AsTwigComponent(
     name: 'TBD:Toast',
@@ -14,12 +15,19 @@ final class Toast
     public string $type;
     public ?string $message = null;
     public bool $autoClose;
-    public int $timeUntilClose = 10000;
+    public int $timeUntilClose;
     public string $iconSize;
+    public ?string $icon = null;
+    public ?string $closeButtonVariant = null;
+    public ?string $closeButtonSize = null;
 
     public function __construct(
+        private readonly array $types,
+        private readonly string $defaultType,
         private readonly array $iconSizes,
         private readonly string $defaultIconSize,
+        private readonly bool $defaultAutoClose,
+        private readonly int $defaultTimeUntilClose,
     )
     {
     }
@@ -32,11 +40,12 @@ final class Toast
         $resolver
             ->setIgnoreUndefined()
             ->setDefaults([
-                'type' => 'success',
+                'type' => $this->defaultType,
                 'iconSize' => $this->defaultIconSize,
-                'autoClose' => true,
+                'autoClose' => $this->defaultAutoClose,
+                'timeUntilClose' => $this->defaultTimeUntilClose,
             ])
-            ->setAllowedValues('type', ['success', 'error'])
+            ->setAllowedValues('type', array_keys($this->types))
             ->setAllowedValues('iconSize', array_keys($this->iconSizes))
             ->setAllowedValues('autoClose', [true, false]);
 
@@ -50,17 +59,27 @@ final class Toast
 
     public function getIcon(): string
     {
-        return match ($this->type) {
-            'error' => 'circle-xmark',
-            default => 'circle-check'
-        };
+        $icon = $this->icon ?? $this->types[$this->type]['icon'];
+
+        if (str_contains($icon, ':')) {
+            return $icon;
+        }
+
+        return 'tbd:' . $icon;
     }
 
     public function getColorClasses(): string
     {
-        return match ($this->type) {
-            'error' => '!border-red-400 !bg-red-50 text-red-600',
-            default => '!border-green-500 !bg-green-50 text-green-700',
-        };
+        return $this->types[$this->type]['classes'];
+    }
+
+    public function getCloseButtonVariant(): string
+    {
+        return $this->closeButtonVariant ?? $this->types[$this->type]['close_button_variant'];
+    }
+
+    public function getCloseButtonSize(): string
+    {
+        return $this->closeButtonSize ?? $this->types[$this->type]['close_button_size'];
     }
 }

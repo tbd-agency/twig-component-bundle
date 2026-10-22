@@ -95,6 +95,11 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
         $builder->setParameter('indicator.variants', array_replace(self::DEFAULT_INDICATOR_VARIANTS, $config['indicator']['variants'] ?? []));
         $builder->setParameter('indicator.variant.default', $config['indicator']['default_variant']);
+
+        $builder->setParameter('toast.types', self::mergeToastTypes($config['toast']['types'] ?? []));
+        $builder->setParameter('toast.type.default', $config['toast']['default_type']);
+        $builder->setParameter('toast.auto_close.default', $config['toast']['default_auto_close']);
+        $builder->setParameter('toast.time_until_close.default', $config['toast']['default_time_until_close']);
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -357,6 +362,34 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
 
+            ->arrayNode('toast')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('types')
+            ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
+            ->arrayPrototype()
+            ->children()
+            ->scalarNode('classes')->defaultNull()->end()
+            ->scalarNode('icon')->defaultNull()->end()
+            ->scalarNode('close_button_variant')->defaultNull()->end()
+            ->scalarNode('close_button_size')->defaultNull()->end()
+            ->end()
+            ->end()
+            ->defaultValue(self::DEFAULT_TOAST_TYPES)
+            ->end()
+            ->scalarNode('default_type')
+            ->defaultValue('success')
+            ->end()
+            ->booleanNode('default_auto_close')
+            ->defaultTrue()
+            ->end()
+            ->integerNode('default_time_until_close')
+            ->defaultValue(10000)
+            ->end()
+            ->end()
+            ->end()
+
             ->arrayNode('modal')
             ->addDefaultsIfNotSet()
             ->children()
@@ -464,6 +497,28 @@ final class TbdTwigComponentBundle extends AbstractBundle
                 self::assertDefaultInKeys('indicator', 'default_variant', 'variants', $config['indicator']['default_variant'],
                     array_replace(self::DEFAULT_INDICATOR_VARIANTS, $config['indicator']['variants']));
 
+                # toast
+                $toastTypes = self::mergeToastTypes($config['toast']['types']);
+                self::assertDefaultInKeys('toast', 'default_type', 'types', $config['toast']['default_type'], $toastTypes);
+
+                # toast: cross-reference close button variants/sizes against merged button config
+                foreach ($toastTypes as $name => $type) {
+                    if (!array_key_exists($type['close_button_variant'], array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants']))) {
+                        throw new \InvalidArgumentException(sprintf(
+                            'toast.types.%s.close_button_variant "%s" must be one of the button variants. Available: %s.',
+                            $name, $type['close_button_variant'],
+                            implode(', ', array_keys(array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants'])))
+                        ));
+                    }
+                    if (!array_key_exists($type['close_button_size'], array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes']))) {
+                        throw new \InvalidArgumentException(sprintf(
+                            'toast.types.%s.close_button_size "%s" must be one of the button sizes. Available: %s.',
+                            $name, $type['close_button_size'],
+                            implode(', ', array_keys(array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes'])))
+                        ));
+                    }
+                }
+
                 # modal: cross-reference against merged button variants/sizes
                 $buttonVariants = array_replace(self::DEFAULT_BUTTON_VARIANTS, $config['button']['variants']);
                 $buttonSizes = array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes']);
@@ -485,6 +540,20 @@ final class TbdTwigComponentBundle extends AbstractBundle
                 return $config;
             })
             ->end();
+    }
+
+    private static function mergeToastTypes(array $types): array
+    {
+        $merged = self::DEFAULT_TOAST_TYPES;
+
+        foreach ($types as $name => $type) {
+            $merged[$name] = array_replace(
+                $merged[$name] ?? self::TOAST_TYPE_FALLBACK,
+                array_filter($type, static fn ($value) => null !== $value)
+            );
+        }
+
+        return $merged;
     }
 
     private static function assertDefaultInKeys(string $section, string $defaultKey, string $arrayKey, string $defaultValue, array $mergedKeys): void
@@ -611,6 +680,28 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
     private const array DEFAULT_DROPDOWN_BADGE_TYPE = [
         'errors' => 'inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-800 text-xs rounded-full',
+    ];
+
+    private const array TOAST_TYPE_FALLBACK = [
+        'classes' => '',
+        'icon' => 'circle-check',
+        'close_button_variant' => 'hollow',
+        'close_button_size' => 'sm',
+    ];
+
+    private const array DEFAULT_TOAST_TYPES = [
+        'success' => [
+            'classes' => '!border-green-500 !bg-green-50 text-green-700',
+            'icon' => 'circle-check',
+            'close_button_variant' => 'hollow-success',
+            'close_button_size' => 'sm',
+        ],
+        'error' => [
+            'classes' => '!border-red-400 !bg-red-50 text-red-600',
+            'icon' => 'circle-xmark',
+            'close_button_variant' => 'hollow-error',
+            'close_button_size' => 'sm',
+        ],
     ];
 
     private const array DEFAULT_INDICATOR_VARIANTS = [
