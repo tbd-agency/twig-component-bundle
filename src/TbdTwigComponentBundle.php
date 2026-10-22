@@ -78,7 +78,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('table.sticky_cell.positions', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions'] ?? []));
         $builder->setParameter('table.sticky_cell.position.default', $config['table']['sticky_cell']['default_position']);
 
-        $builder->setParameter('nav.badge_type', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['nav']['badge_type'] ?? []));
+        $builder->setParameter('nav.badge_type', array_replace(self::DEFAULT_DROPDOWN_BADGE_TYPE, $config['nav']['badge_type'] ?? []));
         $builder->setParameter('nav.badge_type.default', $config['nav']['default_badge_type']);
 
         $builder->setParameter('logo.sizes', array_replace(self::DEFAULT_LOGO_SIZES, $config['logo']['sizes'] ?? []));
@@ -571,13 +571,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
     }
 
     private const array DEFAULT_BUTTON_VARIANTS = [
-        'primary' => 'text-white fill-white bg-orange-400 hover:bg-orange-500 focus:ring-orange-300',
-        'tab' => '!rounded-none !px-0 text-blue-950 hover:text-blue-800 pb-2 border-b-2 border-transparent',
-        'tab-active' => '!rounded-none !px-0 text-blue-950 hover:text-blue-800 pb-2 border-b-2 border-blue-950 hover:border-blue-800',
-        'hollow' => 'text-blue-950 fill-blue-950 dark:text-white dark:fill-white hover:bg-white dark:hover:bg-blue-950 border border-gray-200 dark:border-gray-600 hover:text-orange-400 hover:fill-orange-400 dark:hover:text-orange-400 dark:hover:fill-orange-400 focus:text-white focus:fill-white dark:focus:text-white dark:focus:fill-white focus:border-orange-400 dark:focus:border-orange-400 focus:bg-orange-400 dark:focus:bg-orange-400 focus:ring-orange-300 dark:focus:ring-orange-300',
-        'hollow-error' => 'text-red-500 text-bold border-transparent hover:text-red-600',
-        'hollow-success' => 'text-green-700 text-bold border-transparent hover:text-green-800',
-        'multi-level' => 'w-full !text-base !font-normal rounded-none hover:bg-gray-100',
+        'primary' => 'text-white fill-white bg-tbd-blue hover:bg-tbd-blue-dark',
+        'tab' => '!rounded-none !px-0 text-tbd-ink-muted hover:text-tbd-ink pb-2 border-b-2 border-transparent',
+        'tab-active' => '!rounded-none !px-0 text-tbd-ink pb-2 border-b-2 border-tbd-accent',
+        'hollow' => 'text-tbd-ink fill-tbd-ink border border-tbd-line hover:bg-tbd-tint hover:text-tbd-accent-strong hover:fill-tbd-accent-strong',
+        'hollow-error' => 'text-tbd-danger-ink font-bold border-transparent hover:underline',
+        'hollow-success' => 'text-tbd-success-ink font-bold border-transparent hover:underline',
+        'multi-level' => 'w-full !text-base !font-normal rounded-none hover:bg-tbd-tint',
     ];
 
     private const array DEFAULT_BUTTON_SIZES = [
@@ -605,19 +605,19 @@ final class TbdTwigComponentBundle extends AbstractBundle
     ];
 
     private const array DEFAULT_ALERT_TYPES = [
-        'error' => 'border-red-400 bg-red-50 text-red-600',
-        'success' => 'border-green-500 bg-green-50 text-green-700',
-        'warning' => 'border-yellow-500 bg-yellow-100 text-yellow-700',
-        'default' => 'bg-white text-blue-950',
+        'error' => 'border-tbd-danger-line bg-tbd-danger-soft text-tbd-danger-ink',
+        'success' => 'border-tbd-success-line bg-tbd-success-soft text-tbd-success-ink',
+        'warning' => 'border-tbd-warning-line bg-tbd-warning-soft text-tbd-warning-ink',
+        'default' => 'border-tbd-line bg-tbd-surface text-tbd-ink',
     ];
 
     private const array DEFAULT_BADGE_VARIANTS = [
-        'primary' => 'text-white bg-light-blue',
-        'gray' => 'text-blue-950 bg-gray-200',
-        'green' => 'text-white bg-green-500',
-        'red' => 'text-white bg-red-500',
-        'orange' => 'text-white bg-orange-500',
-        'yellow' => 'text-white bg-yellow-400',
+        'primary' => 'border border-transparent bg-tbd-accent/15 text-tbd-accent-strong',
+        'gray' => 'border border-transparent bg-tbd-tint-strong text-tbd-ink',
+        'green' => 'border border-tbd-success-line bg-tbd-success-soft text-tbd-success-ink',
+        'red' => 'border border-tbd-danger-line bg-tbd-danger-soft text-tbd-danger-ink',
+        'gold' => 'border border-transparent bg-tbd-gold/20 text-tbd-gold-ink',
+        'yellow' => 'border border-tbd-warning-line bg-tbd-warning-soft text-tbd-warning-ink',
     ];
 
     private const array DEFAULT_BADGE_SIZES = [
@@ -671,15 +671,15 @@ final class TbdTwigComponentBundle extends AbstractBundle
     ];
 
     private const array DEFAULT_TABLE_STICKY_CELL_POSITIONS = [
-        'top' => 'top-0 border-b border-b-gray-200 z-10',
-        'right' => 'right-[-1px] border-l border-l-gray-200 z-10',
-        'bottom' => 'bottom-0 border-t border-t-gray-200 z-10',
-        'left' => 'left-0 border-r border-r-gray-200 z-10',
-        'top-right' => 'top-0 border-b border-b-gray-200 right-[-1px] border-l border-l-gray-200 z-20',
+        'top' => 'top-0 border-b border-b-tbd-line z-10',
+        'right' => 'right-[-1px] border-l border-l-tbd-line z-10',
+        'bottom' => 'bottom-0 border-t border-t-tbd-line z-10',
+        'left' => 'left-0 border-r border-r-tbd-line z-10',
+        'top-right' => 'top-0 border-b border-b-tbd-line right-[-1px] border-l border-l-tbd-line z-20',
     ];
 
     private const array DEFAULT_DROPDOWN_BADGE_TYPE = [
-        'errors' => 'inline-flex items-center justify-center w-5 h-5 bg-red-100 text-red-800 text-xs rounded-full',
+        'errors' => 'inline-flex items-center justify-center w-5 h-5 bg-tbd-danger-soft text-tbd-danger-ink text-xs rounded-full',
     ];
 
     private const array TOAST_TYPE_FALLBACK = [
@@ -691,13 +691,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
     private const array DEFAULT_TOAST_TYPES = [
         'success' => [
-            'classes' => '!border-green-500 !bg-green-50 text-green-700',
+            'classes' => '!border-tbd-success-line !bg-tbd-success-soft text-tbd-success-ink',
             'icon' => 'circle-check',
             'close_button_variant' => 'hollow-success',
             'close_button_size' => 'sm',
         ],
         'error' => [
-            'classes' => '!border-red-400 !bg-red-50 text-red-600',
+            'classes' => '!border-tbd-danger-line !bg-tbd-danger-soft text-tbd-danger-ink',
             'icon' => 'circle-xmark',
             'close_button_variant' => 'hollow-error',
             'close_button_size' => 'sm',
@@ -705,7 +705,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
     ];
 
     private const array DEFAULT_INDICATOR_VARIANTS = [
-        'primary' => 'text-white bg-orange-400 group-focus:bg-orange-300',
+        'primary' => 'text-tbd-on-accent bg-tbd-accent group-focus:bg-tbd-accent-strong',
     ];
     private const array DEFAULT_LOGO_SIZES = [
         'sm' => 'h-6 w-auto',

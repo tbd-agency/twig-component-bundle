@@ -1,0 +1,78 @@
+/*
+ * Colour tokens for tbd/twig-component-bundle, based on the tbd.be palette.
+ *
+ * Import once in the project's app.css, right after Tailwind:
+ *     @import '../../vendor/tbd/twig-component-bundle/assets/styles/theme.css';
+ *
+ * The role tokens switch value under html.dark, so the components need no dark: variants.
+ * To rebrand a project, override the tokens for both :root and html.dark in its own app.css.
+ */
+
+@theme {
+    /* Brand colours, identical in both modes */
+    --color-tbd-navy: #12253C;
+    --color-tbd-blue: #3263A5;
+    --color-tbd-blue-dark: #284f84;
+    --color-tbd-gold: #C1A956;
+
+    /* Surfaces */
+    --color-tbd-canvas: #FAFAFA;
+    --color-tbd-surface: #FFFFFF;
+    --color-tbd-tint: rgb(18 37 60 / 0.04);
+    --color-tbd-tint-strong: rgb(18 37 60 / 0.1);
+    --color-tbd-line: #dee2e6;
+    --color-tbd-line-strong: #ced4da;
+
+    /* Text */
+    --color-tbd-ink: #12253C;
+    --color-tbd-ink-muted: #495057;
+    --color-tbd-ink-subtle: #5c636a;
+
+    /* Accent: blue in light mode, gold in dark mode */
+    --color-tbd-accent: #3263A5;
+    --color-tbd-accent-strong: #284f84;
+    --color-tbd-on-accent: #FFFFFF;
+    --color-tbd-gold-ink: #6b5c2b;
+
+    /* Status */
+    --color-tbd-danger-ink: #a51b00;
+    --color-tbd-danger-soft: #fcf4f2;
+    --color-tbd-danger-line: #f9c9bf;
+    --color-tbd-success-ink: #325e1c;
+    --color-tbd-success-soft: #f3faef;
+    --color-tbd-success-line: #c9e1bd;
+    --color-tbd-warning-ink: #734c00;
+    --color-tbd-warning-soft: #fdf8ed;
+    --color-tbd-warning-line: #f4daa6;
+}
+
+@layer theme {
+    html.dark {
+        --color-tbd-canvas: #0c1827;
+        --color-tbd-surface: #12253C;
+        --color-tbd-tint: rgb(255 255 255 / 0.05);
+        --color-tbd-tint-strong: rgb(255 255 255 / 0.1);
+        --color-tbd-line: #2a3b50;
+        --color-tbd-line-strong: #364659;
+
+        --color-tbd-ink: #FAFAFA;
+        --color-tbd-ink-muted: #c1cad5;
+        --color-tbd-ink-subtle: #a0a8b1;
+
+        --color-tbd-accent: #C1A956;
+        --color-tbd-accent-strong: #d4c389;
+        --color-tbd-on-accent: #12253C;
+        --color-tbd-gold-ink: #d4c389;
+
+        /* Opaque mixes on navy, so floating elements such as toasts stay correct */
+        --color-tbd-danger-ink: #f1aeb5;
+        --color-tbd-danger-soft: #30273d;
+        --color-tbd-danger-line: #632b40;
+        --color-tbd-success-ink: #a3cfbb;
+        --color-tbd-success-soft: #133941;
+        --color-tbd-success-line: #165648;
+        --color-tbd-warning-ink: #ffda6a;
+        --color-tbd-warning-soft: #363c34;
+        --color-tbd-warning-line: #716327;
+    }
+}

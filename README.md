@@ -84,9 +84,9 @@ This will also pull in `tbd/stimulus-bundle` automatically.
 For this bundle to work correctly, **three things must be in place** after
 installation.
 
-When Symfony Flex is configured properly, the recipe will normally handle
-the first two steps automatically. The third step must always be done
-manually.
+When Symfony Flex is configured properly, the recipe handles most of this
+automatically. Only the installation of Tailwind CSS, Flowbite and Hotwire
+Turbo themselves must be done manually.
 
 ### 1. Twig Component configuration (handled by Flex recipe)
 
@@ -174,7 +174,7 @@ Notes:
 
 ---
 
-### 3. Tailwind CSS, Flowbite & Hotwire Turbo configuration (manual step)
+### 3. Tailwind CSS, Flowbite & Hotwire Turbo configuration (partly handled by Flex recipe)
 
 This bundle is built to work with **Tailwind CSS** for styling, **Flowbite**
 for prebuilt UI components, and **Hotwire Turbo (Turbo Frames)** for
@@ -191,12 +191,25 @@ application:
 If Tailwind CSS is not installed yet, install and initialize it first by
 following the official Tailwind CSS documentation.
 
-Symfony Flex recipes cannot safely modify frontend build configuration
-files, which means the following steps must always be done manually.
+Version 2.x of this bundle requires **Tailwind CSS v4**: its colours come
+from `assets/styles/theme.css`, which uses `@theme`. Projects on Tailwind
+CSS v3 stay on 1.x.
+
+The Flex recipe adds the lines below to `assets/styles/app.css`, right
+after the line that imports Tailwind. Lines that are already present are
+skipped. When your CSS entry lives elsewhere, or when the recipe cannot find
+the Tailwind import, it prints the lines so you can add them yourself.
+
+When upgrading an existing project from 1.x, run the recipe update to get
+these lines:
+
+```bash
+composer recipes:update tbd/twig-component-bundle
+```
 
 ---
 
-#### Tailwind v3 configuration (`tailwind.config.js`)
+#### Tailwind v3 configuration (`tailwind.config.js`, 1.x only)
 
 When using Tailwind CSS v3, ensure both bundles' template and source paths
 are included in the `content` array of your `tailwind.config.js` file:
@@ -214,7 +227,8 @@ content: [
 When using Tailwind CSS v4, no `tailwind.config.js` file is required.
 
 Instead, add the bundle paths as sources in your main CSS entry file (for
-example `assets/styles/app.css`):
+example `assets/styles/app.css`). The Flex recipe does this for
+`assets/styles/app.css`:
 
 ```css
 @source '../../vendor/tbd/twig-component-bundle/templates/**/*.html.twig';
@@ -224,4 +238,63 @@ example `assets/styles/app.css`):
 
 This ensures Tailwind can detect and generate styles for the markup
 rendered by the bundled Twig components and their Stimulus controllers.
+
+All three sources are required: the default component variants (button,
+badge, alert, toast, …) are defined in `src/**/*.php`, so without that
+source their colour classes are missing from the build.
+
+#### Colour tokens (`theme.css`, required)
+
+The components are coloured through `tbd-*` tokens (`bg-tbd-surface`,
+`text-tbd-ink`, `text-tbd-accent`, …) based on the tbd.be palette. The
+tokens are defined in `assets/styles/theme.css` and switch value under
+`html.dark`, so light and dark mode work without `dark:` variants.
+
+Import the file once in `app.css`, right after Tailwind (the Flex recipe
+adds this line for you):
+
+```css
+@import 'tailwindcss';
+@import '../../vendor/tbd/twig-component-bundle/assets/styles/theme.css';
+```
+
+Without this import the `tbd-*` classes do not exist and the components
+render without colours. The file uses `@theme`, so it requires Tailwind CSS
+v4.
+
+| Token | Light | Dark | Used for |
+|---|---|---|---|
+| `tbd-canvas` | `#FAFAFA` | `#0c1827` | Page background |
+| `tbd-surface` | `#FFFFFF` | `#12253C` | Cards, navbar, sidebar, tables, dropdowns, modals |
+| `tbd-tint` / `tbd-tint-strong` | navy 4 % / 10 % | white 5 % / 10 % | Hover, sub sections / active and selected states |
+| `tbd-line` / `tbd-line-strong` | `#dee2e6` / `#ced4da` | `#2a3b50` / `#364659` | Borders and dividers |
+| `tbd-ink` / `-muted` / `-subtle` | `#12253C` / `#495057` / `#5c636a` | `#FAFAFA` / `#c1cad5` / `#a0a8b1` | Text, labels, hints and icons |
+| `tbd-accent` / `-strong` | `#3263A5` / `#284f84` | `#C1A956` / `#d4c389` | Links, active tab, checkbox, focus / hover |
+| `tbd-on-accent` | `#FFFFFF` | `#12253C` | Text on an accent fill |
+| `tbd-{danger,success,warning}-{ink,soft,line}` | | | Text, background and border of alerts, toasts and badges |
+
+The brand colours `tbd-navy`, `tbd-blue`, `tbd-blue-dark` and `tbd-gold`
+are the same in both modes. Every text pair reaches WCAG AA (4.5:1) and
+every state indicator 3:1 in both modes.
+
+#### Customising the colours
+
+To use your own colours, override the tokens in your `app.css` after the
+import. Override them for both `:root` and `html.dark`, otherwise the light
+value is also used in dark mode:
+
+```css
+:root {
+    --color-tbd-accent: #9e0000;
+    --color-tbd-accent-strong: #7a0000;
+}
+
+html.dark {
+    --color-tbd-accent: #f08a8a;
+    --color-tbd-accent-strong: #f5a3a3;
+}
+```
+
+Check the contrast of your own values against `tbd-surface` and
+`tbd-canvas` in both modes: text needs 4.5:1, state indicators 3:1.
 

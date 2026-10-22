@@ -1,5 +1,5 @@
 {% block alert_classes -%}
-    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_2px_10px_1px_rgba(166,200,255,0.25)] dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+    relative p-4 rounded border text-sm flex gap-4 items-center shadow-[2px_4px_20px_rgba(18,37,60,0.1)] dark:shadow-none
 {%- endblock alert_classes %}
 
 {% block avatar_classes -%}
@@ -7,23 +7,23 @@
 {%- endblock avatar_classes %}
 
 {% block badge_classes -%}
-    font-medium rounded-full dark:text-gray-100
+    font-medium rounded-full
 {%- endblock badge_classes %}
 
 {% block body_classes -%}
-    min-h-screen
+    min-h-screen bg-tbd-canvas text-tbd-ink
 {%- endblock body_classes %}
 
 {% block button_classes -%}
-    group-[[busy]]:pointer-events-none select-none relative inline-flex items-center gap-2 whitespace-nowrap focus:outline-none focus:z-10 text-sm cursor-pointer dark:text-gray-100
+    group-[[busy]]:pointer-events-none select-none relative inline-flex items-center gap-2 whitespace-nowrap focus:outline-none focus:z-10 focus-visible:ring-2 focus-visible:ring-tbd-accent focus-visible:ring-offset-2 focus-visible:ring-offset-tbd-canvas text-sm cursor-pointer
 {%- endblock button_classes %}
 
 {% block card_classes -%}
-    bg-white relative rounded border border-gray-200 dark:bg-gray-800 dark:border-gray-700
+    bg-tbd-surface relative rounded border border-tbd-line
 {%- endblock card_classes %}
 
 {% block card_shadow_classes -%}
-    shadow-[2px_2px_10px_1px_rgba(200,200,200,0.25)] dark:shadow-[2px_2px_10px_1px_rgba(0,0,0,0.4)]
+    shadow-[2px_4px_20px_rgba(18,37,60,0.08)] dark:shadow-[2px_2px_10px_1px_rgba(0,0,0,0.4)]
 {%- endblock card_shadow_classes %}
 
 {% block chart_bar_line_classes -%}
@@ -31,7 +31,7 @@
 {%- endblock chart_bar_line_classes %}
 
 {% block chart_classes -%}
-    text-blue-900 dark:text-gray-100
+    text-tbd-ink
 {%- endblock chart_classes %}
 
 {% block chart_doughnut_pie_classes -%}
@@ -39,93 +39,92 @@
 {%- endblock chart_doughnut_pie_classes %}
 
 {% block chart_number_label_classes -%}
-    font-medium !text-lg dark:text-gray-100
+    font-medium !text-lg
 {%- endblock chart_number_label_classes %}
 
 {% block chart_table_classes -%}
-    w-full text-primary text-lg dark:text-gray-100
+    w-full text-tbd-ink text-lg
 {%- endblock chart_table_classes %}
 
 {% block chart_table_horizontal_row_classes -%}
-    font-medium dark:text-gray-100
+    font-medium
 {%- endblock chart_table_horizontal_row_classes %}
 
 {% block chart_table_vertical_row_classes -%}
-    font-medium whitespace-nowrap dark:text-gray-100
+    font-medium whitespace-nowrap
 {%- endblock chart_table_vertical_row_classes %}
 
 {% block checkbox_classes -%}
-    rounded w-4 h-4 text-primary border-0 bg-gray-200 ring-0 focus:ring-0 ring-offset-0 focus:ring-offset-0 cursor-pointer dark:bg-gray-600 dark:checked:bg-primary
+    rounded w-4 h-4 text-tbd-accent border border-tbd-ink-subtle bg-tbd-surface ring-0 focus:ring-0 ring-offset-0 focus:ring-offset-0 cursor-pointer
 {%- endblock checkbox_classes %}
 
 {% block detail_check_classes -%}
-    w-4 h-4 text-green-700 dark:text-green-400
+    w-4 h-4 text-tbd-success-ink
 {%- endblock detail_check_classes %}
 
 {% block detail_label_classes -%}
-    text-xs dark:text-gray-400
+    text-xs text-tbd-ink-muted
 {%- endblock detail_label_classes %}
 
 {% block detail_list_label_classes -%}
-    text-xs dark:text-gray-400
+    text-xs text-tbd-ink-muted
 {%- endblock detail_list_label_classes %}
 
 {% block detail_list_li_classes -%}
 {%- endblock detail_list_li_classes %}
 
 {% block detail_list_not_set_classes -%}
-    font-bold text-gray-400 dark:text-gray-500
+    font-bold text-tbd-ink-subtle
 {%- endblock detail_list_not_set_classes %}
 
 {% block detail_list_ul_classes -%}
-    list-disc list-inside font-bold dark:text-gray-100
+    list-disc list-inside font-bold
 {%- endblock detail_list_ul_classes %}
 
 {% block detail_not_set_classes -%}
-    font-bold text-gray-400 dark:text-gray-500
+    font-bold text-tbd-ink-subtle
 {%- endblock detail_not_set_classes %}
 
 {% block detail_value_classes -%}
-    font-bold dark:text-gray-100
+    font-bold
 {%- endblock detail_value_classes %}
 
 {% block detail_x_classes -%}
-    w-4 h-4 text-red-500 dark:text-red-400
+    w-4 h-4 text-tbd-danger-ink
 {%- endblock detail_x_classes %}
 
 {% block dropdown_button_classes -%}
-    cursor-pointer whitespace-nowrap flex justify-between dark:text-gray-100
+    cursor-pointer whitespace-nowrap flex justify-between
 {%- endblock dropdown_button_classes %}
 
 {% block dropdown_button_down_classes -%}
-    w-4 h-4 text-primary transition duration-100 dark:text-gray-300
+    w-4 h-4 text-tbd-ink-muted transition duration-100
 {%- endblock dropdown_button_down_classes %}
 
 {% block dropdown_button_icon_classes -%}
-    w-4 h-4 transition duration-100 dark:text-gray-400
+    w-4 h-4 transition duration-100
 {%- endblock dropdown_button_icon_classes %}
 
 {% block dropdown_button_badge_classes -%}
-    dark:text-white
 {%- endblock dropdown_button_badge_classes %}
 
 {% block dropdown_classes -%}
 {%- endblock dropdown_classes %}
 
 {% block dropdown_content_classes -%}
-    hidden z-10 min-w-[7rem] bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700
+    hidden z-10 min-w-[7rem] bg-tbd-surface border border-tbd-line shadow-[2px_4px_20px_rgba(18,37,60,0.15)]
 {%- endblock dropdown_content_classes %}
 
 {% block dropdown_delete_classes -%}
-    font-medium block py-2 px-4 cursor-pointer whitespace-nowrap
+    font-medium block py-2 px-4 cursor-pointer whitespace-nowrap text-tbd-danger-ink hover:bg-tbd-tint
 {%- endblock dropdown_delete_classes %}
 
 {% block dropdown_item_classes -%}
-    block py-2 px-3 whitespace-nowrap hover:bg-gray-100 cursor-pointer dark:text-gray-100 dark:hover:bg-gray-700
+    block py-2 px-3 whitespace-nowrap hover:bg-tbd-tint cursor-pointer
 {%- endblock dropdown_item_classes %}
 
 {% block dropdown_unordered_list_classes -%}
-    text-dark divide-y divide-gray-200 text-sm font-medium dark:text-gray-100 dark:divide-gray-700
+    text-tbd-ink divide-y divide-tbd-line text-sm font-medium
 {%- endblock dropdown_unordered_list_classes %}
 
 {% block form_search_button_reset_classes -%}
@@ -159,7 +158,7 @@
 {%- endblock indicator_classes %}
 
 {% block link_classes -%}
-    text-sm text-primary hover:text-blue-800 focus:text-primary focus:outline-none inline-flex items-center dark:text-gray-300 dark:hover:text-gray-100
+    text-sm text-tbd-accent hover:text-tbd-accent-strong focus:outline-none focus-visible:underline inline-flex items-center
 {%- endblock link_classes %}
 
 {% block logo_image_classes -%}
@@ -181,38 +180,38 @@
 {%- endblock modal_content_body_classes %}
 
 {% block modal_content_footer_classes -%}
-    sticky bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t dark:border-gray-700 p-4 flex gap-4
+    sticky bottom-0 left-0 right-0 bg-tbd-surface border-t border-tbd-line p-4 flex gap-4
 {%- endblock modal_content_footer_classes %}
 
 {% block modal_content_message_classes -%}
-    text-base text-primary mb-4 dark:text-gray-100
+    text-base text-tbd-ink mb-4
 {%- endblock modal_content_message_classes %}
 
 {% block modal_header_button_classes -%}
 {%- endblock modal_header_button_classes %}
 
 {% block modal_header_classes -%}
-    flex items-center justify-between p-4 border-b rounded-t dark:border-gray-700
+    flex items-center justify-between p-4 border-b border-tbd-line rounded-t
 {%- endblock modal_header_classes %}
 
 {% block modal_header_title_classes -%}
-    text-xl font-medium text-primary dark:text-gray-100
+    text-xl font-medium text-tbd-ink
 {%- endblock modal_header_title_classes %}
 
 {% block modal_wrapper_classes -%}
-    relative rounded border bg-white dark:bg-gray-800 dark:border-gray-700
+    relative rounded border border-tbd-line bg-tbd-surface
 {%- endblock modal_wrapper_classes %}
 
 {% block nav_dropdown_button_classes -%}
-    group w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 leading-3
+    group w-full flex items-center justify-between p-2 text-tbd-ink rounded-lg hover:bg-tbd-tint leading-3
 {%- endblock nav_dropdown_button_classes %}
 
 {% block nav_dropdown_button_icon_classes -%}
-    w-4 h-4 text-primary transition ease-in-out me-3 dark:text-gray-400
+    w-4 h-4 text-tbd-ink-subtle transition ease-in-out me-3
 {%- endblock nav_dropdown_button_icon_classes %}
 
 {% block nav_dropdown_button_label_classes -%}
-    flex-1 grow text-left whitespace-nowrap dark:text-gray-100
+    flex-1 grow text-left whitespace-nowrap
 {%- endblock nav_dropdown_button_label_classes %}
 
 {% block nav_dropdown_content_classes -%}
@@ -227,11 +226,11 @@
 {%- endblock nav_dropdown_down_icon_wrapper_classes %}
 
 {% block nav_dropdown_item_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 [&>svg]:fill-gray-400 text-sm aria-[current=page]:bg-gray-100 dark:aria-[current=page]:bg-gray-900
+    w-full flex items-center justify-between p-2 text-tbd-ink rounded-lg hover:bg-tbd-tint [&>svg]:fill-tbd-ink-subtle text-sm aria-[current=page]:bg-tbd-tint-strong aria-[current=page]:text-tbd-accent-strong
 {%- endblock nav_dropdown_item_classes %}
 
 {% block nav_dropdown_item_icon_classes -%}
-    w-4 h-4 text-primary transition ease-in-out mr-3 dark:text-gray-400
+    w-4 h-4 text-tbd-ink-subtle transition ease-in-out mr-3
 {%- endblock nav_dropdown_item_icon_classes %}
 
 {% block nav_dropdown_item_no_icon_classes -%}
@@ -239,27 +238,27 @@
 {%- endblock nav_dropdown_item_no_icon_classes %}
 
 {% block nav_item_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
+    w-full flex items-center justify-between p-2 text-tbd-ink rounded-lg hover:bg-tbd-tint aria-[current=page]:bg-tbd-tint-strong aria-[current=page]:text-tbd-accent-strong leading-3
 {%- endblock nav_item_classes %}
 
 {% block nav_item_icon_classes -%}
-    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
+    w-4 h-4 text-tbd-ink-subtle transition ease-in-out mr-3
 {%- endblock nav_item_icon_classes %}
 
 {% block nav_sub_nav_item_classes -%}
-    block text-primary py-2 md:p-0 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100
+    block text-tbd-ink-muted py-2 md:p-0 hover:text-tbd-ink
 {%- endblock nav_sub_nav_item_classes %}
 
 {% block navbar_classes -%}
-    fixed z-40 flex h-16 w-full items-center border-b border-gray-200 bg-white px-4 dark:border-gray-700 dark:bg-gray-800
+    fixed z-40 flex h-16 w-full items-center border-b border-tbd-line bg-tbd-surface px-4
 {%- endblock navbar_classes %}
 
 {% block navbar_dropdown_button_classes -%}
-    flex text-sm bg-gray-800 rounded-full! focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600
+    flex text-sm bg-tbd-navy rounded-full! focus:ring-2 focus:ring-tbd-accent
 {%- endblock navbar_dropdown_button_classes %}
 
 {% block navbar_dropdown_wrapper_classes -%}
-    hidden w-60 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white shadow-sm dark:divide-gray-600 dark:bg-gray-700
+    hidden w-60 divide-y divide-tbd-line overflow-hidden overflow-y-auto rounded-lg bg-tbd-surface shadow-sm
 {%- endblock navbar_dropdown_wrapper_classes %}
 
 {% block navbar_sidebar_button_classes -%}
@@ -301,11 +300,11 @@
 {%- endblock partial_chart_legend_item_classes %}
 
 {% block partial_chart_legend_list_classes -%}
-    mx-auto px-4 pt-4 flex justify-center flex-wrap gap-2 text-sm dark:text-gray-300
+    mx-auto px-4 pt-4 flex justify-center flex-wrap gap-2 text-sm text-tbd-ink-muted
 {%- endblock partial_chart_legend_list_classes %}
 
 {% block partial_chart_legend_text_classes -%}
-    m-0 p-0 dark:text-white
+    m-0 p-0 text-tbd-ink
 {%- endblock partial_chart_legend_text_classes %}
 
 {% block partial_link_chevron_classes -%}
@@ -313,11 +312,11 @@
 {%- endblock partial_link_chevron_classes %}
 
 {% block partial_link_classes -%}
-    w-full flex items-center justify-between p-2 text-primary rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 leading-3
+    w-full flex items-center justify-between p-2 text-tbd-ink rounded-lg hover:bg-tbd-tint leading-3
 {%- endblock partial_link_classes %}
 
 {% block partial_link_icon_classes -%}
-    w-4 h-4 text-gray-400 transition ease-in-out mr-3 dark:text-gray-500
+    w-4 h-4 text-tbd-ink-subtle transition ease-in-out mr-3
 {%- endblock partial_link_icon_classes %}
 
 {% block partial_link_inner_classes -%}
@@ -329,7 +328,7 @@
 {%- endblock partial_number_classes %}
 
 {% block partial_number_value_classes -%}
-    font-medium text-xl! dark:text-gray-100
+    font-medium text-xl!
 {%- endblock partial_number_value_classes %}
 
 {% block resizable_table_classes -%}
@@ -337,7 +336,7 @@
 {%- endblock resizable_table_classes %}
 
 {% block resizable_table_cell_classes -%}
-    border-l border-l-gray-200 dark:border-l-gray-700 first:border-l-0 whitespace-nowrap!
+    border-l border-l-tbd-line first:border-l-0 whitespace-nowrap!
 {%- endblock resizable_table_cell_classes %}
 
 {% block resizable_table_resizer_classes -%}
@@ -353,27 +352,27 @@
 {%- endblock section_indent_classes %}
 
 {% block section_wrapper_border_classes -%}
-    border-x border-b border-gray-200 dark:border-gray-700
+    border-x border-b border-tbd-line
 {%- endblock section_wrapper_border_classes %}
 
 {% block section_wrapper_classes -%}
-    bg-white dark:bg-gray-900
+    bg-tbd-surface
 {%- endblock section_wrapper_classes %}
 
 {% block select_action_classes -%}
-    hover:cursor-pointer text-primary hover:text-primary/70 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100
+    hover:cursor-pointer text-tbd-accent hover:text-tbd-accent-strong focus:outline-none
 {%- endblock select_action_classes %}
 
 {% block select_classes -%}
-    flex items-center text-sm gap-x-3 p-4 mb-4 bg-white relative rounded border hidden dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100
+    flex items-center text-sm gap-x-3 p-4 mb-4 bg-tbd-surface relative rounded border border-tbd-line text-tbd-ink hidden
 {%- endblock select_classes %}
 
 {% block select_dropdown_item_classes -%}
-    block py-2 px-4 cursor-pointer hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700
+    block py-2 px-4 cursor-pointer hover:bg-tbd-tint
 {%- endblock select_dropdown_item_classes %}
 
 {% block select_text_classes -%}
-    text-primary select-none flex gap-1 dark:text-gray-100
+    text-tbd-ink select-none flex gap-1
 {%- endblock select_text_classes %}
 
 {% block sidebar_aside_classes -%}
@@ -381,18 +380,18 @@
 {%- endblock sidebar_aside_classes %}
 
 {% block sidebar_wrapper_classes -%}
-    h-full overflow-y-auto border-r border-gray-200 bg-white px-3 py-4 dark:border-gray-700 dark:bg-gray-800 space-y-2
+    h-full overflow-y-auto border-r border-tbd-line bg-tbd-surface px-3 py-4 space-y-2
 {%- endblock sidebar_wrapper_classes %}
 
 {% block spinner_classes -%}
 {%- endblock spinner_classes %}
 
 {% block sub_section_classes -%}
-    p-4 sm:p-6 lg:p-8 bg-gray-100 dark:bg-gray-700
+    p-4 sm:p-6 lg:p-8 bg-tbd-tint
 {%- endblock sub_section_classes %}
 
 {% block sub_title_classes -%}
-    font-semibold text-primary flex items-center dark:text-gray-100
+    font-semibold text-tbd-ink flex items-center
 {%- endblock sub_title_classes %}
 
 {% block sub_title_content_classes -%}
@@ -400,7 +399,7 @@
 {%- endblock sub_title_content_classes %}
 
 {% block sub_title_tooltip_icon_classes -%}
-    w-4 h-4 cursor-pointer ms-2 text-primary dark:text-gray-400
+    w-4 h-4 cursor-pointer ms-2 text-tbd-ink-subtle
 {%- endblock sub_title_tooltip_icon_classes %}
 
 {% block sub_title_wrapper_classes -%}
@@ -408,7 +407,7 @@
 {%- endblock sub_title_wrapper_classes %}
 
 {% block tab_amount_classes -%}
-    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
+    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-tbd-accent text-tbd-on-accent
 {%- endblock tab_amount_classes %}
 
 {% block tab_button_classes -%}
@@ -416,7 +415,7 @@
 {%- endblock tab_button_classes %}
 
 {% block tab_classes -%}
-    inline-flex items-center justify-center rounded-full text-xs py-[0.125rem] px-[0.375rem] bg-pimary text-white dark:bg-gray-600
+    inline-flex items-center justify-center py-[0.125rem] px-[0.375rem]
 {%- endblock tab_classes %}
 
 {% block table_action_cell_classes -%}
@@ -427,38 +426,38 @@
 {%- endblock table_body_classes %}
 
 {% block table_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700
+    px-4 py-3 border-b border-b-tbd-line whitespace-nowrap
 {%- endblock table_cell_classes %}
 
 {% block table_classes -%}
-    border-separate border-spacing-0 outline-none w-full text-sm text-left text-primary bg-white dark:bg-gray-800 dark:text-gray-100 rounded-lg
+    border-separate border-spacing-0 outline-none w-full text-sm text-left text-tbd-ink bg-tbd-surface rounded-lg
 {%- endblock table_classes %}
 
 {% block table_head_cell_classes -%}
-    px-4 py-3 border-b border-b-gray-200 whitespace-nowrap dark:border-b-gray-700 font-medium dark:text-gray-300
+    px-4 py-3 border-b border-b-tbd-line whitespace-nowrap font-medium text-tbd-ink-muted
 {%- endblock table_head_cell_classes %}
 
 {% block table_head_classes -%}
-    border-b border-b-gray-200 dark:border-b-gray-600
+    border-b border-b-tbd-line-strong
 {%- endblock table_head_classes %}
 
 {% block table_head_sticky_cell_classes -%}
-    bg-white px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700 font-medium bg-white dark:bg-gray-800 dark:text-gray-300
+    bg-tbd-surface px-4 py-3 border-b border-b-tbd-line whitespace-nowrap sticky font-medium text-tbd-ink-muted
 {%- endblock table_head_sticky_cell_classes %}
 
 {% block table_row_classes -%}
 {%- endblock table_row_classes %}
 
 {% block table_sticky_cell_classes -%}
-    bg-white px-4 py-3 border-b border-b-gray-200 whitespace-nowrap sticky dark:bg-gray-800 dark:border-b-gray-700
+    bg-tbd-surface px-4 py-3 border-b border-b-tbd-line whitespace-nowrap sticky
 {%- endblock table_sticky_cell_classes %}
 
 {% block table_wrapper_classes -%}
-    overflow-x-auto border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800
+    overflow-x-auto border border-tbd-line rounded-lg bg-tbd-surface
 {%- endblock table_wrapper_classes %}
 
 {% block text_classes -%}
-    text-primary text-sm dark:text-gray-100
+    text-tbd-ink text-sm
 {%- endblock text_classes %}
 
 {% block title_classes -%}
@@ -470,7 +469,7 @@
 {%- endblock title_content_classes %}
 
 {% block title_label_classes -%}
-    font-semibold text-primary w-full sm:w-auto dark:text-gray-100
+    font-semibold text-tbd-ink w-full sm:w-auto
 {%- endblock title_label_classes %}
 
 {% block toast_classes -%}
@@ -478,5 +477,5 @@
 {%- endblock toast_classes %}
 
 {% block tooltip_classes -%}
-    fixed z-70 invisible inline-block px-3 py-2 text-sm normal-case font-medium text-blue-100 dark:text-gray-100 transition-opacity duration-300 bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700
+    fixed z-70 invisible inline-block px-3 py-2 text-sm normal-case font-medium text-tbd-surface transition-opacity duration-300 bg-tbd-ink rounded-lg shadow-sm opacity-0 tooltip
 {%- endblock tooltip_classes %}
