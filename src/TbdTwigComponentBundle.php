@@ -578,6 +578,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'hollow-error' => 'text-tbd-danger-ink font-bold border-transparent hover:underline',
         'hollow-success' => 'text-tbd-success-ink font-bold border-transparent hover:underline',
         'multi-level' => 'w-full !text-base !font-normal rounded-none hover:bg-tbd-tint',
+        'white' => 'text-tbd-ink fill-tbd-ink hover:text-tbd-accent-strong hover:fill-tbd-accent-strong',
     ];
 
     private const array DEFAULT_BUTTON_SIZES = [
