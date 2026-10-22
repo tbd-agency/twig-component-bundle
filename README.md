@@ -200,12 +200,8 @@ after the line that imports Tailwind. Lines that are already present are
 skipped. When your CSS entry lives elsewhere, or when the recipe cannot find
 the Tailwind import, it prints the lines so you can add them yourself.
 
-When upgrading an existing project from 1.x, run the recipe update to get
-these lines:
-
-```bash
-composer recipes:update tbd/twig-component-bundle
-```
+When upgrading an existing project from 1.x, the recipe update adds these
+lines. See [Upgrading from 1.x](#upgrading-from-1x) for all steps.
 
 ---
 
@@ -297,4 +293,43 @@ html.dark {
 
 Check the contrast of your own values against `tbd-surface` and
 `tbd-canvas` in both modes: text needs 4.5:1, state indicators 3:1.
+
+---
+
+## Upgrading from 1.x
+
+Version 2.0 colours the components through the `tbd-*` tokens, so every
+project needs the `theme.css` import. Blocks you override in your own
+template keep their classes; blocks you do not override switch to the
+tbd.be palette.
+
+1. Require the new major version:
+
+   ```bash
+   composer require "tbd/twig-component-bundle:^2.0"
+   ```
+
+2. Commit, then apply the 2.0 recipe. `recipes:update` refuses to run with
+   uncommitted changes. It adds the `theme.css` import to
+   `assets/styles/app.css`:
+
+   ```bash
+   composer recipes:update tbd/twig-component-bundle
+   ```
+
+3. Remove the compiled Twig templates:
+
+   ```bash
+   rm -rf var/cache/*/twig
+   ```
+
+   Composer keeps the release dates on the bundle's files, which are older
+   than templates Twig compiled before the upgrade. Twig then keeps
+   serving the 1.x templates. `cache:clear` does not always remove them:
+   when the container was just rebuilt, it only warms up the cache.
+
+4. Rebuild your assets, for example with `npm run dev`.
+
+5. If you used the badge variant `orange`, switch to `gold`: the tbd.be
+   palette has no orange.
 
