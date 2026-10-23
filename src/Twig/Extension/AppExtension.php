@@ -31,7 +31,7 @@ class AppExtension extends AbstractExtension
 
     public function isBool($value): bool
     {
-        return $this->IsBool($value);
+        return is_bool($value);
     }
 
     public function isSidebarExpanded(): bool
