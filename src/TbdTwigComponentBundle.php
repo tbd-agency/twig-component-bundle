@@ -577,6 +577,7 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'hollow' => 'text-tbd-ink fill-tbd-ink border border-tbd-line hover:bg-tbd-tint hover:text-tbd-accent-strong hover:fill-tbd-accent-strong',
         'hollow-error' => 'text-tbd-danger-ink font-bold border-transparent hover:underline',
         'hollow-success' => 'text-tbd-success-ink font-bold border-transparent hover:underline',
+        'hollow-warning' => 'text-tbd-warning-ink font-bold border-transparent hover:underline',
         'multi-level' => 'w-full !text-base !font-normal rounded-none hover:bg-tbd-tint',
         'white' => 'text-tbd-ink fill-tbd-ink hover:text-tbd-accent-strong hover:fill-tbd-accent-strong',
     ];
@@ -701,6 +702,12 @@ final class TbdTwigComponentBundle extends AbstractBundle
             'classes' => '!border-tbd-danger-line !bg-tbd-danger-soft text-tbd-danger-ink',
             'icon' => 'circle-xmark',
             'close_button_variant' => 'hollow-error',
+            'close_button_size' => 'sm',
+        ],
+        'warning' => [
+            'classes' => '!border-tbd-warning-line !bg-tbd-warning-soft text-tbd-warning-ink',
+            'icon' => 'triangle-exclamation',
+            'close_button_variant' => 'hollow-warning',
             'close_button_size' => 'sm',
         ],
     ];
