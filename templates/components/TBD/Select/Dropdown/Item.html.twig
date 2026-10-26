@@ -1,5 +1,5 @@
 <div{{ attributes }}>
-    <li{{ renderAttributes(this.attributes) }}>
+    <li{% for name, value in this.attributes %} {{ name|e('html_attr') }}="{{ value }}"{% endfor %}>
         <span class="{{ block('select_dropdown_item_classes', tbd_twig_component_template)|trim }}">
             {% if modal %}
                 {{ label }}

@@ -1,3 +1,11 @@
+{% set translatedItemsSelected = 'label.items-selected'|trans %}
+{% set translatedSelectAll = 'label.select-all'|trans %}
+{% set translatedRemoveSelection = 'label.remove-selection'|trans %}
+{% set translatedSelected = 'label.selected'|trans %}
+{% set labelItemsSelected = labelItemsSelected|default(translatedItemsSelected != 'label.items-selected' ? translatedItemsSelected : 'item(s) selected') %}
+{% set labelSelectAll = labelSelectAll|default(translatedSelectAll != 'label.select-all' ? translatedSelectAll : 'select all?') %}
+{% set labelRemoveSelection = labelRemoveSelection|default(translatedRemoveSelection != 'label.remove-selection' ? translatedRemoveSelection : 'remove selection?') %}
+{% set labelSelected = labelSelected|default(translatedSelected != 'label.selected' ? translatedSelected : 'Selected') %}
 <div {{ attributes.defaults({
     'role': 'alert',
     'data-select-items-target': 'alert',
@@ -9,30 +17,18 @@
             <span data-select-items-target="total" class="hidden">{{ total }}</span>
         {% endif %}
         <span>
-            {% if labelItemsSelected is defined and labelItemsSelected is not empty %}
-                {{ labelItemsSelected }}&comma;
-            {% else %}
-                {{ 'label.items-selected'|trans({'default': 'item(s) selected'}) }}&comma;
-            {% endif %}
+            {{ labelItemsSelected }}&comma;
         </span>
         {% if total is defined and total %}
             <span data-select-items-target="selectAll"
                   class="{{ block('select_action_classes', tbd_twig_component_template)|trim }}"
                   data-action="click->select-items#selectAll">
-                {% if labelSelectAll is defined and labelSelectAll is not empty %}
-                    {{ labelSelectAll }}
-                {% else %}
-                    {{ 'label.select-all'|trans({'default': 'select all?'}) }}
-                {% endif %}
+                {{ labelSelectAll }}
             </span>
             <span data-select-items-target="removeAll"
                   class="{{ block('select_action_classes', tbd_twig_component_template)|trim }} hidden"
                   data-action="click->select-items#removeAll">
-                 {% if labelRemoveSelection is defined and labelRemoveSelection is not empty %}
-                     {{ labelRemoveSelection }}
-                 {% else %}
-                     {{ 'label.remove-selection'|trans({'default': 'remove selection?'}) }}
-                 {% endif %}
+                {{ labelRemoveSelection }}
             </span>
         {% endif %}
     </p>
@@ -40,8 +36,8 @@
         {% block content %}{% endblock %}
     {% endset %}
     <twig:TBD:Dropdown
-            buttonText="{{ (labelSelected is defined and labelSelected is not empty) ? labelSelected : 'label.selected'|trans({'default': 'Selected'}) }}"
-            variant="{{ buttonVariant }}"
+            buttonText="{{ labelSelected }}"
+            buttonVariant="{{ buttonVariant }}"
             :down="true"
             placement="{{ dropdownPlacement }}"
             id="select"
