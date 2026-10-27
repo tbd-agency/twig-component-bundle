@@ -25,7 +25,7 @@ blocks you need:
 {% use '@TbdTwigComponent/default.html.twig' %}
 
 {% block button_classes -%}
-    {{ parent() }} rounded-lg
+    {{ parent() }} rounded
 {%- endblock button_classes %}
 ```
 
