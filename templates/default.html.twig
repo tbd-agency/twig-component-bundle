@@ -453,7 +453,7 @@
 {%- endblock table_sticky_cell_classes %}
 
 {% block table_wrapper_classes -%}
-    overflow-x-auto border border-tbd-line rounded bg-tbd-surface
+    overflow-x-auto border border-tbd-line rounded bg-tbd-surface [&_tbody>tr:last-child>*]:border-b-0
 {%- endblock table_wrapper_classes %}
 
 {% block text_classes -%}
