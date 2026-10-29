@@ -41,7 +41,7 @@
     {% endset %}
     <twig:TBD:Dropdown
             buttonText="{{ (labelSelected is defined and labelSelected is not empty) ? labelSelected : 'label.selected'|trans({'default': 'Selected'}) }}"
-            variant="{{ buttonVariant }}"
+            buttonVariant="{{ buttonVariant }}"
             buttonSize="{{ buttonSize }}"
             :down="true"
             placement="{{ dropdownPlacement }}"
