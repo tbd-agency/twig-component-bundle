@@ -41,10 +41,11 @@ Blocks you do not override keep the bundle's classes.
 
 ## Variants, types and sizes
 
-Variants of `TBD:Button`, `TBD:Badge`, `TBD:Indicator`, and the types of
-`TBD:Alert` and `TBD:Toast`, come from the bundle configuration. So do the
-sizes and paddings of several components. An entry you add replaces the
-default with the same name; the other defaults stay available:
+Variants of `TBD:Button`, `TBD:Badge`, `TBD:Indicator`, `TBD:Dropdown`,
+`TBD:Link` and `TBD:Title`, and the types of `TBD:Alert` and `TBD:Toast`,
+come from the bundle configuration. So do the sizes and paddings of several
+components. An entry you add replaces the default with the same name; the
+other defaults stay available:
 
 ```yaml
 tbd_twig_component:
@@ -53,6 +54,24 @@ tbd_twig_component:
       link: 'text-tbd-accent hover:underline'
   badge:
     default_variant: 'gray'
+```
+
+`TBD:Link` and `TBD:Title` only have an empty `default` variant: add your own
+when a look recurs, instead of overriding it with `class` on every call:
+
+```yaml
+tbd_twig_component:
+  link:
+    variants:
+      muted: 'text-body! hover:text-body-dark!'
+  title:
+    variants:
+      centered: 'justify-center text-center'
+```
+
+```twig
+<twig:TBD:Link variant="muted" href="…"/>
+<twig:TBD:Title variant="centered" label="…"/>
 ```
 
 The button of `TBD:Select` uses the `md` size. Set `select.button_size` to

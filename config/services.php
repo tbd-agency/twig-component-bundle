@@ -87,6 +87,8 @@ return static function (ContainerConfigurator $configurator): void {
             '$prependIconMargins' => '%link.prependIconMargins%',
             '$appendIconMargins' => '%link.appendIconMargins%',
             '$defaultIconSize' => '%icon.size.default%',
+            '$variants' => '%link.variants%',
+            '$defaultVariant' => '%link.variant.default%',
         ])
         ->set(Section::class)
         ->args([
@@ -102,6 +104,8 @@ return static function (ContainerConfigurator $configurator): void {
         ->args([
             '$fontSizes' => '%title.font_sizes%',
             '$defaultFontSize' => '%title.font_size.default%',
+            '$variants' => '%title.variants%',
+            '$defaultVariant' => '%title.variant.default%',
         ])
         ->set(StickyCell::class)
         ->args([

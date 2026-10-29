@@ -68,6 +68,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('link.appendIconMargins', array_replace(self::DEFAULT_LINK_APPEND_ICON_MARGINS, $config['link']['append_icon_margins'] ?? []));
         $builder->setParameter('link.prependIconMargin.default', $config['link']['default_prepend_icon_margin']);
         $builder->setParameter('link.appendIconMargin.default', $config['link']['default_append_icon_margin']);
+        $builder->setParameter('link.variants', array_replace(self::DEFAULT_LINK_VARIANTS, $config['link']['variants'] ?? []));
+        $builder->setParameter('link.variant.default', $config['link']['default_variant']);
 
         $builder->setParameter('section.paddings', array_replace(self::DEFAULT_SECTION_PADDINGS, $config['section']['paddings'] ?? []));
         $builder->setParameter('section.padding.default', $config['section']['default_padding']);
@@ -77,6 +79,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
 
         $builder->setParameter('title.font_sizes', array_replace(self::DEFAULT_TITLE_FONT_SIZES, $config['title']['font_sizes'] ?? []));
         $builder->setParameter('title.font_size.default', $config['title']['default_font_size']);
+        $builder->setParameter('title.variants', array_replace(self::DEFAULT_TITLE_VARIANTS, $config['title']['variants'] ?? []));
+        $builder->setParameter('title.variant.default', $config['title']['default_variant']);
 
         $builder->setParameter('table.sticky_cell.positions', array_replace(self::DEFAULT_TABLE_STICKY_CELL_POSITIONS, $config['table']['sticky_cell']['positions'] ?? []));
         $builder->setParameter('table.sticky_cell.position.default', $config['table']['sticky_cell']['default_position']);
@@ -269,6 +273,15 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->scalarNode('default_append_icon_margin')
             ->defaultValue('md')
             ->end()
+            ->arrayNode('variants')
+            ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_LINK_VARIANTS)
+            ->end()
+            ->scalarNode('default_variant')
+            ->defaultValue('default')
+            ->end()
             ->end()
             ->end()
 
@@ -313,6 +326,15 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->scalarNode('default_font_size')
             ->defaultValue('4xl')
+            ->end()
+            ->arrayNode('variants')
+            ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_TITLE_VARIANTS)
+            ->end()
+            ->scalarNode('default_variant')
+            ->defaultValue('default')
             ->end()
             ->end()
             ->end()
@@ -501,6 +523,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
                     array_replace(self::DEFAULT_LINK_PREPEND_ICON_MARGINS, $config['link']['prepend_icon_margins']));
                 self::assertDefaultInKeys('link', 'default_append_icon_margin', 'append_icon_margins', $config['link']['default_append_icon_margin'],
                     array_replace(self::DEFAULT_LINK_APPEND_ICON_MARGINS, $config['link']['append_icon_margins']));
+                self::assertDefaultInKeys('link', 'default_variant', 'variants', $config['link']['default_variant'],
+                    array_replace(self::DEFAULT_LINK_VARIANTS, $config['link']['variants']));
 
                 # section
                 self::assertDefaultInKeys('section', 'default_padding', 'paddings', $config['section']['default_padding'],
@@ -513,6 +537,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
                 # title
                 self::assertDefaultInKeys('title', 'default_font_size', 'font_sizes', $config['title']['default_font_size'],
                     array_replace(self::DEFAULT_TITLE_FONT_SIZES, $config['title']['font_sizes']));
+                self::assertDefaultInKeys('title', 'default_variant', 'variants', $config['title']['default_variant'],
+                    array_replace(self::DEFAULT_TITLE_VARIANTS, $config['title']['variants']));
 
                 # table.sticky_cell
                 self::assertDefaultInKeys('table.sticky_cell', 'default_position', 'positions', $config['table']['sticky_cell']['default_position'],
@@ -697,6 +723,14 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'small-y' => ' py-2 sm:py-3 lg:py-4',
         'large' => ' p-4 sm:p-6 lg:p-8',
         'large-y' => ' py-4 sm:py-6 lg:py-8',
+    ];
+
+    private const array DEFAULT_LINK_VARIANTS = [
+        'default' => '',
+    ];
+
+    private const array DEFAULT_TITLE_VARIANTS = [
+        'default' => '',
     ];
 
     private const array DEFAULT_TITLE_FONT_SIZES = [

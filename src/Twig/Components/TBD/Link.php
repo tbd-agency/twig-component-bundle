@@ -17,12 +17,15 @@ final class Link
     public ?string $prependIcon = null;
     public ?string $appendIcon = null;
     public string $iconSize;
+    public string $variant;
 
     public function __construct(
         private readonly array $iconSizes,
         private readonly array $prependIconMargins,
         private readonly array $appendIconMargins,
         private readonly string $defaultIconSize,
+        private readonly array $variants,
+        private readonly string $defaultVariant,
     )
     {
     }
@@ -35,7 +38,9 @@ final class Link
 
         $resolver->setDefaults([
             'iconSize' => $this->defaultIconSize,
+            'variant' => $this->defaultVariant,
         ]);
+        $resolver->setAllowedValues('variant', array_keys($this->variants));
 
         $iconSize = $data['iconSize'] ?? $this->defaultIconSize;
 
@@ -60,6 +65,11 @@ final class Link
         }
 
         return $resolver->resolve($data) + $data;
+    }
+
+    public function getVariantClasses(): string
+    {
+        return $this->variants[$this->variant];
     }
 
     public function getIconSizeClasses(): string

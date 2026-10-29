@@ -1,4 +1,4 @@
-<div {{ attributes.defaults({ class: block('title_classes', tbd_twig_component_template)|trim }) }}>
+<div {{ attributes.defaults({ class: (block('title_classes', tbd_twig_component_template)|trim ~ ' ' ~ this.variantClasses)|trim }) }}>
     <h1 class="{{ block('title_label_classes', tbd_twig_component_template)|trim ~ ' ' ~ this.textSizeClass }}">{{ label }}</h1>
     {% if block('content') is not empty %}
         <div class="{{ block('title_content_classes', tbd_twig_component_template)|trim }}">
