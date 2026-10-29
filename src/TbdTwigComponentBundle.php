@@ -42,6 +42,9 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('button.variant.default', $config['button']['default_variant']);
         $builder->setParameter('button.size.default', $config['button']['default_size']);
 
+        $builder->setParameter('dropdown.variants', array_replace(self::DEFAULT_DROPDOWN_VARIANTS, $config['dropdown']['variants'] ?? []));
+        $builder->setParameter('dropdown.variant.default', $config['dropdown']['default_variant']);
+
         $builder->setParameter('icon.sizes', array_replace(self::DEFAULT_ICON_SIZES, $config['icon']['sizes']));
         $builder->setParameter('icon.size.default', $config['icon']['default_size']);
 
@@ -133,6 +136,21 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->scalarNode('default_size')
             ->defaultValue('md')
+            ->end()
+            ->end()
+            ->end()
+
+            ->arrayNode('dropdown')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('variants')
+            ->useAttributeAsKey('name')
+            ->normalizeKeys(false)
+            ->scalarPrototype()->end()
+            ->defaultValue(self::DEFAULT_DROPDOWN_VARIANTS)
+            ->end()
+            ->scalarNode('default_variant')
+            ->defaultValue('default')
             ->end()
             ->end()
             ->end()
@@ -450,6 +468,10 @@ final class TbdTwigComponentBundle extends AbstractBundle
                 self::assertDefaultInKeys('button', 'default_size', 'sizes', $config['button']['default_size'],
                     array_replace(self::DEFAULT_BUTTON_SIZES, $config['button']['sizes']));
 
+                # dropdown
+                self::assertDefaultInKeys('dropdown', 'default_variant', 'variants', $config['dropdown']['default_variant'],
+                    array_replace(self::DEFAULT_DROPDOWN_VARIANTS, $config['dropdown']['variants']));
+
                 # icon
                 self::assertDefaultInKeys('icon', 'default_size', 'sizes', $config['icon']['default_size'],
                     array_replace(self::DEFAULT_ICON_SIZES, $config['icon']['sizes']));
@@ -605,6 +627,10 @@ final class TbdTwigComponentBundle extends AbstractBundle
         'sm' => 'px-2 py-1',
         'md' => 'px-3 py-2',
         'lg' => 'px-4 py-2',
+    ];
+
+    private const array DEFAULT_DROPDOWN_VARIANTS = [
+        'default' => '',
     ];
 
     private const array DEFAULT_ICON_SIZES = [

@@ -6,6 +6,7 @@ use Tbd\TwigComponentBundle\Twig\Components\TBD\Avatar;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Badge;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Button;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Card;
+use Tbd\TwigComponentBundle\Twig\Components\TBD\Dropdown;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Indicator;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Link;
 use Tbd\TwigComponentBundle\Twig\Components\TBD\Logo;
@@ -69,6 +70,11 @@ return static function (ContainerConfigurator $configurator): void {
             '$sizes' => '%badge.sizes%',
             '$defaultVariant' => '%badge.variant.default%',
             '$defaultSize' => '%badge.size.default%',
+        ])
+        ->set(Dropdown::class)
+        ->args([
+            '$variants' => '%dropdown.variants%',
+            '$defaultVariant' => '%dropdown.variant.default%',
         ])
         ->set(Card::class)
         ->args([

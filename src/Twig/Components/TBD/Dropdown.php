@@ -16,6 +16,7 @@ final class Dropdown
     public string $uuid;
     public bool $down;
     public bool $popper;
+    public string $dropdownVariant;
     public string $buttonVariant;
     public string $buttonSize;
     public ?string $buttonIcon = null;
@@ -31,6 +32,13 @@ final class Dropdown
     public int $offsetSkidding;
     public int $offsetDistance;
 
+    public function __construct(
+        private readonly array $variants,
+        private readonly string $defaultVariant,
+    )
+    {
+    }
+
     #[PreMount]
     public function preMount(array $data): array
     {
@@ -41,6 +49,7 @@ final class Dropdown
             ->setRequired('id')
             ->setDefaults([
                 'id' => 'dropdown',
+                'dropdownVariant' => $this->defaultVariant,
                 'buttonVariant' => 'hollow',
                 'buttonSize' => 'md',
                 'down' => false,
@@ -50,6 +59,7 @@ final class Dropdown
                 'offsetSkidding' => 0,
                 'offsetDistance' => 10,
             ])
+            ->setAllowedValues('dropdownVariant', array_keys($this->variants))
             ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-end', 'bottom-start', 'right-start', 'left-start'])
             ->setAllowedValues('down', [true, false])
             ->setAllowedValues('popper', [true, false])
@@ -57,6 +67,11 @@ final class Dropdown
             ->setAllowedTypes('offsetDistance', 'int');
 
         return $resolver->resolve($data) + $data;
+    }
+
+    public function getVariantClasses(): string
+    {
+        return $this->variants[$this->dropdownVariant];
     }
 
     public function mount(?string $uuid = null): void

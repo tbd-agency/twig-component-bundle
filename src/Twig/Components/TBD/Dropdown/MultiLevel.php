@@ -19,6 +19,7 @@ final class MultiLevel
     public ?string $icon;
     public ?string $buttonText;
     public ?string $variant;
+    public ?string $dropdownVariant = null;
     public ?bool $down;
 
     #[PreMount]
