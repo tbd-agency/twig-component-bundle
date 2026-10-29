@@ -13,13 +13,14 @@ final class Select
 {
     public ?int $total;
     public ?string $buttonVariant;
+    public ?string $buttonSize;
     public ?string $dropdownPlacement;
     public ?string $labelSelected;
     public ?string $labelItemsSelected;
     public ?string $labelSelectAll;
     public ?string $labelRemoveSelection;
 
-    public function __construct(private readonly array $variants)
+    public function __construct(private readonly array $variants, private readonly string $defaultButtonSize)
     {
     }
 
@@ -32,6 +33,7 @@ final class Select
             ->setIgnoreUndefined()
             ->setDefaults([
                 'buttonVariant' => 'primary',
+                'buttonSize' => $this->defaultButtonSize,
                 'dropdownPlacement' => 'bottom-start',
             ])
             ->setAllowedValues('dropdownPlacement', ['bottom', 'bottom-start', 'bottom-end', 'right-start', 'left-start'])

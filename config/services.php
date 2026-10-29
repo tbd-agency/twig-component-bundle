@@ -162,6 +162,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->set(Select::class)
         ->args([
             '$variants' => '%button.variants%',
+            '$defaultButtonSize' => '%select.buttonSize%',
         ])
         ->set(Indicator::class)
         ->args([

@@ -93,6 +93,8 @@ final class TbdTwigComponentBundle extends AbstractBundle
         $builder->setParameter('modal.cancel.buttonVariant', $config['modal']['cancel']['button_variant']);
         $builder->setParameter('modal.cancel.buttonSize', $config['modal']['cancel']['button_size']);
 
+        $builder->setParameter('select.buttonSize', $config['select']['button_size']);
+
         $builder->setParameter('indicator.variants', array_replace(self::DEFAULT_INDICATOR_VARIANTS, $config['indicator']['variants'] ?? []));
         $builder->setParameter('indicator.variant.default', $config['indicator']['default_variant']);
 
@@ -428,6 +430,15 @@ final class TbdTwigComponentBundle extends AbstractBundle
             ->end()
             ->end()
             ->end()
+
+            ->arrayNode('select')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('button_size')
+            ->defaultValue('md')
+            ->end()
+            ->end()
+            ->end()
             ->end();
 
         $root
@@ -535,6 +546,13 @@ final class TbdTwigComponentBundle extends AbstractBundle
                             $action, $config['modal'][$action]['button_size'], implode(', ', array_keys($buttonSizes))
                         ));
                     }
+                }
+
+                if (!array_key_exists($config['select']['button_size'], $buttonSizes)) {
+                    throw new \InvalidArgumentException(sprintf(
+                        'select.button_size "%s" must be one of the button sizes. Available: %s.',
+                        $config['select']['button_size'], implode(', ', array_keys($buttonSizes))
+                    ));
                 }
 
                 return $config;
