@@ -6,6 +6,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use function str_contains;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Toast',
@@ -13,7 +14,7 @@ use function str_contains;
 final class Toast
 {
     public string $type;
-    public ?string $message = null;
+    public string|Markup|null $message = null;
     public bool $autoClose;
     public int $timeUntilClose;
     public string $iconSize;

@@ -5,6 +5,7 @@ namespace Tbd\TwigComponentBundle\Twig\Components\TBD\ResizableTable;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:ResizableTable:Cell',
@@ -13,7 +14,7 @@ final class Cell
 {
     public string $column;
     public ?int $width;
-    public ?string $value;
+    public string|Markup|null $value;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -30,7 +31,7 @@ final class Cell
             ->setAllowedTypes('column', 'string')
             ->setAllowedTypes('width', ['null', 'int', 'string'])
             ->setNormalizer('width', static fn ($options, $width): ?int => empty($width) ? null : (int) $width)
-            ->setAllowedTypes('value', ['null', 'string']);
+            ->setAllowedTypes('value', ['null', 'string', Markup::class]);
 
         return $resolver->resolve($data) + $data;
     }

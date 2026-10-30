@@ -32,7 +32,8 @@
     "symfony/stimulus-bundle": "^2.23 || ^3.0",
     "symfony/ux-icons": "^2.23 || ^3.0",
     "symfony/ux-twig-component": "^2.23 || ^3.0",
-    "tbd/stimulus-bundle": "^1.0"
+    "tbd/stimulus-bundle": "^1.0",
+    "twig/twig": "^3.12"
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1"

@@ -7,6 +7,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Button',
@@ -23,7 +24,7 @@ final class Button
     public bool $spinner;
     public string $extraClasses = '';
     public string $identifier;
-    public string $label;
+    public string|Markup $label;
     public string $size;
     public string $tag;
     public string $type;

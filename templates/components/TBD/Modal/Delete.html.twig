@@ -10,12 +10,13 @@
                         {{ 'sub-title.delete-item'|trans({'default': 'Delete item'}, 'tbd-component') }}
                     {% endif %}
                 </h3>
+                {% set closeIcon %}{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}{% endset %}
                 <twig:TBD:Button
                         class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
                         data-target="modal-delete"
                         data-action="click->modal#close"
                         variant="{{ closeButtonVariant }}" size="{{ closeButtonSize }}"
-                        label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
+                        :label="closeIcon"/>
             </div>
             <form {{ attributes.defaults({ method: 'POST'}) }}>
                 <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">

@@ -6,13 +6,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Badge',
     template: '@TbdTwigComponent/components/TBD/Badge.html.twig')]
 final class Badge
 {
-    public string $label;
+    public string|Markup $label;
     public string $variant;
     public string $size;
     public string $extraClasses = '';

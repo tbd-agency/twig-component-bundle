@@ -5,6 +5,7 @@ namespace Tbd\TwigComponentBundle\Twig\Components\TBD\Table;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Table:Cell',
@@ -12,7 +13,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Cell
 {
     public string $tag;
-    public ?string $value = null;
+    public string|Markup|null $value = null;
     public bool $actions;
 
     #[PreMount]

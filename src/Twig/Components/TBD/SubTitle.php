@@ -6,13 +6,14 @@ use Ramsey\Uuid\Uuid;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:SubTitle',
     template: '@TbdTwigComponent/components/TBD/SubTitle.html.twig')]
 final class SubTitle
 {
-    public string $label;
+    public string|Markup $label;
     public string $tag;
     public string $wrapper;
     public ?string $tooltip = null;

@@ -13,13 +13,14 @@
     </div>
     <div class="text-sm font-normal">
         {% if message %}
-            {{ message|raw }}
+            {{ message }}
         {% else %}
             {% block content %}{% endblock %}
         {% endif %}
     </div>
+    {% set closeIcon %}{{ ux_icon('tbd:x', {'class': this.iconSizeClasses}) }}{% endset %}
     <twig:TBD:Button
             data-action="closeable#close"
             variant="{{ this.closeButtonVariant() }}" size="{{ this.closeButtonSize() }}" class="ms-auto"
-            label="{{ ux_icon('tbd:x', {'class': this.iconSizeClasses}) }}"/>
+            :label="closeIcon"/>
 </div>

@@ -6,6 +6,7 @@ use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Tooltip',
@@ -13,7 +14,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 final class Tooltip
 {
     public string $identifier;
-    public string $label;
+    public string|Markup $label;
 
     #[PreMount]
     public function preMount(array $data): array

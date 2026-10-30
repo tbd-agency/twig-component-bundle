@@ -6,13 +6,14 @@ use InvalidArgumentException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Link',
     template: '@TbdTwigComponent/components/TBD/Link.html.twig')]
 final class Link
 {
-    public ?string $label = null;
+    public string|Markup|null $label = null;
     public string $href = '#';
     public ?string $prependIcon = null;
     public ?string $appendIcon = null;

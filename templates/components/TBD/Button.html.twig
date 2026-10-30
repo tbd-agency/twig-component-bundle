@@ -8,10 +8,10 @@
     'data-tooltip-placement-value': 'bottom',
 } : {})) }}>
 {% if label is defined and label is not empty and icon is empty %}
-    {{ label|raw }}
+    {{ label }}
 {% elseif icon is not null and label is defined %}
     {{ ux_icon(icon, {'class': this.iconSizeClasses}) }}
-    {{ label|raw }}
+    {{ label }}
 {% elseif icon is not null and label is not defined %}
     {{ ux_icon(icon, {'class': this.iconSizeClasses}) }}
 {% else %}

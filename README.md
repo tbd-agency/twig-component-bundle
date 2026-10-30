@@ -37,4 +37,4 @@ which is installed automatically as a dependency.
 | [Installation](docs/installation.md) | Composer setup, what Flex sets up, Stimulus controllers, icons and routes, Tailwind CSS, Flowbite and Turbo |
 | [Colour tokens](docs/colours.md) | The `tbd-*` colours, light and dark mode, all values, using your own colours |
 | [Customising the components](docs/customising.md) | Overriding template blocks, variants, types and sizes |
-| [Upgrading from 1.x](docs/upgrading.md) | Steps from 1.x to 2.0, including the Twig cache |
+| [Upgrading](docs/upgrading.md) | Steps from 2.x to 3.0 (escaped labels) and from 1.x to 2.0, including the Twig cache |

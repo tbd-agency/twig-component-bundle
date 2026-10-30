@@ -1,6 +1,6 @@
 <{{ wrapper }} {{ attributes.defaults({ class: block('sub_title_wrapper_classes', tbd_twig_component_template)|trim}) }}>
 <{{ tag }} class="{{ block('sub_title_classes',tbd_twig_component_template)|trim ~ ' ' ~ this.textSizeClass }}">
-{{ label|raw }}
+{{ label }}
         {% if tooltip %}
             {{ ux_icon('tbd:circle-info', {'class': block('sub_title_tooltip_icon_classes', tbd_twig_component_template)|trim, 'data-controller': 'tooltip', 'data-tooltip-target-value': ('tooltip-' ~ tooltipId), 'data-tooltip-placement-value': 'top'}) }}
         {% endif %}

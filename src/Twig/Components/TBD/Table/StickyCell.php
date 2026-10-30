@@ -5,13 +5,14 @@ namespace Tbd\TwigComponentBundle\Twig\Components\TBD\Table;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Twig\Markup;
 
 #[AsTwigComponent(
     name: 'TBD:Table:StickyCell',
     template: '@TbdTwigComponent/components/TBD/Table/StickyCell.html.twig')]
 final class StickyCell
 {
-    public ?string $value;
+    public string|Markup|null $value;
     public string $tag;
     public string $position;
     public bool $actions;

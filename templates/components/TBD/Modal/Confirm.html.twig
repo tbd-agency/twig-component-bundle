@@ -10,12 +10,13 @@
                         {{ 'sub-title.confirm'|trans({'default': 'Confirm'}, 'tbd-component') }}
                     {% endif %}
                 </h3>
+                {% set closeIcon %}{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}{% endset %}
                 <twig:TBD:Button
                         class="{{ block('modal_header_button_classes', tbd_twig_component_template)|trim }}"
                         data-target="{{ id }}"
                         data-action="modal#close"
                         variant="{{ closeButtonVariant }}" size="{{ closeButtonSize }}"
-                        label="{{ ux_icon('tbd:x', {'class': 'w-4 h-4'}) }}"/>
+                        :label="closeIcon"/>
             </div>
             <div class="{{ block('modal_content_classes', tbd_twig_component_template)|trim }}">
                 <input type="hidden" name="_token">

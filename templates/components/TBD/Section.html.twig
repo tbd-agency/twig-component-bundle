@@ -10,9 +10,9 @@
     {% endset %}
     {% if wrapper %}
         <div class="{{ this.paddingClasses ~ ' ' ~ block('section_wrapper_classes', tbd_twig_component_template)|trim ~ ' ' ~ (border ? block('section_wrapper_border_classes', tbd_twig_component_template)|trim : '') }}">
-            {{ content|raw }}
+            {{ content }}
         </div>
     {% else %}
-        {{ content|raw }}
+        {{ content }}
     {% endif %}
 </div>
